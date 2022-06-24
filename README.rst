@@ -59,9 +59,9 @@ Sphinx uses `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ as it
     cd docs
     make html
 
-4. View them locally in a web browser at ``file:///<myDir>/e3sm_data_docs/docs/_build/html/index.html``.
+4. View them locally in a web browser at ``file:///<myDir>/e3sm_data_docs/docs/_build/html/index.html``
 
-5. Commit and push changes : ::
+5. Commit and push changes ::
 
     cd <myDir>/e3sm_data_docs
     # `docs/_build` is ignored by git since it does not need to be pushed.
@@ -69,7 +69,7 @@ Sphinx uses `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ as it
     git commit "..."
     git push <fork-origin> <branch-name>
 
-6. <`OPTIONAL`> If you want to generate and view versioned docs: ::
+6. <`OPTIONAL`> If you want to generate and view versioned docs ::
 
     # After commiting to your branch
     cd docs
