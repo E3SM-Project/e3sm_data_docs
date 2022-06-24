@@ -12,7 +12,7 @@ This documentation is created using
 that makes it easy to create intelligent and beautiful documentation, written
 by Georg Brandl and licensed under the BSD license.
 
-The documentation is maintained in the ``master`` branch of the GitHub repository.
+The documentation is maintained in the ``main`` branch of the GitHub repository.
 You can include code and its corresponding documentation updates in a single pull request (PR).
 
 After merging a PR, GitHub Actions automates the documentation building process.
@@ -25,21 +25,15 @@ Setup the Conda Environment
 
 1. Install Miniconda/Anaconda
 
-2. Clone the repository
+2. Clone the repository ::
 
-   ::
+        git clone https://github.com/E3SM-Project/e3sm_data_docs.git
 
-      git clone https://github.com/E3SM-Project/e3sm_data_docs.git
-
-3. Enter the repo directory
-
-    ::
+3. Enter the repo directory ::
 
         cd e3sm_data_docs
 
-4. Create the ``e3sm_data_docs`` conda environment
-
-    ::
+4. Create the ``e3sm_data_docs`` conda environment ::
 
         conda env create -f conda-env/docs.yml
         conda activate e3sm_data_docs
@@ -52,15 +46,15 @@ Sphinx uses `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ as it
 * `First Steps with Sphinx <http://www.sphinx-doc.org/en/stable/tutorial.html>`_
 * `reStructuredText Primer <http://www.sphinx-doc.org/en/stable/rest.html#external-links>`_
 
-1. Create a branch from ``main`` : ::
+1. Create a branch from ``main``  ::
 
     git checkout main
     git checkout -b <BRANCH_NAME>
 
 
-2. Edit the source ``rst`` files under ``docs/``.
+2. Edit the ``rst`` files under ``/docs/source``.
 
-3. Build the HTML pages from the source::
+3. Build the HTML pages : ::
 
     cd docs
     make html
@@ -101,4 +95,4 @@ The `sphinx-multiversion <https://github.com/Holzhaus/sphinx-multiversion>`_ pac
 
 Branches or tags that don’t contain both the sphinx ``source`` directory and the ``conf.py`` file will be skipped automatically.
 
-    - Run ``sphinx-multiversion docs _build/html --dump-metadata`` to see which tags/branches matched.
+    - Run ``sphinx-multiversion source _build/html --dump-metadata`` to see which tags/branches matched.
