@@ -101,4 +101,4 @@ The `sphinx-multiversion <https://github.com/Holzhaus/sphinx-multiversion>`_ pac
 
 Branches or tags that don’t contain both the sphinx ``source`` directory and the ``conf.py`` file will be skipped automatically.
 
-    - Run ``sphinx-multiversion source _build/html --dump-metadata`` to see which tags/branches matched.
+    - Run ``sphinx-multiversion docs _build/html --dump-metadata`` to see which tags/branches matched.
