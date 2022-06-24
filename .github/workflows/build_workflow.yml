@@ -1,0 +1,74 @@
+name: CI/CD Build Workflow
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  publish-docs:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Cache Conda
+        uses: actions/cache@v2
+        env:
+          # Increase this value to reset cache if conda-env/docs.yml has not changed in the workflow
+          CACHE_NUMBER: 0
+        with:
+          path: ~/conda_pkgs_dir
+          key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
+            hashFiles('conda-env/docs.yml') }}
+
+      - name: Set up Conda Environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: "e3sm_data_docs"
+          environment-file: conda-env/docs.yml
+          channel-priority: strict
+          auto-update-conda: true
+          # IMPORTANT: This needs to be set for caching to work properly!
+          use-only-tar-bz2: true
+
+      - name: Build Sphinx Docs
+        run: |
+          cd docs
+          sphinx-multiversion source _build/html
+
+      - name: Copy Docs and Commit
+        run: |
+          # gh-pages branch must already exist
+          git clone https://github.com/E3SM-Project/e3sm_data_docs.git --branch gh-pages --single-branch gh-pages
+
+          # Only replace main docs with latest changes. Docs for tags should be untouched.
+          cd gh-pages
+          rm -r _build/html/main
+          cp -r ../docs/_build/html/main _build/html/main
+
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # The below command will fail if no changes were present, so we ignore it
+          git add .
+          git commit -m "Update documentation" -a || true
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true

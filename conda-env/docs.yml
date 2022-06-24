@@ -1,0 +1,18 @@
+
+# Conda documentation environment for building documentation, including through automation in CI/CD.
+name: e3sm_data_docs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Base
+  # =================
+  - python=3.10.5
+  - pip=22.1.2
+  # Documentation
+  # =================
+  - sphinx=5.0.2
+  - sphinx_rtd_theme=1.0.0
+  - pip:
+      - sphinx-multiversion==0.2.
+prefix: /opt/miniconda3/envs/e3sm_data_docs
