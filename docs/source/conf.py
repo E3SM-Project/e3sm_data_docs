@@ -30,7 +30,6 @@ author = 'E3SM Data Docs Developers'
 # ones.
 extensions = [
     "sphinx_rtd_theme",
-    "sphinx_multiversion",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -55,9 +54,3 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
-
-# -- Options sphinx-multiversion -------------------------------------------
-smv_tag_whitelist = r"^v\d+\.\d+.\d+$"  # Include tags like "tags/v1.0.0"
-smv_branch_whitelist = "main"
-smv_remote_whitelist = r"^(origin|upstream)$"  # Use branches from origin
