@@ -57,7 +57,7 @@ jobs:
           cd gh-pages
 
           rm -rf _build/html
-          mkdir _build/html
+          mkdir -p _build/html
           cp -r ../docs/_build/html _build/html
 
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
