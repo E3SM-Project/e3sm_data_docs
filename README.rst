@@ -69,30 +69,7 @@ Sphinx uses `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ as it
     git commit "..."
     git push <fork-origin> <branch-name>
 
-6. <`OPTIONAL`> If you want to generate and view versioned docs ::
-
-    # After commiting to your branch
-    cd docs
-    sphinx-multiversion source _build/html
-    # Check the `_build/html` folder for all generated versioned docs
-    # Open `_build/html/<your-branch>/index.html` to view in browser
-
-   .. figure:: _static/docs-version-selector.png
-      :alt: Docs version selector
-
-      Docs version selector dropdown in the bottom left-hand corner
-
-7. Create a pull request
+6. Create a pull request
 
 Once this pull request is merged and GitHub Actions finishes building the docs, changes will be available on the
 `e3sm_data_docs documentation page <https://e3sm-project.github.io/e3sm_data_docs/>`_.
-
-How Documentation is Versioned
-------------------------------
-The `sphinx-multiversion <https://github.com/Holzhaus/sphinx-multiversion>`_ package manages documentation versioning.
-
-``sphinx-multiversion`` is configured to generate versioned docs for available tags and branches on local and ``origin``.
-
-Branches or tags that don’t contain both the sphinx ``source`` directory and the ``conf.py`` file will be skipped automatically.
-
-    - Run ``sphinx-multiversion source _build/html --dump-metadata`` to see which tags/branches matched.
