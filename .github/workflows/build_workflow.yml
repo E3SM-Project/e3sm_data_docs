@@ -56,13 +56,8 @@ jobs:
           # Replace docs
           cd gh-pages
 
-          if [[ -d _build/html ]]
-          then
-              rm -r _build/html
-          else
-              mkdir _build/html
-          fi
-
+          rm -rf _build/html
+          mkdir _build/html
           cp -r ../docs/_build/html _build/html
 
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
