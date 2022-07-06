@@ -11,7 +11,7 @@ on:
 
 jobs:
   publish-docs:
-    if: ${{ github.event_name == 'push' }}
+    # if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -55,7 +55,14 @@ jobs:
 
           # Replace docs
           cd gh-pages
-          rm -r _build/html
+
+          if [[ -d _build/html ]]
+          then
+              rm -r _build/html
+          else
+              mkdir _build_html
+          fi
+
           cp -r ../docs/_build/html _build/html
 
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
