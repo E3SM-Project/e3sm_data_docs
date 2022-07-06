@@ -3,7 +3,6 @@ E3SM Data Documentation
 
 TODO: Add an overview here
 
-
 Getting Started
 --------------------------
 
@@ -50,7 +49,6 @@ Sphinx uses `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ as it
 
     git checkout main
     git checkout -b <BRANCH_NAME>
-
 
 2. Edit the ``rst`` files under ``/docs/source``.
 

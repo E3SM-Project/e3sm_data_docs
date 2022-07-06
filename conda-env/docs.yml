@@ -1,4 +1,3 @@
-
 # Conda documentation environment for building documentation, including through automation in CI/CD.
 name: e3sm_data_docs
 channels:

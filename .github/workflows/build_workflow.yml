@@ -60,7 +60,7 @@ jobs:
           then
               rm -r _build/html
           else
-              mkdir _build_html
+              mkdir _build/html
           fi
 
           cp -r ../docs/_build/html _build/html
