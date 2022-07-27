@@ -10,6 +10,8 @@ Welcome to E3SM Data Docs's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   self
+   simulation_locations
 
 
 Indices and tables
