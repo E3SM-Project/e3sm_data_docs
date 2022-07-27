@@ -1,0 +1,70 @@
+TOTAL: 58 members, 923 TB
+  Water Cycle (low-resolution): 51 members, 718 TB
+    DECK: 5 members, 78 TB
+      v2.LR.piControl: 39 TB
+      v2.LR.piControl_land: 2 TB
+      v2.LR.abrupt-4xCO2_0101: 12 TB
+      v2.LR.abrupt-4xCO2_0301: 13 TB
+      v2.LR.1pctCO2_0101: 12 TB
+    Historical: 5 members, 64 TB
+      v2.LR.historical_0101: 13 TB
+      v2.LR.historical_0151: 13 TB
+      v2.LR.historical_0201: 13 TB
+      v2.LR.historical_0251: 13 TB
+      v2.LR.historical_0301: 13 TB
+    Historical LE: 16 members, 352 TB
+      v2.LR.historical_0111: 22 TB
+      v2.LR.historical_0121: 22 TB
+      v2.LR.historical_0131: 22 TB
+      v2.LR.historical_0141: 22 TB
+      v2.LR.historical_0161: 22 TB
+      v2.LR.historical_0171: 22 TB
+      v2.LR.historical_0181: 22 TB
+      v2.LR.historical_0191: 22 TB
+      v2.LR.historical_0211: 22 TB
+      v2.LR.historical_0221: 22 TB
+      v2.LR.historical_0231: 22 TB
+      v2.LR.historical_0241: 22 TB
+      v2.LR.historical_0261: 22 TB
+      v2.LR.historical_0271: 22 TB
+      v2.LR.historical_0281: 22 TB
+      v2.LR.historical_0291: 22 TB
+    Single-forcing (DAMIP-like): 15 members, 200 TB
+      v2.LR.hist-GHG_0101: 13 TB
+      v2.LR.hist-GHG_0151: 13 TB
+      v2.LR.hist-GHG_0201: 13 TB
+      v2.LR.hist-GHG_0251: 14 TB
+      v2.LR.hist-GHG_0301: 13 TB
+      v2.LR.hist-aer_0101: 13 TB
+      v2.LR.hist-aer_0151: 13 TB
+      v2.LR.hist-aer_0201: 13 TB
+      v2.LR.hist-aer_0251: 14 TB
+      v2.LR.hist-aer_0301: 14 TB
+      v2.LR.hist-all-xGHG-xaer_0101: 13 TB
+      v2.LR.hist-all-xGHG-xaer_0151: 13 TB
+      v2.LR.hist-all-xGHG-xaer_0201: 13 TB
+      v2.LR.hist-all-xGHG-xaer_0251: 14 TB
+      v2.LR.hist-all-xGHG-xaer_0301: 13 TB
+    AMIP: 3 members, 7 TB
+      v2.LR.amip_0101: 2 TB
+      v2.LR.amip_0201: 2 TB
+      v2.LR.amip_0301: 2 TB
+    RFMIP: 7 members, 17 TB
+      v2.LR.piClim-control: 1 TB
+      v2.LR.piClim-histall_0021: 3 TB
+      v2.LR.piClim-histall_0031: 3 TB
+      v2.LR.piClim-histall_0041: 3 TB
+      v2.LR.piClim-histaer_0021: 3 TB
+      v2.LR.piClim-histaer_0031: 3 TB
+      v2.LR.piClim-histaer_0041: 3 TB
+  Water Cycle (NARRM): 7 members, 204 TB
+    DECK: 3 members, 131 TB
+      v2.NARRM.piControl: 80 TB
+      v2.NARRM.abrupt-4xCO2_0101: 24 TB
+      v2.NARRM.1pctCO2_0101: 27 TB
+    Historical: 2 members, 59 TB
+      v2.NARRM.historical_0101: 29 TB
+      v2.NARRM.historical_0301: 29 TB
+    AMIP: 2 members, 15 TB
+      v2.NARRM.amip_0101: 7 TB
+      v2.NARRM.amip_0201: 7 TB
