@@ -113,3 +113,6 @@ ENV/
 
 # Anaconda
 conda-build/
+
+*~
+utils/simulation_table.txt
