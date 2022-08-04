@@ -1,13 +1,25 @@
 import csv
+import os
 import re
+import requests
 
 class Simulation(object):
     def __init__(self, name):
         self.name = name
         self.data_size = ""
-        self.hpss = ""
-        self.run_script_original = f"https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/original/{name}.sh"
-        self.run_script_reproduction = ""
+        hpss = f"/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/{name}"
+        result = os.system(f'hsi "cd {hpss}"')
+        if result == 0:
+            self.hpss = hpss
+        else:
+            self.hpss = ""
+        run_script_original = f"https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/original/run.{name}.sh"
+        response = requests.get(run_script_original).status_code
+        if response == 200:
+            self.run_script_original = run_script_original
+        else:
+            self.run_script_original = ""
+        self.run_script_reproduction = "TBD"
 
     def get_csv_row(self):
         return [self.name, self.data_size, self.hpss, self.run_script_original, self.run_script_reproduction]
@@ -201,7 +213,7 @@ def pad_cells(cells, col_divider):
     string = col_divider
     string += f" {cells[0]:<60} " + col_divider
     string += f" {cells[1]:<15} " + col_divider
-    string += f" {cells[2]:<10} " + col_divider
+    string += f" {cells[2]:<80} " + col_divider
     string += f" {cells[3]:<200} " + col_divider
     string += f" {cells[4]:<25} " + col_divider
     string += "\n"
@@ -211,7 +223,7 @@ def pad_cells_row_dividers(marker):
     string = "+"
     string += marker*62 + "+"
     string += marker*17 + "+"
-    string += marker*12 + "+"
+    string += marker*82 + "+"
     string += marker*202 + "+"
     string += marker*27 + "+"
     string += "\n"
@@ -244,6 +256,11 @@ if __name__ == "__main__":
 # 4. Copy the output of `cat simulation_table.txt` to Desktop `e3sm_data_docs/docs/source/simulation_locations.rst`.
 # 5. `cd e3sm_data_docs/docs/`
 # 6.`make html`
+
 # 7. `rm -rf /lcrc/group/e3sm/public_html/diagnostic_output/ac.forsyth2/data_docs`
 # 8. `mv _build /lcrc/group/e3sm/public_html/diagnostic_output/ac.forsyth2/data_docs`
 # 9. Go to https://web.lcrc.anl.gov/public/e3sm/diagnostic_output/ac.forsyth2/data_docs/html/simulation_locations.html
+
+# 7. `rm -rf /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 8. `mv _build /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 9. Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/simulation_locations.html
