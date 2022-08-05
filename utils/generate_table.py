@@ -6,22 +6,42 @@ import requests
 class Simulation(object):
     def __init__(self, name):
         self.name = name
-        self.data_size = ""
-        hpss = f"/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/{name}"
-        result = os.system(f'hsi "cd {hpss}"')
-        if result == 0:
-            self.hpss = hpss
+        
+        hpss_path = f"/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/{name}"
+        output = "out.txt"
+        if os.path.exists(output):
+            os.remove(output)
+        os.system(f'(hsi "du {hpss_path}") 2>&1 | tee {output}')
+        num_bytes = "0"
+        with open(output, "r") as f:
+            for line in f:
+                match_object = re.search("No such file or directory", line)
+                if match_object:
+                    break
+                match_object = re.search("\((.*) bytes\)", line)
+                if match_object:
+                    num_bytes = match_object.group(1).replace(",", "")
+                    break
+            
+        data_size = int(num_bytes)/1e12
+        if data_size > 0:
+            # Convert to TB
+            self.data_size = f"{data_size:.0f}"
+            self.hpss = hpss_path
         else:
+            self.data_size = ""
             self.hpss = ""
+
         run_script_original = f"https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/original/run.{name}.sh"
         response = requests.get(run_script_original).status_code
         if response == 200:
             self.run_script_original = run_script_original
         else:
             self.run_script_original = ""
+
         self.run_script_reproduction = "TBD"
 
-    def get_csv_row(self):
+    def get_row(self):
         return [self.name, self.data_size, self.hpss, self.run_script_original, self.run_script_reproduction]
 
 
@@ -185,29 +205,6 @@ def get_simulation(resolution_list, simulation_name):
                 if simulation.name == simulation_name:
                     return simulation
     return None
-                
-                
-def get_data_sizes(archive_size_output, resolution_list):
-    with open(archive_size_output, "r") as file_read:
-        for line in file_read:
-            match_object = re.search("(v2.*): (.*) TB", line)
-            if match_object:
-                simulation_name = match_object.group(1)
-                data_size = match_object.group(2)
-                simulation = get_simulation(resolution_list, simulation_name)
-                if simulation:
-                    simulation.data_size = f"{data_size}"
-
-def generate_csv():
-    resolution_list = create_simulation_objects()
-    get_data_sizes("archive_size_output.txt", resolution_list)
-    with open("simulations.csv", "w") as file_write:
-        writer = csv.writer(file_write)
-        writer.writerow(["Simulation", "Data Size (TB)", "HPSS Path", "Original Run Script", "Reproduction Run Script"])
-        for resolution in resolution_list:
-            for category in resolution.categories:
-                for simulation in category.simulations:
-                    writer.writerow(simulation.get_csv_row())
 
 def pad_cells(cells, col_divider):
     string = col_divider
@@ -231,7 +228,6 @@ def pad_cells_row_dividers(marker):
 
 def generate_table():
     resolution_list = create_simulation_objects()
-    get_data_sizes("archive_size_output.txt", resolution_list)
     header_cells = ["Simulation", "Data Size (TB)", "HPSS Path", "Original Run Script", "Reproduction Run Script"]
     with open("simulation_table.txt", "w") as file_write:
         file_write.write(pad_cells_row_dividers("-"))
@@ -243,24 +239,24 @@ def generate_table():
                 file_write.write(pad_cells(category_cells, "|"))
                 file_write.write(pad_cells_row_dividers("-"))
                 for simulation in category.simulations:
-                    file_write.write(pad_cells(simulation.get_csv_row(), "|"))
+                    file_write.write(pad_cells(simulation.get_row(), "|"))
                     file_write.write(pad_cells_row_dividers("-"))
 
 if __name__ == "__main__":
     generate_table()
 
 # Steps to follow:
-# 1. Run archive_size.py on Cori
-# 2. Copy that output to archive_size_output.txt
-# 3. Run `python generate_table.py`
-# 4. Copy the output of `cat simulation_table.txt` to Desktop `e3sm_data_docs/docs/source/simulation_locations.rst`.
-# 5. `cd e3sm_data_docs/docs/`
-# 6.`make html`
+# 1. Run `python generate_table.py`
+# 2. Copy the output of `cat simulation_table.txt` to Desktop `e3sm_data_docs/docs/source/simulation_locations.rst`.
+# 3. `cd e3sm_data_docs/docs/`
+# 4.`make html`
 
-# 7. `rm -rf /lcrc/group/e3sm/public_html/diagnostic_output/ac.forsyth2/data_docs`
-# 8. `mv _build /lcrc/group/e3sm/public_html/diagnostic_output/ac.forsyth2/data_docs`
-# 9. Go to https://web.lcrc.anl.gov/public/e3sm/diagnostic_output/ac.forsyth2/data_docs/html/simulation_locations.html
+# 5. `rm -rf /lcrc/group/e3sm/public_html/diagnostic_output/ac.forsyth2/data_docs`
+# 6. `mv _build /lcrc/group/e3sm/public_html/diagnostic_output/ac.forsyth2/data_docs`
+# 7. Go to https://web.lcrc.anl.gov/public/e3sm/diagnostic_output/ac.forsyth2/data_docs/html/simulation_locations.html
 
-# 7. `rm -rf /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 8. `mv _build /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 5. `rm -rf /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 6. `mv _build /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 7. `chmod -R o+r /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 8. `chmod -R o+x /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
 # 9. Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/simulation_locations.html
