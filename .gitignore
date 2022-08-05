@@ -115,4 +115,5 @@ ENV/
 conda-build/
 
 *~
+utils/out.txt
 utils/simulation_table.txt
