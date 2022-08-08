@@ -208,7 +208,7 @@ def get_simulation(resolution_list, simulation_name):
 
 def pad_cells(cells, col_divider):
     string = col_divider
-    string += f" {cells[0]:<60} " + col_divider
+    string += f" {cells[0]:<65} " + col_divider
     string += f" {cells[1]:<15} " + col_divider
     string += f" {cells[2]:<80} " + col_divider
     string += f" {cells[3]:<200} " + col_divider
@@ -218,7 +218,7 @@ def pad_cells(cells, col_divider):
 
 def pad_cells_row_dividers(marker):
     string = "+"
-    string += marker*62 + "+"
+    string += marker*67 + "+"
     string += marker*17 + "+"
     string += marker*82 + "+"
     string += marker*202 + "+"
@@ -235,7 +235,7 @@ def generate_table():
         file_write.write(pad_cells_row_dividers("="))
         for resolution in resolution_list:
             for category in resolution.categories:
-                category_cells = [f"{resolution.name} > {category.name}", "", "", "", ""]
+                category_cells = [f"**{resolution.name} > {category.name}**", "", "", "", ""]
                 file_write.write(pad_cells(category_cells, "|"))
                 file_write.write(pad_cells_row_dividers("-"))
                 for simulation in category.simulations:
