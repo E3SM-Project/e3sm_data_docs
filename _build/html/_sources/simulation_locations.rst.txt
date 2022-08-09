@@ -6,15 +6,17 @@ To download simulation data run: ::
 
    zstash extract --hpss=globus://9cd89cfd-6d04-11e5-ba46-22000b92c6ec/<HPSS path below>
 
+For more information, refer to `zstash usage <https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract>`_.
+
 If you do not have Globus access, you can download a simulation directly `here <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR>`_.
 
-All simulations have NERSC HPSS paths at: ::
+Simulations have NERSC HPSS paths at: ::
 
   /home/projects/e3sm/www/WaterCycle/E3SMv2/LR
 
 Original run scripts (the scripts that were originally used to create the simulations) are `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/original/>`_.
 
-For more information, refer to `zstash usage <https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract>`_.
+The table below lists important information for each simulation. Scroll right to see more of the table.
 
 +-------------------------------------------------------------------+-----------------+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+
 | Simulation                                                        | Data Size (TB)  | HPSS Path                                                                        | Original Run Script                                                                                                                                                                                      | Reproduction Run Script   |
