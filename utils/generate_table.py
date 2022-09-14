@@ -35,7 +35,7 @@ class Simulation(object):
         run_script_original = f"https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/original/run.{name}.sh"
         response = requests.get(run_script_original).status_code
         if response == 200:
-            self.run_script_original = run_script_original
+            self.run_script_original = f"`{name} <{run_script_original}>`_"
         else:
             self.run_script_original = ""
 
@@ -247,7 +247,7 @@ if __name__ == "__main__":
 
 # Steps to follow:
 # 1. Run `python generate_table.py`
-# 2. Copy the output of `cat simulation_table.txt` to Desktop `e3sm_data_docs/docs/source/simulation_locations.rst`.
+# 2. Copy the output of `cat simulation_table.txt` to `e3sm_data_docs/docs/source/simulation_locations.rst`.
 # 3. `cd e3sm_data_docs/docs/`
 # 4.`make html`
 
