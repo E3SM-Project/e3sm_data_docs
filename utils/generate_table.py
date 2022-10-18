@@ -256,11 +256,12 @@ if __name__ == "__main__":
     generate_table()
 
 # Steps to follow:
-# 1. Run `python generate_table.py`
-# 2. Copy the output of `cat simulation_table.txt` to `../docs/source/simulation_locations.rst`.
-# 3. `cd ../docs/ && make html`
-# 4. `rm -rf /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 5. `mv _build /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 6. `chmod -R o+r /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 7. `chmod -R o+x /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 8. Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/simulation_locations.html
+# 1. Delete table from `../docs/source/simulation_locations.rst`.
+# 2. Run `python generate_table.py`
+# 3. Copy the output of `cat simulation_table.txt` to `../docs/source/simulation_locations.rst`.
+# 4. `cd ../docs/ && make html`
+# 5. `rm -rf /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 6. `mv _build /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 7. `chmod -R o+r /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 8. `chmod -R o+x /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
+# 9. Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/simulation_locations.html
