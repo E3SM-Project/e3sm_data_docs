@@ -45,7 +45,12 @@ class Simulation(object):
         else:
             self.run_script_original = ""
 
-        self.run_script_reproduction = "TBD"
+        run_script_reproduction = f"https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/reproduction/run.{name}.sh"
+        response = requests.get(run_script_reproduction).status_code
+        if response == 200:
+            self.run_script_reproduction = f"`{name} <{run_script_reproduction}>`_"
+        else:
+            self.run_script_reproduction = ""
 
     def get_row(self):
         return [self.name, self.data_size, self.esgf, self.hpss, self.run_script_original, self.run_script_reproduction]
