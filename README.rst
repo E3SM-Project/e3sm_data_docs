@@ -1,7 +1,9 @@
 E3SM Data Documentation
 =======================
 
-TODO: Add an overview here
+`Documentation page <https://e3sm-project.github.io/e3sm_data_docs/>`_.
+
+If you'd like to contribute to this documentation, please follow the steps below.
 
 Getting Started
 --------------------------
@@ -26,7 +28,7 @@ Setup the Conda Environment
 
 2. Clone the repository ::
 
-        git clone https://github.com/E3SM-Project/e3sm_data_docs.git
+        git clone git@github.com:E3SM-Project/e3sm_data_docs.git
 
 3. Enter the repo directory ::
 
