@@ -6,17 +6,21 @@
 Welcome to E3SM Data Docs's documentation!
 ==========================================
 
+This documentation was created to help E3SM users find data officially
+released model data from the E3SM simulations campaigns as well as reproduce
+simulations.
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   self
-   simulation_locations
+   v2/E3SMv2_Water_Cycle
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. Indices and tables
+.. ==================
+.. 
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
