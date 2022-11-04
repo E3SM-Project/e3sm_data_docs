@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reproducing Simulations &mdash; E3SM Data Docs  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Simulation Data" href="simulation_locations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> E3SM Data Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="E3SMv2_Water_Cycle.html">E3SMv2 (Water Cycle)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simulation_locations.html">Simulation Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reproducing Simulations</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">E3SM Data Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="E3SMv2_Water_Cycle.html">E3SMv2 (Water Cycle)</a> &raquo;</li>
+      <li>Reproducing Simulations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/v2/reproducing_simulations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reproducing-simulations">
+<h1>Reproducing Simulations<a class="headerlink" href="#reproducing-simulations" title="Permalink to this heading"></a></h1>
+<p>All <strong>v2.LR</strong> simulations were run on E3SM’s <strong>chrysalis</strong> cluster. Most <strong>v2.NARRM</strong> were run on chrysalis
+as well, except for three historical members that were run on <strong>NERSC cori-knl</strong>.</p>
+<p>Original simulations can be reproduced BFB (bit-for-bit) on the same machines. While you can
+rerun simulations on a different machines as well, the results with not be BFB due to hardware and software differences.</p>
+<p>Below are details instructions on how to reproduce <strong>v2.LR.piControl</strong> on <strong>chrysalis</strong>. It
+should be reasonably simple to adapt for other simulations and/or machines.</p>
+<p>Files are usually stored in two locatations: scripts and source code in the home file system (~/E3SMv2_test)
+and model file in the scratch file syatem (/lcrc/group/e3sm/$USER/E3SMv2_test).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Load E3SM unified to make zstash available
+source /lcrc/soft/climate/e3sm-unified/load_latest_e3sm_unified_chrysalis.sh
+
+# (1) Retrieve run script
+mkdir -p ~/E3SMv2_test/scripts
+cd ~/E3SMv2_test/scripts
+wget &lt;github address&gt;
+vi run.v2.LR.piControl.sh
+#--&gt; customize as needed
+
+# (2) Retrieve initial conditions from NERSC HPSS
+CASE_NAME=&quot;v2.LR.piControl&quot;
+mkdir -p /lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}
+cd /lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}
+zstash extract -v --hpss=globus://nersc/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piControl &quot;init/*&quot;
+
+# Remove zstash cache
+rm -rf zstash
+
+# (3) Compile and run test
+cd ~/E3SMv2_test/scripts
+./run.v2.LR.piControl.sh
+
+# (4) After the job completed, check resuls
+cd /lcrc/group/e3sm/ac.golaz/E3SMv2_test/v2.LR.piControl/tests
+for test in *_*_ndays
+do
+  gunzip -c ${test}/run/atm.log.*.gz | grep &#39;^ nstep, te &#39; | uniq &gt; atm_${test}.txt
+done
+wc -l atm_*.txt
+482 atm_XS_1x10_ndays.txt
+#--&gt; each should have 482 lines, corresponding to 10 simulated days
+md5sum atm_*.txt
+7547932242025fdf92014d06d6f9eec2  atm_XS_1x10_ndays.txt
+#--&gt; OK, checksum matches refrence simulation, so results are BFB with original code.
+</pre></div>
+</div>
+<p>The table below provides link to scripts, original machine and md5 checksum for the original
+E3SMv2 simulations:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 6%" />
+<col style="width: 68%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Simulation</p></th>
+<th class="head"><p>Machine</p></th>
+<th class="head"><p>Script</p></th>
+<th class="head"><p>10 day checksum</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>v2.LR.piControl</p></td>
+<td><p>chrysalis</p></td>
+<td><p><a class="reference external" href="https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/reproduce/run.v2.LR.piControl.sh">run.v2.LR.piControl.sh</a></p></td>
+<td><p>7547932242025fdf92014d06d6f9eec2a</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simulation_locations.html" class="btn btn-neutral float-left" title="Simulation Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, E3SM Data Docs Developers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

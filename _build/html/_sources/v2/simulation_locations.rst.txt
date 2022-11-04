@@ -1,22 +1,45 @@
-********************
-Simulation Locations
-********************
+***************
+Simulation Data 
+***************
 
-To download simulation data run: ::
+The E3SMv2 simulation data is available on **ESGF** and **NERSC HPSS**.
+
+The preferred retrieval method is **ESGF**. Native output is available at `ESGF <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0>`_, and a subset of the data is being reformatted to conform to CMIP conventions and will be submmited to the CMIP6 ESGF archive in the near future.
+
+Additionally, all native model output data has also been archived on **NERSC HPSS** using `zstash <https://e3sm-project.github.io/zstash>`_.
+
+If you have an account on NERSC, you can retrieve the data locally or remotely using Globus.
+
+To download simulation data locally on a NERSC machine: ::
+
+   zstash extract --hpss=<HPSS path below>
+
+To download simulation data remotely using the zstash Globus interface: ::
+
+   zstash extract --hpss=globus:globus://nersc/<HPSS path below>
+
+or ::
 
    zstash extract --hpss=globus://9cd89cfd-6d04-11e5-ba46-22000b92c6ec/<HPSS path below>
 
 For more information, refer to `zstash usage <https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract>`_.
 
-If you do not have Globus access, you can download a simulation directly `here <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR>`_.
+If you do not have access to NERSC, you can download simulation data directly through the  NERSC HPSS
+`web interface <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2>`_.
+Note that this will be slow and inefficient since you'll have to download the tar files.
 
-Simulations have NERSC HPSS paths at: ::
+**v2.LR** simulations data has been archived on NERSC HPSS under: ::
 
   /home/projects/e3sm/www/WaterCycle/E3SMv2/LR
 
-The preferred retrieval method is ESGF. All the native output is available at `ESGF <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0>`_.
+and **v2.NARRM** simulations data under: ::
 
-Original run scripts (the scripts that were originally used to create the simulations) are `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/original/>`_.
+  /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM
+
+
+Scripts to reproduce v2 simulations are available `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/reproduce/>`_
+with specific instructions details in `Reproducing simulations`.
+Original run scripts (the scripts that were originally used to create the simulations) have been archived here `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/original/>`_. These latter srcipts are provided for reference only.
 
 The table below lists important information for each simulation. Scroll right to see more of the table.
 
