@@ -1,0 +1,143 @@
+3c3
+< # E3SM Water Cycle v2 run_e3sm script template.
+---
+> # E3SMv2 Water Cycle run_e3sm script template.
+5c5,6
+< # Inspired by v1 run_e3sm script as well as SCREAM group simplified run script.
+---
+> # Configured to reproduce v2.LR.piControl on chrysalis.
+> # Modify as needed for other machines.
+10,12d10
+< # TO DO:
+< # - custom pelayout
+< 
+15c13
+< # For debugging, uncomment libe below
+---
+> # For debugging, uncomment line below
+27,29d24
+< readonly CASE_NAME="v2.LR.piControl"
+< readonly CASE_GROUP="v2.LR"
+< 
+31,33c26,28
+< readonly CHECKOUT="20210702"
+< readonly BRANCH="bd2ef1265d5738c624968ae27d427a4d5b27bddc" # master as of 20210702
+< readonly CHERRY=( "7e4d1c9fec40ce1cf2c272d671f5d9111fa4dea7" "a5b1d42d7cd24924d0dbda95e24ad8d4556d93f1" ) # PR4349
+---
+> readonly CHECKOUT="20221102-maint-20"
+> readonly BRANCH="maint-2.0"
+> readonly CHERRY=( )
+35a31,40
+> # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
+> 
+> # For developmental simulations, recommended convention:
+> #readonly CASE_NAME=${CHECKOUT}.piControl.${RESOLUTION}.${MACHINE}
+> # For production simulations:
+> readonly CASE_NAME="v2.LR.piControl"
+> 
+> # If this is part of a simulation campaign, ask your group lead about using a case_group label
+> # readonly CASE_GROUP=""
+> 
+42c47
+< readonly RUN_REFDIR="/lcrc/group/e3sm/ac.golaz/E3SMv2/v2.LR.piControl/init"
+---
+> readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.piControl/init"
+47,48c52,53
+< readonly CODE_ROOT="${HOME}/E3SMv2/code/${CHECKOUT}"
+< readonly CASE_ROOT="/lcrc/group/e3sm/${USER}/E3SMv2/${CASE_NAME}"
+---
+> readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
+> readonly CASE_ROOT="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}"
+55,56c60,61
+< #  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays', 
+< #               'M_1x10_ndays', 'M2_1x10_ndays', 'M80_1x10_ndays', 'L_1x10_ndays'
+---
+> #  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays',
+> #               'M_1x10_ndays', 'ML_1x10_ndays', 'L_1x10_ndays'
+58c63
+< readonly run='production'
+---
+> readonly run='XS_1x10_ndays'
+71c76
+<   readonly WALLTIME="2:00:00"
+---
+>   readonly WALLTIME="00:20:00"
+84,85c89,90
+<   readonly PELAYOUT="L"
+<   readonly WALLTIME="34:00:00"
+---
+>   readonly PELAYOUT="ML"
+>   readonly WALLTIME="48:00:00"
+89c94
+<   readonly REST_N="5"
+---
+>   readonly REST_N="1"
+94c99
+< # Coupler history 
+---
+> # Coupler history
+96c101
+< readonly HIST_N="5"
+---
+> readonly HIST_N="1"
+102c107
+< do_fetch_code=false
+---
+> do_fetch_code=true
+105c110
+< do_case_build=false
+---
+> do_case_build=true
+157,160d161
+< 
+< ! Additional retuning
+<  clubb_tk1 = 268.15D0
+<  gw_convect_hcf = 10.0
+212c213
+<     
+---
+> 
+248,250c249,250
+<     ${CODE_ROOT}/cime/scripts/create_newcase \
+<         --case ${CASE_NAME} \
+<         --case-group ${CASE_GROUP} \
+---
+>     # Base arguments
+>     args=" --case ${CASE_NAME} \
+257d256
+<         --project ${PROJECT} \
+259c258,271
+<         --pecount ${PELAYOUT}
+---
+>         --pecount ${PELAYOUT}"
+> 
+>     # Optional arguments
+>     if [ ! -z "${PROJECT}" ]; then
+>       args="${args} --project ${PROJECT}"
+>     fi
+>     if [ ! -z "${CASE_GROUP}" ]; then
+>       args="${args} --case-group ${CASE_GROUP}"
+>     fi
+>     if [ ! -z "${QUEUE}" ]; then
+>       args="${args} --queue ${QUEUE}"
+>     fi
+> 
+>     ${CODE_ROOT}/cime/scripts/create_newcase ${args}
+290c302
+<     if [ `./xmlquery --value COMP_ATM` == "datm"  ]; then 
+---
+>     if [ `./xmlquery --value COMP_ATM` == "datm"  ]; then
+404c416
+<         echo 'Warning: $MODEL_START_TYPE = '${MODEL_START_TYPE} 
+---
+>         echo 'Warning: $MODEL_START_TYPE = '${MODEL_START_TYPE}
+408c420
+<  
+---
+> 
+430c442
+<     
+---
+> 
+462d473
+< 

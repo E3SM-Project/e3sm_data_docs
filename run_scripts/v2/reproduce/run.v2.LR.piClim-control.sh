@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.piControl on chrysalis.
+# Configured to reproduce v2.LR.piClim-control on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -20,8 +20,11 @@ readonly MACHINE=chrysalis
 readonly PROJECT="e3sm"
 
 # Simulation
-readonly COMPSET="WCYCL1850"
+readonly COMPSET="F1850"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
+
+
+
 # Code and compilation
 readonly CHECKOUT="20221102-maint-20"
 readonly BRANCH="maint-2.0"
@@ -31,9 +34,9 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.piControl.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.piClim-control.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.piControl"
+readonly CASE_NAME="v2.LR.piClim-control"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
@@ -57,8 +60,8 @@ readonly CASE_BUILD_DIR=${CASE_ROOT}/build
 readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 
 # Define type of run
-#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays',
-#               'M_1x10_ndays', 'ML_1x10_ndays', 'L_1x10_ndays'
+#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays', 
+#               'M_1x10_ndays', 'L_1x10_ndays', 'XL_1x10_ndays'
 #  or 'production' for full simulation
 readonly run='XS_1x10_ndays'
 if [ "${run}" != "production" ]; then
@@ -92,7 +95,7 @@ else
   readonly STOP_N="50"
   readonly REST_OPTION="nyears"
   readonly REST_N="1"
-  readonly RESUBMIT="9"
+  readonly RESUBMIT="0"
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -152,13 +155,14 @@ cat << EOF >> user_nl_eam
  mfilt  = 1,30,120,120,240,30,1
  avgflag_pertape = 'A','A','I','A','A','A','I'
  fexcl1 = 'CFAD_SR532_CAL', 'LINOZ_DO3', 'LINOZ_DO3_PSC', 'LINOZ_O3CLIM', 'LINOZ_O3COL', 'LINOZ_SSO3', 'hstobie_linoz'
- fincl1 = 'extinct_sw_inp','extinct_lw_bnd7','extinct_lw_inp','CLD_CAL', 'TREFMNAV', 'TREFMXAV'
+ fincl1 = 'extinct_sw_inp','extinct_lw_bnd7','extinct_lw_inp','CLD_CAL', 'TREFMNAV', 'TREFMXAV','SST'
  fincl2 = 'FLUT','PRECT','U200','V200','U850','V850','Z500','OMEGA500','UBOT','VBOT','TREFHT','TREFHTMN:M','TREFHTMX:X','QREFHT','TS','PS','TMQ','TUQ','TVQ','TOZ', 'FLDS', 'FLNS', 'FSDS', 'FSNS', 'SHFLX', 'LHFLX', 'TGCLDCWP', 'TGCLDIWP', 'TGCLDLWP', 'CLDTOT', 'T250', 'T200', 'T150', 'T100', 'T050', 'T025', 'T010', 'T005', 'T002', 'T001', 'TTOP', 'U250', 'U150', 'U100', 'U050', 'U025', 'U010', 'U005', 'U002', 'U001', 'UTOP', 'FSNT', 'FLNT'
  fincl3 = 'PSL','T200','T500','U850','V850','UBOT','VBOT','TREFHT', 'Z700', 'TBOT:M'
  fincl4 = 'FLUT','U200','U850','PRECT','OMEGA500'
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
+
 EOF
 
 cat << EOF >> user_nl_elm
@@ -167,6 +171,10 @@ cat << EOF >> user_nl_elm
  hist_mfilt = 1,365
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
+
+! Override
+check_finidat_fsurdat_consistency = .false.
+
 EOF
 
 cat << EOF >> user_nl_mosart
@@ -175,6 +183,13 @@ cat << EOF >> user_nl_mosart
  rtmhist_ndens = 2
  rtmhist_nhtfrq = 0,-24
 EOF
+
+# Override SST and sea-ice datasets
+./xmlchange SSTICE_DATA_FILENAME=$input_data_dir/ocn/docn7/SSTDATA/sst_ice_v2.LR.piControl_0.5x0.5_climo_0001-0500.nc
+./xmlchange SSTICE_GRID_FILENAME=$input_data_dir/ocn/docn7/domain.ocn.0.5x0.5.c211007.nc
+./xmlchange SSTICE_YEAR_ALIGN=1
+./xmlchange SSTICE_YEAR_START=0
+./xmlchange SSTICE_YEAR_END=0
 
 }
 

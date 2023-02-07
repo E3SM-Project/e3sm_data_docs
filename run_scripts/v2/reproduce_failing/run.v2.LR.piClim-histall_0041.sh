@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.piControl on chrysalis.
+# Configured to reproduce v2.LR.piClim-histall_0041 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -20,8 +20,11 @@ readonly MACHINE=chrysalis
 readonly PROJECT="e3sm"
 
 # Simulation
-readonly COMPSET="WCYCL1850"
+readonly COMPSET="F20TR"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
+
+
+
 # Code and compilation
 readonly CHECKOUT="20221102-maint-20"
 readonly BRANCH="maint-2.0"
@@ -31,22 +34,22 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.piControl.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.piClim-histall_0041.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.piControl"
+readonly CASE_NAME="v2.LR.piClim-histall_0041"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
 
 # Run options
 readonly MODEL_START_TYPE="hybrid"  # 'initial', 'continue', 'branch', 'hybrid'
-readonly START_DATE="0001-01-01"
+readonly START_DATE="1850-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.piControl/init"
-readonly RUN_REFCASE="20210625.v2rc3c-GWD.piControl.ne30pg2_EC30to60E2r2.chrysalis"
-readonly RUN_REFDATE="1001-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.piClim-histall_0041/init"
+readonly RUN_REFCASE="v2.LR.piClim-control"
+readonly RUN_REFDATE="0041-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
@@ -57,8 +60,8 @@ readonly CASE_BUILD_DIR=${CASE_ROOT}/build
 readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 
 # Define type of run
-#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays',
-#               'M_1x10_ndays', 'ML_1x10_ndays', 'L_1x10_ndays'
+#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays', 
+#               'M_1x10_ndays', 'L_1x10_ndays', 'XL_1x10_ndays'
 #  or 'production' for full simulation
 readonly run='XS_1x10_ndays'
 if [ "${run}" != "production" ]; then
@@ -89,10 +92,10 @@ else
   readonly PELAYOUT="ML"
   readonly WALLTIME="48:00:00"
   readonly STOP_OPTION="nyears"
-  readonly STOP_N="50"
+  readonly STOP_N="55"
   readonly REST_OPTION="nyears"
   readonly REST_N="1"
-  readonly RESUBMIT="9"
+  readonly RESUBMIT="2"
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -152,13 +155,23 @@ cat << EOF >> user_nl_eam
  mfilt  = 1,30,120,120,240,30,1
  avgflag_pertape = 'A','A','I','A','A','A','I'
  fexcl1 = 'CFAD_SR532_CAL', 'LINOZ_DO3', 'LINOZ_DO3_PSC', 'LINOZ_O3CLIM', 'LINOZ_O3COL', 'LINOZ_SSO3', 'hstobie_linoz'
- fincl1 = 'extinct_sw_inp','extinct_lw_bnd7','extinct_lw_inp','CLD_CAL', 'TREFMNAV', 'TREFMXAV'
+ fincl1 = 'extinct_sw_inp','extinct_lw_bnd7','extinct_lw_inp','CLD_CAL', 'TREFMNAV', 'TREFMXAV','SST'
  fincl2 = 'FLUT','PRECT','U200','V200','U850','V850','Z500','OMEGA500','UBOT','VBOT','TREFHT','TREFHTMN:M','TREFHTMX:X','QREFHT','TS','PS','TMQ','TUQ','TVQ','TOZ', 'FLDS', 'FLNS', 'FSDS', 'FSNS', 'SHFLX', 'LHFLX', 'TGCLDCWP', 'TGCLDIWP', 'TGCLDLWP', 'CLDTOT', 'T250', 'T200', 'T150', 'T100', 'T050', 'T025', 'T010', 'T005', 'T002', 'T001', 'TTOP', 'U250', 'U150', 'U100', 'U050', 'U025', 'U010', 'U005', 'U002', 'U001', 'UTOP', 'FSNT', 'FLNT'
  fincl3 = 'PSL','T200','T500','U850','V850','UBOT','VBOT','TREFHT', 'Z700', 'TBOT:M'
  fincl4 = 'FLUT','U200','U850','PRECT','OMEGA500'
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
+
+!!.................................................................................
+!! swtich on aerosol forcing diagnostics (a second call to radiation without aerosols) 
+!! monthly history file will include "_d1" fields by default when history_amwg = .True. 
+!! Reference: Ghan, S. J.: Technical Note: Estimating aerosol effects on cloud radiative forcing, 
+!!            Atmos. Chem. Phys., 13, 9971–9974, https://doi.org/10.5194/acp-13-9971-2013, 2013.  
+!!.................................................................................
+   rad_diag_1 = 'A:Q:H2O', 'N:O2:O2', 'N:CO2:CO2', 'A:O3:O3', 'N:N2O:N2O', 'N:CH4:CH4', 'N:CFC11:CFC11', 'N:CFC12:CFC12',
+   history_amwg = .True. 
+
 EOF
 
 cat << EOF >> user_nl_elm
@@ -167,6 +180,10 @@ cat << EOF >> user_nl_elm
  hist_mfilt = 1,365
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
+
+! Override
+check_finidat_fsurdat_consistency = .false.
+
 EOF
 
 cat << EOF >> user_nl_mosart
@@ -175,6 +192,13 @@ cat << EOF >> user_nl_mosart
  rtmhist_ndens = 2
  rtmhist_nhtfrq = 0,-24
 EOF
+
+# Override SST and sea-ice datasets
+./xmlchange SSTICE_DATA_FILENAME=$input_data_dir/ocn/docn7/SSTDATA/sst_ice_v2.LR.piControl_0.5x0.5_climo_0001-0500.nc
+./xmlchange SSTICE_GRID_FILENAME=$input_data_dir/ocn/docn7/domain.ocn.0.5x0.5.c211007.nc
+./xmlchange SSTICE_YEAR_ALIGN=1
+./xmlchange SSTICE_YEAR_START=0
+./xmlchange SSTICE_YEAR_END=0
 
 }
 
@@ -467,7 +491,6 @@ pushd() {
 popd() {
     command popd "$@" > /dev/null
 }
-
 # Now, actually run the script
 #-----------------------------------------------------
 main
