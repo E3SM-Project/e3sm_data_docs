@@ -78,35 +78,42 @@
 as well, except for three historical members that were run on <strong>NERSC cori-knl</strong>.</p>
 <p>Original simulations can be reproduced BFB (bit-for-bit) on the same machines. While you can
 rerun simulations on a different machines as well, the results with not be BFB due to hardware and software differences.</p>
-<p>Below are details instructions on how to reproduce <strong>v2.LR.piControl</strong> on <strong>chrysalis</strong>. It
+<p>Below are detailed instructions on how to reproduce <strong>v2.LR.piControl</strong> on <strong>chrysalis</strong>. It
 should be reasonably simple to adapt for other simulations and/or machines.</p>
 <p>Files are usually stored in two locatations: scripts and source code in the home file system (~/E3SMv2_test)
-and model file in the scratch file syatem (/lcrc/group/e3sm/$USER/E3SMv2_test).</p>
+and model files in the scratch file syatem (/lcrc/group/e3sm/$USER/E3SMv2_test).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Load E3SM unified to make zstash available
 source /lcrc/soft/climate/e3sm-unified/load_latest_e3sm_unified_chrysalis.sh
+# Replace with the case you&#39;re running.
+# CASE_NAME is what&#39;s listed in the &quot;Simulation&quot; column below.
+CASE_NAME=&quot;v2.LR.piControl&quot;
 
 # (1) Retrieve run script
 mkdir -p ~/E3SMv2_test/scripts
 cd ~/E3SMv2_test/scripts
-wget &lt;github address&gt;
-vi run.v2.LR.piControl.sh
+# The Github address is what&#39;s listed in the &quot;Script&quot; column below.
+wget https://raw.githubusercontent.com/E3SM-Project/e3sm_data_docs/main/run_scripts/v2/reproduce/run.v2.LR.piControl.sh
+vi run.${CASE_NAME}.sh
 #--&gt; customize as needed
+# If you named your directory, something other than &quot;E3SMv2_test&quot;,
+# you&#39;ll need to update those references in this script.
+# If you already have compiled code, set: `do_fetch_code=false`
 
 # (2) Retrieve initial conditions from NERSC HPSS
-CASE_NAME=&quot;v2.LR.piControl&quot;
 mkdir -p /lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}
 cd /lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}
-zstash extract -v --hpss=globus://nersc/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piControl &quot;init/*&quot;
+# If you&#39;re reproducing a NAARM run, replace the &quot;LR&quot; with &quot;NARRM&quot;
+zstash extract -v --hpss=globus://nersc/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/${CASE_NAME} &quot;init/*&quot;
 
 # Remove zstash cache
 rm -rf zstash
 
 # (3) Compile and run test
 cd ~/E3SMv2_test/scripts
-./run.v2.LR.piControl.sh
+./run.${CASE_NAME}.sh
 
 # (4) After the job completed, check resuls
-cd /lcrc/group/e3sm/ac.golaz/E3SMv2_test/v2.LR.piControl/tests
+cd /lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}/tests
 for test in *_*_ndays
 do
   gunzip -c ${test}/run/atm.log.*.gz | grep &#39;^ nstep, te &#39; | uniq &gt; atm_${test}.txt
@@ -116,7 +123,8 @@ wc -l atm_*.txt
 #--&gt; each should have 482 lines, corresponding to 10 simulated days
 md5sum atm_*.txt
 7547932242025fdf92014d06d6f9eec2  atm_XS_1x10_ndays.txt
-#--&gt; OK, checksum matches refrence simulation, so results are BFB with original code.
+# Checksum matches reference simulation (see &quot;10 day checksum&quot; column below),
+# so results are BFB with original code.
 </pre></div>
 </div>
 <p>The table below provides link to scripts, original machine and md5 checksum for the original
