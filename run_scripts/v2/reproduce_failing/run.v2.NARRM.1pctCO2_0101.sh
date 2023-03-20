@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.piControl on chrysalis.
+# Configured to reproduce v2.NARRM.1pctCO2_0101 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -20,8 +20,11 @@ readonly MACHINE=chrysalis
 readonly PROJECT="e3sm"
 
 # Simulation
-readonly COMPSET="WCYCL1850"
-readonly RESOLUTION="ne30pg2_EC30to60E2r2"
+readonly COMPSET="WCYCL1850-1pctCO2"
+readonly RESOLUTION="northamericax4v1pg2_WC14to60E2r3"
+readonly CASE_NAME="v2.NARRM.1pctCO2_0101"
+readonly CASE_GROUP="v2.RRM"
+
 # Code and compilation
 readonly CHECKOUT="20221102-maint-20"
 readonly BRANCH="maint-2.0"
@@ -31,9 +34,9 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.piControl.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.1pctCO2_0101.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.piControl"
+readonly CASE_NAME="v2.NARRM.1pctCO2_0101"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
@@ -44,9 +47,9 @@ readonly START_DATE="0001-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.piControl/init"
-readonly RUN_REFCASE="20210625.v2rc3c-GWD.piControl.ne30pg2_EC30to60E2r2.chrysalis"
-readonly RUN_REFDATE="1001-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}/init"
+readonly RUN_REFCASE="v2.NARRM.piControl"
+readonly RUN_REFDATE="0101-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
@@ -56,11 +59,11 @@ readonly CASE_ROOT="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}"
 readonly CASE_BUILD_DIR=${CASE_ROOT}/build
 readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 
-# Define type of run
-#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays',
-#               'M_1x10_ndays', 'ML_1x10_ndays', 'L_1x10_ndays'
-#  or 'production' for full simulation
+# Define type of run: short tests or 'production' for full simulation
 readonly run='XS_1x10_ndays'
+#readonly run='S_2x5_ndays'
+#readonly run='M_1x10_ndays'
+#readonly run='L_1x10_ndays'
 if [ "${run}" != "production" ]; then
 
   # Short test simulations
@@ -72,10 +75,11 @@ if [ "${run}" != "production" ]; then
 
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/tests/${run}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/tests/${run}/run
-  readonly PELAYOUT=${layout}
-  readonly WALLTIME="00:20:00"
+  readonly PELAYOUT="ML"
+  readonly WALLTIME="48:00:00"
   readonly STOP_OPTION=${units}
   readonly STOP_N=${length}
+  readonly STOP_DATE="-999"    # -999 or specify stop date as yyyyddmm without leading zeros
   readonly REST_OPTION=${STOP_OPTION}
   readonly REST_N="1"
   readonly RESUBMIT=${resubmit}
@@ -89,10 +93,11 @@ else
   readonly PELAYOUT="ML"
   readonly WALLTIME="48:00:00"
   readonly STOP_OPTION="nyears"
-  readonly STOP_N="50"
+  readonly STOP_N="20"
+  readonly STOP_DATE="1510101"    # -999 or specify stop date as yyyyddmm without leading zeros
   readonly REST_OPTION="nyears"
   readonly REST_N="1"
-  readonly RESUBMIT="9"
+  readonly RESUBMIT="7"
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -159,6 +164,7 @@ cat << EOF >> user_nl_eam
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
+
 EOF
 
 cat << EOF >> user_nl_elm
@@ -362,11 +368,12 @@ case_build() {
         # Run CIME case.build
         ./case.build
 
-        # Some user_nl settings won't be updated to *_in files under the run directory
-        # Call preview_namelists to make sure *_in and user_nl files are consistent.
-        ./preview_namelists
-
     fi
+
+    # Some user_nl settings won't be updated to *_in files under the run directory
+    # Call preview_namelists to make sure *_in and user_nl files are consistent.
+    echo $'\n----- Preview namelists -----\n'
+    ./preview_namelists
 
     popd
 }
@@ -382,6 +389,9 @@ runtime_options() {
 
     # Segment length
     ./xmlchange STOP_OPTION=${STOP_OPTION,,},STOP_N=${STOP_N}
+
+    # End date
+    ./xmlchange STOP_DATE=${STOP_DATE}
 
     # Restart frequency
     ./xmlchange REST_OPTION=${REST_OPTION,,},REST_N=${REST_N}
@@ -410,14 +420,13 @@ runtime_options() {
     elif [ "${MODEL_START_TYPE,,}" == "branch" ] || [ "${MODEL_START_TYPE,,}" == "hybrid" ]; then
         ./xmlchange RUN_TYPE=${MODEL_START_TYPE,,}
         ./xmlchange GET_REFCASE=${GET_REFCASE}
-	./xmlchange RUN_REFDIR=${RUN_REFDIR}
+        ./xmlchange RUN_REFDIR=${RUN_REFDIR}
         ./xmlchange RUN_REFCASE=${RUN_REFCASE}
         ./xmlchange RUN_REFDATE=${RUN_REFDATE}
         echo 'Warning: $MODEL_START_TYPE = '${MODEL_START_TYPE}
-	echo '$RUN_REFDIR = '${RUN_REFDIR}
-	echo '$RUN_REFCASE = '${RUN_REFCASE}
-	echo '$RUN_REFDATE = '${START_DATE}
-
+        echo '$RUN_REFDIR = '${RUN_REFDIR}
+        echo '$RUN_REFCASE = '${RUN_REFCASE}
+        echo '$RUN_REFDATE = '${START_DATE}
     else
         echo 'ERROR: $MODEL_START_TYPE = '${MODEL_START_TYPE}' is unrecognized. Exiting.'
         exit 380

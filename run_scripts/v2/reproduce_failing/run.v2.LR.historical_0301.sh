@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.piControl on chrysalis.
+# Configured to reproduce v2.LR.historical_0301 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -20,8 +20,11 @@ readonly MACHINE=chrysalis
 readonly PROJECT="e3sm"
 
 # Simulation
-readonly COMPSET="WCYCL1850"
+readonly COMPSET="WCYCL20TR" # 20th century transient
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
+
+
+
 # Code and compilation
 readonly CHECKOUT="20221102-maint-20"
 readonly BRANCH="maint-2.0"
@@ -31,22 +34,22 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.piControl.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.historical_0301.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.piControl"
+readonly CASE_NAME="v2.LR.historical_0301"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
 
 # Run options
 readonly MODEL_START_TYPE="hybrid"  # 'initial', 'continue', 'branch', 'hybrid'
-readonly START_DATE="0001-01-01"
+readonly START_DATE="1850-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.piControl/init"
-readonly RUN_REFCASE="20210625.v2rc3c-GWD.piControl.ne30pg2_EC30to60E2r2.chrysalis"
-readonly RUN_REFDATE="1001-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.historical_0301/init"
+readonly RUN_REFCASE="v2.LR.piControl"
+readonly RUN_REFDATE="0301-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
@@ -87,12 +90,12 @@ else
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
   readonly PELAYOUT="ML"
-  readonly WALLTIME="48:00:00"
+  readonly WALLTIME="30:00:00"
   readonly STOP_OPTION="nyears"
-  readonly STOP_N="50"
+  readonly STOP_N="30" # How often to stop the model, should be a multiple of REST_N
   readonly REST_OPTION="nyears"
   readonly REST_N="1"
-  readonly RESUBMIT="9"
+  readonly RESUBMIT="4" # Submissions after initial one
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -101,7 +104,7 @@ readonly HIST_OPTION="nyears"
 readonly HIST_N="1"
 
 # Leave empty (unless you understand what it does)
-readonly OLD_EXECUTABLE=""
+readonly OLD_EXECUTABLE="/lcrc/group/e3sm/ac.forsyth2/E3SMv2/v2.LR.historical_0201/build/e3sm.exe"
 
 # --- Toggle flags for what to do ----
 do_fetch_code=true
@@ -167,6 +170,8 @@ cat << EOF >> user_nl_elm
  hist_mfilt = 1,365
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
+
+ flanduse_timeseries = '${input_data_dir}/lnd/clm2/surfdata_map/landuse.timeseries_ne30np4.pg2_hist_simyr1850-2015_c210113.nc'
 EOF
 
 cat << EOF >> user_nl_mosart
@@ -467,7 +472,6 @@ pushd() {
 popd() {
     command popd "$@" > /dev/null
 }
-
 # Now, actually run the script
 #-----------------------------------------------------
 main

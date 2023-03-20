@@ -50,7 +50,7 @@ class Simulation(object):
         self.machine = machine
         self.checksum = checksum
 
-        run_script_reproduction = f"https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/reproduce/run.{name}.sh"
+        run_script_reproduction = f"https://raw.githubusercontent.com/E3SM-Project/e3sm_data_docs/main/run_scripts/v2/reproduce/run.{name}.sh"
         response = requests.get(run_script_reproduction).status_code
         if response == 200:
             self.run_script_reproduction = f"`{name} <{run_script_reproduction}>`_"
@@ -295,17 +295,3 @@ def main():
                     
 if __name__ == "__main__":
     main()
-
-# Steps to follow:
-# 1a. Delete table from `../docs/source/v2/simulation_locations.rst`.
-# 1b. Delete table from `../docs/source/v2/reproducing_simulations.rst`.
-# 2. Run `python generate_tables.py`
-# 3a. Copy the output of `cat simulation_table.txt` to `../docs/source/v2/simulation_locations.rst`.
-# 3b. Copy the output of `cat reproduction_table.txt` to `../docs/source/v2/reproducing_simulations.rst`.  
-# 4. `cd ../docs/ && make html`
-# 5. `rm -rf /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 6. `mv _build /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 7. `chmod -R o+r /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 8. `chmod -R o+x /global/cfs/cdirs/e3sm/www/forsyth/data_docs`
-# 9a. Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v2/simulation_locations.html
-# 9b. Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v2/reproducing_simulations.html

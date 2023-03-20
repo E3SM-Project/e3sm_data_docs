@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.piControl on chrysalis.
+# Configured to reproduce v2.LR.amip_0201 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -20,8 +20,11 @@ readonly MACHINE=chrysalis
 readonly PROJECT="e3sm"
 
 # Simulation
-readonly COMPSET="WCYCL1850"
+readonly COMPSET="F20TR"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
+
+
+
 # Code and compilation
 readonly CHECKOUT="20221102-maint-20"
 readonly BRANCH="maint-2.0"
@@ -31,22 +34,22 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.piControl.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.amip_0201.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.piControl"
+readonly CASE_NAME="v2.LR.amip_0201"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
 
 # Run options
 readonly MODEL_START_TYPE="hybrid"  # 'initial', 'continue', 'branch', 'hybrid'
-readonly START_DATE="0001-01-01"
+readonly START_DATE="1870-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.piControl/init"
-readonly RUN_REFCASE="20210625.v2rc3c-GWD.piControl.ne30pg2_EC30to60E2r2.chrysalis"
-readonly RUN_REFDATE="1001-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.amip_0201/init"
+readonly RUN_REFCASE="v2.LR.historical_0201"
+readonly RUN_REFDATE="1870-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
@@ -87,12 +90,12 @@ else
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
   readonly PELAYOUT="ML"
-  readonly WALLTIME="48:00:00"
+  readonly WALLTIME="30:00:00"
   readonly STOP_OPTION="nyears"
-  readonly STOP_N="50"
+  readonly STOP_N="30" # How often to stop the model, should be a multiple of REST_N
   readonly REST_OPTION="nyears"
   readonly REST_N="1"
-  readonly RESUBMIT="9"
+  readonly RESUBMIT="4" # Submissions after initial one
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -120,6 +123,9 @@ fetch_code
 
 # Create case
 create_newcase
+
+# Custom PE layout
+custom_pelayout
 
 # Setup
 case_setup
@@ -159,6 +165,7 @@ cat << EOF >> user_nl_eam
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
+
 EOF
 
 cat << EOF >> user_nl_elm
@@ -167,6 +174,10 @@ cat << EOF >> user_nl_elm
  hist_mfilt = 1,365
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
+
+! Override
+check_finidat_fsurdat_consistency = .false.
+
 EOF
 
 cat << EOF >> user_nl_mosart
@@ -178,9 +189,49 @@ EOF
 
 }
 
+# =====================================
+# Customize MPAS stream files if needed
+# =====================================
+
 patch_mpas_streams() {
 
 echo
+
+}
+
+# =====================================================
+# Custom PE layout: custom-N where N is number of nodes
+# =====================================================
+
+custom_pelayout() {
+
+if [[ ${PELAYOUT} == custom-* ]];
+then
+    echo $'\n CUSTOMIZE PROCESSOR CONFIGURATION:'
+
+    # Number of cores per node (machine specific)
+    if [ "${MACHINE}" == "chrysalis" ]; then
+        ncore=64
+    elif [ "${MACHINE}" == "compy" ]; then
+        ncore=40
+    else
+        echo 'ERROR: MACHINE = '${MACHINE}' is not supported for custom PE layout.' 
+        exit 400
+    fi
+
+    # Extract number of nodes
+    tmp=($(echo ${PELAYOUT} | tr "-" " "))
+    nnodes=${tmp[1]}
+
+    # Customize
+    pushd ${CASE_SCRIPTS_DIR}
+    ./xmlchange NTASKS=$(( $nnodes * $ncore ))
+    ./xmlchange NTHRDS=1
+    ./xmlchange MAX_MPITASKS_PER_NODE=$ncore
+    ./xmlchange MAX_TASKS_PER_NODE=$ncore
+    popd
+
+fi
 
 }
 
@@ -246,6 +297,13 @@ create_newcase() {
 
     echo $'\n----- Starting create_newcase -----\n'
 
+    if [[ ${PELAYOUT} == custom-* ]];
+    then
+        layout="M" # temporary placeholder for create_newcase
+    else
+        layout=${PELAYOUT}
+
+    fi
     # Base arguments
     args=" --case ${CASE_NAME} \
         --output-root ${CASE_ROOT} \
@@ -255,7 +313,7 @@ create_newcase() {
         --res ${RESOLUTION} \
         --machine ${MACHINE} \
         --walltime ${WALLTIME} \
-        --pecount ${PELAYOUT}"
+        --pecount ${layout}"
 
     # Optional arguments
     if [ ! -z "${PROJECT}" ]; then
@@ -467,7 +525,6 @@ pushd() {
 popd() {
     command popd "$@" > /dev/null
 }
-
 # Now, actually run the script
 #-----------------------------------------------------
 main
