@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.hist-all-xGHG-xaer_0101 on chrysalis.
+# Configured to reproduce v2.LR.piClim-histall_0041 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -20,7 +20,7 @@ readonly MACHINE=chrysalis
 readonly PROJECT="e3sm"
 
 # Simulation
-readonly COMPSET="WCYCL20TR" # 20th century transient
+readonly COMPSET="F20TR"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
 
 
@@ -34,9 +34,9 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.hist-all-xGHG-xaer_0101.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.piClim-histall_0041.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.hist-all-xGHG-xaer_0101"
+readonly CASE_NAME="v2.LR.piClim-histall_0041"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
@@ -47,9 +47,9 @@ readonly START_DATE="1850-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.hist-all-xGHG-xaer_0101/init"
-readonly RUN_REFCASE="v2.LR.piControl"
-readonly RUN_REFDATE="0101-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.piClim-histall_0041/init"
+readonly RUN_REFCASE="v2.LR.piClim-control"
+readonly RUN_REFDATE="0041-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
@@ -60,8 +60,8 @@ readonly CASE_BUILD_DIR=${CASE_ROOT}/build
 readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 
 # Define type of run
-#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays',
-#               'M_1x10_ndays', 'ML_1x10_ndays', 'L_1x10_ndays'
+#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays', 
+#               'M_1x10_ndays', 'L_1x10_ndays', 'XL_1x10_ndays'
 #  or 'production' for full simulation
 readonly run='XS_1x10_ndays'
 if [ "${run}" != "production" ]; then
@@ -90,12 +90,12 @@ else
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
   readonly PELAYOUT="ML"
-  readonly WALLTIME="24:00:00"
+  readonly WALLTIME="48:00:00"
   readonly STOP_OPTION="nyears"
-  readonly STOP_N="30" # How often to stop the model, should be a multiple of REST_N
+  readonly STOP_N="55"
   readonly REST_OPTION="nyears"
   readonly REST_N="1"
-  readonly RESUBMIT="4" # Submissions after initial one
+  readonly RESUBMIT="2"
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -155,7 +155,7 @@ cat << EOF >> user_nl_eam
  mfilt  = 1,30,120,120,240,30,1
  avgflag_pertape = 'A','A','I','A','A','A','I'
  fexcl1 = 'CFAD_SR532_CAL', 'LINOZ_DO3', 'LINOZ_DO3_PSC', 'LINOZ_O3CLIM', 'LINOZ_O3COL', 'LINOZ_SSO3', 'hstobie_linoz'
- fincl1 = 'extinct_sw_inp','extinct_lw_bnd7','extinct_lw_inp','CLD_CAL', 'TREFMNAV', 'TREFMXAV'
+ fincl1 = 'extinct_sw_inp','extinct_lw_bnd7','extinct_lw_inp','CLD_CAL', 'TREFMNAV', 'TREFMXAV','SST'
  fincl2 = 'FLUT','PRECT','U200','V200','U850','V850','Z500','OMEGA500','UBOT','VBOT','TREFHT','TREFHTMN:M','TREFHTMX:X','QREFHT','TS','PS','TMQ','TUQ','TVQ','TOZ', 'FLDS', 'FLNS', 'FSDS', 'FSNS', 'SHFLX', 'LHFLX', 'TGCLDCWP', 'TGCLDIWP', 'TGCLDLWP', 'CLDTOT', 'T250', 'T200', 'T150', 'T100', 'T050', 'T025', 'T010', 'T005', 'T002', 'T001', 'TTOP', 'U250', 'U150', 'U100', 'U050', 'U025', 'U010', 'U005', 'U002', 'U001', 'UTOP', 'FSNT', 'FLNT'
  fincl3 = 'PSL','T200','T500','U850','V850','UBOT','VBOT','TREFHT', 'Z700', 'TBOT:M'
  fincl4 = 'FLUT','U200','U850','PRECT','OMEGA500'
@@ -163,57 +163,16 @@ cat << EOF >> user_nl_eam
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
 
-! Historical, vs single forcing configurations
-
-! | Configuration      | GHGs      | Aerosols and | Ozone     | Solar     | Volcanoes | Land use
-! |                    |           | precursors   |           |           |           |         
-! -----------------------------------------------------------------------------------------------
-! | historical         | varying   | varying      | varying   | varying   | varying   | varying
-! | hist-GHG           | varying   | 1850         | 1850      | 1850      | 1850      | 1850
-! | hist-aer           | 1850      | varying      | 1850      | 1850      | 1850      | 1850
-! | hist-all-xGHG-xaer | 1850      | 1850         | varying   | varying   | varying   | varying
-
-! (1) GHGs settings
-
- bndtvghg		= ' '
- ch4vmr		= 808.249e-9
- co2vmr		= 284.317000e-6
- f11vmr		= 32.1102e-12
- f12vmr		= 0.0
- flbc_list		= ' '
- n2ovmr		= 273.0211e-9
- scenario_ghg		= 'FIXED'
-
-! (2) aeorosols and precursors
-
- ext_frc_cycle_yr		= 1850
- ext_frc_type		= 'CYCLICAL'
-
- srf_emis_cycle_yr		= 1850
- srf_emis_specifier		= 'DMS       -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DMSflux.1850.1deg_latlon_conserv.POPmonthlyClimFromACES4BGC_c20160416.nc',
-         'SO2       -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so2_surf_1850-2014_c180205.nc',
-         'bc_a4     -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_bc_a4_surf_1850-2014_c180205.nc',
-         'num_a1    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a1_surf_1850-2014_c180205.nc',
-         'num_a2    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a2_surf_1850-2014_c180205.nc',
-         'num_a4    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a4_surf_1850-2014_c180205.nc',
-         'pom_a4    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_pom_a4_surf_1850-2014_c180205.nc',
-         'so4_a1    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so4_a1_surf_1850-2014_c180205.nc',
-         'so4_a2    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so4_a2_surf_1850-2014_c180205.nc'
- srf_emis_type		= 'CYCLICAL'
-
- tracer_cnst_cycle_yr		= 1849
- tracer_cnst_type		= 'CYCLICAL'
-
-! (3) ozone
-
-! (4) solar
-
-! (5) volcanoes
+!!.................................................................................
+!! swtich on aerosol forcing diagnostics (a second call to radiation without aerosols) 
+!! monthly history file will include "_d1" fields by default when history_amwg = .True. 
+!! Reference: Ghan, S. J.: Technical Note: Estimating aerosol effects on cloud radiative forcing, 
+!!            Atmos. Chem. Phys., 13, 9971–9974, https://doi.org/10.5194/acp-13-9971-2013, 2013.  
+!!.................................................................................
+   rad_diag_1 = 'A:Q:H2O', 'N:O2:O2', 'N:CO2:CO2', 'A:O3:O3', 'N:N2O:N2O', 'N:CH4:CH4', 'N:CFC11:CFC11', 'N:CFC12:CFC12',
+   history_amwg = .True. 
 
 EOF
-
-# (1) GHGs settings: also set CCSM_CO2_PPMV
-./xmlchange --id CCSM_CO2_PPMV --val "284.317"
 
 cat << EOF >> user_nl_elm
  hist_dov2xy = .true.,.true.
@@ -222,7 +181,12 @@ cat << EOF >> user_nl_elm
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
 
-! (6) Land use and cover
+! Override
+check_finidat_fsurdat_consistency = .false.
+
+
+! Override
+check_finidat_fsurdat_consistency = .false.
 
 EOF
 
@@ -232,6 +196,13 @@ cat << EOF >> user_nl_mosart
  rtmhist_ndens = 2
  rtmhist_nhtfrq = 0,-24
 EOF
+
+# Override SST and sea-ice datasets
+./xmlchange SSTICE_DATA_FILENAME=$input_data_dir/ocn/docn7/SSTDATA/sst_ice_v2.LR.piControl_0.5x0.5_climo_0001-0500.nc
+./xmlchange SSTICE_GRID_FILENAME=$input_data_dir/ocn/docn7/domain.ocn.0.5x0.5.c211007.nc
+./xmlchange SSTICE_YEAR_ALIGN=1
+./xmlchange SSTICE_YEAR_START=0
+./xmlchange SSTICE_YEAR_END=0
 
 }
 

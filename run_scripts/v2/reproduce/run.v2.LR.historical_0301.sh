@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.NARRM.historical_0301 on chrysalis.
+# Configured to reproduce v2.LR.historical_0301 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -20,10 +20,10 @@ readonly MACHINE=chrysalis
 readonly PROJECT="e3sm"
 
 # Simulation
-readonly COMPSET="WCYCL20TR"
-readonly RESOLUTION="northamericax4v1pg2_WC14to60E2r3"
+readonly COMPSET="WCYCL20TR" # 20th century transient
+readonly RESOLUTION="ne30pg2_EC30to60E2r2"
 
-readonly CASE_GROUP="v2.RRM"
+
 
 # Code and compilation
 readonly CHECKOUT="20221102-maint-20"
@@ -36,7 +36,7 @@ readonly DEBUG_COMPILE=false
 # For developmental simulations, recommended convention:
 #readonly CASE_NAME=${CHECKOUT}.historical_0301.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.NARRM.historical_0301"
+readonly CASE_NAME="v2.LR.historical_0301"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
@@ -47,8 +47,8 @@ readonly START_DATE="1850-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}/init"
-readonly RUN_REFCASE="v2.NARRM.piControl"
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.historical_0301/init"
+readonly RUN_REFCASE="v2.LR.piControl"
 readonly RUN_REFDATE="0301-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
@@ -59,11 +59,10 @@ readonly CASE_ROOT="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}"
 readonly CASE_BUILD_DIR=${CASE_ROOT}/build
 readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 
-# Define type of run: short tests or 'production' for full simulation
-#readonly run='S_2x5_ndays'
-#readonly run='S_1x10_ndays'
-#readonly run='M_1x10_ndays'
-#readonly run='L_1x10_ndays'
+# Define type of run
+#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays',
+#               'M_1x10_ndays', 'ML_1x10_ndays', 'L_1x10_ndays'
+#  or 'production' for full simulation
 readonly run='XS_1x10_ndays'
 if [ "${run}" != "production" ]; then
 
@@ -80,7 +79,6 @@ if [ "${run}" != "production" ]; then
   readonly WALLTIME="00:20:00"
   readonly STOP_OPTION=${units}
   readonly STOP_N=${length}
-  readonly STOP_DATE="-999"    # -999 or specify stop date as yyyyddmm without leading zeros
   readonly REST_OPTION=${STOP_OPTION}
   readonly REST_N="1"
   readonly RESUBMIT=${resubmit}
@@ -92,13 +90,12 @@ else
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
   readonly PELAYOUT="ML"
-  readonly WALLTIME="48:00:00"
+  readonly WALLTIME="30:00:00"
   readonly STOP_OPTION="nyears"
-  readonly STOP_N="20"
-  readonly STOP_DATE="20150101"    # -999 or specify stop date as yyyyddmm without leading zeros
+  readonly STOP_N="30" # How often to stop the model, should be a multiple of REST_N
   readonly REST_OPTION="nyears"
   readonly REST_N="1"
-  readonly RESUBMIT="8"
+  readonly RESUBMIT="4" # Submissions after initial one
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -107,7 +104,7 @@ readonly HIST_OPTION="nyears"
 readonly HIST_N="1"
 
 # Leave empty (unless you understand what it does)
-readonly OLD_EXECUTABLE=""
+readonly OLD_EXECUTABLE="/lcrc/group/e3sm/ac.forsyth2/E3SMv2/v2.LR.historical_0201/build/e3sm.exe"
 
 # --- Toggle flags for what to do ----
 do_fetch_code=true
@@ -165,7 +162,6 @@ cat << EOF >> user_nl_eam
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
-
 EOF
 
 cat << EOF >> user_nl_elm
@@ -175,8 +171,10 @@ cat << EOF >> user_nl_elm
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
 
+ flanduse_timeseries = '${input_data_dir}/lnd/clm2/surfdata_map/landuse.timeseries_ne30np4.pg2_hist_simyr1850-2015_c210113.nc'
+
 ! Override
- check_finidat_fsurdat_consistency = .false.
+check_finidat_fsurdat_consistency = .false.
 
 EOF
 
@@ -373,12 +371,11 @@ case_build() {
         # Run CIME case.build
         ./case.build
 
-    fi
+        # Some user_nl settings won't be updated to *_in files under the run directory
+        # Call preview_namelists to make sure *_in and user_nl files are consistent.
+        ./preview_namelists
 
-    # Some user_nl settings won't be updated to *_in files under the run directory
-    # Call preview_namelists to make sure *_in and user_nl files are consistent.
-    echo $'\n----- Preview namelists -----\n'
-    ./preview_namelists
+    fi
 
     popd
 }
@@ -394,9 +391,6 @@ runtime_options() {
 
     # Segment length
     ./xmlchange STOP_OPTION=${STOP_OPTION,,},STOP_N=${STOP_N}
-
-    # End date
-    ./xmlchange STOP_DATE=${STOP_DATE}
 
     # Restart frequency
     ./xmlchange REST_OPTION=${REST_OPTION,,},REST_N=${REST_N}
@@ -425,13 +419,14 @@ runtime_options() {
     elif [ "${MODEL_START_TYPE,,}" == "branch" ] || [ "${MODEL_START_TYPE,,}" == "hybrid" ]; then
         ./xmlchange RUN_TYPE=${MODEL_START_TYPE,,}
         ./xmlchange GET_REFCASE=${GET_REFCASE}
-        ./xmlchange RUN_REFDIR=${RUN_REFDIR}
+	./xmlchange RUN_REFDIR=${RUN_REFDIR}
         ./xmlchange RUN_REFCASE=${RUN_REFCASE}
         ./xmlchange RUN_REFDATE=${RUN_REFDATE}
         echo 'Warning: $MODEL_START_TYPE = '${MODEL_START_TYPE}
-        echo '$RUN_REFDIR = '${RUN_REFDIR}
-        echo '$RUN_REFCASE = '${RUN_REFCASE}
-        echo '$RUN_REFDATE = '${START_DATE}
+	echo '$RUN_REFDIR = '${RUN_REFDIR}
+	echo '$RUN_REFCASE = '${RUN_REFCASE}
+	echo '$RUN_REFDATE = '${START_DATE}
+
     else
         echo 'ERROR: $MODEL_START_TYPE = '${MODEL_START_TYPE}' is unrecognized. Exiting.'
         exit 380

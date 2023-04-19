@@ -3,6 +3,7 @@ import sys
 
 def help_patch(script_name, resolution, case_name):
     pelayout_count = 0
+    add_fsurdat = False
     with open(script_name, "r") as f_in:
         with open(f"{script_name}.edited", "w") as f_out:
             for line in f_in:
@@ -50,6 +51,16 @@ def help_patch(script_name, resolution, case_name):
                     f_out.write('  readonly WALLTIME="48:00:00"\n')
                 elif line.startswith('  readonly REST_N'):
                     f_out.write('  readonly REST_N="1"\n')
+                elif line.startswith('cat << EOF >> user_nl_elm'):
+                    f_out.write(line)
+                    add_fsurdat = True                    
+                elif add_fsurdat and line.startswith('EOF'):
+                    f_out.write('\n')
+                    f_out.write('! Override\n')
+                    f_out.write('check_finidat_fsurdat_consistency = .false.\n')
+                    f_out.write('\n')
+                    f_out.write(line)
+                    add_fsurdat = False
                 elif line.startswith('        --pecount ${layout}'):
                     f_out.write('        --pecount ${layout}"\n')
                     f_out.write('\n')

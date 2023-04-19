@@ -223,6 +223,10 @@ cat << EOF >> user_nl_elm
  do_transient_pfts = .false.
  flanduse_timeseries = ''
 
+
+! Override
+check_finidat_fsurdat_consistency = .false.
+
 EOF
 
 cat << EOF >> user_nl_mosart

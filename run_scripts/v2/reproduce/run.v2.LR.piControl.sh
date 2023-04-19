@@ -167,6 +167,10 @@ cat << EOF >> user_nl_elm
  hist_mfilt = 1,365
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
+
+! Override
+check_finidat_fsurdat_consistency = .false.
+
 EOF
 
 cat << EOF >> user_nl_mosart

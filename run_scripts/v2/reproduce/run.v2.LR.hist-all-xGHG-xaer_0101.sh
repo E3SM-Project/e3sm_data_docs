@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.historical_0151 on chrysalis.
+# Configured to reproduce v2.LR.hist-all-xGHG-xaer_0101 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -34,9 +34,9 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.historical_0151.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.hist-all-xGHG-xaer_0101.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.historical_0151"
+readonly CASE_NAME="v2.LR.hist-all-xGHG-xaer_0101"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
@@ -47,9 +47,9 @@ readonly START_DATE="1850-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.historical_0151/init"
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.hist-all-xGHG-xaer_0101/init"
 readonly RUN_REFCASE="v2.LR.piControl"
-readonly RUN_REFDATE="0151-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly RUN_REFDATE="0101-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
@@ -90,7 +90,7 @@ else
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
   readonly PELAYOUT="ML"
-  readonly WALLTIME="30:00:00"
+  readonly WALLTIME="24:00:00"
   readonly STOP_OPTION="nyears"
   readonly STOP_N="30" # How often to stop the model, should be a multiple of REST_N
   readonly REST_OPTION="nyears"
@@ -104,7 +104,7 @@ readonly HIST_OPTION="nyears"
 readonly HIST_N="1"
 
 # Leave empty (unless you understand what it does)
-readonly OLD_EXECUTABLE="/lcrc/group/e3sm/ac.forsyth2/E3SMv2/v2.LR.historical_0201/build/e3sm.exe"
+readonly OLD_EXECUTABLE=""
 
 # --- Toggle flags for what to do ----
 do_fetch_code=true
@@ -162,7 +162,58 @@ cat << EOF >> user_nl_eam
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
+
+! Historical, vs single forcing configurations
+
+! | Configuration      | GHGs      | Aerosols and | Ozone     | Solar     | Volcanoes | Land use
+! |                    |           | precursors   |           |           |           |         
+! -----------------------------------------------------------------------------------------------
+! | historical         | varying   | varying      | varying   | varying   | varying   | varying
+! | hist-GHG           | varying   | 1850         | 1850      | 1850      | 1850      | 1850
+! | hist-aer           | 1850      | varying      | 1850      | 1850      | 1850      | 1850
+! | hist-all-xGHG-xaer | 1850      | 1850         | varying   | varying   | varying   | varying
+
+! (1) GHGs settings
+
+ bndtvghg		= ' '
+ ch4vmr		= 808.249e-9
+ co2vmr		= 284.317000e-6
+ f11vmr		= 32.1102e-12
+ f12vmr		= 0.0
+ flbc_list		= ' '
+ n2ovmr		= 273.0211e-9
+ scenario_ghg		= 'FIXED'
+
+! (2) aeorosols and precursors
+
+ ext_frc_cycle_yr		= 1850
+ ext_frc_type		= 'CYCLICAL'
+
+ srf_emis_cycle_yr		= 1850
+ srf_emis_specifier		= 'DMS       -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DMSflux.1850.1deg_latlon_conserv.POPmonthlyClimFromACES4BGC_c20160416.nc',
+         'SO2       -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so2_surf_1850-2014_c180205.nc',
+         'bc_a4     -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_bc_a4_surf_1850-2014_c180205.nc',
+         'num_a1    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a1_surf_1850-2014_c180205.nc',
+         'num_a2    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a2_surf_1850-2014_c180205.nc',
+         'num_a4    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a4_surf_1850-2014_c180205.nc',
+         'pom_a4    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_pom_a4_surf_1850-2014_c180205.nc',
+         'so4_a1    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so4_a1_surf_1850-2014_c180205.nc',
+         'so4_a2    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so4_a2_surf_1850-2014_c180205.nc'
+ srf_emis_type		= 'CYCLICAL'
+
+ tracer_cnst_cycle_yr		= 1849
+ tracer_cnst_type		= 'CYCLICAL'
+
+! (3) ozone
+
+! (4) solar
+
+! (5) volcanoes
+
 EOF
+
+# (1) GHGs settings: also set CCSM_CO2_PPMV
+./xmlchange --id CCSM_CO2_PPMV --val "284.317"
 
 cat << EOF >> user_nl_elm
  hist_dov2xy = .true.,.true.
@@ -171,7 +222,12 @@ cat << EOF >> user_nl_elm
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
 
- flanduse_timeseries = '${input_data_dir}/lnd/clm2/surfdata_map/landuse.timeseries_ne30np4.pg2_hist_simyr1850-2015_c210113.nc'
+! (6) Land use and cover
+
+
+! Override
+check_finidat_fsurdat_consistency = .false.
+
 EOF
 
 cat << EOF >> user_nl_mosart
