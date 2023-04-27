@@ -184,6 +184,10 @@ cat << EOF >> user_nl_elm
 ! Override
 check_finidat_fsurdat_consistency = .false.
 
+
+! Override
+check_finidat_fsurdat_consistency = .false.
+
 EOF
 
 cat << EOF >> user_nl_mosart

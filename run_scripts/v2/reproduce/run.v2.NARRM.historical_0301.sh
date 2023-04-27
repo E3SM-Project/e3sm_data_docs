@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.historical_0101_bonus on chrysalis.
+# Configured to reproduce v2.NARRM.historical_0301 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -20,10 +20,10 @@ readonly MACHINE=chrysalis
 readonly PROJECT="e3sm"
 
 # Simulation
-readonly COMPSET="WCYCL20TR" # 20th century transient
-readonly RESOLUTION="ne30pg2_EC30to60E2r2"
+readonly COMPSET="WCYCL20TR"
+readonly RESOLUTION="northamericax4v1pg2_WC14to60E2r3"
 
-
+readonly CASE_GROUP="v2.RRM"
 
 # Code and compilation
 readonly CHECKOUT="20221102-maint-20"
@@ -34,22 +34,22 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.historical_0101_bonus.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.historical_0301.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.historical_0101_bonus"
+readonly CASE_NAME="v2.NARRM.historical_0301"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
 
 # Run options
-readonly MODEL_START_TYPE="branch"  # 'initial', 'continue', 'branch', 'hybrid'
-readonly START_DATE="1975-01-01"
+readonly MODEL_START_TYPE="hybrid"  # 'initial', 'continue', 'branch', 'hybrid'
+readonly START_DATE="1850-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
 readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}/init"
-readonly RUN_REFCASE="v2.LR.historical_0101"
-readonly RUN_REFDATE="1975-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly RUN_REFCASE="v2.NARRM.piControl"
+readonly RUN_REFDATE="0301-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
@@ -59,12 +59,12 @@ readonly CASE_ROOT="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}"
 readonly CASE_BUILD_DIR=${CASE_ROOT}/build
 readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 
-# Define type of run
-#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays',
-#               'M_1x10_ndays', 'ML_1x10_ndays', 'L_1x10_ndays'
-#  or 'production' for full simulation
+# Define type of run: short tests or 'production' for full simulation
+#readonly run='S_2x5_ndays'
+#readonly run='S_1x10_ndays'
+#readonly run='M_1x10_ndays'
+#readonly run='L_1x10_ndays'
 readonly run='XS_1x10_ndays'
-#readonly run='M_2x5_ndays'
 if [ "${run}" != "production" ]; then
 
   # Short test simulations
@@ -80,6 +80,7 @@ if [ "${run}" != "production" ]; then
   readonly WALLTIME="00:20:00"
   readonly STOP_OPTION=${units}
   readonly STOP_N=${length}
+  readonly STOP_DATE="-999"    # -999 or specify stop date as yyyyddmm without leading zeros
   readonly REST_OPTION=${STOP_OPTION}
   readonly REST_N="1"
   readonly RESUBMIT=${resubmit}
@@ -91,12 +92,13 @@ else
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
   readonly PELAYOUT="ML"
-  readonly WALLTIME="30:00:00"
+  readonly WALLTIME="48:00:00"
   readonly STOP_OPTION="nyears"
   readonly STOP_N="20"
+  readonly STOP_DATE="20150101"    # -999 or specify stop date as yyyyddmm without leading zeros
   readonly REST_OPTION="nyears"
   readonly REST_N="1"
-  readonly RESUBMIT="1"
+  readonly RESUBMIT="8"
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -125,9 +127,6 @@ fetch_code
 # Create case
 create_newcase
 
-# Custom PE layout
-custom_pelayout
-
 # Setup
 case_setup
 
@@ -155,35 +154,30 @@ echo $'\n----- All done -----\n'
 user_nl() {
 
 cat << EOF >> user_nl_eam
- nhtfrq =   0,-24,-6,-6,-3,-24,-1,0,-3,-1,-1
- mfilt  = 1,30,120,120,240,30,240,1,240,480,480
- avgflag_pertape = 'A','A','I','A','A','A','A','I','I','A','I'
-
- fexcl1 = 'CFAD_SR532_CAL'
+ nhtfrq =   0,-24,-6,-6,-3,-24,0
+ mfilt  = 1,30,120,120,240,30,1
+ avgflag_pertape = 'A','A','I','A','A','A','I'
+ fexcl1 = 'CFAD_SR532_CAL', 'LINOZ_DO3', 'LINOZ_DO3_PSC', 'LINOZ_O3CLIM', 'LINOZ_O3COL', 'LINOZ_SSO3', 'hstobie_linoz'
  fincl1 = 'extinct_sw_inp','extinct_lw_bnd7','extinct_lw_inp','CLD_CAL', 'TREFMNAV', 'TREFMXAV'
  fincl2 = 'FLUT','PRECT','U200','V200','U850','V850','Z500','OMEGA500','UBOT','VBOT','TREFHT','TREFHTMN:M','TREFHTMX:X','QREFHT','TS','PS','TMQ','TUQ','TVQ','TOZ', 'FLDS', 'FLNS', 'FSDS', 'FSNS', 'SHFLX', 'LHFLX', 'TGCLDCWP', 'TGCLDIWP', 'TGCLDLWP', 'CLDTOT', 'T250', 'T200', 'T150', 'T100', 'T050', 'T025', 'T010', 'T005', 'T002', 'T001', 'TTOP', 'U250', 'U150', 'U100', 'U050', 'U025', 'U010', 'U005', 'U002', 'U001', 'UTOP', 'FSNT', 'FLNT'
- fincl3 = 'PSL','T200','T500','U850','V850','UBOT','VBOT','U10','TREFHT', 'U925', 'V925', 'Q925', 'U500', 'V500', 'Q500', 'U200', 'V200', 'PSL', 'Z200', 'Z500', 'Z925', 'PS', 'TREFHT', 'QREFHT', 'Z700'
+ fincl3 = 'PSL','T200','T500','U850','V850','UBOT','VBOT','TREFHT', 'Z700', 'TBOT:M'
  fincl4 = 'FLUT','U200','U850','PRECT','OMEGA500'
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
- fincl7 = 'PRECT','FLUT'
- fincl8 = 'O3', 'PS', 'TROP_P'
- fincl9 = 'PS', 'Q', 'T', 'Z3', 'CLOUD', 'CONCLD', 'CLDICE', 'CLDLIQ', 'LS_FLXPRC', 'LS_FLXSNW', 'ZMFLXPRC', 'ZMFLXSNW', 'FREQR', 'REI', 'REL', 'CV_REFFICE', 'CV_REFFLIQ', 'LS_REFFRAIN', 'LS_REFFSNOW', 'PRECT', 'TMQ', 'PRECC', 'TREFHT', 'QREFHT', 'OMEGA','CLDTOT', 'LHFLX', 'SHFLX', 'FLDS', 'FSDS', 'FLNS', 'FSNS', 'FLNSC', 'FSDSC', 'FSNSC', 'AODVIS', 'AODABS'
- fincl9lonlat = '262.5e_36.6n','204.6e_71.3n','147.4e_2.0s','166.9e_0.5s','130.9e_12.4s','331.97e_39.09n'
- fincl10 = 'CLDHGH','CLDLOW','CLDMED','CLDTOT','FLDS','FLNS','FSDS','FSNS','LHFLX','PBLH','PRECT','PRECC','PRECL','PRECSH','PRECCDZM','PS','TS','QREFHT','SHFLX','TREFHT','FSNTOA','FSUTOA','FSNT','FLNT','FLUT','UBOT','VBOT','TMQ'
- fincl10lonlat = '255e:270e_30n:45n'
- fincl11 = 'CLOUD','OMEGA','Q','RELHUM','T','U','V'
- fincl11lonlat = '255e:270e_30n:45n'
+ fincl7 = 'O3', 'PS', 'TROP_P'
 
 EOF
 
 cat << EOF >> user_nl_elm
- hist_dov2xy = .true.,.true.,.true.
+ hist_dov2xy = .true.,.true.
  hist_fincl2 = 'H2OSNO', 'FSNO', 'QRUNOFF', 'QSNOMELT', 'FSNO_EFF', 'SNORDSL', 'SNOW', 'FSDS', 'FSR', 'FLDS', 'FIRE', 'FIRA'
- hist_fincl3 = 'H2OSOI','TLAI','TSOI','TSOI_10CM'
- hist_mfilt = 1,365,480
- hist_nhtfrq = 0,-24,-1
- hist_avgflag_pertape = 'A','A','A'
+ hist_mfilt = 1,365
+ hist_nhtfrq = 0,-24
+ hist_avgflag_pertape = 'A','A'
+
+! Override
+ check_finidat_fsurdat_consistency = .false.
+
 
 ! Override
 check_finidat_fsurdat_consistency = .false.
@@ -191,7 +185,7 @@ check_finidat_fsurdat_consistency = .false.
 EOF
 
 cat << EOF >> user_nl_mosart
- rtmhist_fincl2 = 'RIVER_DISCHARGE_OVER_LAND_LIQ','RIVER_DISCHARGE_TO_OCEAN_LIQ'
+ rtmhist_fincl2 = 'RIVER_DISCHARGE_OVER_LAND_LIQ'
  rtmhist_mfilt = 1,365
  rtmhist_ndens = 2
  rtmhist_nhtfrq = 0,-24
@@ -199,49 +193,9 @@ EOF
 
 }
 
-# =====================================
-# Customize MPAS stream files if needed
-# =====================================
-
 patch_mpas_streams() {
 
 echo
-
-}
-
-# =====================================================
-# Custom PE layout: custom-N where N is number of nodes
-# =====================================================
-
-custom_pelayout() {
-
-if [[ ${PELAYOUT} == custom-* ]];
-then
-    echo $'\n CUSTOMIZE PROCESSOR CONFIGURATION:'
-
-    # Number of cores per node (machine specific)
-    if [ "${MACHINE}" == "chrysalis" ]; then
-        ncore=64
-    elif [ "${MACHINE}" == "compy" ]; then
-        ncore=40
-    else
-        echo 'ERROR: MACHINE = '${MACHINE}' is not supported for custom PE layout.' 
-        exit 400
-    fi
-
-    # Extract number of nodes
-    tmp=($(echo ${PELAYOUT} | tr "-" " "))
-    nnodes=${tmp[1]}
-
-    # Customize
-    pushd ${CASE_SCRIPTS_DIR}
-    ./xmlchange NTASKS=$(( $nnodes * $ncore ))
-    ./xmlchange NTHRDS=1
-    ./xmlchange MAX_MPITASKS_PER_NODE=$ncore
-    ./xmlchange MAX_TASKS_PER_NODE=$ncore
-    popd
-
-fi
 
 }
 
@@ -307,13 +261,6 @@ create_newcase() {
 
     echo $'\n----- Starting create_newcase -----\n'
 
-    if [[ ${PELAYOUT} == custom-* ]];
-    then
-        layout="M" # temporary placeholder for create_newcase
-    else
-        layout=${PELAYOUT}
-
-    fi
     # Base arguments
     args=" --case ${CASE_NAME} \
         --output-root ${CASE_ROOT} \
@@ -323,7 +270,7 @@ create_newcase() {
         --res ${RESOLUTION} \
         --machine ${MACHINE} \
         --walltime ${WALLTIME} \
-        --pecount ${layout}"
+        --pecount ${PELAYOUT}"
 
     # Optional arguments
     if [ ! -z "${PROJECT}" ]; then
@@ -452,6 +399,9 @@ runtime_options() {
     # Segment length
     ./xmlchange STOP_OPTION=${STOP_OPTION,,},STOP_N=${STOP_N}
 
+    # End date
+    ./xmlchange STOP_DATE=${STOP_DATE}
+
     # Restart frequency
     ./xmlchange REST_OPTION=${REST_OPTION,,},REST_N=${REST_N}
 
@@ -535,7 +485,6 @@ pushd() {
 popd() {
     command popd "$@" > /dev/null
 }
-
 # Now, actually run the script
 #-----------------------------------------------------
 main

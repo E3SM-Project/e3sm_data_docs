@@ -5,7 +5,7 @@
 #SBATCH  --nodes=1
 #SBATCH  --output=test_reproduction_scripts.o%j
 #SBATCH  --exclusive
-#SBATCH  --time=24:00:00
+#SBATCH  --time=30:00:00
 #SBATCH  --partition=compute
 
 # Run with `sbatch test_reproduction_scripts.bash`
@@ -97,6 +97,8 @@ done
 for simulation_name in amip_0101 amip_0201 amip_0301 amip_0101_bonus; do
   test_reproduction E3SMv2_test LR ${simulation_name} false false
 done
+
+# 24 hours is enough runtime to get to this point.
 
 # Water Cycle (low-resolution) > RFMIP
 for simulation_name in piClim-control piClim-histall_0021 piClim-histall_0041 piClim-histaer_0021 piClim-histaer_0041; do

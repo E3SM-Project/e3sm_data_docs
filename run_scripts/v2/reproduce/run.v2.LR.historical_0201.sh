@@ -2,7 +2,7 @@
 
 # E3SMv2 Water Cycle run_e3sm script template.
 #
-# Configured to reproduce v2.LR.hist-GHG_0251 on chrysalis.
+# Configured to reproduce v2.LR.historical_0201 on chrysalis.
 # Modify as needed for other machines.
 #
 # Bash coding style inspired by:
@@ -34,9 +34,9 @@ readonly DEBUG_COMPILE=false
 # BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
 
 # For developmental simulations, recommended convention:
-#readonly CASE_NAME=${CHECKOUT}.hist-GHG_0251.${RESOLUTION}.${MACHINE}
+#readonly CASE_NAME=${CHECKOUT}.historical_0201.${RESOLUTION}.${MACHINE}
 # For production simulations:
-readonly CASE_NAME="v2.LR.hist-GHG_0251"
+readonly CASE_NAME="v2.LR.historical_0201"
 
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
@@ -47,9 +47,9 @@ readonly START_DATE="1850-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.hist-GHG_0251/init"
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/v2.LR.historical_0201/init"
 readonly RUN_REFCASE="v2.LR.piControl"
-readonly RUN_REFDATE="0251-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly RUN_REFDATE="0201-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
@@ -162,59 +162,6 @@ cat << EOF >> user_nl_eam
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
-
-! Historical, vs single forcing configurations
-
-! | Configuration      | GHGs      | Aerosols and | Ozone     | Solar     | Volcanoes | Land use
-! |                    |           | precursors   |           |           |           |         
-! -----------------------------------------------------------------------------------------------
-! | historical         | varying   | varying      | varying   | varying   | varying   | varying
-! | hist-GHG           | varying   | 1850         | 1850      | 1850      | 1850      | 1850
-! | hist-aer           | 1850      | varying      | 1850      | 1850      | 1850      | 1850
-! | hist-all-xGHG-xaer | 1850      | 1850         | varying   | varying   | varying   | varying
-
-! (1) GHGs settings
-
-! (2) aeorosols and precursors
-
- ext_frc_cycle_yr		= 1850
- ext_frc_type		= 'CYCLICAL'
-
- srf_emis_cycle_yr		= 1850
- srf_emis_specifier		= 'DMS       -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DMSflux.1850.1deg_latlon_conserv.POPmonthlyClimFromACES4BGC_c20160416.nc',
-         'SO2       -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so2_surf_1850-2014_c180205.nc',
-         'bc_a4     -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_bc_a4_surf_1850-2014_c180205.nc',
-         'num_a1    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a1_surf_1850-2014_c180205.nc',
-         'num_a2    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a2_surf_1850-2014_c180205.nc',
-         'num_a4    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_num_a4_surf_1850-2014_c180205.nc',
-         'pom_a4    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_pom_a4_surf_1850-2014_c180205.nc',
-         'so4_a1    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so4_a1_surf_1850-2014_c180205.nc',
-         'so4_a2    -> ${input_data_dir}/atm/cam/chem/trop_mozart_aero/emis/DECK_ne30/cmip6_mam4_so4_a2_surf_1850-2014_c180205.nc'
- srf_emis_type		= 'CYCLICAL'
-
- tracer_cnst_cycle_yr		= 1849
- tracer_cnst_type		= 'CYCLICAL'
-
-! (3) ozone
-
- chlorine_loading_fixed_ymd		= 18500101
- chlorine_loading_type		= 'FIXED'
-
- linoz_data_cycle_yr		= 1850
- linoz_data_type		= 'CYCLICAL'
-
-! (4) solar
-
- solar_data_file		= '${input_data_dir}/atm/cam/solar/Solar_1850control_input4MIPS_c20181106.nc'
- solar_data_type		= 'FIXED'
- solar_data_ymd		= 18500101
-
-! (5) volcanoes
-
- prescribed_volcaero_cycle_yr		= 1
- prescribed_volcaero_file		= 'CMIP_DOE-ACME_radiation_average_1850-2014_v3_c20171204.nc'
- prescribed_volcaero_type		= 'CYCLICAL'
-
 EOF
 
 cat << EOF >> user_nl_elm
@@ -224,10 +171,10 @@ cat << EOF >> user_nl_elm
  hist_nhtfrq = 0,-24
  hist_avgflag_pertape = 'A','A'
 
-! (6) Land use and cover
+ flanduse_timeseries = '${input_data_dir}/lnd/clm2/surfdata_map/landuse.timeseries_ne30np4.pg2_hist_simyr1850-2015_c210113.nc'
 
- do_transient_pfts = .false.
- flanduse_timeseries = ''
+! Override
+check_finidat_fsurdat_consistency = .false.
 
 EOF
 
