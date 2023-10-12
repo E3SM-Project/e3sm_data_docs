@@ -16,8 +16,13 @@ manuscripts.
 
 * For v2.NARRM simulations:
 
-  * Tang et al. (GMD, submitted)
+  * Tang et al. (GMD, `<https://doi.org/10.5194/gmd-16-3953-2023>`_)
   * Van Roekel et al. (in preparation)
+
+* For v2.LR Large Ensemble simulations:
+
+  * Fasullo et al. (J. Clim, in review as of Oct 2023)
+  * Fasullo et al. (Earth Sys. Dyn., in review as of Oct 2023)
 
 .. toctree::
 

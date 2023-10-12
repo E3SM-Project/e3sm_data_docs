@@ -4,11 +4,11 @@ Simulation Data
 
 The E3SMv2 simulation data is available on **ESGF** and **NERSC HPSS**.
 
-The preferred retrieval method is **ESGF**. Native output is available at `ESGF <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0>`_, and a subset of the data is being reformatted to conform to CMIP conventions and will be submmited to the CMIP6 ESGF archive in the near future.
+The preferred retrieval method is **ESGF**. Native output is available at `ESGF <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0>`_, and a subset of the data is reformatted to conform to CMIP conventions and submmited to the CMIP6 ESGF archive (ESGF links are provided in the table below for published data).
 
 Additionally, all native model output data has also been archived on **NERSC HPSS** using `zstash <https://e3sm-project.github.io/zstash>`_.
 
-If you have an account on NERSC, you can retrieve the data locally or remotely using Globus.
+**If you have an account on NERSC**, you can retrieve the data locally or remotely using Globus.
 
 To download simulation data locally on a NERSC machine: ::
 
@@ -24,7 +24,7 @@ or ::
 
 For more information, refer to `zstash usage <https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract>`_.
 
-If you do not have access to NERSC, you can download simulation data directly through the  NERSC HPSS
+**If you do not have access to NERSC**, you can download simulation data directly through the  NERSC HPSS
 `web interface <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2>`_.
 Note that this will be slow and inefficient since you'll have to download the tar files.
 
