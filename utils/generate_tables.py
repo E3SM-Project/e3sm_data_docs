@@ -113,22 +113,50 @@ def create_simulation_objects():
     historical_le = Category("Historical LE")
     low_res.append(historical_le)
     simulation_tuples = [
-        ("v2.LR.historical_0111", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0121", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0131", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0141", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0161", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0171", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0181", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0191", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0211", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0221", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0231", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0241", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0261", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0271", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0281", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0291", "LR", "cori-knl", ""),
+        ("v2.LR.historical_0111", "LR", "cori-knl", "", "historical", 6),
+        ("v2.LR.historical_0121", "LR", "cori-knl", "", "historical", 7),
+        ("v2.LR.historical_0131", "LR", "cori-knl", "", "historical", 8),
+        ("v2.LR.historical_0141", "LR", "cori-knl", "", "historical", 9),
+        ("v2.LR.historical_0161", "LR", "cori-knl", "", "historical", 10),
+        ("v2.LR.historical_0171", "LR", "cori-knl", "", "historical", 11),
+        ("v2.LR.historical_0181", "LR", "cori-knl", "", "historical", 12),
+        ("v2.LR.historical_0191", "LR", "cori-knl", "", "historical", 13),
+        ("v2.LR.historical_0211", "LR", "cori-knl", "", "historical", 14),
+        ("v2.LR.historical_0221", "LR", "cori-knl", "", "historical", 15),
+        ("v2.LR.historical_0231", "LR", "cori-knl", "", "historical", 16),
+        ("v2.LR.historical_0241", "LR", "cori-knl", "", "historical", 17),
+        ("v2.LR.historical_0261", "LR", "cori-knl", "", "historical", 18),
+        ("v2.LR.historical_0271", "LR", "cori-knl", "", "historical", 19),
+        ("v2.LR.historical_0281", "LR", "cori-knl", "", "historical", 20),
+        ("v2.LR.historical_0291", "LR", "cori-knl", "", "historical", 21),
+    ]
+    for simulation_tuple in simulation_tuples:
+        historical_le.append(Simulation(*simulation_tuple))
+
+    historical_le = Category("SSP370 LE")
+    low_res.append(historical_le)
+    simulation_tuples = [
+        ("v2.LR.SSP370_0101", "LR", "cori-knl", "", "ssp370", 1),
+        ("v2.LR.SSP370_0151", "LR", "cori-knl", "", "ssp370", 2),
+        ("v2.LR.SSP370_0201", "LR", "cori-knl", "", "ssp370", 3),
+        ("v2.LR.SSP370_0251", "LR", "cori-knl", "", "ssp370", 4),
+        ("v2.LR.SSP370_0301", "LR", "cori-knl", "", "ssp370", 5),
+        ("v2.LR.SSP370_0111", "LR", "cori-knl", "", "ssp370", 6),
+        ("v2.LR.SSP370_0121", "LR", "cori-knl", "", "ssp370", 7),
+        ("v2.LR.SSP370_0131", "LR", "cori-knl", "", "ssp370", 8),
+        ("v2.LR.SSP370_0141", "LR", "cori-knl", "", "ssp370", 9),
+        ("v2.LR.SSP370_0161", "LR", "cori-knl", "", "ssp370", 10),
+        ("v2.LR.SSP370_0171", "LR", "cori-knl", "", "ssp370", 11),
+        ("v2.LR.SSP370_0181", "LR", "cori-knl", "", "ssp370", 12),
+        ("v2.LR.SSP370_0191", "LR", "cori-knl", "", "ssp370", 13),
+        ("v2.LR.SSP370_0211", "LR", "cori-knl", "", "ssp370", 14),
+        ("v2.LR.SSP370_0221", "LR", "cori-knl", "", "ssp370", 15),
+        ("v2.LR.SSP370_0231", "LR", "cori-knl", "", "ssp370", 16),
+        ("v2.LR.SSP370_0241", "LR", "cori-knl", "", "ssp370", 17),
+        ("v2.LR.SSP370_0261", "LR", "cori-knl", "", "ssp370", 18),
+        ("v2.LR.SSP370_0271", "LR", "cori-knl", "", "ssp370", 19),
+        ("v2.LR.SSP370_0281", "LR", "cori-knl", "", "ssp370", 20),
+        ("v2.LR.SSP370_0291", "LR", "cori-knl", "", "ssp370", 21),
     ]
     for simulation_tuple in simulation_tuples:
         historical_le.append(Simulation(*simulation_tuple))
