@@ -327,7 +327,7 @@ def main():
         resolution_list,
         ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path"],
         "simulation_table.txt",
-        [65, 15, 150, 80]
+        [65, 15, 400, 80]
     )
     generate_table(
         resolution_list,

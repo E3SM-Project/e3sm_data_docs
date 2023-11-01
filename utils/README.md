@@ -9,9 +9,9 @@ Relevant `utils` files: `generate_tables.py`
 
 2. Run `python generate_tables.py`
 
-3a. Copy the output of `cat simulation_table.txt` to `../docs/source/v2/simulation_locations.rst`.
+3a. Run `cat simulation_table.txt >> ../docs/source/v2/simulation_locations.rst`.
 
-3b. Copy the output of `cat reproduction_table.txt` to `../docs/source/v2/reproducing_simulations.rst`.
+3b. Run `cat reproduction_table.txt >> ../docs/source/v2/reproducing_simulations.rst`.
 
 4.
 ```
