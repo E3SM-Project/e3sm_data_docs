@@ -37,7 +37,7 @@ class Simulation(object):
             # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
             source_id = 'E3SM-2-0'
             experiment_id = experiment
-            esgf = f"`Native output <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
+            esgf = f"`Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
 
             if 'NARRM' in name:
                 source_id = 'E3SM-2-0-NARRM'
@@ -48,7 +48,7 @@ class Simulation(object):
             esgf_cmip = f"`CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id={source_id}&?experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
             
             if cmip_only:
-                self.esgf = ""
+                self.esgf = esgf_cmip
             else:
                 self.esgf = esgf_cmip + ', ' + esgf
         else:
