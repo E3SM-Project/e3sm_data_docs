@@ -1,6 +1,7 @@
 import csv
 import os
 import re
+import glob
 import requests
 
 class Simulation(object):
@@ -81,6 +82,58 @@ class Resolution(object):
 
     def append(self, category):
         self.categories.append(category)
+
+def load_sim_table(st_file):
+    sim_tuples = list()
+    fp = open(st_file, 'r')
+    lines = fp.readlines()
+    for line in lines:
+        line = line.strip()
+        if len(line) == 0:
+            continue
+        tag, val = line.split(':')
+        if tag == "TUP":
+            sim_tuples.append(tuple(val.split(',')))
+        elif tag == "RES":
+            resolution = val
+        elif tag == "CAT":
+            category = val
+        else:
+            print(f"ERROR: Unrecognized tag value {tag} in sim_table {afile}")
+            os._exit(1)
+    return resolution, category, sim_tuples
+
+def new_create_simulation_objects():
+
+    res_objects = dict()
+    cat_objects = dict()
+
+    simtables = "/home/bartoletti1/gitrepo/e3sm_data_docs/docs/source/simtables"       # HARDCODE for test
+
+    stfiles = glob.glob(f"{simtables}/*.csv")
+
+    for stf in stfiles:
+        # print(f"afile: {afile}")
+        res_name, cat_name, sim_tuples = load_sim_table(stf)
+
+        if not cat_name in cat_objects:
+            cat_objects[cat_name] =  Category(cat_name)
+        if not res_name in res_objects:
+            res_objects[res_name] =  Resolution(res_name)
+
+        res_objects[res_name].append(cat_objects[cat_name])
+        
+        for simulation_tuple in sim_tuples:
+            cat_objects[cat_name].append(Simulation(*simulation_tuple))
+
+    # return a list of the created resolution objects
+
+    retlist = list()
+    for akey in res_objects.keys():
+        retlist.append(res_object[akey])
+
+    return retlist
+    
 
 def create_simulation_objects():
     low_res = Resolution("Water Cycle (low-resolution)")
@@ -279,17 +332,18 @@ def generate_table(resolution_list, header_cells, output_file, cell_paddings):
                     file_write.write(pad_cells_row_dividers("-", cell_paddings))
 
 def main():
-    resolution_list = create_simulation_objects()
+    resolution_list = new_create_simulation_objects()
+
     generate_table(
         resolution_list,
         ["Simulation", "Data Size (TB)", "ESGF Link", "HPSS Path"],
-        "simulation_table.txt",
+        "test_simulation_table.txt",
         [65, 15, 150, 80]
     )
     generate_table(
         resolution_list,
         ["Simulation", "Machine", "Script", "10 day checksum"],
-        "reproduction_table.txt",
+        "test_reproduction_table.txt",
         [65, 11, 200, 34]
     )
                     
