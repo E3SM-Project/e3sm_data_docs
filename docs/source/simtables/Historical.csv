@@ -1,8 +1,8 @@
 CAT:Historical
 RES:low_res
-TUP:v2.LR.historical_0101,LR,chrysalis,61a7f492bdcc6e6cd4a2b41c92546219,historical,1,
-TUP:v2.LR.historical_0151,LR,chrysalis,6b17c91b7e07d31c162adbfbe7782d42,historical,2,
-TUP:v2.LR.historical_0201,LR,chrysalis,e79dda36bb76507cc6fdf88292e8ced9,historical,3,
-TUP:v2.LR.historical_0251,LR,chrysalis,6ad002ff6f198f6ba936171da48bc5b2,historical,4,
-TUP:v2.LR.historical_0301,LR,chrysalis,42ffbf170db587dc25d84d5d2ec7bc12,historical,5,
-TUP:v2.LR.historical_0101_bonus,LR,chrysalis,d23e455ba5bef0bf87211468570b6835,None,None,
+TUP:v2.LR.historical_0101,LR,chrysalis,61a7f492bdcc6e6cd4a2b41c92546219,historical,1
+TUP:v2.LR.historical_0151,LR,chrysalis,6b17c91b7e07d31c162adbfbe7782d42,historical,2
+TUP:v2.LR.historical_0201,LR,chrysalis,e79dda36bb76507cc6fdf88292e8ced9,historical,3
+TUP:v2.LR.historical_0251,LR,chrysalis,6ad002ff6f198f6ba936171da48bc5b2,historical,4
+TUP:v2.LR.historical_0301,LR,chrysalis,42ffbf170db587dc25d84d5d2ec7bc12,historical,5
+TUP:v2.LR.historical_0101_bonus,LR,chrysalis,d23e455ba5bef0bf87211468570b6835,None,None
