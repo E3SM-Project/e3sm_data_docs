@@ -4,7 +4,7 @@ import re
 import requests
 
 class Simulation(object):
-    def __init__(self, name, resolution, machine, checksum, experiment=None, ensemble_num=None):
+    def __init__(self, name, resolution, machine, checksum, experiment=None, ensemble_num=None, cmip_only=None):
         self.name = name
         
         hpss_path = f"/home/projects/e3sm/www/WaterCycle/E3SMv2/{resolution}/{name}"
@@ -35,7 +35,22 @@ class Simulation(object):
 
         if experiment and ensemble_num:
             # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
-            self.esgf = f"`{name} <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
+            source_id = 'E3SM-2-0'
+            experiment_id = experiment
+            esgf = f"`Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
+
+            if 'NARRM' in name:
+                source_id = 'E3SM-2-0-NARRM'
+
+            if experiment == 'hist-all-xGHG-xaer':
+                experiment_id = 'hist-nat'
+
+            esgf_cmip = f"`CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id={source_id}&?experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
+            
+            if cmip_only:
+                self.esgf = esgf_cmip
+            else:
+                self.esgf = esgf_cmip + ', ' + esgf
         else:
             self.esgf = ""
 
@@ -113,22 +128,50 @@ def create_simulation_objects():
     historical_le = Category("Historical LE")
     low_res.append(historical_le)
     simulation_tuples = [
-        ("v2.LR.historical_0111", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0121", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0131", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0141", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0161", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0171", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0181", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0191", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0211", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0221", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0231", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0241", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0261", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0271", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0281", "LR", "cori-knl", ""),
-        ("v2.LR.historical_0291", "LR", "cori-knl", ""),
+        ("v2.LR.historical_0111", "LR", "cori-knl", "", "historical", 6, "cmip_only"),
+        ("v2.LR.historical_0121", "LR", "cori-knl", "", "historical", 7, "cmip_only"),
+        ("v2.LR.historical_0131", "LR", "cori-knl", "", "historical", 8, "cmip_only"),
+        ("v2.LR.historical_0141", "LR", "cori-knl", "", "historical", 9, "cmip_only"),
+        ("v2.LR.historical_0161", "LR", "cori-knl", "", "historical", 10, "cmip_only"),
+        ("v2.LR.historical_0171", "LR", "cori-knl", "", "historical", 11, "cmip_only"),
+        ("v2.LR.historical_0181", "LR", "cori-knl", "", "historical", 12, "cmip_only"),
+        ("v2.LR.historical_0191", "LR", "cori-knl", "", "historical", 13, "cmip_only"),
+        ("v2.LR.historical_0211", "LR", "cori-knl", "", "historical", 14, "cmip_only"),
+        ("v2.LR.historical_0221", "LR", "cori-knl", "", "historical", 15, "cmip_only"),
+        ("v2.LR.historical_0231", "LR", "cori-knl", "", "historical", 16, "cmip_only"),
+        ("v2.LR.historical_0241", "LR", "cori-knl", "", "historical", 17, "cmip_only"),
+        ("v2.LR.historical_0261", "LR", "cori-knl", "", "historical", 18, "cmip_only"),
+        ("v2.LR.historical_0271", "LR", "cori-knl", "", "historical", 19, "cmip_only"),
+        ("v2.LR.historical_0281", "LR", "cori-knl", "", "historical", 20, "cmip_only"),
+        ("v2.LR.historical_0291", "LR", "cori-knl", "", "historical", 21, "cmip_only"),
+    ]
+    for simulation_tuple in simulation_tuples:
+        historical_le.append(Simulation(*simulation_tuple))
+
+    historical_le = Category("SSP370 LE")
+    low_res.append(historical_le)
+    simulation_tuples = [
+        ("v2.LR.SSP370_0101", "LR", "cori-knl", "", "ssp370", 1, "cmip_only"),
+        ("v2.LR.SSP370_0151", "LR", "cori-knl", "", "ssp370", 2, "cmip_only"),
+        ("v2.LR.SSP370_0201", "LR", "cori-knl", "", "ssp370", 3, "cmip_only"),
+        ("v2.LR.SSP370_0251", "LR", "cori-knl", "", "ssp370", 4, "cmip_only"),
+        ("v2.LR.SSP370_0301", "LR", "cori-knl", "", "ssp370", 5, "cmip_only"),
+        ("v2.LR.SSP370_0111", "LR", "cori-knl", "", "ssp370", 6, "cmip_only"),
+        ("v2.LR.SSP370_0121", "LR", "cori-knl", "", "ssp370", 7, "cmip_only"),
+        ("v2.LR.SSP370_0131", "LR", "cori-knl", "", "ssp370", 8, "cmip_only"),
+        ("v2.LR.SSP370_0141", "LR", "cori-knl", "", "ssp370", 9, "cmip_only"),
+        ("v2.LR.SSP370_0161", "LR", "cori-knl", "", "ssp370", 10, "cmip_only"),
+        ("v2.LR.SSP370_0171", "LR", "cori-knl", "", "ssp370", 11, "cmip_only"),
+        ("v2.LR.SSP370_0181", "LR", "cori-knl", "", "ssp370", 12, "cmip_only"),
+        ("v2.LR.SSP370_0191", "LR", "cori-knl", "", "ssp370", 13, "cmip_only"),
+        ("v2.LR.SSP370_0211", "LR", "cori-knl", "", "ssp370", 14, "cmip_only"),
+        ("v2.LR.SSP370_0221", "LR", "cori-knl", "", "ssp370", 15, "cmip_only"),
+        ("v2.LR.SSP370_0231", "LR", "cori-knl", "", "ssp370", 16, "cmip_only"),
+        ("v2.LR.SSP370_0241", "LR", "cori-knl", "", "ssp370", 17, "cmip_only"),
+        ("v2.LR.SSP370_0261", "LR", "cori-knl", "", "ssp370", 18, "cmip_only"),
+        ("v2.LR.SSP370_0271", "LR", "cori-knl", "", "ssp370", 19, "cmip_only"),
+        ("v2.LR.SSP370_0281", "LR", "cori-knl", "", "ssp370", 20, "cmip_only"),
+        ("v2.LR.SSP370_0291", "LR", "cori-knl", "", "ssp370", 21, "cmip_only"),
     ]
     for simulation_tuple in simulation_tuples:
         historical_le.append(Simulation(*simulation_tuple))
@@ -146,11 +189,11 @@ def create_simulation_objects():
         ("v2.LR.hist-aer_0201", "LR", "chrysalis", "c00ea4f726194ced3669a7f0ae0bac27", "hist-aer", 3),
         ("v2.LR.hist-aer_0251", "LR", "chrysalis", "c00ea4f726194ced3669a7f0ae0bac27", "hist-aer", 4),
         ("v2.LR.hist-aer_0301", "LR", "chrysalis", "c00ea4f726194ced3669a7f0ae0bac27", "hist-aer", 5),
-        ("v2.LR.hist-all-xGHG-xaer_0101", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", None, None),
-        ("v2.LR.hist-all-xGHG-xaer_0151", "LR", "chrysalis", "", None, None),
-        ("v2.LR.hist-all-xGHG-xaer_0201", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", None, None),
-        ("v2.LR.hist-all-xGHG-xaer_0251", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", None, None),
-        ("v2.LR.hist-all-xGHG-xaer_0301", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", None, None),
+        ("v2.LR.hist-all-xGHG-xaer_0101", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", "hist-all-xGHG-xaer", 1),
+        ("v2.LR.hist-all-xGHG-xaer_0151", "LR", "chrysalis", "", "hist-all-xGHG-xaer", 2),
+        ("v2.LR.hist-all-xGHG-xaer_0201", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", "hist-all-xGHG-xaer", 3),
+        ("v2.LR.hist-all-xGHG-xaer_0251", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", "hist-all-xGHG-xaer", 4),
+        ("v2.LR.hist-all-xGHG-xaer_0301", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", "hist-all-xGHG-xaer", 5),
     ]
     for simulation_tuple in simulation_tuples:
         single_forcing.append(Simulation(*simulation_tuple))
@@ -195,9 +238,9 @@ def create_simulation_objects():
     deck = Category("DECK")
     rrm.append(deck)
     simulation_tuples = [
-        ("v2.NARRM.piControl", "NARRM", "chrysalis", "c18df3c0834abd2b5c63899e37559ccd"),
-        ("v2.NARRM.abrupt-4xCO2_0101", "NARRM", "chrysalis", "1eb5423d852764bbcd1bf67b180efc43"),
-        ("v2.NARRM.1pctCO2_0101", "NARRM", "chrysalis", "80e6c83b39d58cb00876506deabfd8c2"),
+        ("v2.NARRM.piControl",         "NARRM", "chrysalis", "c18df3c0834abd2b5c63899e37559ccd", "piControl", 1),
+        ("v2.NARRM.abrupt-4xCO2_0101", "NARRM", "chrysalis", "1eb5423d852764bbcd1bf67b180efc43", "abrupt-4xCO2", 1),
+        ("v2.NARRM.1pctCO2_0101",      "NARRM", "chrysalis", "80e6c83b39d58cb00876506deabfd8c2", "1pctCO2", 1),
     ]
     for simulation_tuple in simulation_tuples:
         deck.append(Simulation(*simulation_tuple))
@@ -205,11 +248,11 @@ def create_simulation_objects():
     historical = Category("Historical")
     rrm.append(historical)
     simulation_tuples = [
-        ("v2.NARRM.historical_0101", "NARRM", "chrysalis", "4a9ccd61766640b4a4f4b15dc5f5b956"),
-        ("v2.NARRM.historical_0151", "NARRM", "cori-knl", ""),
-        ("v2.NARRM.historical_0201", "NARRM", "cori-knl", ""),
-        ("v2.NARRM.historical_0251", "NARRM", "cori-knl", ""),
-        ("v2.NARRM.historical_0301", "NARRM", "chrysalis", "24147fbb5d601e1bd6fcae6ace72968c"),
+        ("v2.NARRM.historical_0101", "NARRM", "chrysalis", "4a9ccd61766640b4a4f4b15dc5f5b956", "historical", 1),
+        ("v2.NARRM.historical_0151", "NARRM", "cori-knl", "", "historical", 2),
+        ("v2.NARRM.historical_0201", "NARRM", "cori-knl", "", "historical", 3),
+        ("v2.NARRM.historical_0251", "NARRM", "cori-knl", "", "historical", 4),
+        ("v2.NARRM.historical_0301", "NARRM", "chrysalis", "24147fbb5d601e1bd6fcae6ace72968c", "historical", 5),
         ("v2.NARRM.historical_0101_bonus", "NARRM", "chrysalis", ""),
     ]
     for simulation_tuple in simulation_tuples:
@@ -218,9 +261,9 @@ def create_simulation_objects():
     amip = Category("AMIP")
     rrm.append(amip)
     simulation_tuples = [
-        ("v2.NARRM.amip_0101", "NARRM", "chrysalis", "930b7fc7e946910c3c8e716f733d0f31"),
-        ("v2.NARRM.amip_0201", "NARRM", "chrysalis", "a8326dd3922cbf32dccedb494fcedffb"),
-        ("v2.NARRM.amip_0301", "NARRM", "chrysalis", "f8bcd50a7e9c5ef8253908b73ee7471c"),
+        ("v2.NARRM.amip_0101", "NARRM", "chrysalis", "930b7fc7e946910c3c8e716f733d0f31", "amip", 1),
+        ("v2.NARRM.amip_0201", "NARRM", "chrysalis", "a8326dd3922cbf32dccedb494fcedffb", "amip", 2),
+        ("v2.NARRM.amip_0301", "NARRM", "chrysalis", "f8bcd50a7e9c5ef8253908b73ee7471c", "amip", 3),
         ("v2.NARRM.amip_0101_bonus", "NARRM", "chrysalis", ""),
     ]
     for simulation_tuple in simulation_tuples:
@@ -282,9 +325,9 @@ def main():
     resolution_list = create_simulation_objects()
     generate_table(
         resolution_list,
-        ["Simulation", "Data Size (TB)", "ESGF Link", "HPSS Path"],
+        ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path"],
         "simulation_table.txt",
-        [65, 15, 150, 80]
+        [65, 15, 400, 80]
     )
     generate_table(
         resolution_list,
