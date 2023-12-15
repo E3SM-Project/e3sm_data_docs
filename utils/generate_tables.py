@@ -106,7 +106,7 @@ def create_simulation_objects():
         ("v2.LR.piControl","LR", "chrysalis", "7547932242025fdf92014d06d6f9eec2", "piControl", 1),
         ("v2.LR.piControl_land", "LR", "chrysalis", "", None, None),
         ("v2.LR.abrupt-4xCO2_0101", "LR", "chrysalis", "86bc7dfbdc6a71e4bd2925943a15c474", "abrupt-4xCO2", 1),
-        ("v2.LR.abrupt-4xCO2_0301", "LR", "chrysalis", "86bc7dfbdc6a71e4bd2925943a15c474", "abrupt-4xCO2", 2),
+        ("v2.LR.abrupt-4xCO2_0301", "LR", "chrysalis", "cd61cc01cfbd03913fafcb6cbe18a8bc", "abrupt-4xCO2", 2),
         ("v2.LR.1pctCO2_0101", "LR", "chrysalis", "3300255fc76bc13433fafea37fb36570", "1pctCO2", 1),
     ]
     for simulation_tuple in simulation_tuples:
@@ -181,19 +181,19 @@ def create_simulation_objects():
     simulation_tuples = [
         ("v2.LR.hist-GHG_0101", "LR", "chrysalis", "5cc8d0d76887740d8a82568e13e2ff36", "hist-GHG", 1),
         ("v2.LR.hist-GHG_0151", "LR", "chrysalis", "", "hist-GHG", 2),
-        ("v2.LR.hist-GHG_0201", "LR", "chrysalis", "5cc8d0d76887740d8a82568e13e2ff36", "hist-GHG", 3),
-        ("v2.LR.hist-GHG_0251", "LR", "chrysalis", "5cc8d0d76887740d8a82568e13e2ff36", "hist-GHG", 4),
+        ("v2.LR.hist-GHG_0201", "LR", "chrysalis", "9098a4135bfda91ccef99d3f701fd5e5", "hist-GHG", 3),
+        ("v2.LR.hist-GHG_0251", "LR", "chrysalis", "d461a8bbddd3afc9f8d701943609b83c", "hist-GHG", 4),
         ("v2.LR.hist-GHG_0301", "LR", "chrysalis", "5cc8d0d76887740d8a82568e13e2ff36", "hist-GHG", 5),
         ("v2.LR.hist-aer_0101", "LR", "chrysalis", "c00ea4f726194ced3669a7f0ae0bac27", "hist-aer", 1),
         ("v2.LR.hist-aer_0151", "LR", "chrysalis", "", "hist-aer", 2),
-        ("v2.LR.hist-aer_0201", "LR", "chrysalis", "c00ea4f726194ced3669a7f0ae0bac27", "hist-aer", 3),
-        ("v2.LR.hist-aer_0251", "LR", "chrysalis", "c00ea4f726194ced3669a7f0ae0bac27", "hist-aer", 4),
-        ("v2.LR.hist-aer_0301", "LR", "chrysalis", "c00ea4f726194ced3669a7f0ae0bac27", "hist-aer", 5),
+        ("v2.LR.hist-aer_0201", "LR", "chrysalis", "7feaa4d32a7a888ff969106e48ed9db7", "hist-aer", 3),
+        ("v2.LR.hist-aer_0251", "LR", "chrysalis", "849376c7d30ad2dd296f4b4e16eeccf0", "hist-aer", 4),
+        ("v2.LR.hist-aer_0301", "LR", "chrysalis", "d35d92f676c4b312e227415cf19b3316", "hist-aer", 5),
         ("v2.LR.hist-all-xGHG-xaer_0101", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", "hist-all-xGHG-xaer", 1),
         ("v2.LR.hist-all-xGHG-xaer_0151", "LR", "chrysalis", "", "hist-all-xGHG-xaer", 2),
-        ("v2.LR.hist-all-xGHG-xaer_0201", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", "hist-all-xGHG-xaer", 3),
-        ("v2.LR.hist-all-xGHG-xaer_0251", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", "hist-all-xGHG-xaer", 4),
-        ("v2.LR.hist-all-xGHG-xaer_0301", "LR", "chrysalis", "a5768c505bb12f778b2606ae8f5705ce", "hist-all-xGHG-xaer", 5),
+        ("v2.LR.hist-all-xGHG-xaer_0201", "LR", "chrysalis", "363ecb08227bdfd972e5f058dd12b434", "hist-all-xGHG-xaer", 3),
+        ("v2.LR.hist-all-xGHG-xaer_0251", "LR", "chrysalis", "6a9465b94bef49a235defbd44db273bd", "hist-all-xGHG-xaer", 4),
+        ("v2.LR.hist-all-xGHG-xaer_0301", "LR", "chrysalis", "16a900d361d1edcbd24813445d7d1cd6", "hist-all-xGHG-xaer", 5),
     ]
     for simulation_tuple in simulation_tuples:
         single_forcing.append(Simulation(*simulation_tuple))
