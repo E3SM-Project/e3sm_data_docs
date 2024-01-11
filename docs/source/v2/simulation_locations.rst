@@ -16,7 +16,7 @@ To download simulation data locally on a NERSC machine: ::
 
 To download simulation data remotely using the zstash Globus interface: ::
 
-   zstash extract --hpss=globus:globus://nersc/<HPSS path below>
+   zstash extract --hpss=globus://nersc/<HPSS path below>
 
 or ::
 
