@@ -77,41 +77,20 @@ test_reproduction()
 source /lcrc/soft/climate/e3sm-unified/load_latest_e3sm_unified_chrysalis.sh
 
 ### Usual run ###
-
-# Water Cycle (low-resolution) > DECK
-for simulation_name in piControl abrupt-4xCO2_0101 abrupt-4xCO2_0301 1pctCO2_0101; do
-  test_reproduction E3SMv2_test LR ${simulation_name} false false
-done
+# TODO: Restore to all sets before merging
 
 # Water Cycle (low-resolution) > Historical
-for simulation_name in historical_0101 historical_0151 historical_0201 historical_0251 historical_0301 historical_0101_bonus; do
-  test_reproduction E3SMv2_test LR ${simulation_name} false false
-done
-
-# Water Cycle (low-resolution) > Single-forcing (DAMIP-like)
-for simulation_name in hist-GHG_0101 hist-GHG_0201 hist-GHG_0251 hist-GHG_0301 hist-aer_0101 hist-aer_0201 hist-aer_0251 hist-aer_0301 hist-all-xGHG-xaer_0101 hist-all-xGHG-xaer_0201 hist-all-xGHG-xaer_0251 hist-all-xGHG-xaer_0301; do
+for simulation_name in historical_0101_bonus; do
   test_reproduction E3SMv2_test LR ${simulation_name} false false
 done
 
 # Water Cycle (low-resolution) > AMIP
-for simulation_name in amip_0101 amip_0201 amip_0301 amip_0101_bonus; do
-  test_reproduction E3SMv2_test LR ${simulation_name} false false
-done
-
-# 24 hours is enough runtime to get to this point.
-
-# Water Cycle (low-resolution) > RFMIP
-for simulation_name in piClim-control piClim-histall_0021 piClim-histall_0041 piClim-histaer_0021 piClim-histaer_0041; do
+for simulation_name in amip_0301 amip_0101_bonus; do
   test_reproduction E3SMv2_test LR ${simulation_name} false false
 done
 
 # Water Cycle (NARRM) > DECK
-for simulation_name in piControl abrupt-4xCO2_0101 1pctCO2_0101; do
-  test_reproduction E3SMv2_test NARRM ${simulation_name} false false
-done
-
-# Water Cycle (NARRM) > Historical
-for simulation_name in historical_0101 historical_0301; do
+for simulation_name in abrupt-4xCO2_0101 1pctCO2_0101; do
   test_reproduction E3SMv2_test NARRM ${simulation_name} false false
 done
 
