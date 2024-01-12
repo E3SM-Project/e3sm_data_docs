@@ -57,6 +57,9 @@ test_reproduction()
   # Note: if this line fails, you may need to extract the init from a different case.
   # Check the `RUN_REFDIR` in the reproduction script to see what case should be referenced.
   # You can either manually edit this line, or just run the appropriate `zstash extract` command before running this script.
+  #pwd
+  #echo zstash extract -v --hpss=globus://nersc/home/projects/e3sm/www/WaterCycle/E3SMv2/${resolution}/${case_name} "init/*"
+  #exit 1
   zstash extract -v --hpss=globus://nersc/home/projects/e3sm/www/WaterCycle/E3SMv2/${resolution}/${case_name} "init/*"
   # Remove zstash cache
   rm -rf zstash
@@ -77,7 +80,7 @@ test_reproduction()
 source /lcrc/soft/climate/e3sm-unified/load_latest_e3sm_unified_chrysalis.sh
 
 ### Usual run ###
-# TODO: Restore to all sets before merging
+# TODO: Restore to all scripts before merging
 
 # Water Cycle (low-resolution) > Historical
 for simulation_name in historical_0101_bonus; do
