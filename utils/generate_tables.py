@@ -45,7 +45,7 @@ class Simulation(object):
             if experiment == 'hist-all-xGHG-xaer':
                 experiment_id = 'hist-nat'
 
-            esgf_cmip = f"`CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id={source_id}&?experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
+            esgf_cmip = f"`CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
             
             if cmip_only:
                 self.esgf = esgf_cmip
