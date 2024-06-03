@@ -43,7 +43,7 @@ test_reproduction()
     github_address=https://raw.githubusercontent.com/E3SM-Project/e3sm_data_docs/main/run_scripts/v2/reproduce/${script_name}
     wget ${github_address}
   else
-    cp /home/ac.forsyth2/e3sm_data_docs/run_scripts/v2/reproduce/${script_name} ${script_name}
+    cp /home/ac.forsyth2/ez/e3sm_data_docs/run_scripts/v2/reproduce/${script_name} ${script_name}
   fi
   replace_in_file "E3SMv2_test" ${test_subdir} ${script_name}
   # Variable substitution in the string doesn't appear to work in this case, so using `if` statement.
@@ -69,53 +69,14 @@ test_reproduction()
   ./${script_name}
 
   echo "If ${script_name} did not complete successfully, try the following:"
-  echo "Make fixes in /home/ac.forsyth2/e3sm_data_docs/run_scripts/v2/reproduce/${script_name}"
+  echo "Make fixes in /home/ac.forsyth2/ez/e3sm_data_docs/run_scripts/v2/reproduce/${script_name}"
   echo "Set use_wget=false"
 }
 
 # Load E3SM unified to make zstash available
 source /lcrc/soft/climate/e3sm-unified/load_latest_e3sm_unified_chrysalis.sh
 
-### Usual run ###
-
-# Water Cycle (low-resolution) > DECK
-for simulation_name in piControl abrupt-4xCO2_0101 abrupt-4xCO2_0301 1pctCO2_0101; do
+# Remaining run scripts
+for simulation_name in hist-GHG_0151 hist-aer_0151 hist-all-xGHG-xaer_0151 piClim-histall_0031 piClim-histaer_0031; do
   test_reproduction E3SMv2_test LR ${simulation_name} false false
-done
-
-# Water Cycle (low-resolution) > Historical
-for simulation_name in historical_0101 historical_0151 historical_0201 historical_0251 historical_0301 historical_0101_bonus; do
-  test_reproduction E3SMv2_test LR ${simulation_name} false false
-done
-
-# Water Cycle (low-resolution) > Single-forcing (DAMIP-like)
-for simulation_name in hist-GHG_0101 hist-GHG_0201 hist-GHG_0251 hist-GHG_0301 hist-aer_0101 hist-aer_0201 hist-aer_0251 hist-aer_0301 hist-all-xGHG-xaer_0101 hist-all-xGHG-xaer_0201 hist-all-xGHG-xaer_0251 hist-all-xGHG-xaer_0301; do
-  test_reproduction E3SMv2_test LR ${simulation_name} false false
-done
-
-# Water Cycle (low-resolution) > AMIP
-for simulation_name in amip_0101 amip_0201 amip_0301 amip_0101_bonus; do
-  test_reproduction E3SMv2_test LR ${simulation_name} false false
-done
-
-# 24 hours is enough runtime to get to this point.
-
-# Water Cycle (low-resolution) > RFMIP
-for simulation_name in piClim-control piClim-histall_0021 piClim-histall_0041 piClim-histaer_0021 piClim-histaer_0041; do
-  test_reproduction E3SMv2_test LR ${simulation_name} false false
-done
-
-# Water Cycle (NARRM) > DECK
-for simulation_name in piControl abrupt-4xCO2_0101 1pctCO2_0101; do
-  test_reproduction E3SMv2_test NARRM ${simulation_name} false false
-done
-
-# Water Cycle (NARRM) > Historical
-for simulation_name in historical_0101 historical_0301; do
-  test_reproduction E3SMv2_test NARRM ${simulation_name} false false
-done
-
-# Water Cycle (NARRM) > AMIP
-for simulation_name in amip_0101 amip_0201 amip_0301; do
-  test_reproduction E3SMv2_test NARRM ${simulation_name} false false
 done
