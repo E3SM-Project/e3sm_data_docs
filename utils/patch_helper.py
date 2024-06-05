@@ -3,6 +3,7 @@ import sys
 
 def help_patch(script_name, resolution, case_name):
     pelayout_count = 0
+    walltime_count = 0
     add_fsurdat = False
     with open(script_name, "r") as f_in:
         with open(f"{script_name}.edited", "w") as f_out:
@@ -38,22 +39,37 @@ def help_patch(script_name, resolution, case_name):
                     else:
                         f_out.write('readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}/init"\n')
                 elif line.startswith("readonly run="):
-                    f_out.write("readonly run='XS_1x10_ndays'\n")
-                # Next 2 changes should only be done in the production block...
+                    if (resolution == "NARRM") and ("amip" in case_name):
+                        # Need to have `BUILD_THREADED = False` to match expected checksums
+                        f_out.write("readonly run='M_2x5_ndays'\n")
+                    else:
+                        f_out.write("readonly run='XS_1x10_ndays'\n")
                 elif line.startswith('  readonly PELAYOUT'):
                     if pelayout_count == 0:
-                        f_out.write(line)
-                        pelayout_count += 1
+                        f_out.write(line) # pelayout = 0 => write pelayout for the non-production block
                     else:
-                        f_out.write('  readonly PELAYOUT="ML"\n')
-                elif line.startswith('  readonly WALLTIME') and pelayout_count > 1:
-                    print(line)
-                    f_out.write('  readonly WALLTIME="48:00:00"\n')
+                        f_out.write('  readonly PELAYOUT="ML"\n') # pelayout = 1 => write pelayout for production block
+                    pelayout_count += 1
+                elif line.startswith('  readonly WALLTIME'):
+                    if walltime_count == 0:
+                        # walltime = 0 => write walltime for the non-production block
+                        print(f"case_name={case_name}")
+                        if (resolution == "NARRM") and ("amip" in case_name):
+                            f_out.write('  readonly WALLTIME="4:00:00"\n')
+                        else:
+                            f_out.write(line)
+                    else:
+                        f_out.write('  readonly WALLTIME="48:00:00"\n') # walltime = 1 => write walltime for production block
+                    walltime_count += 1
                 elif line.startswith('  readonly REST_N'):
                     f_out.write('  readonly REST_N="1"\n')
                 elif line.startswith('cat << EOF >> user_nl_elm'):
                     f_out.write(line)
                     add_fsurdat = True                    
+                elif line.startswith('check_finidat_fsurdat_consistency = .false.'):
+                    f_out.write(line)
+                    # We already have the fsurdat line.
+                    add_fsurdat = False
                 elif add_fsurdat and line.startswith('EOF'):
                     f_out.write('\n')
                     f_out.write('! Override\n')

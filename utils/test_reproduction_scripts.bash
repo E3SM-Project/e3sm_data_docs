@@ -77,6 +77,10 @@ test_reproduction()
 source /lcrc/soft/climate/e3sm-unified/load_latest_e3sm_unified_chrysalis.sh
 
 # Remaining run scripts
-for simulation_name in hist-GHG_0151 hist-aer_0151 hist-all-xGHG-xaer_0151 piClim-histall_0031 piClim-histaer_0031; do
+for simulation_name in amip_0301; do
   test_reproduction E3SMv2_test LR ${simulation_name} false false
 done
+
+#for simulation_name in amip_0101 amip_0201 amip_0301; do
+#  test_reproduction E3SMv2_test NARRM ${simulation_name} false false
+#done
