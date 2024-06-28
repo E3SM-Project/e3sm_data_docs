@@ -1,15 +1,16 @@
 #!/bin/bash -fe
 
-# E3SM Water Cycle v2 run_e3sm script template.
+# E3SMv2 Water Cycle run_e3sm script template.
 #
-# Inspired by v1 run_e3sm script as well as SCREAM group simplified run script.
+# Configured to reproduce v2.NARRM.amip_0201 on chrysalis.
+# Modify as needed for other machines.
 #
 # Bash coding style inspired by:
 # http://kfirlavi.herokuapp.com/blog/2012/11/14/defensive-bash-programming
 
 main() {
 
-# For debugging, uncomment libe below
+# For debugging, uncomment line below
 #set -x
 
 # --- Configuration flags ----
@@ -20,15 +21,25 @@ readonly PROJECT="e3sm"
 
 # Simulation
 readonly COMPSET="F20TR"
-readonly RESOLUTION="ne30pg2_EC30to60E2r2"
-readonly CASE_NAME="v2.LR.amip_0301"
-readonly CASE_GROUP="v2.LR"
+readonly RESOLUTION="northamericax4v1pg2_WC14to60E2r3"
+
+readonly CASE_GROUP="v2.RRM"
 
 # Code and compilation
-readonly CHECKOUT="20210929"
-readonly BRANCH="1e754ed78cdae71b8a82bfdc7a2ec6a89d3d94af" # v2 tag 
+readonly CHECKOUT="20221102-maint-20"
+readonly BRANCH="maint-2.0"
 readonly CHERRY=( )
 readonly DEBUG_COMPILE=false
+
+# BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
+
+# For developmental simulations, recommended convention:
+#readonly CASE_NAME=${CHECKOUT}.amip_0201.${RESOLUTION}.${MACHINE}
+# For production simulations:
+readonly CASE_NAME="v2.NARRM.amip_0201"
+
+# If this is part of a simulation campaign, ask your group lead about using a case_group label
+# readonly CASE_GROUP=""
 
 # Run options
 readonly MODEL_START_TYPE="hybrid"  # 'initial', 'continue', 'branch', 'hybrid'
@@ -36,23 +47,25 @@ readonly START_DATE="1870-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
-readonly RUN_REFDIR="/lcrc/group/e3sm/ac.forsyth2/E3SMv2/v2.LR.amip_0301/init"
-readonly RUN_REFCASE="v2.LR.historical_0301"
+readonly RUN_REFDIR="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}/init"
+readonly RUN_REFCASE="v2.NARRM.historical_0201"
 readonly RUN_REFDATE="1870-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
-readonly CODE_ROOT="${HOME}/E3SMv2/code/${CHECKOUT}"
-readonly CASE_ROOT="/lcrc/group/e3sm/${USER}/E3SMv2/${CASE_NAME}"
+readonly CODE_ROOT="${HOME}/E3SMv2_test/code/${CHECKOUT}"
+readonly CASE_ROOT="/lcrc/group/e3sm/${USER}/E3SMv2_test/${CASE_NAME}"
 
 # Sub-directories
 readonly CASE_BUILD_DIR=${CASE_ROOT}/build
 readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 
 # Define type of run
-#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays', 
-#               'M_1x10_ndays', 'M2_1x10_ndays', 'M80_1x10_ndays', 'L_1x10_ndays'
+#  short tests: 'S_2x5_ndays', 'M_1x10_ndays', 'M80_1x10_ndays'
 #  or 'production' for full simulation
-readonly run='production'
+readonly run='M_2x5_ndays'
+#readonly run='S_2x5_ndays'
+#readonly run='M_2x5_ndays'
+#readonly run='L_1x10_ndays'
 if [ "${run}" != "production" ]; then
 
   # Short test simulations
@@ -65,11 +78,11 @@ if [ "${run}" != "production" ]; then
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/tests/${run}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/tests/${run}/run
   readonly PELAYOUT=${layout}
-  readonly WALLTIME="2:00:00"
+  readonly WALLTIME="4:00:00"
   readonly STOP_OPTION=${units}
   readonly STOP_N=${length}
   readonly REST_OPTION=${STOP_OPTION}
-  readonly REST_N=${STOP_N}
+  readonly REST_N="1"
   readonly RESUBMIT=${resubmit}
   readonly DO_SHORT_TERM_ARCHIVING=false
 
@@ -78,28 +91,28 @@ else
   # Production simulation
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
-  readonly PELAYOUT="custom-30"
-  readonly WALLTIME="30:00:00"
+  readonly PELAYOUT="ML"
+  readonly WALLTIME="48:00:00"
   readonly STOP_OPTION="nyears"
-  readonly STOP_N="30" # How often to stop the model, should be a multiple of REST_N
+  readonly STOP_N="20"
   readonly REST_OPTION="nyears"
-  readonly REST_N="5" # How often to write a restart file
-  readonly RESUBMIT="4" # Submissions after initial one
+  readonly REST_N="1"
+  readonly RESUBMIT="7"
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
-# Coupler history 
+# Coupler history
 readonly HIST_OPTION="nyears"
-readonly HIST_N="5"
+readonly HIST_N="1"
 
 # Leave empty (unless you understand what it does)
 readonly OLD_EXECUTABLE=""
 
 # --- Toggle flags for what to do ----
-do_fetch_code=false
+do_fetch_code=true
 do_create_newcase=true
 do_case_setup=true
-do_case_build=false
+do_case_build=true
 do_case_submit=true
 
 # --- Now, do the work ---
@@ -250,7 +263,7 @@ fetch_code() {
 
     # This will put repository, with all code
     git clone git@github.com:E3SM-Project/${repo}.git .
-    
+
     # Setup git hooks
     rm -rf .git/hooks
     git clone git@github.com:E3SM-Project/E3SM-Hooks.git .git/hooks
@@ -293,18 +306,29 @@ create_newcase() {
         layout=${PELAYOUT}
 
     fi
-    ${CODE_ROOT}/cime/scripts/create_newcase \
-        --case ${CASE_NAME} \
-        --case-group ${CASE_GROUP} \
+    # Base arguments
+    args=" --case ${CASE_NAME} \
         --output-root ${CASE_ROOT} \
         --script-root ${CASE_SCRIPTS_DIR} \
         --handle-preexisting-dirs u \
         --compset ${COMPSET} \
         --res ${RESOLUTION} \
         --machine ${MACHINE} \
-        --project ${PROJECT} \
         --walltime ${WALLTIME} \
-        --pecount ${layout}
+        --pecount ${layout}"
+
+    # Optional arguments
+    if [ ! -z "${PROJECT}" ]; then
+      args="${args} --project ${PROJECT}"
+    fi
+    if [ ! -z "${CASE_GROUP}" ]; then
+      args="${args} --case-group ${CASE_GROUP}"
+    fi
+    if [ ! -z "${QUEUE}" ]; then
+      args="${args} --queue ${QUEUE}"
+    fi
+
+    ${CODE_ROOT}/cime/scripts/create_newcase ${args}
 
     if [ $? != 0 ]; then
       echo $'\nNote: if create_newcase failed because sub-directory already exists:'
@@ -335,7 +359,7 @@ case_setup() {
     ./xmlchange DOUT_S_ROOT=${CASE_ARCHIVE_DIR}
 
     # Build with COSP, except for a data atmosphere (datm)
-    if [ `./xmlquery --value COMP_ATM` == "datm"  ]; then 
+    if [ `./xmlquery --value COMP_ATM` == "datm"  ]; then
       echo $'\nThe specified configuration uses a data atmosphere, so cannot activate COSP simulator\n'
     else
       echo $'\nConfiguring E3SM to use the COSP simulator\n'
@@ -398,11 +422,12 @@ case_build() {
         # Run CIME case.build
         ./case.build
 
-        # Some user_nl settings won't be updated to *_in files under the run directory
-        # Call preview_namelists to make sure *_in and user_nl files are consistent.
-        ./preview_namelists
-
     fi
+
+    # Some user_nl settings won't be updated to *_in files under the run directory
+    # Call preview_namelists to make sure *_in and user_nl files are consistent.
+    echo $'\n----- Preview namelists -----\n'
+    ./preview_namelists
 
     popd
 }
@@ -446,14 +471,13 @@ runtime_options() {
     elif [ "${MODEL_START_TYPE,,}" == "branch" ] || [ "${MODEL_START_TYPE,,}" == "hybrid" ]; then
         ./xmlchange RUN_TYPE=${MODEL_START_TYPE,,}
         ./xmlchange GET_REFCASE=${GET_REFCASE}
-	./xmlchange RUN_REFDIR=${RUN_REFDIR}
+        ./xmlchange RUN_REFDIR=${RUN_REFDIR}
         ./xmlchange RUN_REFCASE=${RUN_REFCASE}
         ./xmlchange RUN_REFDATE=${RUN_REFDATE}
-        echo 'Warning: $MODEL_START_TYPE = '${MODEL_START_TYPE} 
-	echo '$RUN_REFDIR = '${RUN_REFDIR}
-	echo '$RUN_REFCASE = '${RUN_REFCASE}
-	echo '$RUN_REFDATE = '${START_DATE}
- 
+        echo 'Warning: $MODEL_START_TYPE = '${MODEL_START_TYPE}
+        echo '$RUN_REFDIR = '${RUN_REFDIR}
+        echo '$RUN_REFCASE = '${RUN_REFCASE}
+        echo '$RUN_REFDATE = '${START_DATE}
     else
         echo 'ERROR: $MODEL_START_TYPE = '${MODEL_START_TYPE}' is unrecognized. Exiting.'
         exit 380
@@ -475,7 +499,7 @@ case_submit() {
 
     echo $'\n----- Starting case_submit -----\n'
     pushd ${CASE_SCRIPTS_DIR}
-    
+
     # Run CIME case.submit
     ./case.submit
 
