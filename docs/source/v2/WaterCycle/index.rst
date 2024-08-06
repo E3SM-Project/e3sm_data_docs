@@ -25,6 +25,8 @@ manuscripts.
   * Fasullo et al. (Earth Sys. Dyn., in review as of Oct 2023)
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-   simulation_locations
-   reproducing_simulations
+   simulation_data/index
+   reproducing_simulations/index
