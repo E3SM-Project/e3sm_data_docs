@@ -84,6 +84,7 @@ class Simulation(object):
         self.ensemble_num = simulation_dict["ensemble_num"]
         self.cmip_only = simulation_dict["cmip_only"]
 
+        # v1: /home/g/golaz/2018/E3SM_simulations/repaired/20180129.DECKv1b_piControl.ne30_oEC.edison
         hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
         self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
@@ -238,4 +239,5 @@ def construct_pages(csv_file, model_version, group_name):
     )
                     
 if __name__ == "__main__":
+    # TODO: Make a csv for each version/group.
     construct_pages("simulations.csv", "v2", "WaterCycle")
