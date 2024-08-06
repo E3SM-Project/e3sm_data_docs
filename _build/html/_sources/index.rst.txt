@@ -15,7 +15,7 @@ simulations.
    :maxdepth: 2
    :caption: Contents:
 
-   v2/E3SMv2_Water_Cycle
+   v2/index
 
 
 .. Indices and tables
