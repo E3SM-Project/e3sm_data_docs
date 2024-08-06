@@ -1,30 +1,16 @@
 Generating tables
 =================
 
-Relevant `utils` files: `generate_tables.py`
+Relevant `utils` files: `generate_tables.py`, `generate_html.bash`
 
-1a. Delete table from `../docs/source/v2/simulation_locations.rst`.
-
-1b. Delete table from `../docs/source/v2/reproducing_simulations.rst`.
-
-2. Run `python generate_tables.py`
-
-3a. Run `cat simulation_table.txt >> ../docs/source/v2/simulation_locations.rst`.
-
-3b. Run `cat reproduction_table.txt >> ../docs/source/v2/reproducing_simulations.rst`.
-
-4.
 ```
-$ cd ../docs/ && make html
-$ rm -rf /global/cfs/cdirs/e3sm/www/forsyth/data_docs
-$ mv _build /global/cfs/cdirs/e3sm/www/forsyth/data_docs
-$ chmod -R o+r /global/cfs/cdirs/e3sm/www/forsyth/data_docs
-$ chmod -R o+x /global/cfs/cdirs/e3sm/www/forsyth/data_docs
+$ cd utils
+$ ./generate_html.bash
 ```
 
-5a. Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v2/simulation_locations.html
-
-5b. Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v2/reproducing_simulations.html
+Example:
+- Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v2/WaterCycle/simulation_data/simulation_table.html
+- Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v2/WaterCycle/reproducing_simulations/reproduction_table.html
 
 Creating reproduction scripts
 =============================
