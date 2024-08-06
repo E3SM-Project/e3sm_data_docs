@@ -33,20 +33,43 @@ def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
             hpss = ""
         return (data_size, hpss)
 
-def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, cmip_only: str) -> str:
+def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, link_type: str) -> str:
     if experiment and ensemble_num:
         # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
-        # remove v from model_version
-        esgf = f"`Native <https://esgf-node.llnl.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
+        # Note that `[1:]`` removes `v` from `model_version`
+        # 
+        # Query parameters:
+        # v2:
+        # Native (model_version, experiment, ensemble_member)
+        # CMIP6 (source_id, experiment_id, variant_label)
+        # v1 on https://e3sm.org/data/get-e3sm-data/released-e3sm-data/v1-1-deg-data-cmip6/:
+        # Native (experiment, and optionally model_version)
+        # CMIP6 (activity_id, source_id, experiment_id)
+
+        # TODO: figure out if we're returning the correct things
+        # Comparison to links on https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v1/WaterCycle/simulation_data/simulation_table.html
+        # simulation | e3sm.org CMIP6 | e3sm.org Native | data_docs CMIP6 | data_docs Native |
+        # piControl              | 346   | 67 | 346  | 15 |
+        # historical             | 3414 | 190 | 1420 | 70 | 5 rows on data_docs
+        # 1pctCO2                | 339  | 38  | 339  | 14 |
+        # abrupt-4xCO2           | 293  | 50  | 0    | 14 | 2 rows on data_docs
+        # abrupt-4xCO2-ext300yrs | x    | 14  |
+        # amip                   | 527  | 30  | 527  | 30 | 3 rows on data_docs
+        # amip_1850_allF         | x    | 30  |
+        # amip_1850_aeroF        | x    | 30  |
+        # TODO: only return Native for some experiments...
+        esgf_native = f"`Native <https://esgf-node.llnl.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
         if experiment == 'hist-all-xGHG-xaer':
             experiment_id = 'hist-nat'
         else:
             experiment_id = experiment
         esgf_cmip = f"`CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
-        if cmip_only:
+        if link_type == "cmip":
             esgf = esgf_cmip
+        elif link_type == "native":
+            esgf = esgf_native
         else:
-            esgf = esgf_cmip + ', ' + esgf
+            esgf = esgf_cmip + ', ' + esgf_native
     else:
         esgf = ""
     return esgf
@@ -82,16 +105,19 @@ class Simulation(object):
         self.experiment = simulation_dict["experiment"]
 
         self.ensemble_num = simulation_dict["ensemble_num"]
-        self.cmip_only = simulation_dict["cmip_only"]
+        self.link_type = simulation_dict["link_type"]
 
-        hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
+        if "hpss_path" in simulation_dict:
+            hpss_path = simulation_dict["hpss_path"]
+        else:
+            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
         self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
         if self.resolution == "NARRM":
             source_id = f"E3SM-{self.model_version[1:]}-0-{self.resolution}"
         else:
             source_id = f"E3SM-{self.model_version[1:]}-0"
-        self.esgf = get_esgf(source_id, self.model_version, self.experiment, self.ensemble_num, self.cmip_only)
+        self.esgf = get_esgf(source_id, self.model_version, self.experiment, self.ensemble_num, self.link_type)
 
         self.run_script_original = get_run_script_original(self.model_version, self.simulation_name)
         self.run_script_reproduction = get_run_script_reproduction(self.model_version, self.simulation_name)
@@ -137,6 +163,45 @@ class ModelVersion(object):
         self.groups.update([(group.name, group)])
 
 # Construct simulations ###########################################
+def parse_hpss_path(simulation_dictionary):
+    hpss_path = simulation_dictionary["hpss_path"]
+    model_version = simulation_dictionary["model_version"]
+    group = simulation_dictionary["group"]
+    subdir = os.path.basename(hpss_path)
+    simulation_dictionary["simulation_name"] = subdir
+    if (model_version == "v1" ) and (group == "WaterCycle"):
+        # Example: 20191019.DECKv1b_P3_SSP5-8.5-GHG.ne30_oEC.cori-knl
+        match_object = re.search("[0-9]{8}\.([^_]*)_(.*)\..*\.(.*)", subdir)
+        if match_object:
+            category = match_object.group(1)
+            experiment = match_object.group(2)
+            machine = match_object.group(3)
+            if category.endswith("v1b"):
+                # Remove "v1b"
+                category = category[:-3]
+            if subdir == "20190722.DECKv1b_abrupt4xCO2.ne30_oEC3.compy":
+                experiment = "abrupt-4xCO2-ext300yrs"
+            if experiment.startswith("H"):
+                if experiment.endswith("hist-GHG"):
+                    experiment = "damip_historical_hist_GHG"
+                else:
+                    experiment = "historical"
+            elif experiment.startswith("A"):
+                if experiment.endswith("allF"):
+                    experiment = "amip_1850_allF"
+                elif experiment.endswith("aeroF"):
+                    experiment = "amip_1850_aeroF"
+                else:
+                    experiment = "amip"
+            elif experiment.startswith("P"):
+                if experiment.endswith("GHG"):
+                    experiment = "damip_ssp5_8_5_ghg"
+                else:
+                    experiment = "projection"
+            simulation_dictionary["category"] = category
+            simulation_dictionary["experiment"] = experiment
+            simulation_dictionary["machine"] = machine
+
 def read_simulations(csv_file):
     # model_version > group > resolution > category > simulation_name, 
     versions: OrderedDict[str: ModelVersion] = OrderedDict()
@@ -153,6 +218,10 @@ def read_simulations(csv_file):
                 for i in range(len(header)):
                     label = header[i]
                     simulation_dict[label] = row[i].strip()
+                if "hpss_path" in simulation_dict:
+                    parse_hpss_path(simulation_dict)
+                if "cmip_only" in simulation_dict:
+                    simulation_dict["link_type"] = "cmip"
                 model_version_name = simulation_dict["model_version"]
                 group_name = simulation_dict["group"]
                 resolution_name = simulation_dict["resolution"]
@@ -227,7 +296,7 @@ def construct_pages(csv_file, model_version, group_name):
         resolutions,
         ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path"],
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
-        [65, 15, 400, 80]
+        [65, 15, 400, 90]
     )
     generate_table(
         f"{model_version} {group_name} reproduction table",
@@ -238,4 +307,5 @@ def construct_pages(csv_file, model_version, group_name):
     )
                     
 if __name__ == "__main__":
-    construct_pages("simulations.csv", "v2", "WaterCycle")
+    #construct_pages("simulations.csv", "v2", "WaterCycle")
+    construct_pages("simulations_v1_water_cycle.csv", "v1", "WaterCycle")

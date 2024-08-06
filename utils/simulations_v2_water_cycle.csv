@@ -1,5 +1,5 @@
 model_version, group, resolution, category, simulation_name, machine, checksum, experiment, ensemble_num, cmip_only,
-v2, WaterCycle, LR, DECK, v2.LR.piControl,      chrysalis, 7547932242025fdf92014d06d6f9eec2, piControl, 1, ,
+v2, WaterCycle, LR, DECK, v2.LR.piControl, chrysalis, 7547932242025fdf92014d06d6f9eec2, piControl, 1, ,
 v2, WaterCycle, LR, DECK, v2.LR.piControl_land, chrysalis, , , , ,
 v2, WaterCycle, LR, DECK, v2.LR.abrupt-4xCO2_0101, chrysalis, 86bc7dfbdc6a71e4bd2925943a15c474, abrupt-4xCO2, 1, ,
 v2, WaterCycle, LR, DECK, v2.LR.abrupt-4xCO2_0301, chrysalis, cd61cc01cfbd03913fafcb6cbe18a8bc, abrupt-4xCO2, 2, ,
