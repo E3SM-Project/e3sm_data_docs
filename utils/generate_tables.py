@@ -95,12 +95,19 @@ class Simulation(object):
 
         self.run_script_original = get_run_script_original(self.model_version, self.simulation_name)
         self.run_script_reproduction = get_run_script_reproduction(self.model_version, self.simulation_name)
+        
+        if not self.checksum:
+            self.checksum = "N/A"
+        if not self.run_script_reproduction:
+            self.run_script_reproduction = "N/A"
+        if not self.run_script_original:
+            self.run_script_original = "N/A"
 
     def get_row(self, output_file):
         if output_file.endswith("simulation_table.rst"):
             return [self.simulation_name, self.data_size, self.esgf, self.hpss]
         elif output_file.endswith("reproduction_table.rst"):
-            return [self.simulation_name, self.machine, self.run_script_reproduction, self.checksum]
+            return [self.simulation_name, self.machine, self.checksum, self.run_script_reproduction, self.run_script_original]
         else:
             raise RuntimeError(f"Invalid output_file={output_file}")
 
@@ -232,9 +239,12 @@ def construct_pages(csv_file, model_version, group_name):
     generate_table(
         f"{model_version} {group_name} reproduction table",
         resolutions,
-        ["Simulation", "Machine", "Script", "10 day checksum"],
+        ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",],
         f"../docs/source/{model_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
-        [65, 11, 200, 34]
+        # TODO: The script boxes have to be 200 characters wide to fit in the links...
+        # This is unfortunate because the actual displayed text is quite short.
+        # https://github.com/E3SM-Project/e3sm_data_docs/issues/30 may fix this.
+        [65, 11, 34, 200, 200]
     )
                     
 if __name__ == "__main__":
