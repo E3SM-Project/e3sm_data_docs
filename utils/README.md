@@ -8,10 +8,6 @@ $ cd utils
 $ ./generate_html.bash
 ```
 
-Example:
-- Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v2/WaterCycle/simulation_data/simulation_table.html
-- Go to https://portal.nersc.gov/project/e3sm/forsyth/data_docs/html/v2/WaterCycle/reproducing_simulations/reproduction_table.html
-
 Creating reproduction scripts
 =============================
 
