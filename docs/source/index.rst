@@ -17,6 +17,7 @@ simulations.
 
    v2/index
    SCREAMv0/index
+   SCREAMv1/index
 
 
 .. Indices and tables
