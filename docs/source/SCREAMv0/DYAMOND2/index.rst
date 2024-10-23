@@ -5,6 +5,7 @@ The DYAMOND2 simulation campaign using SCREAMv0 that was submitted to the `DYAMO
 
 If you use data from this simulation campaign, please cite the following overview
 manuscript:
+
 * `Caldwell et al. 2021 (JAMES) <https://doi.org/10.1029/2021MS002544>`_ 
 
 .. toctree::
