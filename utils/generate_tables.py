@@ -11,7 +11,11 @@ def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
         output = "out.txt"
         if os.path.exists(output):
             os.remove(output)
-        os.system(f'(hsi "du {hpss_path}") 2>&1 | tee {output}')
+        try:
+            os.system(f'(hsi "du {hpss_path}") 2>&1 | tee {output}')
+        except Exception as e:
+            print(f"hsi failed: {e}")
+            return ("", "")
         num_bytes = "0"
         with open(output, "r") as f:
             for line in f:
@@ -189,14 +193,14 @@ def read_simulations(csv_file):
     return versions
 
 # Construct table display of simulations ###########################################
-def pad_cells(cells, col_divider, cell_paddings):
+def pad_cells(cells: List[str], col_divider: str, cell_paddings: List[int]) -> str:
     string = col_divider
     for i in range(len(cells)):
         string += " " + cells[i].ljust(cell_paddings[i] + 1) + col_divider
     string += "\n"
     return string
 
-def pad_cells_row_dividers(marker, cell_paddings):
+def pad_cells_row_dividers(marker: str, cell_paddings: List[int]) -> str:
     string = "+"
     for i in range(len(cell_paddings)):
         string += marker*(cell_paddings[i]+2) + "+"
@@ -226,9 +230,10 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
                     file_write.write(pad_cells(simulation.get_row(output_file), "|", cell_paddings))
                     file_write.write(pad_cells_row_dividers("-", cell_paddings))
 
-def construct_pages(csv_file, model_version, group_name):
+def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
+    # TODO: add proper subdirs and index.rst files in docs/
     generate_table(
         f"{model_version} {group_name} simulation table",
         resolutions,
@@ -236,16 +241,18 @@ def construct_pages(csv_file, model_version, group_name):
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
         [65, 15, 400, 80]
     )
-    generate_table(
-        f"{model_version} {group_name} reproduction table",
-        resolutions,
-        ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",],
-        f"../docs/source/{model_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
-        # TODO: The script boxes have to be 200 characters wide to fit in the links...
-        # This is unfortunate because the actual displayed text is quite short.
-        # https://github.com/E3SM-Project/e3sm_data_docs/issues/30 may fix this.
-        [65, 11, 34, 200, 200]
-    )
+    if include_reproduction_scripts:
+        generate_table(
+            f"{model_version} {group_name} reproduction table",
+            resolutions,
+            ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",],
+            f"../docs/source/{model_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
+            # TODO: The script boxes have to be 200 characters wide to fit in the links...
+            # This is unfortunate because the actual displayed text is quite short.
+            # https://github.com/E3SM-Project/e3sm_data_docs/issues/30 may fix this.
+            [65, 11, 34, 200, 200]
+        )
                     
 if __name__ == "__main__":
-    construct_pages("simulations.csv", "v2", "WaterCycle")
+    #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
+    construct_pages("simulations_v2_1.csv", "v2.1", "WaterCycle")
