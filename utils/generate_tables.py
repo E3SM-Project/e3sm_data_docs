@@ -37,16 +37,18 @@ def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
             hpss = ""
         return (data_size, hpss)
 
-def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, cmip_only: str) -> str:
-    if experiment and ensemble_num:
+def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, cmip_only: str, node: str) -> str:
+    if node == "cels.anl":
+        esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets=%7B%22source_id%22%3A%22{source_id}%22%2C%22experiment_id%22%3A%22{experiment}%22%2C%22variant_label%22%3A%22r{ensemble_num}i1p1f1%22%7D>`_"
+    elif experiment and ensemble_num:
         # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
         # remove v from model_version
-        esgf = f"`Native <https://esgf-node.llnl.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
+        esgf = f"`Native <https://esgf-node.{node}.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
         if experiment == 'hist-all-xGHG-xaer':
             experiment_id = 'hist-nat'
         else:
             experiment_id = experiment
-        esgf_cmip = f"`CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
+        esgf_cmip = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
         if cmip_only:
             esgf = esgf_cmip
         else:
@@ -87,15 +89,28 @@ class Simulation(object):
 
         self.ensemble_num = simulation_dict["ensemble_num"]
         self.cmip_only = simulation_dict["cmip_only"]
+        if "node" in simulation_dict.keys():
+            self.node = simulation_dict["node"]
+        else:
+            self.node = "llnl"
 
-        hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
+        if "." in self.model_version:
+            displayed_version: str = self.model_version.replace(".", "_")
+            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
+        else:
+            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
         self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
-        if self.resolution == "NARRM":
-            source_id = f"E3SM-{self.model_version[1:]}-0-{self.resolution}"
+        if (len(self.model_version) == 4) and (self.model_version[2] == "."):
+            source_id = f"E3SM-{self.model_version[1]}-{self.model_version[3]}"
+        elif (len (self.model_version) == 2):
+            if self.resolution == "NARRM":
+                source_id = f"E3SM-{self.model_version[1]}-0-{self.resolution}"
+            else:
+                source_id = f"E3SM-{self.model_version[1]}-0"
         else:
-            source_id = f"E3SM-{self.model_version[1:]}-0"
-        self.esgf = get_esgf(source_id, self.model_version, self.experiment, self.ensemble_num, self.cmip_only)
+            raise RuntimeError(f"Invalid model-version={self.model_version}")
+        self.esgf = get_esgf(source_id, self.model_version, self.experiment, self.ensemble_num, self.cmip_only, self.node)
 
         self.run_script_original = get_run_script_original(self.model_version, self.simulation_name)
         self.run_script_reproduction = get_run_script_reproduction(self.model_version, self.simulation_name)

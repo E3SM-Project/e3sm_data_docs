@@ -4,7 +4,7 @@ Simulation Data
 
 The E3SMv2.1 simulation data is available on **ESGF** and **NERSC HPSS**.
 
-The preferred retrieval method is **ESGF**. Native output is available at `ESGF <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_1>`_, and a subset of the data is reformatted to conform to CMIP conventions and submmited to the CMIP6 ESGF archive (ESGF links are provided in the table below for published data).
+The preferred retrieval method is **ESGF**. Native output is available at `ESGF <https://esgf-node.cels.anl.gov/search/e3sm/?model_version=2_1>`_, and a subset of the data is reformatted to conform to CMIP conventions and submmited to the CMIP6 ESGF archive (ESGF links are provided in the table below for published data).
 
 Additionally, all native model output data has also been archived on **NERSC HPSS** using `zstash <https://e3sm-project.github.io/zstash>`_.
 
@@ -44,7 +44,10 @@ Note that this will be slow and inefficient since you'll have to download the ta
 
 **v2_1.LR** simulations data has been archived on NERSC HPSS under: ::
 
-  /home/projects/e3sm/www/WaterCycle/E3SMv2_1/LR
+  /home/projects/e3sm/www/WaterCycle/E3SMv2_1
+
+
+Original run scripts can be found `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2.1/original>`_.
 
 .. toctree::
    :maxdepth: 2

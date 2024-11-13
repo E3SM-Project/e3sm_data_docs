@@ -16,8 +16,10 @@ simulations.
    :caption: Contents:
 
    v2/index
+   v2.1/index
    SCREAMv0/index
    SCREAMv1/index
+
 
 
 .. Indices and tables
