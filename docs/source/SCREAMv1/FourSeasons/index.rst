@@ -7,7 +7,7 @@ about this simulation campaign see the citation below.
 If you use data from this simulation campaign, please cite the relevant overview
 manuscript.
 
-* Donahue et al. (JAMES, `https://doi.org/10.1029/2024MS004314`_) 
+* `Donahue et al. 2024 (JAMES) <https://doi.org/10.1029/2024MS004314>`_ 
 
 .. toctree::
    :maxdepth: 2
