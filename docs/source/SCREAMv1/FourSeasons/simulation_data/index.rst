@@ -26,7 +26,13 @@ For more information, refer to `zstash usage <https://e3sm-project.github.io/zst
 `web interface <https://portal.nersc.gov/archive/home/a/adonahue/www/>`_.
 Note that this will be slow and inefficient since you'll have to download the individual files.
 
+***************
+Original Runs Scripts 
+***************
+
 Scripts originally used to run SCREAMv1 FourSeasons simulations are available `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/SCREAMv1/original/>`_.
+
+**Warning, these will not run out-of-the-box**.  They are provided to give guidance for setting up a similar run.
 
 .. toctree::
    :maxdepth: 2
