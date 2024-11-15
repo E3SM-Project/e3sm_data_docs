@@ -13,7 +13,7 @@ To download simulation data locally on a NERSC machine, refer to NERSC's documen
 Note that this will be slow given the large file sizes.
 
 ***************
-Original Runs Scripts 
+Original Run Scripts 
 ***************
 
 Scripts originally used to run SCREAMv0 DYAMOND2 simulations are available `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/SCREAMv0/original/>`_.
