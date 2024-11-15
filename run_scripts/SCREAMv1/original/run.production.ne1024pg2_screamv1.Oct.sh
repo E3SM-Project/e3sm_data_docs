@@ -5,11 +5,23 @@
 # Description:
 #
 # Submission script used for a 40-day ne1024pg2
-# simulation with the DYAMOND2 configuration.
+# simulation with the October configuration.
 #
+# All versions of the code used for FourSeasons
+# simulations can be found at:
+#
+# https://github.com/AaronDonahue/scream/releases
+#
+# Individual Hashes for versions:
+#
+#   Full Runs:    78d6bb1f8086b5aa1c13efa879ac36ea8d3c23f5
+#   SHOC Tuning:  793dde7b0f45a772a641993fb4ce32a1578a214a
+#   TMS:          a718a526952797af3adf08304f7d0561bc87acc7
+#   Cloud Tuning: 7ab7ecaaa8d36bc908a79aa9d5d9cdd976fc1e1f
 #==============================================#
 
 ## Location of eamxx codebase
+# NOTE TO USER: See above notes about which version of the code to use.
 eamxx_src=~/Code/scream
 ## Location of eamxx output control files
 eamxx_out_files_root=~/Code/scream-docs
