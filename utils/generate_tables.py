@@ -11,7 +11,11 @@ def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
         output = "out.txt"
         if os.path.exists(output):
             os.remove(output)
-        os.system(f'(hsi "du {hpss_path}") 2>&1 | tee {output}')
+        try:
+            os.system(f'(hsi "du {hpss_path}") 2>&1 | tee {output}')
+        except Exception as e:
+            print(f"hsi failed: {e}")
+            return ("", "")
         num_bytes = "0"
         with open(output, "r") as f:
             for line in f:
@@ -33,16 +37,18 @@ def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
             hpss = ""
         return (data_size, hpss)
 
-def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, cmip_only: str) -> str:
-    if experiment and ensemble_num:
+def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, cmip_only: str, node: str) -> str:
+    if node == "cels.anl":
+        esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets=%7B%22source_id%22%3A%22{source_id}%22%2C%22experiment_id%22%3A%22{experiment}%22%2C%22variant_label%22%3A%22r{ensemble_num}i1p1f1%22%7D>`_"
+    elif experiment and ensemble_num:
         # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
         # remove v from model_version
-        esgf = f"`Native <https://esgf-node.llnl.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
+        esgf = f"`Native <https://esgf-node.{node}.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
         if experiment == 'hist-all-xGHG-xaer':
             experiment_id = 'hist-nat'
         else:
             experiment_id = experiment
-        esgf_cmip = f"`CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
+        esgf_cmip = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
         if cmip_only:
             esgf = esgf_cmip
         else:
@@ -83,15 +89,28 @@ class Simulation(object):
 
         self.ensemble_num = simulation_dict["ensemble_num"]
         self.cmip_only = simulation_dict["cmip_only"]
+        if "node" in simulation_dict.keys():
+            self.node = simulation_dict["node"]
+        else:
+            self.node = "llnl"
 
-        hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
+        if "." in self.model_version:
+            displayed_version: str = self.model_version.replace(".", "_")
+            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
+        else:
+            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
         self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
-        if self.resolution == "NARRM":
-            source_id = f"E3SM-{self.model_version[1:]}-0-{self.resolution}"
+        if (len(self.model_version) == 4) and (self.model_version[2] == "."):
+            source_id = f"E3SM-{self.model_version[1]}-{self.model_version[3]}"
+        elif (len (self.model_version) == 2):
+            if self.resolution == "NARRM":
+                source_id = f"E3SM-{self.model_version[1]}-0-{self.resolution}"
+            else:
+                source_id = f"E3SM-{self.model_version[1]}-0"
         else:
-            source_id = f"E3SM-{self.model_version[1:]}-0"
-        self.esgf = get_esgf(source_id, self.model_version, self.experiment, self.ensemble_num, self.cmip_only)
+            raise RuntimeError(f"Invalid model-version={self.model_version}")
+        self.esgf = get_esgf(source_id, self.model_version, self.experiment, self.ensemble_num, self.cmip_only, self.node)
 
         self.run_script_original = get_run_script_original(self.model_version, self.simulation_name)
         self.run_script_reproduction = get_run_script_reproduction(self.model_version, self.simulation_name)
@@ -189,14 +208,14 @@ def read_simulations(csv_file):
     return versions
 
 # Construct table display of simulations ###########################################
-def pad_cells(cells, col_divider, cell_paddings):
+def pad_cells(cells: List[str], col_divider: str, cell_paddings: List[int]) -> str:
     string = col_divider
     for i in range(len(cells)):
         string += " " + cells[i].ljust(cell_paddings[i] + 1) + col_divider
     string += "\n"
     return string
 
-def pad_cells_row_dividers(marker, cell_paddings):
+def pad_cells_row_dividers(marker: str, cell_paddings: List[int]) -> str:
     string = "+"
     for i in range(len(cell_paddings)):
         string += marker*(cell_paddings[i]+2) + "+"
@@ -226,9 +245,10 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
                     file_write.write(pad_cells(simulation.get_row(output_file), "|", cell_paddings))
                     file_write.write(pad_cells_row_dividers("-", cell_paddings))
 
-def construct_pages(csv_file, model_version, group_name):
+def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
+    # TODO: add proper subdirs and index.rst files in docs/
     generate_table(
         f"{model_version} {group_name} simulation table",
         resolutions,
@@ -236,16 +256,18 @@ def construct_pages(csv_file, model_version, group_name):
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
         [65, 15, 400, 80]
     )
-    generate_table(
-        f"{model_version} {group_name} reproduction table",
-        resolutions,
-        ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",],
-        f"../docs/source/{model_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
-        # TODO: The script boxes have to be 200 characters wide to fit in the links...
-        # This is unfortunate because the actual displayed text is quite short.
-        # https://github.com/E3SM-Project/e3sm_data_docs/issues/30 may fix this.
-        [65, 11, 34, 200, 200]
-    )
+    if include_reproduction_scripts:
+        generate_table(
+            f"{model_version} {group_name} reproduction table",
+            resolutions,
+            ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",],
+            f"../docs/source/{model_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
+            # TODO: The script boxes have to be 200 characters wide to fit in the links...
+            # This is unfortunate because the actual displayed text is quite short.
+            # https://github.com/E3SM-Project/e3sm_data_docs/issues/30 may fix this.
+            [65, 11, 34, 200, 200]
+        )
                     
 if __name__ == "__main__":
-    construct_pages("simulations.csv", "v2", "WaterCycle")
+    #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
+    construct_pages("simulations_v2_1.csv", "v2.1", "WaterCycle")
