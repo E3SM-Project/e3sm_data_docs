@@ -2,11 +2,14 @@
 Simulation Data 
 ***************
 
+
+
+Instructions
+************
+
 The SCREAMv0 simulation data is available on **NERSC HPSS**.
 
-**If you have an account on NERSC**, you can retrieve the data locally or remotely using Globus.
-
-To download simulation data locally on a NERSC machine, refer to NERSC's documentation `here <https://docs.nersc.gov/filesystems/archive/#hsi-commands>`_.
+**If you have an account on NERSC**, you can retrieve the data locally or remotely using Globus. To download simulation data locally on a NERSC machine, refer to NERSC's documentation `here <https://docs.nersc.gov/filesystems/archive/#hsi-commands>`_.
 
 **If you do not have access to NERSC**, you can download simulation data directly through the  NERSC HPSS
 `web interface <https://portal.nersc.gov/archive/home/t/terai/www/SCREAM/SCREAMv0.SCREAM-DY2.ne1024pg2.20201127>`_.
