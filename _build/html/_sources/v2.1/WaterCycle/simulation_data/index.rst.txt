@@ -4,7 +4,7 @@ Simulation Data
 
 The E3SMv2.1 simulation data is available on **ESGF** and **NERSC HPSS**.
 
-The preferred retrieval method is **ESGF**. Native output is available at `ESGF <https://esgf-node.cels.anl.gov/search?project=CMIP6&activeFacets=%7B%22source_id%22%3A%22E3SM-2-1%22%7D>`_, and a subset of the data is reformatted to conform to CMIP conventions and submmited to the CMIP6 ESGF archive (ESGF links are provided in the table below for published data).
+The data is reformatted to conform to CMIP conventions and was submmited to the CMIP6 ESGF archive. (ESGF links are provided in the table below for published data).
 
 Additionally, all native model output data has also been archived on **NERSC HPSS** using `zstash <https://e3sm-project.github.io/zstash>`_.
 
