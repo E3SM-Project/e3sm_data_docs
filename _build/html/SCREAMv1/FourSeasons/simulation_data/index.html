@@ -47,7 +47,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">SCREAMv1</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">SCREAMv1 Four Seasons</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Simulation Data</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="simulation_table.html">SCREAMv1 Four-Seasons (2024) simulation table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#original-run-scripts">Original Run Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table-of-simulation-data">Table of simulation data</a></li>
 </ul>
 </li>
 </ul>
@@ -84,32 +86,27 @@
              
   <section id="simulation-data">
 <h1>Simulation Data<a class="headerlink" href="#simulation-data" title="Permalink to this heading"></a></h1>
-<p>The SCREAMv1 FourSeasons simulation data is available on <strong>NERSC HPSS</strong>.</p>
-<p><strong>If you have an account on NERSC</strong>, you can retrieve the data locally or remotely using Globus.</p>
-<p>To download simulation data locally on a NERSC machine:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="n">below</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>To download simulation data remotely using the zstash Globus interface:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=</span><span class="n">globus</span><span class="p">:</span><span class="o">//</span><span class="n">nersc</span><span class="o">/&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="n">below</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=</span><span class="n">globus</span><span class="p">:</span><span class="o">//</span><span class="mi">9</span><span class="n">cd89cfd</span><span class="o">-</span><span class="mi">6</span><span class="n">d04</span><span class="o">-</span><span class="mf">11e5</span><span class="o">-</span><span class="n">ba46</span><span class="o">-</span><span class="mi">22000</span><span class="n">b92c6ec</span><span class="o">/&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="n">below</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Note that the data management tool <a class="reference external" href="https://github.com/E3SM-Project/zstash">zstash</a> is available from the <a class="reference external" href="https://github.com/E3SM-Project/e3sm-unified">E3SM-Unified</a> conda environment.</p>
-<p>For more information, refer to <a class="reference external" href="https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract">zstash usage</a>.</p>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading"></a></h2>
+<p>The SCREAMv1 FourSeasons simulation data are available on <strong>NERSC HPSS</strong>.</p>
+<p><strong>If you have an account on NERSC</strong>, you can retrieve the data locally or remotely using Globus. To download simulation data locally on a NERSC machine, refer to NERSC’s documentation <a class="reference external" href="https://docs.nersc.gov/filesystems/archive/#hsi-commands">here</a>.</p>
 <p><strong>If you do not have access to NERSC</strong>, you can download simulation data directly through the  NERSC HPSS
 <a class="reference external" href="https://portal.nersc.gov/archive/home/a/adonahue/www/">web interface</a>.
-Note that this will be slow and inefficient since you’ll have to download the individual files.</p>
+Note that this will be slow given the large file sizes.</p>
+</section>
+<section id="original-run-scripts">
+<h2>Original Run Scripts<a class="headerlink" href="#original-run-scripts" title="Permalink to this heading"></a></h2>
 <p>Scripts originally used to run SCREAMv1 FourSeasons simulations are available <a class="reference external" href="https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/SCREAMv1/original/">here</a>.</p>
+<p><strong>Warning, these will not run out-of-the-box</strong>.  They are provided to give guidance for setting up a similar run.</p>
+</section>
+<section id="table-of-simulation-data">
+<h2>Table of simulation data<a class="headerlink" href="#table-of-simulation-data" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="simulation_table.html">SCREAMv1 Four-Seasons (2024) simulation table</a></li>
 </ul>
 </div>
+</section>
 </section>
 
 
