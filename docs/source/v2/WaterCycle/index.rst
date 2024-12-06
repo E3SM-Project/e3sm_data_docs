@@ -21,8 +21,8 @@ manuscripts.
 
 * For v2.LR Large Ensemble simulations:
 
-  * Fasullo et al. (J. Clim, in review as of Oct 2023)
-  * Fasullo et al. (Earth Sys. Dyn., in review as of Oct 2023)
+  * Fasullo et al. (J. Clim, `<https://doi.org/10.1175/JCLI-D-23-0454.1>`_)
+  * Fasullo et al. (Earth Sys. Dyn., `<https://doi.org/10.5194/egusphere-2023-2310>`_)
 
 .. toctree::
    :maxdepth: 2
