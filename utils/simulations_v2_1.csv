@@ -1,4 +1,7 @@
 model_version, group, resolution, category, simulation_name,    machine, checksum, experiment, ensemble_num, cmip_only, node,
+v2.1, BGC,        LR, DECK        v2_1.LR.land-historical-transient,
+v2.1, BGC,        LR, DECK        v2.LR.BGC-LNDATM.SPINUPp,
+v2.1, BGC,        LR, DECK        v2.1.LR.land-atm-historical-trainsient,
 v2.1, WaterCycle, LR, DECK,       v2_1.LR.piControl,            chrysalis, ebc5565e182e8b1cc887c185ca3eb144, piControl,    1, cmip_only, cels.anl,
 v2.1, WaterCycle, LR, DECK,       v2_1.LR.1pctCO2_0101,         chrysalis, b7676ccc791941d1bdadde05c59d70b0, 1pctCO2,      1, cmip_only, cels.anl,
 v2.1, WaterCycle, LR, DECK,       v2_1.LR.abrupt-4xCO2_0101,    chrysalis, fe50274534774678d55cb320412d1667, abrupt-4xCO2, 1, cmip_only, cels.anl,

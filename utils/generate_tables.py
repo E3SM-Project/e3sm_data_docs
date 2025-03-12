@@ -270,4 +270,5 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
                     
 if __name__ == "__main__":
     #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
-    construct_pages("simulations_v2_1.csv", "v2.1", "WaterCycle")
+    #construct_pages("simulations_v2_1.csv", "v2.1", "WaterCycle")
+    construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
