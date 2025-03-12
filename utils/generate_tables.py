@@ -178,6 +178,8 @@ def read_simulations(csv_file):
                 simulation_dict = {}
                 for i in range(len(header)):
                     label = header[i]
+                    if len(row) != len(header):
+                        raise RuntimeError(f"header has {len(header)} labels, but row has {len(row)} entries")
                     simulation_dict[label] = row[i].strip()
                 model_version_name = simulation_dict["model_version"]
                 group_name = simulation_dict["group"]
