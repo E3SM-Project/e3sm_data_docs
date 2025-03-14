@@ -2,7 +2,7 @@
 Simulation Data 
 ***************
 
-The E3SMv2.1 simulation data is available on **ESGF** and **NERSC HPSS**.
+The E3SMv2.1 simulation data is available on **ESGF** and **NERSC HPSS**. Please note that the BGC numbering system gives ``v2.1`` simulations a prefix of ``v2``.
 
 The data is reformatted to conform to CMIP conventions and was submmited to the CMIP6 ESGF archive. (ESGF links are provided in the table below for published data).
 
@@ -22,7 +22,7 @@ or ::
 
    zstash extract --hpss=globus://9cd89cfd-6d04-11e5-ba46-22000b92c6ec/<HPSS path below>
 
-Note that the data management tool `zstash <https://github.com/E3SM-Project/zstash>`_ is available from the `E3SM-Unified <https://github.com/E3SM-Project/e3sm-unified>`_ conda environment. An example of retrieving all **eam.h0** (monthly atmosphere output files) between **years 0030 and 0049** for the v2_1.LR.piControl simulation at NERSC locally is demonstrated as below in two steps:
+Note that the data management tool `zstash <https://github.com/E3SM-Project/zstash>`_ is available from the `E3SM-Unified <https://github.com/E3SM-Project/e3sm-unified>`_ conda environment. An example of retrieving all **elm.h0** (monthly land output files) between **years 1930 and 1949** for the v2.LR.BGC-LNDATM.CONTRL simulation at NERSC locally is demonstrated as below in two steps:
 
 1. To activate E3SM-Unified environment by:
    ::
@@ -32,14 +32,14 @@ Note that the data management tool `zstash <https://github.com/E3SM-Project/zsta
 2. To retrieve files with zstash command:
    ::
 
-    zstash extract --hpss=/home/projects/e3sm/www/WaterCycle/E3SMv2_1/v2_1.LR.piControl "*.eam.h0.00[3-4]?-??.nc"
+    zstash extract --hpss=/home/projects/e3sm/www/BGC/E3SMv2_1/v2.LR.BGC-LNDATM.CONTRL/ "*.elm.h0.19[3-4]?-??.nc"
 
 
 For more information, refer to `zstash usage <https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract>`_. 
 
 
 **If you do not have access to NERSC**, you can download simulation data directly through the  NERSC HPSS
-`web interface <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2_1>`_.
+`web interface <https://portal.nersc.gov/archive/home/projects/e3sm/www/BGC/E3SMv2_1>`_.
 Note that this will be slow and inefficient since you'll have to download the tar files.
 
 **v2_1.LR** simulations data has been archived on NERSC HPSS under: ::
