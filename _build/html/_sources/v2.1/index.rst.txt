@@ -5,4 +5,5 @@ v2.1
    :maxdepth: 2
    :caption: Contents:
 
+   BGC/index
    WaterCycle/index
