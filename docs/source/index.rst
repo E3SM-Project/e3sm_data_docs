@@ -15,6 +15,7 @@ simulations.
    :maxdepth: 2
    :caption: Contents:
 
+   v1/index
    v2/index
    v2.1/index
    SCREAMv0/index

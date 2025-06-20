@@ -5,6 +5,10 @@ import requests
 from collections import OrderedDict
 from typing import List, Tuple
 
+# Make edits on Perlmutter so HPSS is available.
+# TODO: update this file!!!
+# TODO: update HPSS paths in v1 csv 
+
 # Functions to compute fields for simulations ###########################################
 def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
         """Get the data size in TB"""
