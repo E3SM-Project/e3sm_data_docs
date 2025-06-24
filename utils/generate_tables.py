@@ -3,11 +3,7 @@ import os
 import re
 import requests
 from collections import OrderedDict
-from typing import List, Tuple
-
-# Make edits on Perlmutter so HPSS is available.
-# TODO: update this file!!!
-# TODO: update HPSS paths in v1 csv 
+from typing import Dict, List, Tuple
 
 # Functions to compute fields for simulations ###########################################
 def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
@@ -41,22 +37,25 @@ def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
             hpss = ""
         return (data_size, hpss)
 
-def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, cmip_only: str, node: str) -> str:
+def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, link_type: str, node: str) -> str:
+    esgf: str
     if node == "cels.anl":
         esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets=%7B%22source_id%22%3A%22{source_id}%22%2C%22experiment_id%22%3A%22{experiment}%22%2C%22variant_label%22%3A%22r{ensemble_num}i1p1f1%22%7D>`_"
     elif experiment and ensemble_num:
         # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
-        # remove v from model_version
-        esgf = f"`Native <https://esgf-node.{node}.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
+        # Note that `[1:]`` removes `v` from `model_version`
+        esgf_native: str = f"`Native <https://esgf-node.{node}.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
         if experiment == 'hist-all-xGHG-xaer':
             experiment_id = 'hist-nat'
         else:
             experiment_id = experiment
-        esgf_cmip = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
-        if cmip_only:
+        esgf_cmip: str = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
+        if link_type == "cmip":
             esgf = esgf_cmip
+        elif link_type == "native":
+            esgf = esgf_native
         else:
-            esgf = esgf_cmip + ', ' + esgf
+            esgf = esgf_cmip + ', ' + esgf_native
     else:
         esgf = ""
     return esgf
@@ -92,7 +91,13 @@ class Simulation(object):
         self.experiment = simulation_dict["experiment"]
 
         self.ensemble_num = simulation_dict["ensemble_num"]
-        self.cmip_only = simulation_dict["cmip_only"]
+        self.link_type = simulation_dict["link_type"]
+
+        if "hpss_path" in simulation_dict:
+            # If `hpss_path` is specified, then it's a non-standard path
+            hpss_path = simulation_dict["hpss_path"]
+        else:
+            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
         if "node" in simulation_dict.keys():
             self.node = simulation_dict["node"]
         else:
@@ -114,7 +119,7 @@ class Simulation(object):
                 source_id = f"E3SM-{self.model_version[1]}-0"
         else:
             raise RuntimeError(f"Invalid model-version={self.model_version}")
-        self.esgf = get_esgf(source_id, self.model_version, self.experiment, self.ensemble_num, self.cmip_only, self.node)
+        self.esgf = get_esgf(source_id, self.model_version, self.experiment, self.ensemble_num, self.link_type, self.node)
 
         self.run_script_original = get_run_script_original(self.model_version, self.simulation_name)
         self.run_script_reproduction = get_run_script_reproduction(self.model_version, self.simulation_name)
@@ -167,12 +172,15 @@ class ModelVersion(object):
         self.groups.update([(group.name, group)])
 
 # Construct simulations ###########################################
+
 def read_simulations(csv_file):
     # model_version > group > resolution > category > simulation_name, 
     versions: OrderedDict[str: ModelVersion] = OrderedDict()
     with open(csv_file, newline='') as opened_file:
         reader = csv.reader(opened_file)
         header: List[str] = []
+        simulation_dicts: List[Dict[str, str]] = []
+        # First, just set up the dictionary, to make sure all the necessary data is available.
         for row in reader:
             # Get labels
             if header == []:
@@ -183,40 +191,48 @@ def read_simulations(csv_file):
                 for i in range(len(header)):
                     label = header[i]
                     if len(row) != len(header):
-                        raise RuntimeError(f"header has {len(header)} labels, but row has {len(row)} entries")
+                        raise RuntimeError(f"header has {len(header)} labels, but row={row} has {len(row)} entries")
                     simulation_dict[label] = row[i].strip()
-                model_version_name = simulation_dict["model_version"]
-                group_name = simulation_dict["group"]
-                resolution_name = simulation_dict["resolution"]
-                category_name = simulation_dict["category"]
-                if model_version_name not in versions:
-                    v = ModelVersion(model_version_name)
-                    versions.update([(model_version_name, v)])
-                else:
-                    v = versions[model_version_name]
-                if group_name not in v.groups:
-                    g = Group(group_name)
-                    v.groups.update([(group_name, g)])
-                else:
-                    g = v.groups[group_name]
-                if resolution_name not in g.resolutions:
-                    r = Resolution(resolution_name)
-                    g.resolutions.update([(resolution_name, r)])
-                else:
-                    r = g.resolutions[resolution_name]
-                if category_name not in r.categories:
-                    c = Category(category_name)
-                    r.categories.update([(category_name, c)])
-                else:
-                    c = r.categories[category_name]
-                s = Simulation(simulation_dict)
-                c.simulations.update([(s.simulation_name, s)])
+                if "cmip_only" in simulation_dict:
+                    simulation_dict["link_type"] = "cmip"
+                simulation_dicts.append(simulation_dict)
+        # Now, that we have valid dictionaries for each simulation, let's construct objects
+        for simulation_dict in simulation_dicts:
+            model_version_name = simulation_dict["model_version"]
+            group_name = simulation_dict["group"]
+            resolution_name = simulation_dict["resolution"]
+            category_name = simulation_dict["category"]
+            if model_version_name not in versions:
+                v = ModelVersion(model_version_name)
+                versions.update([(model_version_name, v)])
+            else:
+                v = versions[model_version_name]
+            if group_name not in v.groups:
+                g = Group(group_name)
+                v.groups.update([(group_name, g)])
+            else:
+                g = v.groups[group_name]
+            if resolution_name not in g.resolutions:
+                r = Resolution(resolution_name)
+                g.resolutions.update([(resolution_name, r)])
+            else:
+                r = g.resolutions[resolution_name]
+            if category_name not in r.categories:
+                c = Category(category_name)
+                r.categories.update([(category_name, c)])
+            else:
+                c = r.categories[category_name]
+            s = Simulation(simulation_dict)
+            c.simulations.update([(s.simulation_name, s)])
     return versions
 
 # Construct table display of simulations ###########################################
 def pad_cells(cells: List[str], col_divider: str, cell_paddings: List[int]) -> str:
     string = col_divider
     for i in range(len(cells)):
+        if len(cells[i]) > cell_paddings[i]:
+            s = f"WARNING: cell padding={cell_paddings[i]} is insufficient for {cells[i]} of length {len(cells[i])}"
+            raise RuntimeError(s)
         string += " " + cells[i].ljust(cell_paddings[i] + 1) + col_divider
     string += "\n"
     return string
@@ -260,7 +276,7 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
         resolutions,
         ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path"],
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
-        [65, 15, 400, 80]
+        [85, 15, 400, 130]
     )
     if include_reproduction_scripts:
         generate_table(
@@ -277,4 +293,5 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
 if __name__ == "__main__":
     #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
     #construct_pages("simulations_v2_1.csv", "v2.1", "WaterCycle")
-    construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
+    #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
+    construct_pages("simulations_v1_water_cycle.csv", "v1", "WaterCycle")
