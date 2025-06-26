@@ -294,4 +294,8 @@ if __name__ == "__main__":
     #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
     #construct_pages("simulations_v2_1.csv", "v2.1", "WaterCycle")
     #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
+    # 
+    # Sources for v1 data
+    # https://acme-climate.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
+    # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
     construct_pages("simulations_v1_water_cycle.csv", "v1", "WaterCycle")

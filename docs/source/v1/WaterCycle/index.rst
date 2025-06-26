@@ -16,26 +16,53 @@ This model configuration is described in
 `“v1 1 deg CMIP” <https://e3sm.org/model/scientifically-validated-configurations/v1-configurations/v1-1-deg-cmip6/?preview=true>`_ page 
 in `Scientifically Validated Configurations <https://e3sm.org/model/scientifically-validated-configurations/>`_.
 
-Reference Paper:
-
 For more details, 
-refer to `Coupled E3SM v1 Model Overview <https://e3sm.org/?p=5470>`_ or 
-directly to the scientific paper (`doi:10.1029/2018MS001603 <https://doi.org/10.1029/2018MS001603>`_), 
-which documents the E3SM model version 1, 
-its almost 3000 years of DECK simulations and discusses the model’s performance.
+refer to `Coupled E3SM v1 Model Overview <https://e3sm.org/?p=5470>`_ or to the reference papers:
+
+* *The DOE E3SM Coupled Model Version 1: Overview and Evaluation at Standard Resolution* `doi: 10.1029/2018MS001603 <https://doi.org/10.1029/2018MS001603>_`
+* *Description of historical and future projection simulations by the global coupled E3SMv1.0 model as used in CMIP6* `doi:10.5194/gmd-15-3941-2022 <https://doi.org/10.5194/gmd-15-3941-2022>_`
+* *The DOE E3SM Coupled Model Version 1: Description and Results at High Resolution* `doi:10.1029/2019MS001870 <https://doi.org/10.1029/2019MS001870>`_
 
 Experiments:
 
-The datasets include the following experiments:
+The datasets include the following experiments.
 
-* piControl – Pre-industrial control (piControl) simulation (500 years)
-* historical – Historical simulations 1850-2014 (165 years) 5 ensembles
-* 1pctCO2 – Prescribed 1% / year CO2 increase (1pctCO2) simulation (150 years)
-* abrupt-4xCO2 – Abrupt CO2 quadrupling (abrupt-4xCO2) simulation (150 years)
-* abrupt-4xCO2-ext300yrs – Abrupt CO2 quadrupling (abrupt-4xCO2) simulation (140-300 years)
-* amip – atmosphere only AMIP simulation 1870-2014 (145 years) 3 ensembles
-* amip_1850_allF – atmosphere only AMIP with all forcings held at 1850 values,  1870-2014 (145 years) 3 ensembles
-* amip_1850_aeroF – atmosphere only AMIP with all aerosol forcings held at 1850 values,  1870-2014 (145 years) 3 ensembles
+For low-resolution:
+
+* DECK
+
+  * piControl – Pre-industrial control (piControl) simulation (500 years)
+  * 1pctCO2 – Prescribed 1% / year CO2 increase (1pctCO2) simulation (150 years)
+  * abrupt-4xCO2 – Abrupt CO2 quadrupling (abrupt-4xCO2) simulation (150 years)
+  * abrupt-4xCO2-ext300yrs – Abrupt CO2 quadrupling (abrupt-4xCO2) simulation (140-300 years)
+
+* Historical
+
+  * historical – Historical simulations 1850-2014 (165 years) 5 ensembles
+
+* AMIP
+
+  * amip – atmosphere only AMIP simulation 1870-2014 (145 years) 3 ensembles
+  * amip_1850_allF – atmosphere only AMIP with all forcings held at 1850 values,  1870-2014 (145 years) 3 ensembles
+  * amip_1850_aeroF – atmosphere only AMIP with all aerosol forcings held at 1850 values,  1870-2014 (145 years) 3 ensembles
+
+* DAMIP
+
+  * damip_hist-GHG 3 ensembles
+
+* Projection
+
+  * ssp5-8.5 5 ensembles
+  * damip_ssp5-8.5-GHG 3 ensembles
+
+For high-resolution:
+
+
+TODO: Find remaining original run scripts
+TODO: Add descriptions for added LR simulations above
+TODO: Correctly categorize HR simulations
+TODO: Determine correct CMIP/Native Links
+
 
 .. toctree::
    :maxdepth: 2
