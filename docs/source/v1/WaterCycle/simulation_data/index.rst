@@ -2,7 +2,7 @@
 Simulation Data 
 ***************
 
-The E3SMv1 simulation data is available on **ESGF** and **NERSC HPSS**.
+The E3SMv1 simulation data is available on **NERSC HPSS**.
 
 All native model output data has also been archived on **NERSC HPSS** using `zstash <https://e3sm-project.github.io/zstash>`_.
 
