@@ -39,7 +39,9 @@ def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
 
 def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: str, link_type: str, node: str) -> str:
     esgf: str
-    if node == "cels.anl":
+    if link_type == "none":
+        esgf = ""
+    elif node == "cels.anl":
         esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets=%7B%22source_id%22%3A%22{source_id}%22%2C%22experiment_id%22%3A%22{experiment}%22%2C%22variant_label%22%3A%22r{ensemble_num}i1p1f1%22%7D>`_"
     elif experiment and ensemble_num:
         # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
@@ -54,8 +56,10 @@ def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: 
             esgf = esgf_cmip
         elif link_type == "native":
             esgf = esgf_native
-        else:
+        elif link_type == "both":
             esgf = esgf_cmip + ', ' + esgf_native
+        else:
+            raise ValueError(f"Invalid link_type={link_type}")
     else:
         esgf = ""
     return esgf
@@ -193,8 +197,14 @@ def read_simulations(csv_file):
                     if len(row) != len(header):
                         raise RuntimeError(f"header has {len(header)} labels, but row={row} has {len(row)} entries")
                     simulation_dict[label] = row[i].strip()
-                if "cmip_only" in simulation_dict:
-                    simulation_dict["link_type"] = "cmip"
+                if "cmip_only" in simulation_dict.keys():
+                    # Backwards compatibility for v2, v2.1 csv files
+                    if simulation_dict["cmip_only"] == "":
+                        simulation_dict["link_type"] = "both"
+                    elif simulation_dict["cmip_only"] == "cmip_only":
+                        simulation_dict["link_type"] = "cmip"
+                    else:
+                        raise ValueError(f"Invalid cmip_only={simulation_dict['cmip_only']}")
                 simulation_dicts.append(simulation_dict)
         # Now, that we have valid dictionaries for each simulation, let's construct objects
         for simulation_dict in simulation_dicts:
