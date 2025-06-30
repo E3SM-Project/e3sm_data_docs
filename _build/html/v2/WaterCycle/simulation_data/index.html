@@ -41,6 +41,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../v1/index.html">v1</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">v2</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">E3SMv2 (Water Cycle)</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Simulation Data</a><ul>
@@ -90,11 +91,11 @@
 <p>Additionally, all native model output data has also been archived on <strong>NERSC HPSS</strong> using <a class="reference external" href="https://e3sm-project.github.io/zstash">zstash</a>.</p>
 <p><strong>If you have an account on NERSC</strong>, you can retrieve the data locally or remotely using Globus.</p>
 <p>To download simulation data locally on a NERSC machine:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="n">below</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">table</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>To download simulation data remotely using the zstash Globus interface:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=</span><span class="n">globus</span><span class="p">:</span><span class="o">//</span><span class="n">nersc</span><span class="o">/&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="n">below</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=</span><span class="n">globus</span><span class="p">:</span><span class="o">//</span><span class="n">nersc</span><span class="o">/&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">table</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>or</p>
@@ -128,7 +129,7 @@ Note that this will be slow and inefficient since you’ll have to download the 
 </div>
 <p>Scripts to reproduce v2 simulations are available <a class="reference external" href="https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/reproduce/">here</a>
 with specific instructions details in <cite>Reproducing Simulations</cite>.
-Original run scripts (the scripts that were originally used to create the simulations) have been archived here <a class="reference external" href="https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/original/">here</a>. These latter srcipts are provided for reference only.</p>
+Original run scripts (the scripts that were originally used to create the simulations) have been archived here <a class="reference external" href="https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/original/">here</a>. These latter scripts are provided for reference only.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>

@@ -12,11 +12,11 @@ Additionally, all native model output data has also been archived on **NERSC HPS
 
 To download simulation data locally on a NERSC machine: ::
 
-   zstash extract --hpss=<HPSS path below>
+   zstash extract --hpss=<HPSS path in table>
 
 To download simulation data remotely using the zstash Globus interface: ::
 
-   zstash extract --hpss=globus://nersc/<HPSS path below>
+   zstash extract --hpss=globus://nersc/<HPSS path in table>
 
 or ::
 
@@ -53,7 +53,7 @@ and **v2.NARRM** simulations data under: ::
 
 Scripts to reproduce v2 simulations are available `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/reproduce/>`_
 with specific instructions details in `Reproducing Simulations`.
-Original run scripts (the scripts that were originally used to create the simulations) have been archived here `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/original/>`_. These latter srcipts are provided for reference only.
+Original run scripts (the scripts that were originally used to create the simulations) have been archived here `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v2/original/>`_. These latter scripts are provided for reference only.
 
 .. toctree::
    :maxdepth: 2
