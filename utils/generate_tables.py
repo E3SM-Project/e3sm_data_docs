@@ -4,6 +4,7 @@ import re
 import requests
 from collections import OrderedDict
 from typing import Dict, List, Tuple
+import urllib.parse
 
 # Functions to compute fields for simulations ###########################################
 def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
@@ -41,6 +42,10 @@ def get_esgf(source_id: str, model_version: str, experiment: str, ensemble_num: 
     esgf: str
     if link_type == "none":
         esgf = ""
+    elif model_version == "v1":
+        human_readable_active_facets: str = f'{{"institution_id":"E3SM-Project","source_id":"E3SM-1-0","experiment_id":"{experiment}","variant_label":"r{ensemble_num}i1p1f1"}}'
+        url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
+        esgf = f"`CMIP <https://esgf-node.{node}.gov/search?project=CMIP6&activeFacets={url_active_facets}>`_"
     elif node == "cels.anl":
         esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets=%7B%22source_id%22%3A%22{source_id}%22%2C%22experiment_id%22%3A%22{experiment}%22%2C%22variant_label%22%3A%22r{ensemble_num}i1p1f1%22%7D>`_"
     elif experiment and ensemble_num:

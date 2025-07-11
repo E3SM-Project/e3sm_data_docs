@@ -1,4 +1,4 @@
-pr_num=59
+pr_num=60
 
 # Chrysalis
 #destination_dir=/lcrc/group/e3sm/public_html/diagnostic_output/$USER/data_docs_${pr_num}
