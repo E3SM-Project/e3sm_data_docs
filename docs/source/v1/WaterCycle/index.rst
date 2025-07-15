@@ -21,6 +21,7 @@ refer to `Coupled E3SM v1 Model Overview <https://e3sm.org/?p=5470>`_ or to the 
 
 * *The DOE E3SM Coupled Model Version 1: Overview and Evaluation at Standard Resolution* `doi: 10.1029/2018MS001603 <https://doi.org/10.1029/2018MS001603>`_
 * *Description of historical and future projection simulations by the global coupled E3SMv1.0 model as used in CMIP6* `doi:10.5194/gmd-15-3941-2022 <https://doi.org/10.5194/gmd-15-3941-2022>`_
+* *Ensemble Spread Behavior in Coupled Climate Models: Insights From the Energy Exascale Earth System Model Version 1 Large Ensemble* `doi:10.1029/2023MS003653 <https://doi.org/10.1029/2023MS003653>`_
 * *The DOE E3SM Coupled Model Version 1: Description and Results at High Resolution* `doi:10.1029/2019MS001870 <https://doi.org/10.1029/2019MS001870>`_
 
 Experiments:
@@ -49,6 +50,11 @@ For low-resolution:
 * DAMIP
 
   * damip_hist-GHG – greenhouse gases only, 3 ensemble members
+
+* LargeEnsemble
+
+  * historical - Historical simulations, 20 ensemble members
+  * ssp370 - future projection, 20 ensemble members
 
 * Projection
 
