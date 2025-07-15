@@ -16,6 +16,9 @@ def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
         try:
             if is_symlink:
                 # The `/*` expands symlinks on HSI!
+                # This will actually work fine even if it's not a symlink,
+                # but we needed to check for symlinks anyway to note "(symlink)" by the HPSS path,
+                # so we might as well handle the cases separately here.
                 os.system(f'(hsi "du {hpss_path}/*") 2>&1 | tee {output}')
             else:
                 os.system(f'(hsi "du {hpss_path}") 2>&1 | tee {output}')
@@ -65,15 +68,6 @@ def check_if_symlink(hpss_path: str) -> bool:
 
 
 def get_esgf(model_version: str, resolution: str, simulation_name: str, experiment: str, ensemble_num: str, link_type: str, node: str) -> str:
-    if (len(model_version) == 4) and (model_version[2] == "."):
-        source_id = f"E3SM-{model_version[1]}-{model_version[3]}"
-    elif (len (model_version) == 2):
-        if resolution == "NARRM":
-            source_id = f"E3SM-{model_version[1]}-0-{resolution}"
-        else:
-            source_id = f"E3SM-{model_version[1]}-0"
-    else:
-        raise RuntimeError(f"Invalid model-version={model_version}")
     esgf: str
     if link_type == "none":
         esgf = ""
@@ -89,27 +83,42 @@ def get_esgf(model_version: str, resolution: str, simulation_name: str, experime
         human_readable_active_facets: str = f'{{"institution_id":"{v1_institution_id}","source_id":"E3SM-1-0","experiment_id":"{experiment}","variant_label":"r{ensemble_num}{variant_suffix}"}}'
         url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
         esgf = f"`CMIP <https://esgf-node.{node}.gov/search?project=CMIP6&activeFacets={url_active_facets}>`_"
-    elif node == "cels.anl":
-        esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets=%7B%22source_id%22%3A%22{source_id}%22%2C%22experiment_id%22%3A%22{experiment}%22%2C%22variant_label%22%3A%22r{ensemble_num}i1p1f1%22%7D>`_"
-    elif experiment and ensemble_num:
-        # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
-        # Note that `[1:]`` removes `v` from `model_version`
-        esgf_native: str = f"`Native <https://esgf-node.{node}.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
-        if experiment == 'hist-all-xGHG-xaer':
-            experiment_id = 'hist-nat'
-        else:
-            experiment_id = experiment
-        esgf_cmip: str = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
-        if link_type == "cmip":
-            esgf = esgf_cmip
-        elif link_type == "native":
-            esgf = esgf_native
-        elif link_type == "both":
-            esgf = esgf_cmip + ', ' + esgf_native
-        else:
-            raise ValueError(f"Invalid link_type={link_type}")
     else:
-        esgf = ""
+        # v2, v2.1
+        # Determine source_id
+        if (len(model_version) == 4) and (model_version[2] == "."):
+            source_id = f"E3SM-{model_version[1]}-{model_version[3]}"
+        elif (len (model_version) == 2):
+            if resolution == "NARRM":
+                source_id = f"E3SM-{model_version[1]}-0-{resolution}"
+            else:
+                source_id = f"E3SM-{model_version[1]}-0"
+        else:
+            raise RuntimeError(f"Invalid model-version={model_version}")
+        # Determine esgf
+        if node == "cels.anl": # v2.1 only
+            human_readable_active_facets = f'{{"source_id":"{source_id}","experiment_id":"{experiment}","variant_label":"r{ensemble_num}i1p1f1"}}'
+            url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
+            esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets={url_active_facets}>`_"
+        elif experiment and ensemble_num:
+            # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
+            # Note that `[1:]`` removes `v` from `model_version`
+            esgf_native: str = f"`Native <https://esgf-node.{node}.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
+            if experiment == 'hist-all-xGHG-xaer':
+                experiment_id = 'hist-nat'
+            else:
+                experiment_id = experiment
+            esgf_cmip: str = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
+            if link_type == "cmip":
+                esgf = esgf_cmip
+            elif link_type == "native":
+                esgf = esgf_native
+            elif link_type == "both":
+                esgf = esgf_cmip + ', ' + esgf_native
+            else:
+                raise ValueError(f"Invalid link_type={link_type}")
+        else:
+            esgf = ""
     return esgf
 
 def get_run_script_original(model_version: str, simulation_name: str) -> str:
