@@ -43,23 +43,23 @@ For low-resolution:
 
 * AMIP
 
-  * amip – atmosphere only AMIP simulation 1870-2014 (145 years), 3 ensemble members
-  * amip_1850_allF – atmosphere only AMIP with all forcings held at 1850 values,  1870-2014 (145 years), 3 ensemble members
-  * amip_1850_aeroF – atmosphere only AMIP with all aerosol forcings held at 1850 values, 1870-2014 (145 years), 3 ensemble members
+  * amip – Atmosphere only AMIP simulation 1870-2014 (145 years), 3 ensemble members
+  * amip_1850_allF – Atmosphere only AMIP with all forcings held at 1850 values,  1870-2014 (145 years), 3 ensemble members
+  * amip_1850_aeroF – Atmosphere only AMIP with all aerosol forcings held at 1850 values, 1870-2014 (145 years), 3 ensemble members
 
 * DAMIP
 
-  * damip_hist-GHG – greenhouse gases only, 3 ensemble members
+  * damip_hist-GHG – Greenhouse gases only, 3 ensemble members
 
 * LargeEnsemble
 
   * historical - Historical simulations, 20 ensemble members
-  * ssp370 - future projection, 20 ensemble members
+  * ssp370 - Future projection, 20 ensemble members
 
 * Projection
 
-  * ssp5-8.5 – future projection, 5 ensemble members
-  * damip_ssp5-8.5-GHG – future projection with greenhouse gases only, 3 ensemble members
+  * ssp5-8.5 – Future projection, 5 ensemble members
+  * damip_ssp5-8.5-GHG – Future projection with greenhouse gases only, 3 ensemble members
 
 For high-resolution:
 
@@ -78,7 +78,7 @@ For high-resolution:
   * F2010-CMIP6-HR – 3 ensemble members
   * F2010C5-CMIP6 – 5 ensemble members. "nudgeUV" refers to U and V wind directions.
   * F2010LRtunedHR – 4 ensemble members
-  * A_WCYCLSSP585_CMIP6_HR – future projection, 1 ensemble member
+  * A_WCYCLSSP585_CMIP6_HR – Future projection, 1 ensemble member
 
 
 .. toctree::
