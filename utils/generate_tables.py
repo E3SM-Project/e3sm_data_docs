@@ -6,7 +6,7 @@ from collections import OrderedDict
 from typing import Dict, List, Tuple
 import urllib.parse
 
-# Functions to compute fields for simulations ###########################################
+# Functions to compute fields for simulations #################################
 def get_data_size_and_hpss(hpss_path: str) -> Tuple[str, str]:
         """Get the data size in TB"""
         is_symlink: bool = check_if_symlink(hpss_path)
@@ -139,7 +139,7 @@ def get_run_script_reproduction(model_version: str, simulation_name: str) -> str
         run_script_reproduction = ""
     return run_script_reproduction
 
-# Define simulations and their grouping ###########################################
+# Define simulations and their grouping #######################################
 class Simulation(object):
     def __init__(self, simulation_dict):
         self.model_version = simulation_dict["model_version"]
@@ -183,10 +183,20 @@ class Simulation(object):
         if not self.run_script_original:
             self.run_script_original = "N/A"
 
-    def get_row(self, output_file):
-        if output_file.endswith("simulation_table.rst"):
-            return [self.simulation_name, self.data_size, self.esgf, self.hpss]
-        elif output_file.endswith("reproduction_table.rst"):
+    def get_row(self, output_file, minimal_content: bool = False) -> List[str]:
+        if "simulation" in output_file:
+            row = [self.simulation_name, self.data_size, self.esgf, self.hpss]
+            if minimal_content:
+                match_object: re.Match = re.match("`.*<(.*)>`_", self.esgf)
+                if match_object:
+                    row[2] = match_object.group(1)  # Extract URL from the esgf link
+                if self.hpss.startswith("(symlink) "):
+                    # Remove symlink prefix for the HPSS path
+                    # Since we don't want that in the csv output,
+                    # which a computer reads.
+                    row[3] = row[3].replace("(symlink) ", "")
+            return row
+        elif "reproduction" in output_file:
             return [self.simulation_name, self.machine, self.checksum, self.run_script_reproduction, self.run_script_original]
         else:
             raise RuntimeError(f"Invalid output_file={output_file}")
@@ -223,7 +233,7 @@ class ModelVersion(object):
     def append(self, group):
         self.groups.update([(group.name, group)])
 
-# Construct simulations ###########################################
+# Construct simulations #######################################################
 
 def read_simulations(csv_file):
     # model_version > group > resolution > category > simulation_name, 
@@ -284,7 +294,18 @@ def read_simulations(csv_file):
             c.simulations.update([(s.simulation_name, s)])
     return versions
 
-# Construct table display of simulations ###########################################
+# Construct output csv ########################################################
+
+def construct_output_csv(resolutions: OrderedDict[str, Category], header_cells: List[str], output_file: str):
+    with open(output_file, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(header_cells)
+        for resolution in resolutions.values():
+            for category in resolution.categories.values():
+                for simulation in category.simulations.values():
+                    writer.writerow(simulation.get_row(output_file, minimal_content=True))
+
+# Construct table display of simulations ######################################
 def pad_cells(cells: List[str], col_divider: str, cell_paddings: List[int]) -> str:
     string = col_divider
     for i in range(len(cells)):
@@ -328,19 +349,25 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
 def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
+    header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path"]
+    construct_output_csv(resolutions, header_cells, f"../machine_readable_data/{model_version}_{group_name}_simulations.csv")
+    print(f"csv of the simulations will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_simulations.csv")
     # TODO: add proper subdirs and index.rst files in docs/
     generate_table(
         f"{model_version} {group_name} simulation table",
         resolutions,
-        ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path"],
+        header_cells,
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
         [85, 15, 400, 140]
     )
     if include_reproduction_scripts:
+        header_cells_reproduction: List[str] = ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",]
+        construct_output_csv(resolutions, header_cells_reproduction, f"../machine_readable_data/{model_version}_{group_name}_reproductions.csv")
+        print(f"csv of the reproductions will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_reproductions.csv")
         generate_table(
             f"{model_version} {group_name} reproduction table",
             resolutions,
-            ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",],
+            header_cells_reproduction,
             f"../docs/source/{model_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
             # TODO: The script boxes have to be 200 characters wide to fit in the links...
             # This is unfortunate because the actual displayed text is quite short.
@@ -356,4 +383,4 @@ if __name__ == "__main__":
     # Sources for v1 data
     # https://acme-climate.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
     # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
-    construct_pages("simulations_v1_water_cycle.csv", "v1", "WaterCycle")
+    construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
