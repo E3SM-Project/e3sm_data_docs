@@ -164,11 +164,19 @@ class Simulation(object):
         else:
             self.node = "llnl"
 
+        displayed_version: str
+        skip_resolution: bool = False
         if "." in self.model_version:
-            displayed_version: str = self.model_version.replace(".", "_")
+            displayed_version = self.model_version.replace(".", "_")
+            skip_resolution = True
+        else:
+            displayed_version = self.model_version
+        if self.group == "Cryosphere":
+            skip_resolution = True
+        if skip_resolution:
             hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
         else:
-            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
+            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.resolution}/{self.simulation_name}"
         self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
         self.esgf = get_esgf(self.model_version, self.resolution, self.simulation_name, self.experiment, self.ensemble_num, self.link_type, self.node)
@@ -407,5 +415,6 @@ if __name__ == "__main__":
     # Sources for v1 data
     # https://acme-climate.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
     # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
-    # construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
-    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+    construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
+    construct_pages("input/simulations_v1_cryosphere.csv", "v1", "Cryosphere")
+    # construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
