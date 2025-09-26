@@ -8,7 +8,7 @@ These E3SM simulations at standard resolution have been completed and the data i
 
 Data Resolution:
 
-The standard resolution configuration of E3SM v1.0 water cycle configuration has approximate horizontal resolution of 
+The standard resolution configuration of E3SM v1.0 cryosphere configuration has approximate horizontal resolution of 
 1 deg latitude by 1 deg longitude in atmosphere (110 km grid spacing), 
 with ocean and sea ice grid of 60 km in the mid-latitudes and 30 km at the equator and poles, 
 and river transport at 55 km horizontal resolution. 

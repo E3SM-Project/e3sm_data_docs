@@ -171,7 +171,7 @@ class Simulation(object):
             skip_resolution = True
         else:
             displayed_version = self.model_version
-        if self.group == "Cryosphere":
+        if self.group in ["BGC", "Cryosphere"]:
             skip_resolution = True
         if skip_resolution:
             hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
@@ -417,4 +417,5 @@ if __name__ == "__main__":
     # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
     construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
     construct_pages("input/simulations_v1_cryosphere.csv", "v1", "Cryosphere")
+    construct_pages("input/simulations_v1_bgc.csv", "v1", "BGC")
     # construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
