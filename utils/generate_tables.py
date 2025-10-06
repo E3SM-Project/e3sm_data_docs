@@ -324,6 +324,10 @@ def pad_cells_row_dividers(marker: str, cell_paddings: List[int]) -> str:
     return string
                     
 def generate_table(page_type: str, resolutions: OrderedDict[str, Category], header_cells: List[str], output_file: str, cell_paddings: List[int]):
+
+    # Create output directory if it doesn't exist
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+
     with open(output_file, "w") as file_write:
         # Page Title
         file_write.write("**********************************\n")
@@ -383,4 +387,5 @@ if __name__ == "__main__":
     # Sources for v1 data
     # https://acme-climate.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
     # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
-    construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
+    # construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
+    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
