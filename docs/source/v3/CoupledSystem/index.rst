@@ -14,6 +14,12 @@ manuscripts.
 
 For information on how to access and use the simulation data, see :doc:`../../v2/WaterCycle/simulation_data/index`.
 
+**Additional tip for users without NERSC access**: If you don't have access to zstash via a NERSC account, you can first download the ``index.db`` file and use sqlite to check the archive contents before downloading specific tar files: ::
+
+   sqlite3 index.db "SELECT tar,name,size from files;" > archive_contents.txt
+
+This will help you identify which tar files contain the data you need before downloading.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
