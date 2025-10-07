@@ -9,11 +9,13 @@ manuscripts.
 
 * For a general E3SMv3 overview and v3.LR simulations:
 
-  * [Citation to be added]
+  * Xie et al. (2025). The Energy Exascale Earth System Model Version 3. Part I: Overview of the Atmospheric Component.
+  * Golaz et al. (2025). The Energy Exascale Earth System Model Version 3. Part II: Overview of the Coupled system. Submitted to JAMES.
+
+For information on how to access and use the simulation data, see :doc:`../../v2/WaterCycle/simulation_data/index`.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    simulation_data/index
-   reproducing_simulations/index
