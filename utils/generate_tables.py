@@ -380,7 +380,7 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
         resolutions,
         header_cells,
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
-        [65, 15, 300, 120, 80]
+        [65, 15, 220, 120, 140]
     )
     if include_reproduction_scripts:
         header_cells_reproduction: List[str] = ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",]
