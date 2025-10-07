@@ -54,6 +54,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../v2.1/index.html">v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../v3/index.html">v3.LR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../SCREAMv0/index.html">SCREAMv0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../SCREAMv1/index.html">SCREAMv1</a></li>
 </ul>
@@ -119,6 +120,11 @@
 <p><strong>If you do not have access to NERSC</strong>, you can download simulation data directly through the  NERSC HPSS
 <a class="reference external" href="https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2">web interface</a>.
 Note that this will be slow and inefficient since you’ll have to download the tar files.</p>
+<p><strong>Tip for users without NERSC access</strong>: Before downloading large tar files, you can first download the <code class="docutils literal notranslate"><span class="pre">index.db</span></code> file and use sqlite to check the archive contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sqlite3</span> <span class="n">index</span><span class="o">.</span><span class="n">db</span> <span class="s2">&quot;SELECT tar,name,size from files;&quot;</span> <span class="o">&gt;</span> <span class="n">archive_contents</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>This will help you identify which specific tar files contain the data you need before downloading.</p>
 <p><strong>v2.LR</strong> simulations data has been archived on NERSC HPSS under:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">WaterCycle</span><span class="o">/</span><span class="n">E3SMv2</span><span class="o">/</span><span class="n">LR</span>
 </pre></div>
