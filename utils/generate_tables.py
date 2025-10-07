@@ -173,6 +173,9 @@ class Simulation(object):
 
         self.esgf = get_esgf(self.model_version, self.resolution, self.simulation_name, self.experiment, self.ensemble_num, self.link_type, self.node)
 
+        # Generate web interface URL from HPSS path
+        self.web_interface = self.get_web_interface_url()
+
         self.run_script_original = get_run_script_original(self.model_version, self.simulation_name)
         self.run_script_reproduction = get_run_script_reproduction(self.model_version, self.simulation_name)
         
@@ -183,9 +186,20 @@ class Simulation(object):
         if not self.run_script_original:
             self.run_script_original = "N/A"
 
+    def get_web_interface_url(self) -> str:
+        """Generate web interface URL from HPSS path"""
+        if self.hpss and self.data_size:
+            # Convert HPSS path to web interface URL
+            # /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piControl -> https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piControl
+            hpss_clean = self.hpss.replace("(symlink) ", "")  # Remove symlink prefix if present
+            # Use the full path - each simulation gets its own distinct URL
+            web_url = f"https://portal.nersc.gov/archive{hpss_clean}"
+            return f"`HPSS URL <{web_url}>`_"
+        return ""
+
     def get_row(self, output_file, minimal_content: bool = False) -> List[str]:
         if "simulation" in output_file:
-            row = [self.simulation_name, self.data_size, self.esgf, self.hpss]
+            row = [self.simulation_name, self.data_size, self.esgf, self.hpss, self.web_interface]
             if minimal_content:
                 match_object: re.Match = re.match("`.*<(.*)>`_", self.esgf)
                 if match_object:
@@ -195,6 +209,10 @@ class Simulation(object):
                     # Since we don't want that in the csv output,
                     # which a computer reads.
                     row[3] = row[3].replace("(symlink) ", "")
+                # Extract web interface URL for CSV
+                web_match: re.Match = re.match("`.*<(.*)>`_", self.web_interface)
+                if web_match:
+                    row[4] = web_match.group(1)  # Extract URL from the web interface link
             return row
         elif "reproduction" in output_file:
             return [self.simulation_name, self.machine, self.checksum, self.run_script_reproduction, self.run_script_original]
@@ -261,6 +279,8 @@ def read_simulations(csv_file):
                         simulation_dict["link_type"] = "both"
                     elif simulation_dict["cmip_only"] == "cmip_only":
                         simulation_dict["link_type"] = "cmip"
+                    elif simulation_dict["cmip_only"] == "none":
+                        simulation_dict["link_type"] = "none"
                     else:
                         raise ValueError(f"Invalid cmip_only={simulation_dict['cmip_only']}")
                 simulation_dicts.append(simulation_dict)
@@ -324,6 +344,10 @@ def pad_cells_row_dividers(marker: str, cell_paddings: List[int]) -> str:
     return string
                     
 def generate_table(page_type: str, resolutions: OrderedDict[str, Category], header_cells: List[str], output_file: str, cell_paddings: List[int]):
+
+    # Create output directory if it doesn't exist
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+
     with open(output_file, "w") as file_write:
         # Page Title
         file_write.write("**********************************\n")
@@ -349,7 +373,7 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
 def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
-    header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path"]
+    header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path", "HPSS URL"]
     construct_output_csv(resolutions, header_cells, f"../machine_readable_data/{model_version}_{group_name}_simulations.csv")
     print(f"csv of the simulations will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_simulations.csv")
     # TODO: add proper subdirs and index.rst files in docs/
@@ -358,7 +382,7 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
         resolutions,
         header_cells,
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
-        [85, 15, 400, 140]
+        [65, 15, 220, 120, 140]
     )
     if include_reproduction_scripts:
         header_cells_reproduction: List[str] = ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",]
@@ -383,4 +407,5 @@ if __name__ == "__main__":
     # Sources for v1 data
     # https://acme-climate.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
     # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
-    construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
+    # construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
+    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")

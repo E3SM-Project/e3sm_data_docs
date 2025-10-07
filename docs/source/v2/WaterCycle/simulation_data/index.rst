@@ -42,6 +42,12 @@ For more information, refer to `zstash usage <https://e3sm-project.github.io/zst
 `web interface <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2>`_.
 Note that this will be slow and inefficient since you'll have to download the tar files.
 
+**Tip for users without NERSC access**: Before downloading large tar files, you can first download the ``index.db`` file and use sqlite to check the archive contents: ::
+
+   sqlite3 index.db "SELECT tar,name,size from files;" > archive_contents.txt
+
+This will help you identify which specific tar files contain the data you need before downloading.
+
 **v2.LR** simulations data has been archived on NERSC HPSS under: ::
 
   /home/projects/e3sm/www/WaterCycle/E3SMv2/LR

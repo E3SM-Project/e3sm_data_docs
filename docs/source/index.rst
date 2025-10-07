@@ -18,6 +18,7 @@ simulations.
    v1/index
    v2/index
    v2.1/index
+   v3/index
    SCREAMv0/index
    SCREAMv1/index
 
