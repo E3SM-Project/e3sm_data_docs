@@ -279,6 +279,8 @@ def read_simulations(csv_file):
                         simulation_dict["link_type"] = "both"
                     elif simulation_dict["cmip_only"] == "cmip_only":
                         simulation_dict["link_type"] = "cmip"
+                    elif simulation_dict["cmip_only"] == "none":
+                        simulation_dict["link_type"] = "none"
                     else:
                         raise ValueError(f"Invalid cmip_only={simulation_dict['cmip_only']}")
                 simulation_dicts.append(simulation_dict)
