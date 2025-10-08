@@ -3,38 +3,22 @@ AI Training Datasets
 
 The E3SM project has developed several datasets specifically for AI and machine learning applications. These datasets have been processed by AI2 to make them publicly accessible and easier to use for research purposes.
 
-If you use data from these datasets, please cite the relevant overview manuscripts listed below.
+Dataset Details
+***************
 
-**Available Datasets:**
+- **E3SMv2**: 73-year EAMv2 simulation (F2010, perpetual 2010 forcing, repeating annual SST cycle from 2005-2014 average). 6-hourly outputs: 42 years training, 10 years validation, 10 years test. More details see: `Duncan et al. 2024 <https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2024JH000136>`_
 
-* E3SMv2 - Energy Exascale Earth System Model version 2 training data
-* E3SMv3 - Energy Exascale Earth System Model version 3 training data
-* SCREAMv1 - Simple Cloud-Resolving E3SM Atmosphere Model version 1 training data (coming soon)
+- **E3SMv3**: 51-year EAMv3 AMIP-style simulation (1970-2020, F2010 with AMIP SSTs, constant 2010 CO2). Includes multiple ENSO cycles and global warming trend. More details see: `Wu et al. 2025 <https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JH000774>`_
 
-**Citations:**
+- **SCREAMv1**: Simple Cloud-Resolving E3SM Atmosphere Model version 1 training data (coming soon)
 
-* `Duncan et al. 2024 <https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2024JH000136>`_
-* `Wu et al. 2025 <https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JH000774>`_
+.. tip::
+   Check the ``archive_content`` text file to see files included in each tar archive. You can selectively download the files you need.
 
-**Using the Data:**
-
-These datasets have been specifically processed and formatted for machine learning applications. They provide:
-
-- Preprocessed climate simulation outputs in ML-ready formats
-- Standardized variable naming and units
-- Quality-controlled data with documented preprocessing steps
-- Compatible file formats for common ML frameworks
-
-**Data Access:**
-
-The datasets are available through standard data repositories and can be accessed programmatically. Detailed access information and usage examples are provided in the dataset-specific documentation.
-
-**Future Developments:**
-
-Additional datasets from SCREAM and v3 simulations are planned for future releases. The SCREAMv1 dataset will be made available once the associated paper is published.
+Table of AI training datasets
+******************************
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-   simulation_data/index
+   simulation_data/simulation_table

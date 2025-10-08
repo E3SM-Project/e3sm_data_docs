@@ -4,26 +4,17 @@ Simulation Data
 
 
 
-Instructions
-************
+Dataset Details
+***************
 
-The AI Training datasets are available through standard data repositories and have been specifically processed by AI2 for machine learning applications.
+- **E3SMv2**: 73-year EAMv2 simulation (F2010, perpetual 2010 forcing, repeating annual SST cycle from 2005-2014 average). 6-hourly outputs: 42 years training, 10 years validation, 10 years test.
 
-**Data Access:**
+- **E3SMv3**: 51-year EAMv3 AMIP-style simulation (1970-2020, F2010 with AMIP SSTs, constant 2010 CO2). Includes multiple ENSO cycles and global warming trend.
 
-These datasets provide preprocessed climate simulation outputs in ML-ready formats with:
-
-- Standardized variable naming and units
-- Quality-controlled data with documented preprocessing steps  
-- Compatible file formats for common ML frameworks
-
-**Available Datasets:**
-
-- **E3SMv2**: Energy Exascale Earth System Model version 2 training data
-- **E3SMv3**: Energy Exascale Earth System Model version 3 training data
 - **SCREAMv1**: Simple Cloud-Resolving E3SM Atmosphere Model version 1 training data (coming soon)
 
-Please refer to the dataset-specific documentation for detailed access information and usage examples.
+.. tip::
+   Check the ``archive_content`` text file to see files included in each tar archive. You can selectively download the files you need.
 
 Table of AI training datasets
 ******************************
