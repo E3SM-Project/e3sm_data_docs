@@ -1,7 +1,7 @@
 AI Training Datasets
 ====================
 
-The E3SM project has developed several datasets specifically for AI and machine learning applications. These datasets have been processed by AI2 to make them publicly accessible and easier to use for research purposes.
+The E3SM project and `Allen Institute for AI (Ai2) <https://allenai.org/>`_ work together to develop datasets for AI and machine learning applications. E3SMv2 and E3SMv3 have been processed by Ai2 to make them publicly accessible and easier to use for research purposes.
 
 Dataset Details
 ***************
