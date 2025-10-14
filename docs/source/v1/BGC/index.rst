@@ -27,7 +27,7 @@ refer to `Coupled E3SM v1 Model Overview <https://e3sm.org/overview-paper-on-cou
 
 Experiments:
 
-The datasets include the following experiments. Each case has a historical run and a ssp85 run. CTC and ETA are two approaches to modeling soil biogeochemistry. B and R refer to biogeochemical CO\ :sub:`2`\ and radiative CO\ :sub:`2`\ respectively. C and D refer to constant and diagnostic respectively. Please see section 4.1 "Experimental Design and Overview of the Simulations" and Table 3 "E3SMv1.1-BGC Simulations Overview" of the `relevant paper <https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019ms001766>`_ for more information. 
+The datasets include the following experiments. Each case has a historical run and a ssp85 run. CTC and ETA are two approaches to modeling soil biogeochemistry. B and R refer to biogeochemical CO\ :sub:`2`\  and radiative CO\ :sub:`2`\  respectively. C and D refer to constant and diagnostic respectively. Please see section 4.1 "Experimental Design and Overview of the Simulations" and Table 3 "E3SMv1.1-BGC Simulations Overview" of the `relevant paper <https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019ms001766>`_ for more information. 
 
 * CTC Control
 
