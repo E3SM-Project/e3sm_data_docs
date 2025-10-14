@@ -5,4 +5,6 @@ v1
    :maxdepth: 2
    :caption: Contents:
 
+   BGC/index
+   Cryosphere/index
    WaterCycle/index

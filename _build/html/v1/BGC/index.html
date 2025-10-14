@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E3SMv1 (Water Cycle) &mdash; E3SM Data Docs  documentation</title>
+  <title>E3SMv1 (BGC) &mdash; E3SM Data Docs  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Simulation Data" href="simulation_data/index.html" />
-    <link rel="prev" title="v1 Cryosphere simulation table" href="../Cryosphere/simulation_data/simulation_table.html" /> 
+    <link rel="prev" title="v1" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,12 +42,12 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">v1</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../BGC/index.html">E3SMv1 (BGC)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Cryosphere/index.html">E3SMv1 (Cryosphere)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">E3SMv1 (Water Cycle)</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">E3SMv1 (BGC)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="simulation_data/index.html">Simulation Data</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../Cryosphere/index.html">E3SMv1 (Cryosphere)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WaterCycle/index.html">E3SMv1 (Water Cycle)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../v2/index.html">v2</a></li>
@@ -72,9 +72,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">v1</a> &raquo;</li>
-      <li>E3SMv1 (Water Cycle)</li>
+      <li>E3SMv1 (BGC)</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/v1/WaterCycle/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/v1/BGC/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -82,14 +82,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="e3smv1-water-cycle">
-<h1>E3SMv1 (Water Cycle)<a class="headerlink" href="#e3smv1-water-cycle" title="Permalink to this heading"></a></h1>
-<p>The <a class="reference external" href="https://e3sm.org/research/water-cycle/v1-water-cycle/">E3SM version 1 water cycle simulation campaign</a> includes standard set of
+  <section id="e3smv1-bgc">
+<h1>E3SMv1 (BGC)<a class="headerlink" href="#e3smv1-bgc" title="Permalink to this heading"></a></h1>
+<p>The <a class="reference external" href="https://e3sm.org/research/bgc-and-energy/v1-bgc-and-energy/">E3SM version 1 BGC simulation campaign</a> includes standard set of
 Coupled Model Intercomparison Project Phase 6 (<a class="reference external" href="https://www.geosci-model-dev.net/9/1937/2016/">CMIP6</a>)
 Diagnosis, Evaluation, and Characterization of Klima (DECK) simulations.
 These E3SM simulations at standard resolution have been completed and the data is publicly available.</p>
 <p>Data Resolution:</p>
-<p>The standard resolution configuration of E3SM v1.0 water cycle configuration has approximate horizontal resolution of
+<p>The standard resolution configuration of E3SM v1.0 BGC configuration has approximate horizontal resolution of
 1 deg latitude by 1 deg longitude in atmosphere (110 km grid spacing),
 with ocean and sea ice grid of 60 km in the mid-latitudes and 30 km at the equator and poles,
 and river transport at 55 km horizontal resolution.
@@ -103,69 +103,69 @@ refer to <a class="reference external" href="https://e3sm.org/overview-paper-on-
 <li><p><em>Description of historical and future projection simulations by the global coupled E3SMv1.0 model as used in CMIP6</em> <a class="reference external" href="https://doi.org/10.5194/gmd-15-3941-2022">doi:10.5194/gmd-15-3941-2022</a></p></li>
 <li><p><em>Ensemble Spread Behavior in Coupled Climate Models: Insights From the Energy Exascale Earth System Model Version 1 Large Ensemble</em> <a class="reference external" href="https://doi.org/10.1029/2023MS003653">doi:10.1029/2023MS003653</a></p></li>
 <li><p><em>The DOE E3SM Coupled Model Version 1: Description and Results at High Resolution</em> <a class="reference external" href="https://doi.org/10.1029/2019MS001870">doi:10.1029/2019MS001870</a></p></li>
+<li><p><em>The DOE E3SM v1.1 Biogeochemistry Configuration: Description and Simulated Ecosystem-Climate Responses to Historical Changes in Forcing</em> <a class="reference external" href="https://doi.org/10.1029/2019MS001766">doi:10.1029/2019MS00176</a></p></li>
 </ul>
 <p>Experiments:</p>
-<p>The datasets include the following experiments.</p>
-<p>For low-resolution:</p>
+<p>The datasets include the following experiments. Each case has a historical run and a ssp85 run. CTC and ETA are two approaches to modeling soil biogeochemistry. B and R refer to biogeochemical CO<sub>2</sub> and radiative CO<sub>2</sub> respectively. C and D refer to constant and diagnostic respectively. Please see section 4.1 “Experimental Design and Overview of the Simulations” and Table 3 “E3SMv1.1-BGC Simulations Overview” of the <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019ms001766">relevant paper</a> for more information.</p>
 <ul class="simple">
-<li><p>DECK</p>
+<li><p>CTC Control</p>
 <ul>
-<li><p>piControl – Pre-industrial control (piControl) simulation (500 years)</p></li>
-<li><p>1pctCO2 – Prescribed 1% / year CO2 increase (1pctCO2) simulation (150 years)</p></li>
-<li><p>abrupt-4xCO2 – Abrupt CO2 quadrupling (abrupt-4xCO2) simulation (150 years)</p></li>
-<li><p>abrupt-4xCO2-ext300yrs – Abrupt CO2 quadrupling (abrupt-4xCO2) simulation (140-300 years)</p></li>
+<li><p>E3SM_1_1_piControl (20181217.CNTL_CNPCTC1850_OIBGC.ne30_oECv3.edison)</p></li>
+<li><p>E3SM_1_1_piControl-ext85yr (20191204.CNTL_CNPCTC1850_OIBGC.ne30_oECv3.compy)</p></li>
 </ul>
 </li>
-<li><p>Historical</p>
+<li><p>CTC BCRC</p>
 <ul>
-<li><p>historical – Historical simulations 1850-2014 (165 years), 5 ensemble members</p></li>
+<li><p>E3SM_1_1_hist-BCRC (20181217.BCRC_CNPCTC20TR_OIBGC.ne30_oECv3.edison)</p></li>
+<li><p>E3SM_1_1_ssp585-BCRC (20191107.BCRC_CNPCTC_SSP585_OIBGC.ne30_oECv3.compy)</p></li>
 </ul>
 </li>
-<li><p>AMIP</p>
+<li><p>CTC BCRD</p>
 <ul>
-<li><p>amip – Atmosphere only AMIP simulation 1870-2014 (145 years), 3 ensemble members</p></li>
-<li><p>amip_1850_allF – Atmosphere only AMIP with all forcings held at 1850 values,  1870-2014 (145 years), 3 ensemble members</p></li>
-<li><p>amip_1850_aeroF – Atmosphere only AMIP with all aerosol forcings held at 1850 values, 1870-2014 (145 years), 3 ensemble members</p></li>
+<li><p>E3SM_1_1_hist-BCRD (20181217.BCRD_CNPCTC20TR_OIBGC.ne30_oECv3.edison)</p></li>
+<li><p>E3SM_1_1_ssp585-BCRD (20191204.BCRD_CNPCTC_SSP585_OIBGC.ne30_oECv3.compy, 20190812.BCRD_CNPCTC20TR_OIBGC.ne30_oECv3.compy/archive)</p></li>
 </ul>
 </li>
-<li><p>DAMIP</p>
+<li><p>CTC BDRC</p>
 <ul>
-<li><p>damip_hist-GHG – Greenhouse gases only, 3 ensemble members</p></li>
+<li><p>E3SM_1_1_hist-BDRC (20181217.BDRC_CNPCTC20TR_OIBGC.ne30_oECv3.edison)</p></li>
+<li><p>E3SM_1_1_ssp585-BDRC (20191107.BDRC_CNPCTC_SSP585_OIBGC.ne30_oECv3.compy)</p></li>
 </ul>
 </li>
-<li><p>LargeEnsemble</p>
+<li><p>CTC BDRD</p>
 <ul>
-<li><p>historical - Historical simulations, 20 ensemble members</p></li>
-<li><p>ssp370 - Future projection, 20 ensemble members</p></li>
+<li><p>E3SM_1_1_hist-BDRD (20181217.BDRD_CNPCTC20TR_OIBGC.ne30_oECv3.edison)</p></li>
+<li><p>E3SM_1_1_ssp585-BDRD (20191204.BDRD_CNPCTC_SSP585_OIBGC.ne30_oECv3.compy)</p></li>
 </ul>
 </li>
-<li><p>Projection</p>
+<li><p>ECA Control</p>
 <ul>
-<li><p>ssp5-8.5 – Future projection, 5 ensemble members</p></li>
-<li><p>damip_ssp5-8.5-GHG – Future projection with greenhouse gases only, 3 ensemble members</p></li>
+<li><p>E3SM_1_1_ECA_piControl (20190308.CNTL.1850-2014)</p></li>
+<li><p>E3SM_1_1_ECA_piControl-ext85yr (CNTL_CNPECACNT_SSP85.ne30_oECv3.cori-knl)</p></li>
 </ul>
 </li>
-</ul>
-<p>For high-resolution:</p>
-<ul class="simple">
-<li><p>Control Runs</p>
+<li><p>ECA BCRC</p>
 <ul>
-<li><p>A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG – 4 ensemble members</p></li>
+<li><p>E3SM_1_1_ECA_hist-BCRC (BCRC_CNPECACNT_20TR.ne30_oECv3.edison, BCRC_CNPECACNT_20TR.ne30_oECv3.cori-knl)</p></li>
+<li><p>E3SM_1_1_ECA_ssp585-BCRC (BCRC_CNPECACNT_SSP85.ne30_oECv3.cori-knl)</p></li>
 </ul>
 </li>
-<li><p>Transient Production Runs</p>
+<li><p>ECA BCRD</p>
 <ul>
-<li><p>A_WCYCL20TRS_CMIP6_HR.ne120_oRRS18v3_ICG – 2 ensemble members</p></li>
+<li><p>E3SM_1_1_ECA_hist-BCRD (BCRD_CNPECACNT_20TR.ne30_oECv3.edison, BCRD_CNPECACNT_20TR.ne30_oECv3.cori-knl)</p></li>
+<li><p>E3SM_1_1_ECA_ssp585-BCRD (BCRD_CNPECACNT_SSP85.ne30_oECv3.cori-knl)</p></li>
 </ul>
 </li>
-<li><p>Additional Simulations</p>
+<li><p>ECA BDRC</p>
 <ul>
-<li><p>A_WCYCL1950S_CMIP6_LRtunedHR.ne30_oECv3_ICG – LR tuned HR control run, 1 ensemble member</p></li>
-<li><p>A_WCYCL20TRS_CMIP6_LRtunedHR.ne30_oECv3_ICG – LR tuned HR transient production run, 1 ensemble member</p></li>
-<li><p>F2010-CMIP6-HR – 3 ensemble members</p></li>
-<li><p>F2010C5-CMIP6 – 5 ensemble members. “nudgeUV” refers to U and V wind directions.</p></li>
-<li><p>F2010LRtunedHR – 4 ensemble members</p></li>
-<li><p>A_WCYCLSSP585_CMIP6_HR – Future projection, 1 ensemble member</p></li>
+<li><p>E3SM_1_1_ECA_hist-BDRC (20190308.BDRC.1850-2014)</p></li>
+<li><p>E3SM_1_1_ECA_ssp585-BDRC (20191108.BDRC.SSP85)</p></li>
+</ul>
+</li>
+<li><p>ECA BDRD</p>
+<ul>
+<li><p>E3SM_1_1_ECA_hist-BDRD (20190308.BDRD.1850-2014)</p></li>
+<li><p>E3SM_1_1_ECA_ssp585-BDRD (20191108.BDRD.SSP85)</p></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +173,7 @@ refer to <a class="reference external" href="https://e3sm.org/overview-paper-on-
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="simulation_data/index.html">Simulation Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="simulation_data/simulation_table.html">v1 WaterCycle simulation table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation_data/simulation_table.html">v1 BGC simulation table</a></li>
 </ul>
 </li>
 </ul>
@@ -184,7 +184,7 @@ refer to <a class="reference external" href="https://e3sm.org/overview-paper-on-
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Cryosphere/simulation_data/simulation_table.html" class="btn btn-neutral float-left" title="v1 Cryosphere simulation table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="v1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="simulation_data/index.html" class="btn btn-neutral float-right" title="Simulation Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

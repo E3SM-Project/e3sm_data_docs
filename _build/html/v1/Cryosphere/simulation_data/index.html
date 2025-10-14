@@ -20,8 +20,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="v1 WaterCycle simulation table" href="simulation_table.html" />
-    <link rel="prev" title="E3SMv1 (Water Cycle)" href="../index.html" /> 
+    <link rel="next" title="v1 Cryosphere simulation table" href="simulation_table.html" />
+    <link rel="prev" title="E3SMv1 (Cryosphere)" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,14 +43,14 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">v1</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../BGC/index.html">E3SMv1 (BGC)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Cryosphere/index.html">E3SMv1 (Cryosphere)</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">E3SMv1 (Water Cycle)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">E3SMv1 (Cryosphere)</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Simulation Data</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="simulation_table.html">v1 WaterCycle simulation table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simulation_table.html">v1 Cryosphere simulation table</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../WaterCycle/index.html">E3SMv1 (Water Cycle)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../v2/index.html">v2</a></li>
@@ -75,10 +75,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">v1</a> &raquo;</li>
-          <li><a href="../index.html">E3SMv1 (Water Cycle)</a> &raquo;</li>
+          <li><a href="../index.html">E3SMv1 (Cryosphere)</a> &raquo;</li>
       <li>Simulation Data</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../../_sources/v1/WaterCycle/simulation_data/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/v1/Cryosphere/simulation_data/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -103,7 +103,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=</span><span class="n">globus</span><span class="p">:</span><span class="o">//</span><span class="mi">9</span><span class="n">cd89cfd</span><span class="o">-</span><span class="mi">6</span><span class="n">d04</span><span class="o">-</span><span class="mf">11e5</span><span class="o">-</span><span class="n">ba46</span><span class="o">-</span><span class="mi">22000</span><span class="n">b92c6ec</span><span class="o">/&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="n">below</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Note that the data management tool <a class="reference external" href="https://github.com/E3SM-Project/zstash">zstash</a> is available from the <a class="reference external" href="https://github.com/E3SM-Project/e3sm-unified">E3SM-Unified</a> conda environment. An example of retrieving all <strong>cam.h0</strong> (monthly atmosphere output files) between <strong>years 0030 and 0049</strong> for the piControl simulation at NERSC locally is demonstrated as below in two steps:</p>
+<p>Note that the data management tool <a class="reference external" href="https://github.com/E3SM-Project/zstash">zstash</a> is available from the <a class="reference external" href="https://github.com/E3SM-Project/e3sm-unified">E3SM-Unified</a> conda environment. An example of retrieving all <strong>mpaso.hist.am.meridionalHeatTransport</strong> between <strong>years 0003 and 0004</strong> for the “CORE-IAF with ice shelf melt fluxes” simulation at NERSC locally is demonstrated as below in two steps:</p>
 <ol class="arabic">
 <li><p>To activate E3SM-Unified environment by:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="k">global</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">anaconda_envs</span><span class="o">/</span><span class="n">load_latest_e3sm_unified_pm</span><span class="o">-</span><span class="n">cpu</span><span class="o">.</span><span class="n">sh</span>
@@ -111,34 +111,34 @@
 </div>
 </li>
 <li><p>To retrieve files with zstash command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">WaterCycle</span><span class="o">/</span><span class="n">E3SMv1</span><span class="o">/</span><span class="n">LR</span><span class="o">/</span><span class="mf">20180129.</span><span class="n">DECKv1b_piControl</span><span class="o">.</span><span class="n">ne30_oEC</span><span class="o">.</span><span class="n">edison</span> <span class="s2">&quot;*.cam.h0.00[3-4]?-??.nc&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">Cryosphere</span><span class="o">/</span><span class="n">E3SMv1</span><span class="o">/</span><span class="mf">20190225.</span><span class="n">GMPAS</span><span class="o">-</span><span class="n">DIB</span><span class="o">-</span><span class="n">IAF</span><span class="o">-</span><span class="n">ISMF</span><span class="o">.</span><span class="n">T62_oEC60to30v3wLI</span><span class="o">.</span><span class="n">cori</span><span class="o">-</span><span class="n">knl</span> <span class="s2">&quot;*mpaso.hist.am.meridionalHeatTransport.000[3-4]-??-??.nc&quot;</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>For more information, refer to <a class="reference external" href="https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract">zstash usage</a>.</p>
 <p><strong>If you do not have access to NERSC</strong>, you can download simulation data directly through the  NERSC HPSS
-<a class="reference external" href="https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1">web interface</a>.
+<a class="reference external" href="https://portal.nersc.gov/archive/home/projects/e3sm/www/Cryosphere/E3SMv1">web interface</a>.
 Note that this will be slow and inefficient since you’ll have to download the tar files.</p>
-<p><strong>v1.LR</strong> simulations data has been archived on NERSC HPSS under:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">WaterCycle</span><span class="o">/</span><span class="n">E3SMv1</span><span class="o">/</span><span class="n">LR</span>
-</pre></div>
-</div>
-<p>and <strong>v1.HR</strong> simulations data under:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">WaterCycle</span><span class="o">/</span><span class="n">E3SMv1</span><span class="o">/</span><span class="n">HR</span>
+<p>Simulation data has been archived on NERSC HPSS under:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">Cryosphere</span><span class="o">/</span><span class="n">E3SMv1</span>
 </pre></div>
 </div>
 <p>Scripts are not available to reproduce v1 simulations.</p>
-<dl>
-<dt>Some original run scripts (the scripts that were originally used to create the simulations) have been archived here <a class="reference external" href="https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v1/original/">here</a>. If a script is not collected here, you can try looking for the provenance run script with:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">WaterCycle</span><span class="o">/</span><span class="n">E3SMv1</span><span class="o">/&lt;</span><span class="n">LR</span> <span class="ow">or</span> <span class="n">HR</span><span class="o">&gt;/&lt;</span><span class="n">simulation_name</span><span class="o">&gt;/</span> <span class="n">case_scripts</span><span class="o">/</span><span class="n">run_script_provenance</span><span class="o">/*</span>
+<p>Original run scripts are also not available in the <a class="reference external" href="https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/v1/original/">archive</a>. A few methods to search for run scripts, in general:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try looking directly</span>
+<span class="n">zstash</span> <span class="n">ls</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">Cryosphere</span><span class="o">/</span><span class="n">E3SMv1</span><span class="o">/&lt;</span><span class="n">simulation_name</span><span class="o">&gt;/</span> <span class="n">case_scripts</span><span class="o">/</span><span class="n">run_script_provenance</span><span class="o">/*</span>
+
+<span class="c1"># Try looking for provenance or run</span>
+<span class="n">zstash</span> <span class="n">ls</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">Cryosphere</span><span class="o">/</span><span class="n">E3SMv1</span><span class="o">/&lt;</span><span class="n">simulation_name</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">out</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">grep</span> <span class="o">-</span><span class="ow">in</span> <span class="n">provenance</span> <span class="n">out</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">grep</span> <span class="o">-</span><span class="ow">in</span> <span class="n">run</span> <span class="n">out</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="simulation_table.html">v1 WaterCycle simulation table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation_table.html">v1 Cryosphere simulation table</a></li>
 </ul>
 </div>
 </section>
@@ -147,8 +147,8 @@ Note that this will be slow and inefficient since you’ll have to download the 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="E3SMv1 (Water Cycle)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="simulation_table.html" class="btn btn-neutral float-right" title="v1 WaterCycle simulation table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="E3SMv1 (Cryosphere)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simulation_table.html" class="btn btn-neutral float-right" title="v1 Cryosphere simulation table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
