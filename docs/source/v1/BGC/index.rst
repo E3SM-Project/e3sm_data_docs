@@ -23,13 +23,11 @@ refer to `Coupled E3SM v1 Model Overview <https://e3sm.org/overview-paper-on-cou
 * *Description of historical and future projection simulations by the global coupled E3SMv1.0 model as used in CMIP6* `doi:10.5194/gmd-15-3941-2022 <https://doi.org/10.5194/gmd-15-3941-2022>`_
 * *Ensemble Spread Behavior in Coupled Climate Models: Insights From the Energy Exascale Earth System Model Version 1 Large Ensemble* `doi:10.1029/2023MS003653 <https://doi.org/10.1029/2023MS003653>`_
 * *The DOE E3SM Coupled Model Version 1: Description and Results at High Resolution* `doi:10.1029/2019MS001870 <https://doi.org/10.1029/2019MS001870>`_
-* (TODO: add BGC-specific papers)
+* *The DOE E3SM v1.1 Biogeochemistry Configuration: Description and Simulated Ecosystem-Climate Responses to Historical Changes in Forcing* `doi:10.1029/2019MS00176 <https://doi.org/10.1029/2019MS001766>`_
 
 Experiments:
 
-The datasets include the following experiments. Each case has a historical run and a ssp85 run.
-
-(TODO: add description to the top-level bullet points below)
+The datasets include the following experiments. Each case has a historical run and a ssp85 run. CTC and ETA are two approaches to modeling soil biogeochemistry. B and R refer to biogeochemical CO\ :sub:`2`\ and radiative CO\ :sub:`2`\ respectively. C and D refer to constant and diagnostic respectively. Please see section 4.1 "Experimental Design and Overview of the Simulations" and Table 3 "E3SMv1.1-BGC Simulations Overview" of the `relevant paper <https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019ms001766>`_ for more information. 
 
 * CTC Control
 

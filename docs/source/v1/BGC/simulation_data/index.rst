@@ -30,8 +30,7 @@ Note that the data management tool `zstash <https://github.com/E3SM-Project/zsta
 2. To retrieve files with zstash command:
    ::
 
-    zstash extract --hpss=/home/projects/e3sm/www/BGC/E3SMv1/E3SM_1_1_piControl "*.cam.h0.00[3-4]?-??.nc"
-    # (TODO: run an actual zstash command to make sure it works as an example)
+    zstash ls --hpss=/home/projects/e3sm/www/BGC/E3SMv1/E3SM_1_1_piControl "*.cam.h3.18[5-6]?-??-??-?????.nc"
 
 
 For more information, refer to `zstash usage <https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract>`_. 
