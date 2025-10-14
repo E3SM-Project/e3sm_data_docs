@@ -1,31 +1,4 @@
-# # This will be a problem if these simulations are ever removed from the publication archives!
-# for i in $(seq 1 20); do
-#     hsi ln -s /home/projects/e3sm/www/publication-archives/pub_archive_E3SM_1_0_LE_historical_ens$i /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens$i
-# done
-
-# for i in $(seq 1 20); do
-#     hsi ln -s /home/projects/e3sm/www/publication-archives/pub_archive_E3SM_1_0_LE_ssp370_ens$i /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens$i
-# done
-
-# # Symlink last remaining large simulation
-# # This will be a problem if ndk ever deletes the source!
-# hsi ln -s /home/n/ndk/2019/theta.20190910.branch_noCNT.n825def.unc06.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/theta.20190910.branch_noCNT.n825def.unc06.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG
-
-# Note:
-# It seems impossible to do a recursive remove with HSI/on HPSS.
-# > rm -rf E3SM_1_0_LE_historical_ens1@ # Trying to remove mislabeled directory
-# Unknown option or missing argument: 'r' ignored
-# Unknown option or missing argument: 'f' ignored
-
-### Cryosphere ###
-# hsi ln -s /home/d/dcomeau/cryosphere_simulations/20190430.A_WCYCL1850-DIB-ISMF_CMIP6.ne30_oECv3wLI.control.cori-knl /home/projects/e3sm/www/Cryosphere/E3SMv1/20190430.A_WCYCL1850-DIB-ISMF_CMIP6.ne30_oECv3wLI.control.cori-knl
-# for simulation in "20190306.A_WCYCL1850-DIB-ISMF_CMIP6.ne30_oECv3wLI.edison" "20190923.GMPAS-IAF.T62_oEC60to30v3wLI.cori-knl" "20190225.GMPAS-DIB-IAF-ISMF.T62_oEC60to30v3wLI.cori-knl" "20200610.A_WCYCL1850-DIB-ISMF_CMIP6.ne30_ECwISC30to60E1r2.cori-knl.maint1p2-3DGM" "20190819.GMPAS-DIB-IAF-ISMF.T62_oEC60to30v3wLI.cori-knl.testNewGM" "20210614.A_WCYCL1850-DIB-ISMF_CMIP6.ne30_oECv3wLI.DIBbugfix.anvil" "20210614.A_WCYCL1850-DIB-ISMF_CMIP6.ne30_ECwISC30to60E1r2.anvil.DIBbugFixMGM"; do
-#     hsi ln -s /home/projects/m3412/${simulation} /home/projects/e3sm/www/Cryosphere/E3SMv1/${simulation}
-# done
-
-### BGC ###
-# https://e3sm.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
-# We'll use symlinks to the publication archives
+# v1 BGC
 declare -A simulation_map=(
     # CTC Control
     ["20181217.CNTL_CNPCTC1850_OIBGC.ne30_oECv3.edison"]="pub_archive_E3SM_1_1_piControl"
@@ -64,13 +37,16 @@ declare -A simulation_map=(
     ["20190308.BDRD.1850-2014"]="pub_archive_E3SM_1_1_ECA_hist-BDRD"
     ["20191108.BDRD.SSP85"]="pub_archive_E3SM_1_1_ECA_ssp585-BDRD"
 )
-pub_archive=/home/projects/e3sm/www/publication-archives
-centralized_dir=/home/projects/e3sm/www/BGC/E3SMv1
 original_name_list=("${!simulation_map[@]}")
-echo "Create symlinks from ${pub_archive} to ${centralized_dir}:"
+echo "Experiments:"
+echo ""
+echo "The datasets include the following experiments."
+echo ""
 for original_name in "${original_name_list[@]}"; do
     display_name_with_prefix=${simulation_map[${original_name}]}
     display_name="${display_name_with_prefix#pub_archive_}"
-    echo "RUNNING: hsi ln -s ${pub_archive}/${display_name_with_prefix} ${centralized_dir}/${display_name}"
-    hsi ln -s ${pub_archive}/${display_name_with_prefix} ${centralized_dir}/${display_name}
+    echo "* ${display_name} (${original_name})"
 done
+
+# NOTE: You will have to manually remove repeats of the same display_name
+# (i.e.,) cases where two original directories map to the same pub archive

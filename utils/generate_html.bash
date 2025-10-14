@@ -1,5 +1,5 @@
-pr_num=61
-try_num=5
+pr_num=64
+try_num=11
 
 # Chrysalis
 #destination_dir=/lcrc/group/e3sm/public_html/diagnostic_output/$USER/data_docs_${pr_num}

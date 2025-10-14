@@ -164,11 +164,19 @@ class Simulation(object):
         else:
             self.node = "llnl"
 
+        displayed_version: str
+        skip_resolution: bool = False
         if "." in self.model_version:
-            displayed_version: str = self.model_version.replace(".", "_")
+            displayed_version = self.model_version.replace(".", "_")
+            skip_resolution = True
+        else:
+            displayed_version = self.model_version
+        if self.group in ["BGC", "Cryosphere"]:
+            skip_resolution = True
+        if skip_resolution:
             hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
         else:
-            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{self.model_version}/{self.resolution}/{self.simulation_name}"
+            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.resolution}/{self.simulation_name}"
         self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
         self.esgf = get_esgf(self.model_version, self.resolution, self.simulation_name, self.experiment, self.ensemble_num, self.link_type, self.node)
@@ -382,7 +390,7 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
         resolutions,
         header_cells,
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
-        [65, 15, 220, 120, 140]
+        [85, 15, 400, 140, 170]
     )
     if include_reproduction_scripts:
         header_cells_reproduction: List[str] = ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",]
@@ -400,12 +408,19 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
         )
                     
 if __name__ == "__main__":
-    #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
-    #construct_pages("simulations_v2_1.csv", "v2.1", "WaterCycle")
-    #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
-    # 
-    # Sources for v1 data
+    # v1 data
     # https://acme-climate.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
     # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
-    # construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
-    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+    #construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
+    construct_pages("input/simulations_v1_cryosphere.csv", "v1", "Cryosphere")
+    construct_pages("input/simulations_v1_bgc.csv", "v1", "BGC")
+
+    # v2 data
+    #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
+
+    # v2.1 data
+    #construct_pages("simulations_v2_1.csv", "v2.1", "WaterCycle")
+    #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
+
+    # v3 data
+    #construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
