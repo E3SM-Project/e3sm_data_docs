@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>v3.LR &mdash; E3SM Data Docs  documentation</title>
+  <title>AI Training Datasets &mdash; E3SM Data Docs  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/style.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="E3SMv3" href="CoupledSystem/index.html" />
-    <link rel="prev" title="v2.1 WaterCycle simulation table" href="../v2.1/WaterCycle/simulation_data/simulation_table.html" /> 
+    <link rel="next" title="AI Training Datasets simulation table" href="simulation_data/simulation_table.html" />
+    <link rel="prev" title="SCREAMv1 Four-Seasons (2024) simulation table" href="../SCREAMv1/FourSeasons/simulation_data/simulation_table.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,13 +44,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../v1/index.html">v1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v2/index.html">v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v2.1/index.html">v2.1</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">v3.LR</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="CoupledSystem/index.html">E3SMv3</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../v3/index.html">v3.LR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SCREAMv0/index.html">SCREAMv0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SCREAMv1/index.html">SCREAMv1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AITraining/index.html">AI Training Datasets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AI Training Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-details">Dataset Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-access">Data Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simulation_data/simulation_table.html">AI Training Datasets simulation table</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -67,9 +71,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>v3.LR</li>
+      <li>AI Training Datasets</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/v3/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/AITraining/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,25 +81,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="v3-lr">
-<h1>v3.LR<a class="headerlink" href="#v3-lr" title="Permalink to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="CoupledSystem/index.html">E3SMv3</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="CoupledSystem/simulation_data/index.html">Simulation Data</a></li>
+  <section id="ai-training-datasets">
+<h1>AI Training Datasets<a class="headerlink" href="#ai-training-datasets" title="Permalink to this heading"></a></h1>
+<p>The E3SM project and <a class="reference external" href="https://allenai.org/">Allen Institute for AI (Ai2)</a> have developed several datasets for AI and machine learning applications. These datasets have been postprocessed for ingestion by the <a class="reference external" href="https://github.com/ai2cm/ace?tab=readme-ov-file#ai2-climate-emulator">ACE</a>/<a class="reference external" href="https://github.com/NVlabs/FourCastNet">FourCastNet</a> emulator.</p>
+<section id="dataset-details">
+<h2>Dataset Details<a class="headerlink" href="#dataset-details" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>EAMv2</strong>: 73-year EAMv2 simulation (F2010, perpetual 2010 forcing, repeating annual SST cycle from 2005-2014 average). 6-hourly outputs. More details see: <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2024JH000136">Duncan et al. 2024</a></p></li>
+<li><p><strong>EAMv3</strong>: 51-year EAMv3 AMIP-style simulation (1970-2020, F2010 with AMIP SSTs, constant 2010 CO2). Includes multiple ENSO cycles and global warming trend. More details see: <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JH000774">Wu et al. 2025</a></p></li>
+<li><p><strong>E3SMv3</strong>: Coupled pre-industrial and historical training data (coming soon)</p></li>
+<li><p><strong>SCREAMv1</strong>: Simple Cloud-Resolving E3SM Atmosphere Model version 1 training data (coming soon)</p></li>
 </ul>
-</li>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check the <code class="docutils literal notranslate"><span class="pre">archive_contents</span></code> text file to see files included in each tar archive. You can selectively download the files you need.</p>
+</div>
+</section>
+<section id="data-access">
+<h2>Data Access<a class="headerlink" href="#data-access" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simulation_data/simulation_table.html">AI Training Datasets simulation table</a></li>
 </ul>
 </div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../v2.1/WaterCycle/simulation_data/simulation_table.html" class="btn btn-neutral float-left" title="v2.1 WaterCycle simulation table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="CoupledSystem/index.html" class="btn btn-neutral float-right" title="E3SMv3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../SCREAMv1/FourSeasons/simulation_data/simulation_table.html" class="btn btn-neutral float-left" title="SCREAMv1 Four-Seasons (2024) simulation table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simulation_data/simulation_table.html" class="btn btn-neutral float-right" title="AI Training Datasets simulation table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
