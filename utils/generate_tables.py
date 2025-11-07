@@ -418,8 +418,8 @@ if __name__ == "__main__":
     # https://acme-climate.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
     # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
     #construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
-    construct_pages("input/simulations_v1_cryosphere.csv", "v1", "Cryosphere")
-    construct_pages("input/simulations_v1_bgc.csv", "v1", "BGC")
+    #construct_pages("input/simulations_v1_cryosphere.csv", "v1", "Cryosphere")
+    #construct_pages("input/simulations_v1_bgc.csv", "v1", "BGC")
 
     # v2 data
     #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
@@ -429,4 +429,4 @@ if __name__ == "__main__":
     #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
 
     # v3 data
-    #construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
