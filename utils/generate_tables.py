@@ -83,6 +83,12 @@ def get_esgf(model_version: str, resolution: str, simulation_name: str, experime
         human_readable_active_facets: str = f'{{"institution_id":"{v1_institution_id}","source_id":"E3SM-1-0","experiment_id":"{experiment}","variant_label":"r{ensemble_num}{variant_suffix}"}}'
         url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
         esgf = f"`CMIP <https://esgf-node.{node}.gov/search?project=CMIP6&activeFacets={url_active_facets}>`_"
+    elif model_version == "v3":
+        # v3 uses aims2.llnl.gov with CMIP6-E3SM-Ext project
+        source_id = "E3SM-3-0"
+        human_readable_active_facets: str = f'{{"source_id":"{source_id}","experiment_id":"{experiment}","variant_label":"r{ensemble_num}i1p1f1"}}'
+        url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
+        esgf = f"`CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets={url_active_facets}>`_"
     else:
         # v2, v2.1
         # Determine source_id
