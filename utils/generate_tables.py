@@ -83,6 +83,12 @@ def get_esgf(model_version: str, resolution: str, simulation_name: str, experime
         human_readable_active_facets: str = f'{{"institution_id":"{v1_institution_id}","source_id":"E3SM-1-0","experiment_id":"{experiment}","variant_label":"r{ensemble_num}{variant_suffix}"}}'
         url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
         esgf = f"`CMIP <https://esgf-node.{node}.gov/search?project=CMIP6&activeFacets={url_active_facets}>`_"
+    elif model_version == "v3":
+        # v3 uses aims2.llnl.gov with CMIP6-E3SM-Ext project
+        source_id = "E3SM-3-0"
+        human_readable_active_facets: str = f'{{"source_id":"{source_id}","experiment_id":"{experiment}","variant_label":"r{ensemble_num}i1p1f1"}}'
+        url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
+        esgf = f"`CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets={url_active_facets}>`_"
     else:
         # v2, v2.1
         # Determine source_id
@@ -412,8 +418,8 @@ if __name__ == "__main__":
     # https://acme-climate.atlassian.net/wiki/spaces/ED/pages/4495441922/V1+Simulation+backfill+WIP
     # https://acme-climate.atlassian.net/wiki/spaces/DOC/pages/1271169273/v1+High+Res+Coupled+Run+Output+HPSS+Archive 
     #construct_pages("input/simulations_v1_water_cycle.csv", "v1", "WaterCycle")
-    construct_pages("input/simulations_v1_cryosphere.csv", "v1", "Cryosphere")
-    construct_pages("input/simulations_v1_bgc.csv", "v1", "BGC")
+    #construct_pages("input/simulations_v1_cryosphere.csv", "v1", "Cryosphere")
+    #construct_pages("input/simulations_v1_bgc.csv", "v1", "BGC")
 
     # v2 data
     #construct_pages("simulations_v2.csv", "v2", "WaterCycle")
@@ -423,4 +429,4 @@ if __name__ == "__main__":
     #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
 
     # v3 data
-    #construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
