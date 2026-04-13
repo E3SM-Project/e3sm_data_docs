@@ -585,7 +585,9 @@ if __name__ == "__main__":
     #construct_pages("input/simulations_v3_coupled.csv", "v3", "CoupledSystem")
 
     # AI training data
-    generate_ai_training_table(
-        "input/ai_training_data.csv",
-        "../docs/source/AITraining/simulation_data/simulation_table.rst",
-    )
+    # generate_ai_training_table(
+    #     "input/ai_training_data.csv",
+    #     "../docs/source/AITraining/simulation_data/simulation_table.rst",
+    # )
+
+    construct_pages("input/simulations_v3_LR_LE_coupled.csv", "v3", "CoupledSystem")
