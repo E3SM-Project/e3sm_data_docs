@@ -429,4 +429,5 @@ if __name__ == "__main__":
     #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
 
     # v3 data
-    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+    # construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+    construct_pages("input/simulations_v3_LR_LE_coupled.csv", "v3", "CoupledSystem")
