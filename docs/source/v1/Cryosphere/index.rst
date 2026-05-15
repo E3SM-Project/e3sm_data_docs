@@ -1,8 +1,7 @@
 E3SMv1 (Cryosphere)
 ====================
 
-The `E3SM version 1 cryosphere simulation campaign <https://e3sm.org/research/cryosphere-ocean/v1-cryosphere-ocean/>`_ includes standard set of 
-Coupled Model Intercomparison Project Phase 6 (`CMIP6 <https://www.geosci-model-dev.net/9/1937/2016/>`_) 
+The E3SM version 1 cryosphere simulation campaign includes the standard set of Coupled Model Intercomparison Project Phase 6 (`CMIP6 <https://www.geosci-model-dev.net/9/1937/2016/>`_)
 Diagnosis, Evaluation, and Characterization of Klima (DECK) simulations. 
 These E3SM simulations at standard resolution have been completed and the data is publicly available.
 
