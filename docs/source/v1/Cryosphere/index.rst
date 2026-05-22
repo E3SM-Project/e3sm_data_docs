@@ -11,9 +11,6 @@ The standard resolution configuration of E3SM v1.0 cryosphere configuration has 
 1 deg latitude by 1 deg longitude in atmosphere (110 km grid spacing), 
 with ocean and sea ice grid of 60 km in the mid-latitudes and 30 km at the equator and poles, 
 and river transport at 55 km horizontal resolution. 
-This model configuration is described in  
-`“v1 1 deg CMIP” <https://e3sm.org/model/scientifically-validated-configurations/v1-configurations/v1-1-deg-cmip6/>`_ page 
-in `Scientifically Validated Configurations <https://e3sm.org/model/scientifically-validated-configurations/>`_.
 
 For more details, 
 refer to `Coupled E3SM v1 Model Overview <https://e3sm.org/overview-paper-on-coupled-model/>`_ or to the reference papers:
