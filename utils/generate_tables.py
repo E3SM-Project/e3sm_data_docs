@@ -345,7 +345,7 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
     # Create output directory if it doesn't exist
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
-    with open(output_file, "w") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         # Page Title
         f.write("**********************************\n")
         f.write(f"{page_type}\n")
@@ -370,7 +370,10 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
                     row = simulation.get_row(output_file)
                     f.write(f"   * - {row[0]}\n")
                     for cell in row[1:]:
-                        f.write(f"     - {cell}\n")
+                        if cell:
+                            f.write(f"     - {cell}\n")
+                        else:
+                            f.write("     -\n")
         f.write("\n")
 
 def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
