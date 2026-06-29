@@ -2,7 +2,6 @@
 v3 CoupledSystem simulation table
 **********************************
 
-
 .. list-table::
    :header-rows: 1
 
@@ -12,10 +11,10 @@ v3 CoupledSystem simulation table
      - HPSS Path
      - HPSS URL
    * - **LR > DECK**
-     - 
-     - 
-     - 
-     - 
+     -
+     -
+     -
+     -
    * - v3.LR.piControl
      - 69
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piControl%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
@@ -32,10 +31,10 @@ v3 CoupledSystem simulation table
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.1pctCO2_0101_bcdt15m
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.1pctCO2_0101_bcdt15m>`_
    * - **LR > Historical**
-     - 
-     - 
-     - 
-     - 
+     -
+     -
+     -
+     -
    * - v3.LR.historical_0051
      - 19
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
@@ -62,10 +61,10 @@ v3 CoupledSystem simulation table
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0251
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0251>`_
    * - **LR > Single-forcing (DAMIP-like)**
-     - 
-     - 
-     - 
-     - 
+     -
+     -
+     -
+     -
    * - v3.LR.hist-GHG_0101
      - 20
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-GHG%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
@@ -112,10 +111,10 @@ v3 CoupledSystem simulation table
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-xGHG-xaer_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-xGHG-xaer_0201>`_
    * - **LR > AMIP**
-     - 
-     - 
-     - 
-     - 
+     -
+     -
+     -
+     -
    * - v3.LR.amip_0101
      - 8
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
@@ -132,10 +131,10 @@ v3 CoupledSystem simulation table
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.amip_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.amip_0201>`_
    * - **LR > RFMIP**
-     - 
-     - 
-     - 
-     - 
+     -
+     -
+     -
+     -
    * - v3.LR.piClim-control-iceini
      - 3
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-control%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
