@@ -16,11 +16,11 @@ v1 WaterCycle simulation table
      - 
    * - 20180129.DECKv1b_piControl.ne30_oEC.edison
      - 40
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22piControl%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22piControl%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_, `Alternative CMIP <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-0&experiment_id=piControl>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180129.DECKv1b_piControl.ne30_oEC.edison
    * - 20180215.DECKv1b_abrupt4xCO2.ne30_oEC.edison
      - 12
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22abrupt-4xCO2%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22abrupt-4xCO2%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_, `Alternative CMIP <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-0&experiment_id=abrupt-4xCO2>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180215.DECKv1b_abrupt4xCO2.ne30_oEC.edison
    * - 20190722.DECKv1b_abrupt4xCO2.ne30_oEC3.compy
      - 14
@@ -28,9 +28,9 @@ v1 WaterCycle simulation table
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190722.DECKv1b_abrupt4xCO2.ne30_oEC3.compy
    * - 20180215.DECKv1b_1pctCO2.ne30_oEC.edison
      - 12
-     - 
+     - `Alternative CMIP <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-0&experiment_id=1pctCO2_>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180215.DECKv1b_1pctCO2.ne30_oEC.edison
-   * - **LR > Historical**
+   * - **LR > Historical** (`Alternative CMIP <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-0&experiment_id=historical>`_)
      - 
      - 
      - 
@@ -54,7 +54,7 @@ v1 WaterCycle simulation table
      - 13
      - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r5i1p1f1%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180307.DECKv1b_H5.ne30_oEC.edison
-   * - **LR > AMIP**
+   * - **LR > AMIP** (`Alternative CMIP <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-0&experiment_id=amip>`_)
      - 
      - 
      - 

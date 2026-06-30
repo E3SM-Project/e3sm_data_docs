@@ -56,6 +56,22 @@ Some original run scripts (the scripts that were originally used to create the s
 
    zstash extract --hpss=/home/projects/e3sm/www/BGC/E3SMv1/<simulation_name>/ case_scripts/run_script_provenance/*
 
+In the table below, there are 6 main categories of data:
+
+* `CTC CMIP piControl <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-1&experiment_id=piControl>`_
+* `CTC C4MIP hist-bgc <https://esgf-node.llnl.gov/search/cmip6/?activity_id=C4MIP&source_id=E3SM-1-1&experiment_id=hist-bgc>`_
+* `CTC C4MIP ssp585-bgc <https://esgf-node.llnl.gov/search/cmip6/?activity_id=C4MIP&source_id=E3SM-1-1&experiment_id=ssp585-bgc>`_
+* `ECA CMIP piControl <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-1-ECA&experiment_id=piControl>`_
+* `ECA C4MIP hist-bgc <https://esgf-node.llnl.gov/search/cmip6/?activity_id=C4MIP&source_id=E3SM-1-1-ECA&experiment_id=hist-bgc>`_
+* `ECA C4MIP ssp585-bgc <https://esgf-node.llnl.gov/search/cmip6/?activity_id=C4MIP&source_id=E3SM-1-1-ECA&experiment_id=ssp585-bgc>`_
+
+Other relevant ESGF links include:
+* `CTC CMIP historical <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-1&experiment_id=historical>`_
+* `CTC ScenarioMIP ssp585 <https://esgf-node.llnl.gov/search/cmip6/?activity_id=ScenarioMIP&source_id=E3SM-1-1&experiment_id=ssp585>`_
+* `CTC ScenarioMIP ssp245 <https://esgf-node.llnl.gov/search/cmip6/?activity_id=ScenarioMIP&source_id=E3SM-1-1&experiment_id=ssp245>`_
+* `CTC DAMIP ​ssp245-covid <https://esgf-node.llnl.gov/search/cmip6/?activity_id=DAMIP&source_id=E3SM-1-1&experiment_id=ssp245-covid>`_
+* `ECA CMIP historical <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-1-ECA&experiment_id=historical>`_
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

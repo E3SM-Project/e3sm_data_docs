@@ -18,7 +18,7 @@ v1 BGC simulation table
      - 
    * - E3SM_1_1_piControl
      - 23
-     - 
+     - `Alternative CMIP <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-1&experiment_id=piControl>`_
      - (symlink) /home/projects/e3sm/www/BGC/E3SMv1/E3SM_1_1_piControl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/BGC/E3SMv1/E3SM_1_1_piControl>`_
    * - E3SM_1_1_piControl-ext85yr
@@ -93,7 +93,7 @@ v1 BGC simulation table
      - 
    * - E3SM_1_1_ECA_piControl
      - 22
-     - 
+     - `Alternative CMIP <https://esgf-node.llnl.gov/search/cmip6/?activity_id=CMIP&source_id=E3SM-1-1-ECA&experiment_id=piControl>`_
      - (symlink) /home/projects/e3sm/www/BGC/E3SMv1/E3SM_1_1_ECA_piControl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/BGC/E3SMv1/E3SM_1_1_ECA_piControl>`_
    * - E3SM_1_1_ECA_piControl-ext85yr
