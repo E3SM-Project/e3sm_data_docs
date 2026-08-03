@@ -340,49 +340,41 @@ def construct_output_csv(resolutions: OrderedDict[str, Category], header_cells: 
                     writer.writerow(simulation.get_row(output_file, minimal_content=True))
 
 # Construct table display of simulations ######################################
-def pad_cells(cells: List[str], col_divider: str, cell_paddings: List[int]) -> str:
-    string = col_divider
-    for i in range(len(cells)):
-        if len(cells[i]) > cell_paddings[i]:
-            s = f"WARNING: cell padding={cell_paddings[i]} is insufficient for {cells[i]} of length {len(cells[i])}"
-            raise RuntimeError(s)
-        string += " " + cells[i].ljust(cell_paddings[i] + 1) + col_divider
-    string += "\n"
-    return string
-
-def pad_cells_row_dividers(marker: str, cell_paddings: List[int]) -> str:
-    string = "+"
-    for i in range(len(cell_paddings)):
-        string += marker*(cell_paddings[i]+2) + "+"
-    string += "\n"
-    return string
-                    
-def generate_table(page_type: str, resolutions: OrderedDict[str, Category], header_cells: List[str], output_file: str, cell_paddings: List[int]):
+def generate_table(page_type: str, resolutions: OrderedDict[str, Category], header_cells: List[str], output_file: str):
 
     # Create output directory if it doesn't exist
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
-    with open(output_file, "w") as file_write:
+    with open(output_file, "w", encoding="utf-8") as f:
         # Page Title
-        file_write.write("**********************************\n")
-        file_write.write(f"{page_type}\n")
-        file_write.write("**********************************\n\n")
-        # Table Header
-        file_write.write(pad_cells_row_dividers("-", cell_paddings))
-        file_write.write(pad_cells(header_cells, "|", cell_paddings))
-        file_write.write(pad_cells_row_dividers("=", cell_paddings))
+        f.write("**********************************\n")
+        f.write(f"{page_type}\n")
+        f.write("**********************************\n\n")
+        # list-table directive
+        f.write(".. list-table::\n")
+        f.write("   :header-rows: 1\n")
+        f.write("\n")
+        # Header row
+        f.write(f"   * - {header_cells[0]}\n")
+        for cell in header_cells[1:]:
+            f.write(f"     - {cell}\n")
         # Table Body
         for resolution in resolutions.values():
             for category in resolution.categories.values():
-                # Category rows
-                category_cells = [""]*len(header_cells)
-                category_cells[0] = f"**{resolution.name} > {category.name}**"
-                file_write.write(pad_cells(category_cells, "|", cell_paddings))
-                file_write.write(pad_cells_row_dividers("-", cell_paddings))
+                # Category row
+                f.write(f"   * - **{resolution.name} > {category.name}**\n")
+                for _ in header_cells[1:]:
+                    f.write("     -\n")
                 for simulation in category.simulations.values():
-                    # Simulation rows
-                    file_write.write(pad_cells(simulation.get_row(output_file), "|", cell_paddings))
-                    file_write.write(pad_cells_row_dividers("-", cell_paddings))
+                    # Simulation row
+                    row = simulation.get_row(output_file)
+                    f.write(f"   * - {row[0]}\n")
+                    for cell in row[1:]:
+                        if cell:
+                            f.write(f"     - {cell}\n")
+                        else:
+                            f.write("     -\n")
+        f.write("\n")
 
 def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
@@ -390,13 +382,11 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
     header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path", "HPSS URL"]
     construct_output_csv(resolutions, header_cells, f"../machine_readable_data/{model_version}_{group_name}_simulations.csv")
     print(f"csv of the simulations will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_simulations.csv")
-    # TODO: add proper subdirs and index.rst files in docs/
     generate_table(
         f"{model_version} {group_name} simulation table",
         resolutions,
         header_cells,
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
-        [85, 15, 400, 140, 170]
     )
     if include_reproduction_scripts:
         header_cells_reproduction: List[str] = ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",]
@@ -407,10 +397,6 @@ def construct_pages(csv_file: str, model_version: str, group_name: str, include_
             resolutions,
             header_cells_reproduction,
             f"../docs/source/{model_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
-            # TODO: The script boxes have to be 200 characters wide to fit in the links...
-            # This is unfortunate because the actual displayed text is quite short.
-            # https://github.com/E3SM-Project/e3sm_data_docs/issues/30 may fix this.
-            [65, 11, 34, 200, 200]
         )
                     
 if __name__ == "__main__":
