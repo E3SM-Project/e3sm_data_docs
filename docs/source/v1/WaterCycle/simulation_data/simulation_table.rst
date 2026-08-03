@@ -16,11 +16,11 @@ v1 WaterCycle simulation table
      - 
    * - 20180129.DECKv1b_piControl.ne30_oEC.edison
      - 40
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22piControl%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22piControl%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180129.DECKv1b_piControl.ne30_oEC.edison
    * - 20180215.DECKv1b_abrupt4xCO2.ne30_oEC.edison
      - 12
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22abrupt-4xCO2%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22abrupt-4xCO2%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180215.DECKv1b_abrupt4xCO2.ne30_oEC.edison
    * - 20190722.DECKv1b_abrupt4xCO2.ne30_oEC3.compy
      - 14
@@ -36,23 +36,23 @@ v1 WaterCycle simulation table
      - 
    * - 20180215.DECKv1b_H1.ne30_oEC.edison
      - 13
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180215.DECKv1b_H1.ne30_oEC.edison
    * - 20180220.DECKv1b_H2.ne30_oEC.edison
      - 13
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180220.DECKv1b_H2.ne30_oEC.edison
    * - 20180302.DECKv1b_H3.ne30_oEC.edison
      - 13
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180302.DECKv1b_H3.ne30_oEC.edison
    * - 20180305.DECKv1b_H4.ne30_oEC.edison
      - 13
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r4i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180305.DECKv1b_H4.ne30_oEC.edison
    * - 20180307.DECKv1b_H5.ne30_oEC.edison
      - 13
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r5i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180307.DECKv1b_H5.ne30_oEC.edison
    * - **LR > AMIP**
      - 
@@ -60,15 +60,15 @@ v1 WaterCycle simulation table
      - 
    * - 20180316.DECKv1b_A1.ne30_oEC.edison
      - 4
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22amip%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180316.DECKv1b_A1.ne30_oEC.edison
    * - 20180622.DECKv1b_A2.ne30_oEC.edison
      - 4
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22amip%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180622.DECKv1b_A2.ne30_oEC.edison
    * - 20180716.DECKv1b_A3.ne30_oEC.edison
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22E3SM-Project%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22amip%22%7D>`_
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180716.DECKv1b_A3.ne30_oEC.edison
    * - 20180508.DECKv1b_A1_1850allF.ne30_oEC.edison
      - 5
@@ -116,163 +116,163 @@ v1 WaterCycle simulation table
      - 
    * - LE_historical_ens1
      - 26
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r1i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens1
    * - LE_historical_ens2
      - 25
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r2i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens2
    * - LE_historical_ens3
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r3i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens3
    * - LE_historical_ens4
      - 28
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r4i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens4
    * - LE_historical_ens5
      - 27
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r5i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens5
    * - LE_historical_ens6
      - 27
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r6i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens6
    * - LE_historical_ens7
      - 28
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r7i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens7
    * - LE_historical_ens8
      - 25
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r8i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens8
    * - LE_historical_ens9
      - 28
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r9i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens9
    * - LE_historical_ens10
      - 28
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r10i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens10
    * - LE_historical_ens11
      - 28
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r11i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens11
    * - LE_historical_ens12
      - 28
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r12i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens12
    * - LE_historical_ens13
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r13i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens13
    * - LE_historical_ens14
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r14i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens14
    * - LE_historical_ens15
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r15i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens15
    * - LE_historical_ens16
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r16i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens16
    * - LE_historical_ens17
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r17i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens17
    * - LE_historical_ens18
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r18i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens18
    * - LE_historical_ens19
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r19i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens19
    * - LE_historical_ens20
      - 24
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r20i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22historical%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_historical_ens20
    * - LE_ssp370_ens1
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r1i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens1
    * - LE_ssp370_ens2
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r2i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens2
    * - LE_ssp370_ens3
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r3i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens3
    * - LE_ssp370_ens4
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r4i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens4
    * - LE_ssp370_ens5
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r5i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens5
    * - LE_ssp370_ens6
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r6i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens6
    * - LE_ssp370_ens7
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r7i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens7
    * - LE_ssp370_ens8
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r8i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens8
    * - LE_ssp370_ens9
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r9i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens9
    * - LE_ssp370_ens10
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r10i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens10
    * - LE_ssp370_ens11
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r11i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens11
    * - LE_ssp370_ens12
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r12i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens12
    * - LE_ssp370_ens13
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r13i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens13
    * - LE_ssp370_ens14
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r14i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens14
    * - LE_ssp370_ens15
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r15i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens15
    * - LE_ssp370_ens16
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r16i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens16
    * - LE_ssp370_ens17
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r17i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens17
    * - LE_ssp370_ens18
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r18i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens18
    * - LE_ssp370_ens19
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r19i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens19
    * - LE_ssp370_ens20
      - 5
-     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%2C%22variant_label%22%3A%22r20i2p2f1%22%7D>`_
+     - `CMIP <https://esgf-node.ornl.gov/search?project=CMIP6&activeFacets=%7B%22institution_id%22%3A%22UCSB%22%2C%22source_id%22%3A%22E3SM-1-0%22%2C%22experiment_id%22%3A%22ssp370%22%7D>`_
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/LE_ssp370_ens20
    * - **LR > Projection**
      - 
