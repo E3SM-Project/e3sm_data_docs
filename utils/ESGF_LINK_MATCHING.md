@@ -11,15 +11,17 @@ Relevant links:
 
 [ESGF NERSC Node search](https://metagrid.esgf-west.org/search) results (as of 2026-08-06)
 
+The first 5 columns refer to information on ESGF. The last 3 columns refer to information on E3SM Data Docs. If the last 3 columns are empty, that means this data on ESGF is _not_ documented on E3SM Data Docs. 
+
 | Project | Identifiers > Institution ID | Identifiers > Source ID | General > Activity ID | Identifiers > Experiment ID | Relevant simulation table | Relevant rows | ESGF links |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | CMIP6 | E3SM-Project (17,846) | E3SM-1-0 (3,084) | CMIP (1936)| 1pctCO2 (190) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR> DECK, 1 row | No |
 | | | | | abrupt-4xCO2 (193) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR > DECK, 2 rows | 1 out of 2 (CMIP only) |
-| | | | | amip (407) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR > AMIP (all 9 rows) | 3 out of 9 (CMIP only) |
-| | | | | historical (965) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR > Historical (all 5 rows) | Yes (CMIP only) |
+| | | | | amip (407) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR > AMIP, 9 rows | 3 out of 9 (CMIP only) |
+| | | | | historical (965) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR > Historical, 5 rows | Yes (CMIP only) |
 | | | | | piControl (181) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR> DECK, 1 row | Yes (CMIP only) |
-| | | | DAMIP (381) | hist-GHG (381) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR > DAMIP (all 3 rows) | No |
-| | | | ScenarioMIP (767) | ssp585 (767) | | |
+| | | | DAMIP (381) | hist-GHG (381) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR > DAMIP, 3 rows | No |
+| | | | ScenarioMIP (767) | ssp585 (767) | [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) | LR > Projection, 8 rows | No |
 | | | E3SM-1-1 (1,750) | C4MIP (333) | hist-bgc (172) | [v1 BGC](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/BGC/simulation_data/simulation_table.html) | LR > CTC ... 4 rows include "hist" | No |
 | | | | | ssp585-bgc (161) | [v1 BGC](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/BGC/simulation_data/simulation_table.html) | LR > CTC ... 4 rows include "ssp585" | No |
 | | | | CMIP (392) | historical (195) | | | |
@@ -72,29 +74,43 @@ Relevant links:
 
 ERROR: 8,589 does not equal sum of Activity ID counts (11,172). It's off by 2,583; perhaps the search feature is not counting AerChemMIP? 
 
+### How to fill out the above table
+
+1. Go to the search link
+2. Manually drill down through the facet search menu. The full list of options for each facet will only appear if you keep your mouse there, so it is more convenient to screenshot the full list and then manually copy over the data to the table above.
+3. Go through the simulation tables on E3SM Data Docs and fill in the relevant data.
+
 ### Simulations included on E3SM Data Docs but NOT on ESGF
 
-Simulation tables with no data on ESGF:
+E3SM Data Docs simulation tables with no data on ESGF:
 - [v1 Cyrosphere](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/Cryosphere/simulation_data/simulation_table.html)
 - [v2.1 BGC](https://docs.e3sm.org/e3sm_data_docs/_build/html/v2.1/BGC/simulation_data/simulation_table.html)
 - [SCREAMv0 DYAMOND2](https://docs.e3sm.org/e3sm_data_docs/_build/html/SCREAMv0/DYAMOND2/simulation_data/simulation_table.html)
 - [SCREAMv1 Four-Seasons](https://docs.e3sm.org/e3sm_data_docs/_build/html/SCREAMv1/FourSeasons/simulation_data/simulation_table.html)
 - [AI Training Datasets](https://docs.e3sm.org/e3sm_data_docs/_build/html/AITraining/simulation_data/simulation_table.html)
 
-Simulation tables with rows not accounted for on ESGF:
+E3SM Data Docs simulation tables with rows not accounted for on ESGF:
 - [v1 BGC](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/BGC/simulation_data/simulation_table.html): LR > CTC Control, LR > ECA Control
-- [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html): LR > LargeEnsemble (these have CMIP ESGF links), LR > Projection, all HR rows
+- [v1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html): LR > LargeEnsemble (these have CMIP ESGF links), all HR rows
 - [v2 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v2/WaterCycle/simulation_data/simulation_table.html): LR > Historical LE (these have CMIP ESGF links), LR > Other, NARRM > Other
 
-For reference, simulation tables with _all_ rows accounted for on ESGF:
+For reference, E3SM Data Docs simulation tables with _all_ rows accounted for on ESGF:
 - [v2.1 WaterCycle](https://docs.e3sm.org/e3sm_data_docs/_build/html/v2.1/WaterCycle/simulation_data/simulation_table.html)
 - [v3 CoupledSystem](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html)
 
-### How to fill out the above table
+### Combined summary
 
-1. Go to the search link
-2. Manually drill down through the facet search menu. The full list of options for each facet will only appear if you keep your mouse there, so it is more convenient to screenshot the full list and then manually copy over the data to the table above.
-3. Go through the simultation tables on E3SM Data Docs and fill in the relevant data.
+| Source ID | On ESGF, but missing on Data Docs | On Data Docs, but missing on ESGF |
+| --- | --- | --- |
+| E3SM-1-0 | None | v1 Cyrosphere, v1 WaterCycle (specifically LR > LargeEnsemble (but these actually have CMIP ESGF links), all HR rows) |
+| E3SM-1-1 | CMIP, DAMIP, ScenarioMIP | v1 BGC (specifically LR > CTC Control) |
+| E3SM-1-1-ECA | CMIP, ScenarioMIP | v1 BGC (specifically LR > ECA Control) |
+| E3SM-2-0 | AerChemMIP, ScenarioMIP | v2 WaterCycle (specifically LR > Historical LE (but these actually have CMIP ESGF links), LR > Other) |
+| E3SM-2-0-NARRM | None | v2 WaterCycle (specifically NARRM > Other) |
+| E3SM-2-1 | None | v2.1 BGC |
+| E3SM-3-0 | ScenarioMIP | None |
+| N/A | N/A | SCREAMv0 DYAMOND2, SCREAMv1 Four-Seasons, AI Training Datasets
+
 
 ## ESGF ORNL Node Search
 
