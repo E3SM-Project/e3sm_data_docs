@@ -1,0 +1,8 @@
+model_version, group, resolution, category, simulation_name, machine, checksum, experiment, ensemble_num, cmip_only,data size,HPSS path
+v3, CoupledSystem,NARRM,AMIP,v3.NARRM.amip_0101, chrysalis, , amip,1, cmip_only,24.5 TB,/home/t/tang30/E3SMv3/RRM/v3.NARRM.amip_0101
+v3, CoupledSystem,NARRM,AMIP,v3.NARRM_r0125.amip_0101, chrysalis, , amip,1, cmip_only,77.8 TB,/home/t/tang30/E3SMv3/RRM/v3.NARRM_r0125.amip_0101
+v3, CoupledSystem,AMZRRM,AMIP,v3.AMZRRM.amip_0101, chrysalis, , amip,1, cmip_only,28.9 TB,/home/t/tang30/E3SMv3/RRM/v3.AMZRRM.amip_0101
+v3, CoupledSystem,EARRM,AMIP,v3.EARRM.amip_0101, chrysalis, ,amip,1, cmip_only,27.8 TB,/home/t/tang30/E3SMv3/RRM/v3.EARRM.amip_0101
+v3, CoupledSystem,NARRM,AMIP,RRM_ensemble, chrysalis, ,amip,25, cmip_only,20.3 TB,/home/t/tang30/E3SMv3/RRM/RRM_ensemble
+v3, CoupledSystem, LR,AMIP,LR_ensemble, chrysalis, ,amip,25, cmip_only,4.7 TB,/home/t/tang30/E3SMv3/RRM/LR_ensemble
+v3, CoupledSystem, LR,AMIP,v3.LR.amip_bonus_0101, chrysalis, ,amip,1, cmip_only,25.5 TB,/home/t/tang30/E3SMv3/RRM/v3.LR.amip_bonus_0101
