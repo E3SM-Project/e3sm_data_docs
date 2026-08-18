@@ -1,5 +1,5 @@
 **********************************
-v3 CoupledSystem simulation table
+v3.LR CoupledSystem simulation table
 **********************************
 
 .. list-table::

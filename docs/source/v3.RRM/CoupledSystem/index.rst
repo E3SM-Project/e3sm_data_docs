@@ -1,18 +1,27 @@
-E3SMv3.LR
+E3SMv3.RRM
 ================
 
-The simulation campaign for E3SMv3  was performed initially with the
-**v3.LR** (lower resolution) model configuration.
+The simulation campaign for E3SMv3 was performed with two
+separate model configurations:
+
+* **v3.LR** (lower resolution). For this, see the :doc:`v3.LR documentation </v3/index.rst>`.
+* **v3.RRM** (regionally refined model)
+
+This page covers the RRM.
 
 If you use data from this simulation campaign, please cite the relevant overview
 manuscripts.
 
-* For a general E3SMv3 overview and v3.LR simulations:
+* For a general E3SMv3 overview:
 
   * Xie et al. (2025). The Energy Exascale Earth System Model Version 3. Part I: Overview of the Atmospheric Component. Accepted by JAMES. DOI to follow.
   * Golaz et al. (2025). The Energy Exascale Earth System Model Version 3. Part II: Overview of the Coupled system. Submitted to JAMES.
 
-For information on how to access and use the simulation data, see :doc:`here <../../v2/WaterCycle/simulation_data/index>`.
+* For v3.RRM simulations:
+
+  * TBD
+
+For information on how to access and use the simulation data, see :doc:`here </v2/WaterCycle/simulation_data/index>`.
 
 .. toctree::
    :maxdepth: 2
