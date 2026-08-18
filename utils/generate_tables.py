@@ -86,6 +86,13 @@ def get_esgf(model_version: str, resolution: str, simulation_name: str, experime
     elif model_version == "v3":
         # v3 uses aims2.llnl.gov with CMIP6-E3SM-Ext project
         source_id = "E3SM-3-0"
+        # TODO(RRM): this always uses the LR source_id regardless of `resolution`.
+        # If NARRM/AMZRRM/EARRM configs are registered in CMIP under different
+        # source_ids (the way v2 appends "-NARRM", see the `else` branch below),
+        # this needs a similar resolution-aware branch, e.g.:
+        #   if resolution == "NARRM":
+        #       source_id = "E3SM-3-0-NARRM"
+        # Confirm the actual naming convention before publishing RRM ESGF links.
         human_readable_active_facets: str = f'{{"source_id":"{source_id}","experiment_id":"{experiment}","variant_label":"r{ensemble_num}i1p1f1"}}'
         url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
         esgf = f"`CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets={url_active_facets}>`_"
@@ -160,7 +167,8 @@ class Simulation(object):
         self.ensemble_num = simulation_dict["ensemble_num"]
         self.link_type = simulation_dict["link_type"]
 
-        if "hpss_path" in simulation_dict:
+        has_hpss_override: bool = bool(simulation_dict.get("hpss_path"))
+        if has_hpss_override:
             # If `hpss_path` is specified, then it's a non-standard path
             hpss_path = simulation_dict["hpss_path"]
         else:
@@ -179,11 +187,25 @@ class Simulation(object):
             displayed_version = self.model_version
         if self.group in ["BGC", "Cryosphere"]:
             skip_resolution = True
-        if skip_resolution:
-            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
+        # NOTE: previously this block unconditionally rebuilt `hpss_path` from the
+        # standard `/home/projects/e3sm/www/...` pattern, silently discarding any
+        # `hpss_path` override set above. Only fall back to the standard pattern
+        # when no override was given, so non-standard paths (e.g. the RRM data
+        # under /home/t/tang30/...) are respected.
+        if not has_hpss_override:
+            if skip_resolution:
+                hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
+            else:
+                hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.resolution}/{self.simulation_name}"
+
+        if simulation_dict.get("data_size"):
+            # Some csv files (e.g. the RRM data) supply the data size and HPSS
+            # path directly instead of relying on an `hsi du` lookup - use them
+            # as-is rather than shelling out to `hsi`.
+            self.data_size = simulation_dict["data_size"].replace("TB", "").strip()
+            self.hpss = hpss_path
         else:
-            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.resolution}/{self.simulation_name}"
-        self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
+            self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
         self.esgf = get_esgf(self.model_version, self.resolution, self.simulation_name, self.experiment, self.ensemble_num, self.link_type, self.node)
 
@@ -202,6 +224,14 @@ class Simulation(object):
 
     def get_web_interface_url(self) -> str:
         """Generate web interface URL from HPSS path"""
+        # TODO(RRM): this assumes `self.hpss` is always something published under
+        # /home/projects/e3sm/www/... and therefore browsable at
+        # https://portal.nersc.gov/archive<path>. The RRM csv's HPSS paths
+        # currently point at a personal NERSC home directory
+        # (/home/t/tang30/E3SMv3/RRM/...), which is not publicly browsable that
+        # way. Confirm whether this data will be moved to the standard published
+        # location before docs go live, or whether this method needs to skip/adjust
+        # the link for non-standard paths.
         if self.hpss and self.data_size:
             # Convert HPSS path to web interface URL
             # /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piControl -> https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piControl
@@ -279,7 +309,13 @@ def read_simulations(csv_file):
             # Get labels
             if header == []:
                 for label in row:
-                    header.append(label.strip())
+                    # Normalize header labels (lowercase, spaces -> underscores) so
+                    # csv files with slightly different header formatting (e.g. the
+                    # RRM csv's "data size" / "HPSS path") map onto the same
+                    # snake_case keys the rest of the script expects
+                    # ("data_size" / "hpss_path"), without needing special-casing
+                    # per file.
+                    header.append(label.strip().lower().replace(" ", "_"))
             else: 
                 simulation_dict = {}
                 for i in range(len(header)):
@@ -376,27 +412,35 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
                             f.write("     -\n")
         f.write("\n")
 
-def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
+def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False, doc_version: str = None):
+    # `model_version` drives internal lookups (matching the csv's model_version
+    # column) and ESGF/HPSS-path construction logic. `doc_version` drives where
+    # output files are written. They're the same value in the common case, but
+    # need to differ for datasets like v3.RRM, which use model_version="v3" in
+    # the csv (for ESGF purposes) but should be documented separately under
+    # docs/source/v3.RRM/... rather than overwriting docs/source/v3/....
+    if doc_version is None:
+        doc_version = model_version
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
     header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path", "HPSS URL"]
-    construct_output_csv(resolutions, header_cells, f"../machine_readable_data/{model_version}_{group_name}_simulations.csv")
-    print(f"csv of the simulations will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_simulations.csv")
+    construct_output_csv(resolutions, header_cells, f"../machine_readable_data/{doc_version}_{group_name}_simulations.csv")
+    print(f"csv of the simulations will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{doc_version}_{group_name}_simulations.csv")
     generate_table(
-        f"{model_version} {group_name} simulation table",
+        f"{doc_version} {group_name} simulation table",
         resolutions,
         header_cells,
-        f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
+        f"../docs/source/{doc_version}/{group_name}/simulation_data/simulation_table.rst",
     )
     if include_reproduction_scripts:
         header_cells_reproduction: List[str] = ["Simulation", "Machine", "10 day checksum", "Reproduction Script", "Original Script (requires significant changes to run!!)",]
-        construct_output_csv(resolutions, header_cells_reproduction, f"../machine_readable_data/{model_version}_{group_name}_reproductions.csv")
-        print(f"csv of the reproductions will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_reproductions.csv")
+        construct_output_csv(resolutions, header_cells_reproduction, f"../machine_readable_data/{doc_version}_{group_name}_reproductions.csv")
+        print(f"csv of the reproductions will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{doc_version}_{group_name}_reproductions.csv")
         generate_table(
-            f"{model_version} {group_name} reproduction table",
+            f"{doc_version} {group_name} reproduction table",
             resolutions,
             header_cells_reproduction,
-            f"../docs/source/{model_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
+            f"../docs/source/{doc_version}/{group_name}/reproducing_simulations/reproduction_table.rst",
         )
                     
 if __name__ == "__main__":
@@ -415,4 +459,9 @@ if __name__ == "__main__":
     #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
 
     # v3 data
-    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+    #construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+
+    # v3.RRM data: csv still uses model_version="v3" internally (for ESGF/hpss
+    # logic), but is documented separately under docs/source/v3.RRM/... via
+    # doc_version, so it doesn't collide with the v3 LR output above.
+    construct_pages("input/simulations_v3_RRM_coupled.csv", "v3", "CoupledSystem", doc_version="v3.RRM")
