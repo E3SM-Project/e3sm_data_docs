@@ -208,7 +208,8 @@ class Simulation(object):
             self.hpss = hpss_path
 
             computed_data_size, computed_hpss_path = get_data_size_and_hpss(hpss_path)
-            if self.data_size != computed_data_size:
+            if abs(float(self.data_size) - float(computed_data_size)) > 1:
+                # Ignore data size differences due to rounding.
                 self.warnings.append(f"self.data_size={self.data_size} but computed_data_size={computed_data_size}")
             if self.hpss != computed_hpss_path:
                 self.warnings.append(f"self.hpss={self.hpss} but computed_hpss_path={computed_hpss_path}")

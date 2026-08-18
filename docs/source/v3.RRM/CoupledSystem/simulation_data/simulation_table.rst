@@ -27,7 +27,7 @@ v3.RRM CoupledSystem simulation table
      - `HPSS URL <https://portal.nersc.gov/archive/home/t/tang30/E3SMv3/RRM/v3.NARRM_r0125.amip_0101>`_
    * - RRM_ensemble
      - 20.3
-     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r25i1p1f1%22%7D>`_
+     -
      - /home/t/tang30/E3SMv3/RRM/RRM_ensemble
      - `HPSS URL <https://portal.nersc.gov/archive/home/t/tang30/E3SMv3/RRM/RRM_ensemble>`_
    * - **AMZRRM > AMIP**
@@ -57,7 +57,7 @@ v3.RRM CoupledSystem simulation table
      -
    * - LR_ensemble
      - 4.7
-     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r25i1p1f1%22%7D>`_
+     -
      - /home/t/tang30/E3SMv3/RRM/LR_ensemble
      - `HPSS URL <https://portal.nersc.gov/archive/home/t/tang30/E3SMv3/RRM/LR_ensemble>`_
    * - v3.LR.amip_bonus_0101
