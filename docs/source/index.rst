@@ -19,6 +19,7 @@ simulations.
    v2/index
    v2.1/index
    v3/index
+   v3.RRM/index
    SCREAMv0/index
    SCREAMv1/index
    AITraining/index

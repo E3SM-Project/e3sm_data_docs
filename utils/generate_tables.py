@@ -167,6 +167,8 @@ class Simulation(object):
         self.ensemble_num = simulation_dict["ensemble_num"]
         self.link_type = simulation_dict["link_type"]
 
+        self.warnings: List[str] = []
+
         has_hpss_override: bool = bool(simulation_dict.get("hpss_path"))
         if has_hpss_override:
             # If `hpss_path` is specified, then it's a non-standard path
@@ -204,6 +206,12 @@ class Simulation(object):
             # as-is rather than shelling out to `hsi`.
             self.data_size = simulation_dict["data_size"].replace("TB", "").strip()
             self.hpss = hpss_path
+
+            computed_data_size, computed_hpss_path = get_data_size_and_hpss(hpss_path)
+            if self.data_size != computed_data_size:
+                self.warnings.append(f"self.data_size={self.data_size} but computed_data_size={computed_data_size}")
+            if self.hpss != computed_hpss_path:
+                self.warnings.append(f"self.hpss={self.hpss} but computed_hpss_path={computed_hpss_path}")
         else:
             self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
@@ -221,6 +229,10 @@ class Simulation(object):
             self.run_script_reproduction = "N/A"
         if not self.run_script_original:
             self.run_script_original = "N/A"
+
+    def print_warnings(self) -> str:
+        for warning in self.warnings:
+            print(f"Warning for {self.simulation_name}: {warning}")
 
     def get_web_interface_url(self) -> str:
         """Generate web interface URL from HPSS path"""
@@ -402,6 +414,7 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
                 for _ in header_cells[1:]:
                     f.write("     -\n")
                 for simulation in category.simulations.values():
+                    simulation.print_warnings()
                     # Simulation row
                     row = simulation.get_row(output_file)
                     f.write(f"   * - {row[0]}\n")
