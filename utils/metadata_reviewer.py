@@ -45,6 +45,7 @@ class Variant(object):
         experiment_id: str = "",
         variant_label: str = "",
         e3sm_data_docs_page: str = "",
+        e3sm_data_docs_link: str = "",
     ):
         self.institution_id: str = institution_id
         self.source_id: str = source_id
@@ -52,6 +53,7 @@ class Variant(object):
         self.experiment_id: str = experiment_id
         self.variant_label: str = variant_label
         self.e3sm_data_docs_page: str = e3sm_data_docs_page
+        self.e3sm_data_docs_link: str = e3sm_data_docs_link
 
     def _key(self) -> Tuple[str, str, str]:
         # institution_id / activity_id are deliberately excluded from the
@@ -242,6 +244,13 @@ def collect_links_from_table(rst_path: str) -> List[Variant]:
             continue
 
         source_id, experiment_id, variant_label = parsed
+
+        simulation_name = row[0] if row else ""
+        url = _data_docs_url(rst_path)
+        e3sm_data_docs_link = (
+            f"[{simulation_name}]({url})" if simulation_name and url else ""
+        )
+
         variants.append(
             Variant(
                 institution_id=UNKNOWN,
@@ -250,6 +259,7 @@ def collect_links_from_table(rst_path: str) -> List[Variant]:
                 experiment_id=experiment_id,
                 variant_label=variant_label,
                 e3sm_data_docs_page=rst_path,
+                e3sm_data_docs_link=e3sm_data_docs_link,
             )
         )
 
@@ -273,7 +283,8 @@ def process_links_in_data_docs(variants_from_cmip6_metadata: Set[Variant]) -> Se
         for variant in variants_in_this_table:
             match = lookup.get(variant._key())
             if match is not None:
-                match.e3sm_data_docs_page = str(simulation_table_page)
+                match.e3sm_data_docs_page = variant.e3sm_data_docs_page
+                match.e3sm_data_docs_link = variant.e3sm_data_docs_link
             else:
                 variants_not_in_cmip6_metadata.add(variant)
 
@@ -323,14 +334,6 @@ def _data_docs_url(page_path: str) -> Optional[str]:
     return f"{DATA_DOCS_BASE_URL}/{relative_html}"
 
 
-def _data_docs_version_label(page_path: str) -> Optional[str]:
-    """e.g. 'v3/CoupledSystem/.../simulation_table.rst' -> 'v3'"""
-    relative = _data_docs_relative_path(page_path)
-    if relative is None:
-        return None
-    return relative.split("/")[0]
-
-
 def _make_markdown_table(title: str, variants: Set[Variant]) -> str:
     lines = [
         f"### {title}",
@@ -339,15 +342,9 @@ def _make_markdown_table(title: str, variants: Set[Variant]) -> str:
         "|---|---|---|---|---|---|",
     ]
     for v in sorted(variants, key=_sort_key):
-        page_link = ""
-        if v.e3sm_data_docs_page:
-            url = _data_docs_url(v.e3sm_data_docs_page)
-            version = _data_docs_version_label(v.e3sm_data_docs_page)
-            if url and version:
-                page_link = f"[{version}]({url})"
         lines.append(
             f"| {v.institution_id} | {v.source_id} | {v.activity_id} | "
-            f"{v.experiment_id} | {v.variant_label} | {page_link} |"
+            f"{v.experiment_id} | {v.variant_label} | {v.e3sm_data_docs_link} |"
         )
     lines.append("")
     return "\n".join(lines)
