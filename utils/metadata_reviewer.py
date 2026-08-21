@@ -20,6 +20,15 @@ a URL-encoded JSON blob in an `activeFacets` parameter). They do not encode
 (source_id, experiment_id, variant_label). When a variant is discovered only
 from a data-docs link (i.e. it has no corresponding CMIP6-Metadata JSON),
 its institution_id/activity_id fields are set to "N/A" rather than guessed.
+
+NOTE on experiment_id casing:
+E3SM Data Docs and CMIP6-Metadata don't always agree on the casing of
+experiment_id (e.g. `piClim-histghg` vs `piClim-histGHG`). Matching therefore
+ignores case, but CMIP6-Metadata is treated as the source of truth: when a
+CMIP6-Metadata variant is matched to a data-docs link, the variant's
+displayed experiment_id keeps CMIP6-Metadata's original casing. Only
+variants found *exclusively* in data-docs (no CMIP6-Metadata counterpart)
+display data-docs' casing, since there's no CMIP6-Metadata value to prefer.
 """
 
 import json
@@ -57,8 +66,11 @@ class Variant(object):
 
     def _key(self) -> Tuple[str, str, str]:
         # institution_id / activity_id are deliberately excluded from the
-        # identity key -- see module docstring.
-        return (self.source_id, self.experiment_id, self.variant_label)
+        # identity key -- see module docstring. experiment_id is lower-cased
+        # for the purposes of matching/hashing/equality only -- the
+        # *displayed* experiment_id (self.experiment_id) keeps its original
+        # casing; see the module docstring's note on experiment_id casing.
+        return (self.source_id, self.experiment_id.lower(), self.variant_label)
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Variant):
@@ -270,7 +282,11 @@ def process_links_in_data_docs(variants_from_cmip6_metadata: Set[Variant]) -> Se
     variants_not_in_cmip6_metadata: Set[Variant] = set()
 
     # Lookup by identity key so we can mutate the *actual* objects that live
-    # in `variants_from_cmip6_metadata` when we find a matching link.
+    # in `variants_from_cmip6_metadata` when we find a matching link. Since
+    # `_key()` lower-cases experiment_id, this matches regardless of casing
+    # differences between CMIP6-Metadata and data-docs, and because we only
+    # ever update e3sm_data_docs_page/e3sm_data_docs_link on `match` (never
+    # experiment_id itself), CMIP6-Metadata's original casing is preserved.
     lookup: Dict[Tuple[str, str, str], Variant] = {
         v._key(): v for v in variants_from_cmip6_metadata
     }
@@ -299,13 +315,43 @@ def find_variants_not_on_data_docs(variants_from_cmip6_metadata: Set[Variant]) -
     return variants_not_on_data_docs
 
 
-def _sort_key(variant: Variant) -> Tuple[str, str, str, str, str]:
+# Matches a variant_label's r/i/p/f indices, e.g. "r6i1p1f1" ->
+# ("6", "1", "1", "1"). Used only for sorting -- the variant_label string
+# itself is never rewritten/reformatted (e.g. never zero-padded).
+VARIANT_LABEL_INDICES_RE = re.compile(
+    r"^r(?P<r>\d+)i(?P<i>\d+)p(?P<p>\d+)f(?P<f>\d+)$"
+)
+
+
+def _variant_label_sort_key(variant_label: str) -> Tuple[int, int, int, int]:
+    """Sort key for a variant_label that orders r/i/p/f as integers (so
+    r6i1p1f1 sorts before r25i1p1f1), instead of lexicographically as
+    strings (which would put r25... before r6...).
+
+    Falls back to a key of all -1s (sorting before any real index) for
+    labels that don't match the expected "rXiYpZfW" pattern, so malformed
+    labels don't crash the sort.
+    """
+    match = VARIANT_LABEL_INDICES_RE.match(variant_label)
+    if not match:
+        return (-1, -1, -1, -1)
+    return (
+        int(match.group("r")),
+        int(match.group("i")),
+        int(match.group("p")),
+        int(match.group("f")),
+    )
+
+
+def _sort_key(
+    variant: Variant,
+) -> Tuple[str, str, str, str, Tuple[int, int, int, int]]:
     return (
         variant.institution_id,
         variant.source_id,
         variant.activity_id,
         variant.experiment_id,
-        variant.variant_label,
+        _variant_label_sort_key(variant.variant_label),
     )
 
 
