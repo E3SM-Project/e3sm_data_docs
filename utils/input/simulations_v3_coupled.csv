@@ -19,7 +19,7 @@ v3, CoupledSystem, LR, Single-forcing (DAMIP-like), v3.LR.hist-xGHG-xaer_0201, c
 v3, CoupledSystem, LR, AMIP, v3.LR.amip_0101, chrysalis, , amip, 1, cmip_only,,
 v3, CoupledSystem, LR, AMIP, v3.LR.amip_0151, chrysalis, , amip, 2, cmip_only,,
 v3, CoupledSystem, LR, AMIP, v3.LR.amip_0201, chrysalis, , amip, 3, cmip_only,,
-v3, CoupledSystem, LR, AMIP, v3.LR.amip_bonus_0101, chrysalis, , amip, 1, cmip_only, 25.5 TB, /home/t/tang30/E3SMv3/RRM/v3.LR.amip_bonus_0101
+v3, CoupledSystem, LR, AMIP, v3.LR.amip_bonus_0101, chrysalis, , amip, 1, none, 25.5 TB, /home/t/tang30/E3SMv3/RRM/v3.LR.amip_bonus_0101
 v3, CoupledSystem, LR, AMIP, LR_ensemble, chrysalis, , amip, 25, none, 4.7 TB, /home/t/tang30/E3SMv3/RRM/LR_ensemble
 v3, CoupledSystem, LR, RFMIP, v3.LR.piClim-control-iceini, chrysalis, , piClim-control, 1, cmip_only,,
 v3, CoupledSystem, LR, RFMIP, v3.LR.piClim-histall/v3.LR.piClim-histall_0101, chrysalis, , piClim-histall, 1, cmip_only,,
@@ -31,8 +31,8 @@ v3, CoupledSystem, LR, RFMIP, v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0201, ch
 v3, CoupledSystem, LR, RFMIP, v3.LR.piClim-histaer/v3.LR.piClim-histaer_0101, chrysalis, , piClim-histaer, 1, cmip_only,,
 v3, CoupledSystem, LR, RFMIP, v3.LR.piClim-histaer/v3.LR.piClim-histaer_0151, chrysalis, , piClim-histaer, 2, cmip_only,,
 v3, CoupledSystem, LR, RFMIP, v3.LR.piClim-histaer/v3.LR.piClim-histaer_0201, chrysalis, , piClim-histaer, 3, cmip_only,,
-v3, CoupledSystem, NARRM, AMIP, v3.NARRM.amip_0101, chrysalis, , amip,1, cmip_only,24.5 TB,/home/t/tang30/E3SMv3/RRM/v3.NARRM.amip_0101
-v3, CoupledSystem, NARRM, AMIP, v3.NARRM_r0125.amip_0101, chrysalis, , amip, 1, cmip_only,77.8 TB,/home/t/tang30/E3SMv3/RRM/v3.NARRM_r0125.amip_0101
+v3, CoupledSystem, NARRM, AMIP, v3.NARRM.amip_0101, chrysalis, , amip,1, none,24.5 TB,/home/t/tang30/E3SMv3/RRM/v3.NARRM.amip_0101
+v3, CoupledSystem, NARRM, AMIP, v3.NARRM_r0125.amip_0101, chrysalis, , amip, 1, none,77.8 TB,/home/t/tang30/E3SMv3/RRM/v3.NARRM_r0125.amip_0101
 v3, CoupledSystem, NARRM, AMIP, RRM_ensemble, chrysalis, , amip, 25, none, 20.3 TB, /home/t/tang30/E3SMv3/RRM/RRM_ensemble
-v3, CoupledSystem, AMZRRM, AMIP, v3.AMZRRM.amip_0101, chrysalis, , amip, 1, cmip_only, 28.9 TB, /home/t/tang30/E3SMv3/RRM/v3.AMZRRM.amip_0101
-v3, CoupledSystem, EARRM, AMIP, v3.EARRM.amip_0101, chrysalis, , amip, 1, cmip_only, 27.8 TB, /home/t/tang30/E3SMv3/RRM/v3.EARRM.amip_0101
+v3, CoupledSystem, AMZRRM, AMIP, v3.AMZRRM.amip_0101, chrysalis, , amip, 1, none, 28.9 TB, /home/t/tang30/E3SMv3/RRM/v3.AMZRRM.amip_0101
+v3, CoupledSystem, EARRM, AMIP, v3.EARRM.amip_0101, chrysalis, , amip, 1, none, 27.8 TB, /home/t/tang30/E3SMv3/RRM/v3.EARRM.amip_0101
