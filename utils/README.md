@@ -8,6 +8,20 @@ $ cd utils
 $ ./generate_html.bash
 ```
 
+Checking for missing data
+=========================
+
+To ensure that `e3sm_data_docs` is not missing any E3SM data currently on ESGF, you can run:
+
+```bash
+cd utils
+python metadata_reviewer.py
+```
+That will create `utils/metadata_review.md`, which will report:
+- Variants on [CMIP6 Metadata](https://github.com/E3SM-Project/CMIP6-Metadata), but not on E3SM Data Docs. These should be added to `e3sm_data_docs` as soon as possible.
+- Variants not on CMIP6 Metadata, but do have an ESGF link on E3SM Data Docs. This should be rare. It would imply that the CMIP6 Metadata is not up-to-date with what's on ESGF.
+- Variants on both CMIP6 Metadata and E3SM Data Docs. No issues here.
+
 Creating reproduction scripts
 =============================
 
