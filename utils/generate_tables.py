@@ -53,15 +53,23 @@ def check_if_symlink(hpss_path: str) -> bool:
     output: str = "out_symlink_check.txt"
     if os.path.exists(output):
         os.remove(output)
+    # NOTE: We must `ls` the *parent* directory of `hpss_path`, not `hpss_path`
+    # itself. If `hpss_path` is a working symlink to a directory, running `ls`
+    # directly on it causes hsi (like standard `ls`) to dereference the link
+    # and list the *contents* of the target directory instead of showing the
+    # symlink entry annotated with `@`. Listing the parent directory always
+    # shows the symlink entry itself, regardless of whether it resolves.
+    parent_dir = os.path.dirname(hpss_path)
+    basename = os.path.basename(hpss_path)
     try:
-        os.system(f'(hsi "ls {hpss_path}") 2>&1 | tee {output}')
+        os.system(f'(hsi "ls {parent_dir}") 2>&1 | tee {output}')
     except Exception as e:
         print(f"hsi failed: {e}")
         return False
     with open(output, "r") as f:
         for line in f:
             # Symlinks on HSI/HPSS end in `@`
-            match_object = re.search(f"{os.path.basename(hpss_path)}@", line)
+            match_object = re.search(f"{re.escape(basename)}@", line)
             if match_object:
                 return True
     return False
@@ -198,10 +206,22 @@ class Simulation(object):
             # path directly instead of relying on an `hsi du` lookup - use them
             # as-is rather than shelling out to `hsi`.
             self.data_size = simulation_dict["data_size"].replace("TB", "").strip()
-            self.hpss = hpss_path
 
-            computed_data_size, _ = get_data_size_and_hpss(hpss_path)
-            if abs(float(self.data_size) - float(computed_data_size)) > 1:
+            # NOTE: previously this did `self.hpss = hpss_path` directly, then
+            # threw away the second return value of get_data_size_and_hpss()
+            # (the one that carries the "(symlink) " prefix). That meant a
+            # correctly-detected symlink never actually showed up in the
+            # output. Use the computed value instead, falling back to the raw
+            # path if the hsi lookup came back empty (e.g. bad path/ENOENT).
+            computed_data_size, computed_hpss = get_data_size_and_hpss(hpss_path)
+            self.hpss = computed_hpss if computed_hpss else hpss_path
+
+            if not computed_data_size:
+                self.warnings.append(
+                    f"Could not verify data_size for {self.simulation_name}: "
+                    f"hpss_path={hpss_path} returned no data (path may be wrong)"
+                )
+            elif abs(float(self.data_size) - float(computed_data_size)) > 1:
                 # Ignore data size differences due to rounding.
                 self.warnings.append(f"self.data_size={self.data_size} but computed_data_size={computed_data_size}")
         else:

@@ -133,13 +133,13 @@ v3 CoupledSystem simulation table
    * - v3.LR.amip_bonus_0101
      - 25.5
      -
-     - /home/t/tang30/E3SMv3/RRM/v3.LR.amip_bonus_0101
-     -
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.LR.amip_bonus_0101
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.LR.amip_bonus_0101>`_
    * - LR_ensemble
      - 4.7
      -
-     - /home/t/tang30/E3SMv3/RRM/LR_ensemble
-     -
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/LR_ensemble
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/LR_ensemble>`_
    * - **LR > RFMIP**
      -
      -
@@ -203,18 +203,18 @@ v3 CoupledSystem simulation table
    * - v3.NARRM.amip_0101
      - 24.5
      -
-     - /home/t/tang30/E3SMv3/RRM/v3.NARRM.amip_0101
-     -
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.NARRM.amip_0101
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.NARRM.amip_0101>`_
    * - v3.NARRM_r0125.amip_0101
      - 77.8
      -
-     - /home/t/tang30/E3SMv3/RRM/v3.NARRM_r0125.amip_0101
-     -
+     - (symlink) /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.NARRM_r0125.amip_0101
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.NARRM_r0125.amip_0101>`_
    * - RRM_ensemble
      - 20.3
      -
-     - /home/t/tang30/E3SMv3/RRM/RRM_ensemble
-     -
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/RRM_ensemble
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/RRM_ensemble>`_
    * - **AMZRRM > AMIP**
      -
      -
@@ -223,8 +223,8 @@ v3 CoupledSystem simulation table
    * - v3.AMZRRM.amip_0101
      - 28.9
      -
-     - /home/t/tang30/E3SMv3/RRM/v3.AMZRRM.amip_0101
-     -
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.AMZRRM.amip_0101
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.AMZRRM.amip_0101>`_
    * - **EARRM > AMIP**
      -
      -
@@ -233,6 +233,6 @@ v3 CoupledSystem simulation table
    * - v3.EARRM.amip_0101
      - 27.8
      -
-     - /home/t/tang30/E3SMv3/RRM/v3.EARRM.amip_0101
-     -
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.EARRM.amip_0101
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.EARRM.amip_0101>`_
 
