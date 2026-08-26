@@ -193,8 +193,7 @@ class Simulation(object):
         # NOTE: previously this block unconditionally rebuilt `hpss_path` from the
         # standard `/home/projects/e3sm/www/...` pattern, silently discarding any
         # `hpss_path` override set above. Only fall back to the standard pattern
-        # when no override was given, so non-standard paths (e.g. the RRM data
-        # under /home/t/tang30/...) are respected.
+        # when no override was given, so non-standard paths are respected.
         if not has_hpss_override:
             if skip_resolution:
                 hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
@@ -204,15 +203,11 @@ class Simulation(object):
         if simulation_dict.get("data_size"):
             # Some csv files (e.g. the RRM data) supply the data size and HPSS
             # path directly instead of relying on an `hsi du` lookup - use them
-            # as-is rather than shelling out to `hsi`.
+            # as-is rather than calling `hsi`.
             self.data_size = simulation_dict["data_size"].replace("TB", "").strip()
 
-            # NOTE: previously this did `self.hpss = hpss_path` directly, then
-            # threw away the second return value of get_data_size_and_hpss()
-            # (the one that carries the "(symlink) " prefix). That meant a
-            # correctly-detected symlink never actually showed up in the
-            # output. Use the computed value instead, falling back to the raw
-            # path if the hsi lookup came back empty (e.g. bad path/ENOENT).
+            # We need to use computed_hpss because `get_data_size_and_hpss()`
+            # includes a symlink check, and thus may prepend "(symlink)".
             computed_data_size, computed_hpss = get_data_size_and_hpss(hpss_path)
             self.hpss = computed_hpss if computed_hpss else hpss_path
 
