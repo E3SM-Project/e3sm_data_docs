@@ -53,15 +53,23 @@ def check_if_symlink(hpss_path: str) -> bool:
     output: str = "out_symlink_check.txt"
     if os.path.exists(output):
         os.remove(output)
+    # NOTE: We must `ls` the *parent* directory of `hpss_path`, not `hpss_path`
+    # itself. If `hpss_path` is a working symlink to a directory, running `ls`
+    # directly on it causes hsi (like standard `ls`) to dereference the link
+    # and list the *contents* of the target directory instead of showing the
+    # symlink entry annotated with `@`. Listing the parent directory always
+    # shows the symlink entry itself, regardless of whether it resolves.
+    parent_dir = os.path.dirname(hpss_path)
+    basename = os.path.basename(hpss_path)
     try:
-        os.system(f'(hsi "ls {hpss_path}") 2>&1 | tee {output}')
+        os.system(f'(hsi "ls {parent_dir}") 2>&1 | tee {output}')
     except Exception as e:
         print(f"hsi failed: {e}")
         return False
     with open(output, "r") as f:
         for line in f:
             # Symlinks on HSI/HPSS end in `@`
-            match_object = re.search(f"{os.path.basename(hpss_path)}@", line)
+            match_object = re.search(f"{re.escape(basename)}@", line)
             if match_object:
                 return True
     return False
@@ -160,7 +168,10 @@ class Simulation(object):
         self.ensemble_num = simulation_dict["ensemble_num"]
         self.link_type = simulation_dict["link_type"]
 
-        if "hpss_path" in simulation_dict:
+        self.warnings: List[str] = []
+
+        has_hpss_override: bool = bool(simulation_dict.get("hpss_path"))
+        if has_hpss_override:
             # If `hpss_path` is specified, then it's a non-standard path
             hpss_path = simulation_dict["hpss_path"]
         else:
@@ -179,11 +190,37 @@ class Simulation(object):
             displayed_version = self.model_version
         if self.group in ["BGC", "Cryosphere"]:
             skip_resolution = True
-        if skip_resolution:
-            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
+        # NOTE: previously this block unconditionally rebuilt `hpss_path` from the
+        # standard `/home/projects/e3sm/www/...` pattern, silently discarding any
+        # `hpss_path` override set above. Only fall back to the standard pattern
+        # when no override was given, so non-standard paths are respected.
+        if not has_hpss_override:
+            if skip_resolution:
+                hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.simulation_name}"
+            else:
+                hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.resolution}/{self.simulation_name}"
+
+        if simulation_dict.get("data_size"):
+            # Some csv files (e.g. the RRM data) supply the data size and HPSS
+            # path directly instead of relying on an `hsi du` lookup - use them
+            # as-is rather than calling `hsi`.
+            self.data_size = simulation_dict["data_size"].replace("TB", "").strip()
+
+            # We need to use computed_hpss because `get_data_size_and_hpss()`
+            # includes a symlink check, and thus may prepend "(symlink)".
+            computed_data_size, computed_hpss = get_data_size_and_hpss(hpss_path)
+            self.hpss = computed_hpss if computed_hpss else hpss_path
+
+            if not computed_data_size:
+                self.warnings.append(
+                    f"Could not verify data_size for {self.simulation_name}: "
+                    f"hpss_path={hpss_path} returned no data (path may be wrong)"
+                )
+            elif abs(float(self.data_size) - float(computed_data_size)) > 1:
+                # Ignore data size differences due to rounding.
+                self.warnings.append(f"self.data_size={self.data_size} but computed_data_size={computed_data_size}")
         else:
-            hpss_path = f"/home/projects/e3sm/www/{self.group}/E3SM{displayed_version}/{self.resolution}/{self.simulation_name}"
-        self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
+            self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
         self.esgf = get_esgf(self.model_version, self.resolution, self.simulation_name, self.experiment, self.ensemble_num, self.link_type, self.node)
 
@@ -200,15 +237,21 @@ class Simulation(object):
         if not self.run_script_original:
             self.run_script_original = "N/A"
 
+    def print_warnings(self) -> str:
+        for warning in self.warnings:
+            print(f"Warning for {self.simulation_name}: {warning}")
+
     def get_web_interface_url(self) -> str:
         """Generate web interface URL from HPSS path"""
         if self.hpss and self.data_size:
             # Convert HPSS path to web interface URL
             # /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piControl -> https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piControl
             hpss_clean = self.hpss.replace("(symlink) ", "")  # Remove symlink prefix if present
-            # Use the full path - each simulation gets its own distinct URL
-            web_url = f"https://portal.nersc.gov/archive{hpss_clean}"
-            return f"`HPSS URL <{web_url}>`_"
+            if hpss_clean.startswith("/home/projects/e3sm/www/"):
+                # Use the full path - each simulation gets its own distinct URL
+                web_url = f"https://portal.nersc.gov/archive{hpss_clean}"
+                return f"`HPSS URL <{web_url}>`_"
+            # Else: HPSS URL won't be valid, so don't include it.
         return ""
 
     def get_row(self, output_file, minimal_content: bool = False) -> List[str]:
@@ -366,6 +409,7 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
                 for _ in header_cells[1:]:
                     f.write("     -\n")
                 for simulation in category.simulations.values():
+                    simulation.print_warnings()
                     # Simulation row
                     row = simulation.get_row(output_file)
                     f.write(f"   * - {row[0]}\n")
@@ -415,4 +459,4 @@ if __name__ == "__main__":
     #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
 
     # v3 data
-    construct_pages("input/simulations_v3_LR_coupled.csv", "v3", "CoupledSystem")
+    construct_pages("input/simulations_v3_coupled.csv", "v3", "CoupledSystem")
