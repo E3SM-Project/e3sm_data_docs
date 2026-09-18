@@ -117,6 +117,7 @@ conda-build/
 *~
 utils/out.txt
 utils/out_*.txt
+utils/out_*.md
 utils/simulation_table.txt
 utils/reproduction_table.txt
 utils/test_reproduction_scripts.o*
