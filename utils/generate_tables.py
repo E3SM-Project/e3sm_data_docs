@@ -420,6 +420,129 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
                             f.write("     -\n")
         f.write("\n")
 
+# AI training datasets ########################################################
+# The AI training datasets page uses a different layout than the simulation
+# tables above (a list-table with a "Status" column, a "Data on Disk" column,
+# and one header row per model rather than per resolution/category). As with
+# `Simulation`, the csv supplies the data size and HPSS path, and we cross-check
+# them against `hsi du` when possible, warning on any discrepancy.
+
+HPSS_WWW_PREFIX = "/home/projects/e3sm/www/"
+AI_TRAINING_BANNER = "*" * 44
+AI_TRAINING_NOTE = (
+    ".. note::\n"
+    "   Data on Disk paths are provided for convenient short-term access on NERSC.\n"
+    "   These disk copies are **not guaranteed to persist** -- the HPSS archive is the\n"
+    "   authoritative long-term copy. Please use the HPSS path or URL for durable access.\n"
+)
+AI_TRAINING_HEADER: List[str] = ["Dataset", "Status", "Data Size", "Data on Disk (NERSC)", "HPSS Path", "HPSS URL"]
+
+
+def read_ai_training_datasets(csv_file: str) -> "OrderedDict[str, List[Dict[str, str]]]":
+    """Read the AI training csv, grouping datasets by model (in order of first appearance)."""
+    required = ["model", "dataset", "status", "data_size", "disk_path", "hpss_path"]
+    models: "OrderedDict[str, List[Dict[str, str]]]" = OrderedDict()
+    with open(csv_file, newline="") as f:
+        reader = csv.DictReader(f, skipinitialspace=True)
+        reader.fieldnames = [name.strip() for name in reader.fieldnames]
+        missing = [name for name in required if name not in reader.fieldnames]
+        if missing:
+            raise RuntimeError(f"{csv_file} is missing columns: {missing}")
+        for row in reader:
+            row = {k: (v or "").strip() for k, v in row.items() if k is not None}
+            if not row["model"]:
+                continue  # skip blank lines
+            models.setdefault(row["model"], []).append(row)
+    return models
+
+
+def get_ai_training_hpss_url(hpss_path: str) -> str:
+    """Build the (anonymous-hyperlink) HPSS URL cell from an HPSS path.
+
+    Paths that aren't under the NERSC web archive (e.g. "TBD") are passed through as-is.
+    """
+    hpss_clean = hpss_path.replace("(symlink) ", "")
+    if hpss_clean.startswith(HPSS_WWW_PREFIX):
+        # `__` (anonymous hyperlink) rather than `_`: the link text is always "Link",
+        # so named hyperlinks would collide ("Duplicate explicit target name").
+        return f"`Link <https://portal.nersc.gov/archive{hpss_clean}>`__"
+    return hpss_path
+
+
+def verify_ai_training_dataset(dataset: Dict[str, str]) -> Tuple[str, List[str]]:
+    """Cross-check the csv's data size / HPSS path against `hsi du`, like `Simulation` does.
+
+    Returns the HPSS path to display (possibly prefixed with "(symlink) ") and any warnings.
+    Datasets without a real HPSS path yet (e.g. "TBD") are not looked up.
+    """
+    name: str = dataset["dataset"]
+    hpss_path: str = dataset["hpss_path"]
+    warnings: List[str] = []
+    if not hpss_path.startswith(HPSS_WWW_PREFIX):
+        return hpss_path, warnings
+
+    computed_data_size, computed_hpss = get_data_size_and_hpss(hpss_path)
+    hpss: str = computed_hpss if computed_hpss else hpss_path
+    if not computed_data_size:
+        warnings.append(
+            f"Could not verify data_size for {name}: "
+            f"hpss_path={hpss_path} returned no data (path may be wrong)"
+        )
+    else:
+        # The csv size has a unit suffix (e.g. "1.2T"); `hsi du` size is whole TB.
+        csv_size = float(re.sub(r"\s*TB?$", "", dataset["data_size"]))
+        if abs(csv_size - float(computed_data_size)) > 1:
+            # Ignore data size differences due to rounding.
+            warnings.append(f"data_size={dataset['data_size']} but computed_data_size={computed_data_size}")
+    return hpss, warnings
+
+
+def build_ai_training_rows(models: "OrderedDict[str, List[Dict[str, str]]]") -> Tuple[List[List[str]], List[int]]:
+    """Return table rows (excluding the header) and the indices of the model-header rows."""
+    rows: List[List[str]] = []
+    model_rows: List[int] = []
+    for model, datasets in models.items():
+        model_rows.append(len(rows))
+        rows.append([f"**{model}**"] + [""] * (len(AI_TRAINING_HEADER) - 1))
+        for d in datasets:
+            hpss, warnings = verify_ai_training_dataset(d)
+            for warning in warnings:
+                print(f"Warning for {d['dataset']}: {warning}")
+            rows.append([
+                d["dataset"],
+                d["status"],
+                d["data_size"],
+                d["disk_path"],
+                hpss,
+                get_ai_training_hpss_url(hpss),
+            ])
+    return rows, model_rows
+
+
+def format_list_table(header: List[str], rows: List[List[str]]) -> str:
+    """Render a reStructuredText list-table (same layout as `generate_table`)."""
+    out = [".. list-table::", "   :header-rows: 1", ""]
+    for r in [header] + rows:
+        out.append(f"   * - {r[0]}")
+        for cell in r[1:]:
+            out.append(f"     - {cell}" if cell else "     -")
+    return "\n".join(out) + "\n"
+
+
+def generate_ai_training_table(csv_file: str, output_file: str):
+    models = read_ai_training_datasets(csv_file)
+    rows, _ = build_ai_training_rows(models)
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(f"{AI_TRAINING_BANNER}\n")
+        f.write("AI Training Datasets simulation table\n")
+        f.write(f"{AI_TRAINING_BANNER}\n\n")
+        f.write(AI_TRAINING_NOTE)
+        f.write("\n")
+        f.write(format_list_table(AI_TRAINING_HEADER, rows))
+    print(f"AI training datasets table written to {output_file}")
+
+
 def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
@@ -459,4 +582,10 @@ if __name__ == "__main__":
     #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
 
     # v3 data
-    construct_pages("input/simulations_v3_coupled.csv", "v3", "CoupledSystem")
+    #construct_pages("input/simulations_v3_coupled.csv", "v3", "CoupledSystem")
+
+    # AI training data
+    generate_ai_training_table(
+        "input/ai_training_data.csv",
+        "../docs/source/AITraining/simulation_data/simulation_table.rst",
+    )
