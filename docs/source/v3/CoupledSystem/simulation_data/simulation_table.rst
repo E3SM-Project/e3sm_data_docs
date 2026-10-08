@@ -36,27 +36,27 @@ v3 CoupledSystem simulation table
      -
      -
    * - v3.LR.historical_0051
-     - 19
+     - 23
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0051
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0051>`_
    * - v3.LR.historical_0101
-     - 19
+     - 24
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0101>`_
    * - v3.LR.historical_0151
-     - 19
+     - 22
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0151>`_
    * - v3.LR.historical_0201
-     - 19
+     - 23
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r4i1p1f1%22%7D>`_
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0201>`_
    * - v3.LR.historical_0251
-     - 19
+     - 22
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r5i1p1f1%22%7D>`_
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0251
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0251>`_
@@ -195,6 +195,111 @@ v3 CoupledSystem simulation table
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histaer%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histaer/v3.LR.piClim-histaer_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histaer/v3.LR.piClim-histaer_0201>`_
+   * - **LR > Historical LE**
+     -
+     -
+     -
+     -
+   * - v3.LR.historical_0301
+     - 24
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r6i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0301
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0301>`_
+   * - v3.LR.historical_0111
+     - 22
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r7i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0111
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0111>`_
+   * - v3.LR.historical_0121
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r8i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0121
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0121>`_
+   * - v3.LR.historical_0131
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r9i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0131
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0131>`_
+   * - v3.LR.historical_0141
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r10i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0141
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0141>`_
+   * - v3.LR.historical_0161
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r11i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0161
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0161>`_
+   * - v3.LR.historical_0171
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r12i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0171
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0171>`_
+   * - v3.LR.historical_0181
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r13i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0181
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0181>`_
+   * - v3.LR.historical_0191
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r14i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0191
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0191>`_
+   * - v3.LR.historical_0211
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r15i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0211
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0211>`_
+   * - v3.LR.historical_0221
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r16i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0221
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0221>`_
+   * - v3.LR.historical_0231
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r17i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0231
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0231>`_
+   * - v3.LR.historical_0241
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r18i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0241
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0241>`_
+   * - v3.LR.historical_0261
+     - 26
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r19i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0261
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0261>`_
+   * - v3.LR.historical_0271
+     - 25
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r20i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0271
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0271>`_
+   * - v3.LR.historical_0281
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r21i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0281
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0281>`_
+   * - v3.LR.historical_0291
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r22i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0291
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0291>`_
+   * - v3.LR.historical_0311
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r23i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0311
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0311>`_
+   * - v3.LR.historical_0321
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r24i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0321
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0321>`_
+   * - v3.LR.historical_0091
+     - 23
+     - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r25i1p1f1%22%7D>`_
+     - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0091
+     - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0091>`_
    * - **NARRM > AMIP**
      -
      -
