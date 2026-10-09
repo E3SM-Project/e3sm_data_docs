@@ -75,20 +75,29 @@ def check_if_symlink(hpss_path: str) -> bool:
     return False
 
 
+def get_variant_label(model_version: str, simulation_name: str, ensemble_num: str) -> str:
+    """Return the CMIP6 variant label, of the form r#i#p#f# (empty if no ensemble number)."""
+    if not ensemble_num:
+        return ""
+    if model_version == "v1" and simulation_name.startswith("LE_"):
+        variant_suffix = "i2p2f1"
+    else:
+        variant_suffix = "i1p1f1"
+    return f"r{ensemble_num}{variant_suffix}"
+
+
 def get_esgf(model_version: str, resolution: str, simulation_name: str, experiment: str, ensemble_num: str, link_type: str, node: str) -> str:
     esgf: str
     if link_type == "none":
         esgf = ""
     elif model_version == "v1":
         v1_institution_id: str
-        variant_suffix: str
         if simulation_name.startswith("LE_"):
             v1_institution_id = "UCSB"
-            variant_suffix = "i2p2f1"
         else:
             v1_institution_id = "E3SM-Project"
-            variant_suffix = "i1p1f1"
-        human_readable_active_facets: str = f'{{"institution_id":"{v1_institution_id}","source_id":"E3SM-1-0","experiment_id":"{experiment}","variant_label":"r{ensemble_num}{variant_suffix}"}}'
+        variant_label: str = get_variant_label(model_version, simulation_name, ensemble_num)
+        human_readable_active_facets: str = f'{{"institution_id":"{v1_institution_id}","source_id":"E3SM-1-0","experiment_id":"{experiment}","variant_label":"{variant_label}"}}'
         url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
         esgf = f"`CMIP <https://esgf-node.{node}.gov/search?project=CMIP6&activeFacets={url_active_facets}>`_"
     elif model_version == "v3":
@@ -223,6 +232,7 @@ class Simulation(object):
             self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
         self.esgf = get_esgf(self.model_version, self.resolution, self.simulation_name, self.experiment, self.ensemble_num, self.link_type, self.node)
+        self.variant_label = get_variant_label(self.model_version, self.simulation_name, self.ensemble_num)
 
         # Generate web interface URL from HPSS path
         self.web_interface = self.get_web_interface_url()
@@ -256,7 +266,7 @@ class Simulation(object):
 
     def get_row(self, output_file, minimal_content: bool = False) -> List[str]:
         if "simulation" in output_file:
-            row = [self.simulation_name, self.data_size, self.esgf, self.hpss, self.web_interface]
+            row = [self.simulation_name, self.data_size, self.esgf, self.variant_label, self.hpss, self.web_interface]
             if minimal_content:
                 match_object: re.Match = re.match("`.*<(.*)>`_", self.esgf)
                 if match_object:
@@ -265,11 +275,11 @@ class Simulation(object):
                     # Remove symlink prefix for the HPSS path
                     # Since we don't want that in the csv output,
                     # which a computer reads.
-                    row[3] = row[3].replace("(symlink) ", "")
+                    row[4] = row[4].replace("(symlink) ", "")
                 # Extract web interface URL for CSV
                 web_match: re.Match = re.match("`.*<(.*)>`_", self.web_interface)
                 if web_match:
-                    row[4] = web_match.group(1)  # Extract URL from the web interface link
+                    row[5] = web_match.group(1)  # Extract URL from the web interface link
             return row
         elif "reproduction" in output_file:
             return [self.simulation_name, self.machine, self.checksum, self.run_script_reproduction, self.run_script_original]
@@ -546,7 +556,7 @@ def generate_ai_training_table(csv_file: str, output_file: str):
 def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
-    header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path", "HPSS URL"]
+    header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "Variant Label", "HPSS Path", "HPSS URL"]
     construct_output_csv(resolutions, header_cells, f"../machine_readable_data/{model_version}_{group_name}_simulations.csv")
     print(f"csv of the simulations will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_simulations.csv")
     generate_table(
