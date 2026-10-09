@@ -38,8 +38,8 @@ from typing import Dict, List, Optional, Set, Tuple
 from urllib.parse import urlparse, parse_qs
 
 # Set these parameters before running the script:
-CMIP6_METADATA_REPO = "/home/ac.forsyth2/ez/CMIP6-Metadata"
-DATA_DOCS_REPO = "/home/ac.forsyth2/ez/e3sm_data_docs/"
+CMIP6_METADATA_REPO = "/global/homes/f/forsyth/ez/CMIP6-Metadata"
+DATA_DOCS_REPO = "/global/homes/f/forsyth/ez/e3sm_data_docs"
 
 # Fields that are not derivable from an ESGF link alone.
 UNKNOWN = "N/A"
