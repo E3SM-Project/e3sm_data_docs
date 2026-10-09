@@ -8,6 +8,7 @@ v3 CoupledSystem simulation table
    * - Simulation
      - Data Size (TB)
      - ESGF Links
+     - Variant Label
      - HPSS Path
      - HPSS URL
    * - **LR > DECK**
@@ -15,19 +16,23 @@ v3 CoupledSystem simulation table
      -
      -
      -
+     -
    * - v3.LR.piControl
      - 69
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piControl%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piControl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piControl>`_
    * - v3.LR.abrupt-4xCO2_0101_bcdt15m
      - 15
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22abrupt-4xCO2%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.abrupt-4xCO2_0101_bcdt15m
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.abrupt-4xCO2_0101_bcdt15m>`_
    * - v3.LR.1pctCO2_0101_bcdt15m
      - 16
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%221pctCO2%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.1pctCO2_0101_bcdt15m
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.1pctCO2_0101_bcdt15m>`_
    * - **LR > Historical**
@@ -35,29 +40,35 @@ v3 CoupledSystem simulation table
      -
      -
      -
+     -
    * - v3.LR.historical_0051
-     - 19
+     - 23
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0051
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0051>`_
    * - v3.LR.historical_0101
-     - 19
+     - 24
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - r2i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0101>`_
    * - v3.LR.historical_0151
-     - 19
+     - 22
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - r3i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0151>`_
    * - v3.LR.historical_0201
-     - 19
+     - 23
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r4i1p1f1%22%7D>`_
+     - r4i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0201>`_
    * - v3.LR.historical_0251
-     - 19
+     - 22
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22historical%22%2C%22variant_label%22%3A%22r5i1p1f1%22%7D>`_
+     - r5i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0251
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.historical_0251>`_
    * - **LR > Single-forcing (DAMIP-like)**
@@ -65,49 +76,59 @@ v3 CoupledSystem simulation table
      -
      -
      -
+     -
    * - v3.LR.hist-GHG_0101
      - 20
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-GHG%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-GHG_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-GHG_0101>`_
    * - v3.LR.hist-GHG_0151
      - 20
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-GHG%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - r2i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-GHG_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-GHG_0151>`_
    * - v3.LR.hist-GHG_0201
      - 20
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-GHG%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - r3i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-GHG_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-GHG_0201>`_
    * - v3.LR.hist-aer_0101
      - 19
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-aer%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-aer_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-aer_0101>`_
    * - v3.LR.hist-aer_0151
      - 19
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-aer%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - r2i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-aer_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-aer_0151>`_
    * - v3.LR.hist-aer_0201
      - 19
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-aer%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - r3i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-aer_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-aer_0201>`_
    * - v3.LR.hist-xGHG-xaer_0101
      - 19
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-nat%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-xGHG-xaer_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-xGHG-xaer_0101>`_
    * - v3.LR.hist-xGHG-xaer_0151
      - 20
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-nat%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - r2i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-xGHG-xaer_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-xGHG-xaer_0151>`_
    * - v3.LR.hist-xGHG-xaer_0201
      - 19
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22hist-nat%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - r3i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-xGHG-xaer_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.hist-xGHG-xaer_0201>`_
    * - **LR > AMIP**
@@ -115,29 +136,35 @@ v3 CoupledSystem simulation table
      -
      -
      -
+     -
    * - v3.LR.amip_0101
      - 8
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.amip_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.amip_0101>`_
    * - v3.LR.amip_0151
      - 6
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - r2i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.amip_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.amip_0151>`_
    * - v3.LR.amip_0201
      - 6
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22amip%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - r3i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.amip_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.amip_0201>`_
    * - v3.LR.amip_bonus_0101
      - 25.5
      -
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.LR.amip_bonus_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.LR.amip_bonus_0101>`_
    * - LR_ensemble
      - 4.7
      -
+     - r25i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/LR_ensemble
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/LR_ensemble>`_
    * - **LR > RFMIP**
@@ -145,54 +172,65 @@ v3 CoupledSystem simulation table
      -
      -
      -
+     -
    * - v3.LR.piClim-control-iceini
      - 3
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-control%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-control-iceini
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-control-iceini>`_
    * - v3.LR.piClim-histall/v3.LR.piClim-histall_0101
      - 9
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histall%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histall/v3.LR.piClim-histall_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histall/v3.LR.piClim-histall_0101>`_
    * - v3.LR.piClim-histall/v3.LR.piClim-histall_0151
      - 9
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histall%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - r2i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histall/v3.LR.piClim-histall_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histall/v3.LR.piClim-histall_0151>`_
    * - v3.LR.piClim-histall/v3.LR.piClim-histall_0201
      - 9
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histall%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - r3i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histall/v3.LR.piClim-histall_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histall/v3.LR.piClim-histall_0201>`_
    * - v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0101
      - 9
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histGHG%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0101>`_
    * - v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0151
      - 9
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histGHG%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - r2i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0151>`_
    * - v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0201
      - 9
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histGHG%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - r3i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0201>`_
    * - v3.LR.piClim-histaer/v3.LR.piClim-histaer_0101
      - 8
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histaer%22%2C%22variant_label%22%3A%22r1i1p1f1%22%7D>`_
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histaer/v3.LR.piClim-histaer_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histaer/v3.LR.piClim-histaer_0101>`_
    * - v3.LR.piClim-histaer/v3.LR.piClim-histaer_0151
      - 8
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histaer%22%2C%22variant_label%22%3A%22r2i1p1f1%22%7D>`_
+     - r2i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histaer/v3.LR.piClim-histaer_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histaer/v3.LR.piClim-histaer_0151>`_
    * - v3.LR.piClim-histaer/v3.LR.piClim-histaer_0201
      - 9
      - `CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets=%7B%22source_id%22%3A%22E3SM-3-0%22%2C%22experiment_id%22%3A%22piClim-histaer%22%2C%22variant_label%22%3A%22r3i1p1f1%22%7D>`_
+     - r3i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histaer/v3.LR.piClim-histaer_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/LR/v3.LR.piClim-histaer/v3.LR.piClim-histaer_0201>`_
    * - **NARRM > AMIP**
@@ -200,19 +238,23 @@ v3 CoupledSystem simulation table
      -
      -
      -
+     -
    * - v3.NARRM.amip_0101
      - 24.5
      -
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.NARRM.amip_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.NARRM.amip_0101>`_
    * - v3.NARRM_r0125.amip_0101
      - 77.8
      -
+     - r1i1p1f1
      - (symlink) /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.NARRM_r0125.amip_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.NARRM_r0125.amip_0101>`_
    * - RRM_ensemble
      - 20.3
      -
+     - r25i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/RRM_ensemble
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/RRM_ensemble>`_
    * - **AMZRRM > AMIP**
@@ -220,9 +262,11 @@ v3 CoupledSystem simulation table
      -
      -
      -
+     -
    * - v3.AMZRRM.amip_0101
      - 28.9
      -
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.AMZRRM.amip_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.AMZRRM.amip_0101>`_
    * - **EARRM > AMIP**
@@ -230,9 +274,11 @@ v3 CoupledSystem simulation table
      -
      -
      -
+     -
    * - v3.EARRM.amip_0101
      - 27.8
      -
+     - r1i1p1f1
      - /home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.EARRM.amip_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/CoupledSystem/E3SMv3/RRM/v3.EARRM.amip_0101>`_
 
