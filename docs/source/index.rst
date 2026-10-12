@@ -15,13 +15,14 @@ simulations.
    :maxdepth: 2
    :caption: Contents:
 
+   data_access
    v1/index
    v2/index
    v2.1/index
-   v3/index
-   SCREAMv0/index
-   SCREAMv1/index
-   AITraining/index
+   v3/CoupledSystem/simulation_data/simulation_table
+   SCREAMv0/DYAMOND2/simulation_data/simulation_table
+   SCREAMv1/FourSeasons/simulation_data/simulation_table
+   AITraining/simulation_data/simulation_table
 
 
 License

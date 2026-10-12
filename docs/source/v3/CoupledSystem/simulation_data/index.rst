@@ -1,7 +1,6 @@
+:orphan:
+
 Simulation Data
 ===============
 
-.. toctree::
-   :maxdepth: 2
-
-   simulation_table
+This page has moved. See :doc:`simulation_table`.

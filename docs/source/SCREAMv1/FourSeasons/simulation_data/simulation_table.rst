@@ -1,7 +1,26 @@
-**********************************
-SCREAMv1 Four-Seasons (2024) simulation table
-**********************************
+*********************
+SCREAMv1 Four Seasons
+*********************
 
+The simulation campaign for the SCREAMv1 Four-Seasons runs: 40-day global
+3.25 km simulations initialized in four different seasons, plus 6-day process
+impact tests. For more information about this simulation campaign see the
+citation below.
+
+If you use data from this simulation campaign, please cite the overview
+manuscript:
+
+* `Donahue et al. 2024 (JAMES) <https://doi.org/10.1029/2024MS004314>`_
+
+**Data access:** the simulation data are archived on NERSC HPSS. See
+:ref:`data-access` for download instructions.
+
+**Run scripts:** the scripts originally used to run these simulations are
+available `here <https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts/SCREAMv1/original/>`__.
+These will not run out-of-the-box; they are provided as guidance for setting up
+a similar run.
+
+.. rubric:: Simulations
 
 .. list-table::
    :header-rows: 1
