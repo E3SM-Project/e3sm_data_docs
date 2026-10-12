@@ -35,10 +35,11 @@ Each simulation table lists the **HPSS path** of each simulation and, where
 available, an **HPSS URL** to the corresponding web portal page.
 
 .. note::
-   Some tables also list a **Data on Disk** path on the NERSC Community File
-   System (CFS), with a **Globus URL** for transferring it (see
-   :ref:`globus-sharing`). Because the data is already on disk, this is usually
-   much faster than retrieving it from tape. These disk copies are **not
+   The :doc:`AI training datasets <AITraining/simulation_data/simulation_table>`
+   table also lists a **Data on Disk** path on the NERSC Community File System
+   (CFS) and a **Globus URL** for transferring it with a Globus account (see
+   :ref:`globus-sharing`). Because the data is already on disk, this is
+   usually much faster than retrieving it from tape. These disk copies are **not
    guaranteed to persist** -- the HPSS archive is the authoritative long-term
    copy.
 
@@ -113,22 +114,36 @@ what you need is strongly recommended:
 
 .. _globus-sharing:
 
-Option 3: Globus sharing of on-disk copies
-******************************************
+Option 3: Globus sharing (AI training datasets only)
+****************************************************
 
-Some datasets (e.g., the AI training datasets) also have a copy on the NERSC
-Community File System under a ``gsharing`` directory (for example,
-``/global/cfs/cdirs/m4492/gsharing/e3sm-v2-climsst-180x360-gaussian``). These
-directories are shared through `Globus <https://www.globus.org/>`_ guest
-collections, so **a NERSC account is not required** -- only a free Globus
-account. You can sign in to Globus with your institution's login, ORCID, or a
-Google account.
+.. note::
+   This option currently applies **only** to the
+   :doc:`AI training datasets <AITraining/simulation_data/simulation_table>`.
+   For all other datasets, use Option 1 or Option 2.
+
+**Requirement: a Globus account.** This option requires a free
+`Globus <https://www.globus.org/>`_ account. You can sign up at
+`app.globus.org <https://app.globus.org/>`_ using your institution's login,
+ORCID, or a Google account. A NERSC account is **not** required.
+
+The AI training datasets also have a copy on the NERSC Community File System under a ``gsharing`` directory (for example,
+``/global/cfs/cdirs/e3sm/gsharing/SamudrACE-E3SMv3``). These directories are
+shared as read-only Globus guest collections on the **NERSC SHARE** collection
+(see NERSC's `Sharing Data <https://docs.nersc.gov/filesystems/sharing/>`_
+documentation).
+
+Where a **Globus URL** is listed in the AI training datasets table, that
+directory is shared with all Globus users. If no Globus URL is listed, Globus
+access is not yet available for that dataset; use Option 1 or Option 2
+instead.
 
 To transfer the data:
 
-1. Click the **Globus URL** link in the simulation table. This opens the shared
-   directory in the `Globus web app <https://app.globus.org/>`_ (sign in if
-   prompted).
+1. Click the **Globus URL** link in the AI training datasets table and sign in with your
+   Globus account. This opens the shared directory in the
+   `Globus web app <https://app.globus.org/>`_ File Manager; the path ``/``
+   is the top of the shared dataset directory.
 2. In the other panel of the File Manager, choose the destination collection,
    e.g., your institution's data transfer node or your own computer running
    `Globus Connect Personal <https://www.globus.org/globus-connect-personal>`_.
