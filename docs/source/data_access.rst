@@ -57,14 +57,14 @@ reproduction scripts are also provided.
 .. _nersc-hpss-access:
 
 NERSC HPSS
-----------
+**********
 
 All simulations with an **HPSS Path** in the simulation table can be retrieved
 from NERSC HPSS, either with a NERSC account or, more slowly, through the web
 portal without one.
 
 With a NERSC account
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 This is the most efficient way to retrieve data from HPSS, and is recommended
 for DOE-affiliated users and anyone who needs a large volume of data. See
@@ -111,7 +111,7 @@ See NERSC's
 for details.
 
 Without a NERSC account
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 Anyone can download world-readable HPSS data through the
 `NERSC HPSS web portal <https://portal.nersc.gov/archive/home/projects/e3sm/www/>`_.
@@ -135,7 +135,7 @@ what you need is strongly recommended:
 .. _esgf-access:
 
 ESGF
-----
+****
 
 Simulations with an **ESGF Links** entry in the simulation table can be
 downloaded from the `Earth System Grid Federation (ESGF) <https://aims2.llnl.gov/search>`_.
@@ -167,7 +167,7 @@ For more information, see the `ESGF user documentation <https://esgf.github.io/e
 .. _globus-sharing:
 
 Globus sharing
---------------
+**************
 
 .. note::
    Globus sharing is provided for high-usage datasets that are being actively
