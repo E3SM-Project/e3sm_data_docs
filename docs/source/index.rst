@@ -6,9 +6,9 @@
 Welcome to E3SM Data Docs's documentation!
 ==========================================
 
-This documentation was created to help E3SM users find data officially
-released model data from the E3SM simulations campaigns as well as reproduce
-simulations.
+This documentation helps users find and download officially released model
+data from E3SM simulation campaigns, and provides the information needed to
+reproduce those simulations.
 
 
 .. toctree::

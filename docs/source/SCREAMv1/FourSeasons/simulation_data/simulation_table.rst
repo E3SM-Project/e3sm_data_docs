@@ -38,7 +38,7 @@ in this repository.
    :header-rows: 1
 
    * - Simulation
-     - Data Size (GB)
+     - Data Size (TB)
      - NERSC HPSS Path
      - HPSS URL
    * - **Four Seasons > Main Simulation (40 days)**
@@ -46,19 +46,19 @@ in this repository.
      -
      -
    * - January 2020 (DYAMOND2 Configuration)
-     - 129.3
+     - 0.129
      - /home/a/adonahue/www/DYAMOND2_SCREAMv1
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/DYAMOND2_SCREAMv1>`__
    * - April 2013
-     - 130.5
+     - 0.131
      - /home/a/adonahue/www/Apr1_2013_SCREAMv1
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Apr1_2013_SCREAMv1>`__
    * - August 2016 (DYAMOND1 Configuration)
-     - 130.4
+     - 0.130
      - /home/a/adonahue/www/DYAMOND1_SCREAMv1
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/DYAMOND1_SCREAMv1>`__
    * - October 2013
-     - 119.0
+     - 0.119
      - /home/a/adonahue/www/Oct1_2013_SCREAMv1
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Oct1_2013_SCREAMv1>`__
    * - **Four Seasons > Process Impact - Turbulent Mountain Stress (6 days)**
@@ -66,19 +66,19 @@ in this repository.
      -
      -
    * - January 2020 (DYAMOND2 Configuration)
-     - 38.3
+     - 0.038
      - /home/a/adonahue/www/Process_Impacts_tests/Wind_Speed/January_DYAMOND2
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Wind_Speed/January_DYAMOND2>`__
    * - April 2013
-     - 19.1
+     - 0.019
      - /home/a/adonahue/www/Process_Impacts_tests/Wind_Speed/April
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Wind_Speed/April>`__
    * - August 2016 (DYAMOND1 Configuration)
-     - 19.1
+     - 0.019
      - /home/a/adonahue/www/Process_Impacts_tests/Wind_Speed/August_DYAMOND1
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Wind_Speed/August_DYAMOND1>`__
    * - October 2013
-     - 19.1
+     - 0.019
      - /home/a/adonahue/www/Process_Impacts_tests/Wind_Speed/October
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Wind_Speed/October>`__
    * - **Four Seasons > Process Impact - *Improved Cloud Tuning (6 days)**
@@ -86,19 +86,19 @@ in this repository.
      -
      -
    * - January 2020 (DYAMOND2 Configuration)
-     - 19.1
+     - 0.019
      - /home/a/adonahue/www/Process_Impacts_tests/Cloud_Tuning/January_DYAMOND2
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Cloud_Tuning/January_DYAMOND2>`__
    * - April 2013
-     - 19.1
+     - 0.019
      - /home/a/adonahue/www/Process_Impacts_tests/Cloud_Tuning/April
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Cloud_Tuning/April>`__
    * - August 2016 (DYAMOND1 Configuration)
-     - 19.1
+     - 0.019
      - /home/a/adonahue/www/Process_Impacts_tests/Cloud_Tuning/August_DYAMOND1
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Cloud_Tuning/August_DYAMOND1>`__
    * - October 2013
-     - 19.1
+     - 0.019
      - /home/a/adonahue/www/Process_Impacts_tests/Cloud_Tuning/October
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Cloud_Tuning/October>`__
    * - **Four Seasons > Process Impact - Improved SHOC Tuning (6 days)**
@@ -106,19 +106,19 @@ in this repository.
      -
      -
    * - January 2020 (DYAMOND2 Configuration)
-     - 15.9
+     - 0.016
      - /home/a/adonahue/www/Process_Impacts_tests/Warm_T/January_DYAMOND2
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Warm_T/January_DYAMOND2>`__
    * - April 2013
-     - 15.9
+     - 0.016
      - /home/a/adonahue/www/Process_Impacts_tests/Warm_T/April
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Warm_T/April>`__
    * - August 2016 (DYAMOND1 Configuration)
-     - 15.9
+     - 0.016
      - /home/a/adonahue/www/Process_Impacts_tests/Warm_T/August_DYAMOND1
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Warm_T/August_DYAMOND1>`__
    * - October 2013
-     - 15.9
+     - 0.016
      - /home/a/adonahue/www/Process_Impacts_tests/Warm_T/October
      - `HPSS URL <https://portal.nersc.gov/archive/home/a/adonahue/www/Process_Impacts_tests/Warm_T/October>`__
    * - **Cess-Potter > 13 months (Aug 2019 - Aug 2020)**
@@ -126,11 +126,11 @@ in this repository.
      -
      -
    * - Control
-     -
+     - 30.8
      - /home/t/terai/www/SCREAM/Cess/SCREAM3km/cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
      - `HPSS URL <https://portal.nersc.gov/archive/home/t/terai/www/SCREAM/Cess/SCREAM3km/cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2>`__
    * - +4K
-     -
+     - 30.8
      - /home/t/terai/www/SCREAM/Cess/SCREAM3km/cess-plus4k.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
      - `HPSS URL <https://portal.nersc.gov/archive/home/t/terai/www/SCREAM/Cess/SCREAM3km/cess-plus4k.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2>`__
    * - **Cess-Potter > 19 months (Aug 2019 - Feb 2021)**
@@ -138,10 +138,10 @@ in this repository.
      -
      -
    * - Control
-     -
+     - 158.8
      - /home/m/mahf708/www/cess2/ne1024pg2_ne1024pg2.F2010-SCREAMv1.10022025.CESS2.P0K.n2048.2/run
      - `HPSS URL <https://portal.nersc.gov/archive/home/m/mahf708/www/cess2/ne1024pg2_ne1024pg2.F2010-SCREAMv1.10022025.CESS2.P0K.n2048.2/run>`__
    * - +4K
-     -
+     - 156.2
      - /home/m/mahf708/www/cess2/ne1024pg2_ne1024pg2.F2010-SCREAMv1.10022025.CESS2.P4K.n2048.pert/run
      - `HPSS URL <https://portal.nersc.gov/archive/home/m/mahf708/www/cess2/ne1024pg2_ne1024pg2.F2010-SCREAMv1.10022025.CESS2.P4K.n2048.pert/run>`__
