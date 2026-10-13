@@ -10,20 +10,17 @@ explains how to use the paths and links in those tables.
 How E3SM data is archived
 *************************
 
-E3SM simulation output is released through one or both of the following:
+E3SM simulation output is archived and released through the following. Each
+corresponds to one of the access options below.
 
-* **ESGF** -- Data reformatted to CMIP conventions (and, for some campaigns,
-  native model output) is published to the
-  `Earth System Grid Federation (ESGF) <https://aims2.llnl.gov/search>`_.
-  When an ESGF link is listed in a simulation table, ESGF is the preferred
-  retrieval method.
-
-* **NERSC HPSS** -- Native model output is archived on the
-  `NERSC HPSS <https://docs.nersc.gov/filesystems/archive/>`_ tape system in
-  directories with world-read permissions (under ``/home/projects/e3sm/www/``
-  or a user's ``www`` directory). Because the files are world-readable, they
-  can be retrieved either by NERSC users with the standard HPSS tools, or by
-  anyone through the NERSC HPSS web portal.
+* **NERSC HPSS** (:ref:`Option 1 <nersc-hpss-access>`) -- Native model output
+  is archived on the `NERSC HPSS <https://docs.nersc.gov/filesystems/archive/>`_
+  tape system in directories with world-read permissions (under
+  ``/home/projects/e3sm/www/`` or a user's ``www`` directory). Because the
+  files are world-readable, they can be retrieved either by NERSC users with
+  the standard HPSS tools, or by anyone through the NERSC HPSS web portal. Each
+  simulation table lists the **HPSS Path** of each simulation and, where
+  available, an **HPSS URL** to the corresponding web portal page.
 
   Most campaign output is archived with `zstash <https://e3sm-project.github.io/zstash>`_,
   which stores files in a series of tar files together with an ``index.db``
@@ -31,20 +28,31 @@ E3SM simulation output is released through one or both of the following:
   datasets) instead provide an ``archive_contents`` text file listing the files
   in each tar archive.
 
-Each simulation table lists the **HPSS path** of each simulation and, where
-available, an **HPSS URL** to the corresponding web portal page.
+* **ESGF** (:ref:`Option 2 <esgf-access>`) -- Data reformatted to CMIP
+  conventions (and, for some campaigns, native model output) is published to
+  the `Earth System Grid Federation (ESGF) <https://aims2.llnl.gov/search>`_.
+  When an ESGF link is listed in a simulation table, ESGF is the preferred
+  retrieval method.
 
-.. note::
-   The :doc:`AI training datasets <AITraining/simulation_data/simulation_table>`
-   table also lists a **Data on Disk** path on the NERSC Community File System
-   (CFS) and a **Globus URL** for transferring it with a Globus account (see
-   :ref:`globus-sharing`). Because the data is already on disk, this is
-   usually much faster than retrieving it from tape. These disk copies are **not
-   guaranteed to persist** -- the HPSS archive is the authoritative long-term
-   copy.
+* **Globus sharing of on-disk copies** (:ref:`Option 3 <globus-sharing>`) --
+  The :doc:`AI training datasets <AITraining/simulation_data/simulation_table>`
+  also have a copy on the NERSC Community File System (CFS), shared through
+  Globus. The table lists its **Data on Disk** path and **Globus URL**.
+  Because the data is already on disk, this is usually much faster than
+  retrieving it from tape. These disk copies are **not guaranteed
+  to persist** -- the HPSS archive is the authoritative long-term copy.
 
-Option 1: Users with a NERSC account
-************************************
+.. _nersc-hpss-access:
+
+Option 1: NERSC HPSS
+********************
+
+All simulations with an **HPSS Path** in the simulation table can be retrieved
+from NERSC HPSS, either with a NERSC account or, more slowly, through the web
+portal without one.
+
+With a NERSC account
+--------------------
 
 This is the most efficient way to retrieve data from HPSS, and is recommended
 for DOE-affiliated users and anyone who needs a large volume of data. See
@@ -90,8 +98,8 @@ See NERSC's
 `HPSS documentation <https://docs.nersc.gov/filesystems/archive/#hsi-commands>`_
 for details.
 
-Option 2: Users without a NERSC account
-***************************************
+Without a NERSC account
+-----------------------
 
 Anyone can download world-readable HPSS data through the
 `NERSC HPSS web portal <https://portal.nersc.gov/archive/home/projects/e3sm/www/>`_.
@@ -111,6 +119,38 @@ what you need is strongly recommended:
 
 * For archives that provide an ``archive_contents`` text file, check it first
   to identify the tar files you need.
+
+.. _esgf-access:
+
+Option 2: ESGF
+**************
+
+Simulations with an **ESGF Links** entry in the simulation table can be
+downloaded from the `Earth System Grid Federation (ESGF) <https://aims2.llnl.gov/search>`_.
+Neither a NERSC account nor an ESGF login is required to download data with a
+wget script. ESGF has two kinds of E3SM data:
+
+* **CMIP** -- a subset of the output, reformatted to CMIP conventions (CMOR'd)
+  and published as part of CMIP6. The **CMIP** links in the tables open these
+  datasets.
+* **Native** -- native model output, as written by E3SM. Where available, the
+  **Native** links in the tables open these datasets.
+
+To download the data:
+
+1. Click the **CMIP** or **Native** link in the simulation table. This opens
+   the ESGF search page, filtered to that simulation's datasets.
+2. Use the search facets (e.g., variable, frequency, realm) to narrow down to
+   the datasets you need, and add them to the **Data Cart**.
+3. From the Data Cart, download a **wget script** and run it on the machine
+   where you want the data: ::
+
+     bash wget-<...>.sh
+
+   Alternatively, for data hosted at nodes that support it, you can start a
+   **Globus** transfer from the Data Cart (this requires signing in to Globus).
+
+For more information, see the `ESGF user documentation <https://esgf.github.io/esgf-user-support/user_guide.html>`_.
 
 .. _globus-sharing:
 
@@ -135,7 +175,7 @@ documentation).
 
 Where a **Globus URL** is listed in the AI training datasets table, that
 directory is shared with all Globus users. If no Globus URL is listed, Globus
-access is not yet available for that dataset; use Option 1 or Option 2
+access is not yet available for that dataset; use Option 1 (NERSC HPSS)
 instead.
 
 To transfer the data:
