@@ -1,5 +1,5 @@
-pr_num=74
-try_num=1
+pr_num=93
+try_num=4
 
 # Chrysalis
 #destination_dir=/lcrc/group/e3sm/public_html/diagnostic_output/$USER/data_docs_${pr_num}
@@ -8,7 +8,8 @@ try_num=1
 destination_dir=/global/cfs/cdirs/e3sm/www/$USER/data_docs_${pr_num}_try${try_num}
 web_page="https://portal.nersc.gov/cfs/e3sm/$USER/data_docs_${pr_num}_try${try_num}/html/"
 
-python generate_tables.py
+python update_existing_tables.py
+#python generate_tables.py
 if [ $? != 0 ]; then
   exit 1
 fi
