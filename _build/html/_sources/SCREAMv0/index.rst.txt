@@ -1,8 +1,6 @@
+:orphan:
+
 SCREAMv0
-==========================================
+========
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   DYAMOND2/index
+This page has moved. See :doc:`DYAMOND2/simulation_data/simulation_table`.

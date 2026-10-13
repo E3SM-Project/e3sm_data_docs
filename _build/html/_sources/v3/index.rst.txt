@@ -1,8 +1,6 @@
+:orphan:
+
 v3
-==========================================
+==
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   CoupledSystem/index
+This page has moved. See :doc:`CoupledSystem/simulation_data/simulation_table`.

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessing E3SM Data &mdash; E3SM Data Docs  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/style.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="E3SMv1" href="v1/index.html" />
+    <link rel="prev" title="Welcome to E3SM Data Docs’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> E3SM Data Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Accessing E3SM Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-e3sm-data-is-archived">How E3SM data is archived</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nersc-hpss-access">NERSC HPSS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#with-a-nersc-account">With a NERSC account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#without-a-nersc-account">Without a NERSC account</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#esgf">ESGF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#globus-sharing">Globus sharing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="v1/index.html">E3SMv1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v2/index.html">E3SMv2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v2.1/index.html">E3SMv2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v3/CoupledSystem/simulation_data/simulation_table.html">E3SMv3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCREAMv0/DYAMOND2/simulation_data/simulation_table.html">SCREAMv0 DYAMOND2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCREAMv1/FourSeasons/simulation_data/simulation_table.html">SCREAMv1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AITraining/simulation_data/simulation_table.html">AI Training Datasets</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">E3SM Data Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Accessing E3SM Data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/data_access.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-e3sm-data">
+<span id="data-access"></span><h1>Accessing E3SM Data<a class="headerlink" href="#accessing-e3sm-data" title="Permalink to this heading"></a></h1>
+<p>This page describes how E3SM archives released simulation output and how to
+retrieve it. Each dataset page links to a table of simulations; this page
+explains how to use the paths and links in those tables.</p>
+<section id="how-e3sm-data-is-archived">
+<h2>How E3SM data is archived<a class="headerlink" href="#how-e3sm-data-is-archived" title="Permalink to this heading"></a></h2>
+<p>E3SM simulation output is archived and released in the following ways. Each
+links to a section below describing how to retrieve it.</p>
+<ul>
+<li><p><a class="reference internal" href="#nersc-hpss-access"><span class="std std-ref">NERSC HPSS</span></a> – Native model output
+is archived on the <a class="reference external" href="https://docs.nersc.gov/filesystems/archive/">NERSC HPSS</a>
+tape system in directories with world-read permissions (under
+<code class="docutils literal notranslate"><span class="pre">/home/projects/e3sm/www/</span></code> or a user’s <code class="docutils literal notranslate"><span class="pre">www</span></code> directory). Because the
+files are world-readable, they can be retrieved either by NERSC users with
+the standard HPSS tools, or by anyone through the NERSC HPSS web portal at
+<a class="reference external" href="https://portal.nersc.gov/archive/home/projects/e3sm/www/">https://portal.nersc.gov/archive/home/projects/e3sm/www/</a>
+(or <code class="docutils literal notranslate"><span class="pre">https://portal.nersc.gov/archive/home/&lt;u&gt;/&lt;user&gt;/www/</span></code> for a user’s
+<code class="docutils literal notranslate"><span class="pre">www</span></code> directory). Each simulation table lists the <strong>HPSS Path</strong> of each
+simulation and, where available, an <strong>HPSS URL</strong> to the corresponding web
+portal page.</p>
+<p>Most campaign output is archived with <a class="reference external" href="https://e3sm-project.github.io/zstash">zstash</a>,
+which stores files in a series of tar files together with an <code class="docutils literal notranslate"><span class="pre">index.db</span></code>
+database listing their contents. Some datasets (e.g., the AI training
+datasets) instead provide an <code class="docutils literal notranslate"><span class="pre">archive_contents</span></code> text file listing the files
+in each tar archive.</p>
+</li>
+<li><p><a class="reference internal" href="#esgf-access"><span class="std std-ref">ESGF</span></a> – Data reformatted to CMIP
+conventions (and, for some campaigns, native model output) is published to
+the <a class="reference external" href="https://aims2.llnl.gov/search">Earth System Grid Federation (ESGF)</a>.
+When an ESGF link is listed in a simulation table, ESGF is the preferred
+retrieval method.</p></li>
+<li><p><a class="reference internal" href="#globus-sharing"><span class="std std-ref">Globus sharing</span></a> – High-usage datasets, i.e., those
+being actively analyzed by E3SM, may also have a copy on the NERSC Community
+File System (CFS), shared through Globus. Simulation tables list these
+copies’ <strong>Data on Disk</strong> path and <strong>Globus URL</strong>. Currently, this applies to
+the <a class="reference internal" href="AITraining/simulation_data/simulation_table.html"><span class="doc">AI training datasets</span></a>.
+Because the data is already on disk, this is usually much faster than
+retrieving it from tape. These disk copies are <strong>not guaranteed
+to persist</strong> – the HPSS archive is the authoritative long-term copy.</p></li>
+</ul>
+<p><strong>Run scripts.</strong> Where available, the scripts originally used to run each
+simulation campaign are archived in the
+<a class="reference external" href="https://github.com/E3SM-Project/e3sm_data_docs/tree/main/run_scripts">run_scripts</a>
+directory of this repository, and are linked from each dataset page. Original
+run scripts <strong>will not run out-of-the-box</strong>; they are provided as guidance for
+setting up a similar run. For some campaigns (e.g., E3SMv2), separate
+reproduction scripts are also provided.</p>
+</section>
+<section id="nersc-hpss-access">
+<span id="id1"></span><h2>NERSC HPSS<a class="headerlink" href="#nersc-hpss-access" title="Permalink to this heading"></a></h2>
+<p>All simulations with an <strong>HPSS Path</strong> in the simulation table can be retrieved
+from NERSC HPSS, either with a NERSC account or, more slowly, through the web
+portal without one.</p>
+<section id="with-a-nersc-account">
+<h3>With a NERSC account<a class="headerlink" href="#with-a-nersc-account" title="Permalink to this heading"></a></h3>
+<p>This is the most efficient way to retrieve data from HPSS, and is recommended
+for DOE-affiliated users and anyone who needs a large volume of data. See
+<a class="reference external" href="https://docs.nersc.gov/accounts/">NERSC’s account documentation</a> for how to
+obtain an account.</p>
+<p><strong>zstash archives.</strong> Use <code class="docutils literal notranslate"><span class="pre">zstash</span></code>, available in the
+<a class="reference external" href="https://github.com/E3SM-Project/e3sm-unified">E3SM-Unified</a> conda
+environment. To extract files locally on a NERSC machine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="k">global</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">anaconda_envs</span><span class="o">/</span><span class="n">load_latest_e3sm_unified_pm</span><span class="o">-</span><span class="n">cpu</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">table</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To list the files in an archive without extracting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">ls</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">table</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Patterns can be used to retrieve only a subset of files. For example, to
+retrieve the monthly land output for years 0030–0049 of v2.LR.piControl:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">e3sm</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">WaterCycle</span><span class="o">/</span><span class="n">E3SMv2</span><span class="o">/</span><span class="n">LR</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="n">LR</span><span class="o">.</span><span class="n">piControl</span> <span class="s2">"*.elm.h0.00[3-4]?-??.nc"</span>
+</pre></div>
+</div>
+<p>To transfer data to a machine other than NERSC, use the zstash Globus
+interface from that machine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=</span><span class="n">globus</span><span class="p">:</span><span class="o">//</span><span class="n">nersc</span><span class="o">/&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">table</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>or, equivalently, using the NERSC HPSS Globus endpoint UUID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zstash</span> <span class="n">extract</span> <span class="o">--</span><span class="n">hpss</span><span class="o">=</span><span class="n">globus</span><span class="p">:</span><span class="o">//</span><span class="mi">9</span><span class="n">cd89cfd</span><span class="o">-</span><span class="mi">6</span><span class="n">d04</span><span class="o">-</span><span class="mf">11e5</span><span class="o">-</span><span class="n">ba46</span><span class="o">-</span><span class="mi">22000</span><span class="n">b92c6ec</span><span class="o">/&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">table</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For more information, refer to the
+<a class="reference external" href="https://e3sm-project.github.io/zstash/_build/html/master/usage.html#extract">zstash usage documentation</a>.</p>
+<p><strong>Other archives.</strong> Use the standard HPSS tools <code class="docutils literal notranslate"><span class="pre">hsi</span></code> and <code class="docutils literal notranslate"><span class="pre">htar</span></code> on a NERSC
+machine, or transfer the files with Globus using the NERSC HPSS endpoint. For
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hsi</span> <span class="n">ls</span> <span class="o">&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">table</span><span class="o">&gt;</span>
+<span class="n">hsi</span> <span class="n">get</span> <span class="o">&lt;</span><span class="n">HPSS</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">table</span><span class="o">&gt;/&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>See NERSC’s
+<a class="reference external" href="https://docs.nersc.gov/filesystems/archive/#hsi-commands">HPSS documentation</a>
+for details.</p>
+</section>
+<section id="without-a-nersc-account">
+<h3>Without a NERSC account<a class="headerlink" href="#without-a-nersc-account" title="Permalink to this heading"></a></h3>
+<p>Anyone can download world-readable HPSS data through the
+<a class="reference external" href="https://portal.nersc.gov/archive/home/projects/e3sm/www/">NERSC HPSS web portal</a>.
+An HPSS path such as <code class="docutils literal notranslate"><span class="pre">/home/projects/e3sm/www/&lt;...&gt;</span></code> is available at
+<code class="docutils literal notranslate"><span class="pre">https://portal.nersc.gov/archive/home/projects/e3sm/www/&lt;...&gt;</span></code>; the
+<strong>HPSS URL</strong> column of the simulation tables provides these links directly.</p>
+<p>Files are downloaded through the web browser (or a tool such as <code class="docutils literal notranslate"><span class="pre">wget</span></code> or
+<code class="docutils literal notranslate"><span class="pre">curl</span></code>) one file at a time. Because the data must be staged from tape and
+many archives are multiple terabytes, this can be <strong>slow</strong>. Downloading only
+what you need is strongly recommended:</p>
+<ul>
+<li><p>For <strong>zstash</strong> archives, first download the <code class="docutils literal notranslate"><span class="pre">index.db</span></code> file and query it to
+find which tar files contain the data you need:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sqlite3</span> <span class="n">index</span><span class="o">.</span><span class="n">db</span> <span class="s2">"SELECT tar,name,size from files;"</span> <span class="o">&gt;</span> <span class="n">archive_contents</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</li>
+<li><p>For archives that provide an <code class="docutils literal notranslate"><span class="pre">archive_contents</span></code> text file, check it first
+to identify the tar files you need.</p></li>
+</ul>
+</section>
+</section>
+<section id="esgf">
+<span id="esgf-access"></span><h2>ESGF<a class="headerlink" href="#esgf" title="Permalink to this heading"></a></h2>
+<p>Simulations with an <strong>ESGF Links</strong> entry in the simulation table can be
+downloaded from the <a class="reference external" href="https://aims2.llnl.gov/search">Earth System Grid Federation (ESGF)</a>.
+Neither a NERSC account nor an ESGF login is required to download data with a
+wget script. ESGF has two kinds of E3SM data:</p>
+<ul class="simple">
+<li><p><strong>CMIP</strong> – a subset of the output, reformatted to CMIP conventions (CMOR’d)
+and published as part of CMIP6. The <strong>CMIP</strong> links in the tables open these
+datasets.</p></li>
+<li><p><strong>Native</strong> – native model output, as written by E3SM. Where available, the
+<strong>Native</strong> links in the tables open these datasets.</p></li>
+</ul>
+<p>To download the data:</p>
+<ol class="arabic">
+<li><p>Click the <strong>CMIP</strong> or <strong>Native</strong> link in the simulation table. This opens
+the ESGF search page, filtered to that simulation’s datasets.</p></li>
+<li><p>Use the search facets (e.g., variable, frequency, realm) to narrow down to
+the datasets you need, and add them to the <strong>Data Cart</strong>.</p></li>
+<li><p>From the Data Cart, download a <strong>wget script</strong> and run it on the machine
+where you want the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">wget</span><span class="o">-&lt;...&gt;.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Alternatively, for data hosted at nodes that support it, you can start a
+<strong>Globus</strong> transfer from the Data Cart (this requires signing in to Globus).</p>
+</li>
+</ol>
+<p>For more information, see the <a class="reference external" href="https://esgf.github.io/esgf-user-support/user_guide.html">ESGF user documentation</a>.</p>
+</section>
+<section id="globus-sharing">
+<span id="id3"></span><h2>Globus sharing<a class="headerlink" href="#globus-sharing" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Globus sharing is provided for high-usage datasets that are being actively
+analyzed. Currently, it is available for the
+<a class="reference internal" href="AITraining/simulation_data/simulation_table.html"><span class="doc">AI training datasets</span></a>.
+For other datasets, use <a class="reference internal" href="#nersc-hpss-access"><span class="std std-ref">NERSC HPSS</span></a> or
+<a class="reference internal" href="#esgf-access"><span class="std std-ref">ESGF</span></a>.</p>
+</div>
+<p><strong>Requirement: a Globus account.</strong> Globus sharing requires a free
+<a class="reference external" href="https://www.globus.org/">Globus</a> account. You can sign up at
+<a class="reference external" href="https://app.globus.org/">app.globus.org</a> using your institution’s login,
+ORCID, or a Google account. A NERSC account is <strong>not</strong> required.</p>
+<p>Shared datasets have a copy on the NERSC Community File System under a
+<code class="docutils literal notranslate"><span class="pre">gsharing</span></code> directory (for example,
+<code class="docutils literal notranslate"><span class="pre">/global/cfs/cdirs/e3sm/gsharing/SamudrACE-E3SMv3</span></code>). These directories are
+shared as read-only Globus guest collections on the <strong>NERSC SHARE</strong> collection
+(see NERSC’s <a class="reference external" href="https://docs.nersc.gov/filesystems/sharing/">Sharing Data</a>
+documentation).</p>
+<p>Where a <strong>Globus URL</strong> is listed in a simulation table, that directory is
+shared with all Globus users. If no Globus URL is listed, Globus access is not
+available for that dataset; use <a class="reference internal" href="#nersc-hpss-access"><span class="std std-ref">NERSC HPSS</span></a> instead.</p>
+<p>To transfer the data:</p>
+<ol class="arabic simple">
+<li><p>Click the <strong>Globus URL</strong> link in the simulation table and sign in with your
+Globus account. This opens the shared directory in the
+<a class="reference external" href="https://app.globus.org/">Globus web app</a> File Manager; the path <code class="docutils literal notranslate"><span class="pre">/</span></code>
+is the top of the shared dataset directory.</p></li>
+<li><p>In the other panel of the File Manager, choose the destination collection,
+e.g., your institution’s data transfer node or your own computer running
+<a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a>.</p></li>
+<li><p>Select the files or directories you want and click <strong>Start</strong> to begin the
+transfer. Globus runs the transfer in the background and emails you when it
+finishes.</p></li>
+</ol>
+<p>NERSC users can also read these directories directly on Perlmutter at the
+<strong>Data on Disk</strong> path. For more information, see NERSC’s
+<a class="reference external" href="https://docs.nersc.gov/services/globus/">Globus documentation</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to E3SM Data Docs’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="v1/index.html" class="btn btn-neutral float-right" title="E3SMv1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, E3SM Data Docs Developers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -19,9 +19,7 @@
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="AI Training Datasets simulation table" href="simulation_data/simulation_table.html" />
-    <link rel="prev" title="SCREAMv1 Four-Seasons (2024) simulation table" href="../SCREAMv1/FourSeasons/simulation_data/simulation_table.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,21 +38,15 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../v1/index.html">v1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../v2/index.html">v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../v2.1/index.html">v2.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../v3/index.html">v3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../SCREAMv0/index.html">SCREAMv0</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../SCREAMv1/index.html">SCREAMv1</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">AI Training Datasets</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dataset-details">Dataset Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-access">Data Access</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="simulation_data/simulation_table.html">AI Training Datasets simulation table</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_access.html">Accessing E3SM Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/index.html">E3SMv1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v2/index.html">E3SMv2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v2.1/index.html">E3SMv2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v3/CoupledSystem/simulation_data/simulation_table.html">E3SMv3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SCREAMv0/DYAMOND2/simulation_data/simulation_table.html">SCREAMv0 DYAMOND2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SCREAMv1/FourSeasons/simulation_data/simulation_table.html">SCREAMv1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation_data/simulation_table.html">AI Training Datasets</a></li>
 </ul>
 
         </div>
@@ -83,45 +75,13 @@
              
   <section id="ai-training-datasets">
 <h1>AI Training Datasets<a class="headerlink" href="#ai-training-datasets" title="Permalink to this heading"></a></h1>
-<p>The E3SM project and <a class="reference external" href="https://allenai.org/">Allen Institute for AI (Ai2)</a> have developed several datasets for AI and machine learning applications. These datasets have been postprocessed for ingestion by the <a class="reference external" href="https://github.com/ai2cm/ace?tab=readme-ov-file#ai2-climate-emulator">ACE</a>/<a class="reference external" href="https://github.com/NVlabs/FourCastNet">FourCastNet</a> emulator.</p>
-<section id="dataset-details">
-<h2>Dataset Details<a class="headerlink" href="#dataset-details" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p><strong>EAMv2</strong>: 73-year EAMv2 simulation (F2010, perpetual 2010 forcing, repeating annual SST cycle from 2005-2014 average). 6-hourly outputs. More details see: <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2024JH000136">Duncan et al. 2024</a></p></li>
-<li><p><strong>EAMv3</strong>: 51-year EAMv3 AMIP-style simulation (1970-2020, F2010 with AMIP SSTs, constant 2010 CO2). Includes multiple ENSO cycles and global warming trend. More details see: <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025JH000774">Wu et al. 2025</a></p></li>
-<li><p><strong>E3SMv3</strong>: 105-year fully coupled E3SMv3 pre-industrial control (piControl) simulation, regridded to a 180x360 grid and vertically coarsened to 8 atmosphere layers and 19 ocean depth levels. Includes 6-hourly atmosphere output and 5-day mean ocean and sea ice output. Used to train <a class="reference external" href="https://github.com/ai2cm/ace">SamudrACE</a>, which couples the ACE2 atmosphere emulator with the <a class="reference external" href="https://github.com/m2lines/Samudra">Samudra</a> full-depth ocean emulator. See the <a class="reference external" href="https://e3sm.org/a-fully-coupled-ai-emulator-of-e3smv3-reproduces-its-statistics/">E3SM newsletter article</a> for an overview. More details see: <a class="reference external" href="https://arxiv.org/abs/2608.10277">Wu et al. 2026</a></p></li>
-<li><p><strong>SCREAMv1</strong>: Simple Cloud-Resolving E3SM Atmosphere Model version 1 training data (coming soon)</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Check the <code class="docutils literal notranslate"><span class="pre">archive_contents</span></code> text file to see files included in each tar archive. You can selectively download the files you need.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The EAMv2 and EAMv3 datasets are distributed as netCDF files. The E3SMv3 coupled dataset is
-distributed as <a class="reference external" href="https://zarr-specs.readthedocs.io/en/latest/v3/core/index.html">Zarr v3</a> stores
-(using the sharding codec), which require <code class="docutils literal notranslate"><span class="pre">zarr-python</span></code> &gt;= 3.0 to read. In both cases the
-vertical dimension is split across separate variables (<code class="docutils literal notranslate"><span class="pre">T_0</span></code>, <code class="docutils literal notranslate"><span class="pre">T_1</span></code>, …), with the vertical
-grid defined by the <code class="docutils literal notranslate"><span class="pre">ak_*</span></code>/<code class="docutils literal notranslate"><span class="pre">bk_*</span></code> coefficients as <code class="docutils literal notranslate"><span class="pre">pressure</span> <span class="pre">=</span> <span class="pre">ak</span> <span class="pre">*</span> <span class="pre">P0</span> <span class="pre">+</span> <span class="pre">bk</span> <span class="pre">*</span> <span class="pre">PS</span></code>.</p>
-</div>
-</section>
-<section id="data-access">
-<h2>Data Access<a class="headerlink" href="#data-access" title="Permalink to this heading"></a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="simulation_data/simulation_table.html">AI Training Datasets simulation table</a></li>
-</ul>
-</div>
-</section>
+<p>This page has moved. See <a class="reference internal" href="simulation_data/simulation_table.html"><span class="doc">AI Training Datasets</span></a>.</p>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../SCREAMv1/FourSeasons/simulation_data/simulation_table.html" class="btn btn-neutral float-left" title="SCREAMv1 Four-Seasons (2024) simulation table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="simulation_data/simulation_table.html" class="btn btn-neutral float-right" title="AI Training Datasets simulation table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
