@@ -6,22 +6,23 @@
 Welcome to E3SM Data Docs's documentation!
 ==========================================
 
-This documentation was created to help E3SM users find data officially
-released model data from the E3SM simulations campaigns as well as reproduce
-simulations.
+This documentation helps users find and download officially released model
+data from E3SM simulation campaigns, and provides the information needed to
+reproduce those simulations.
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   data_access
    v1/index
    v2/index
    v2.1/index
-   v3/index
-   SCREAMv0/index
-   SCREAMv1/index
-   AITraining/index
+   v3/CoupledSystem/simulation_data/simulation_table
+   SCREAMv0/DYAMOND2/simulation_data/simulation_table
+   SCREAMv1/FourSeasons/simulation_data/simulation_table
+   AITraining/simulation_data/simulation_table
 
 
 License

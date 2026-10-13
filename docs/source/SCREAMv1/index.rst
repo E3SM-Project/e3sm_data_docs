@@ -1,8 +1,6 @@
+:orphan:
+
 SCREAMv1
-==========================================
+========
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   FourSeasons/index
+This page has moved. See :doc:`FourSeasons/simulation_data/simulation_table`.

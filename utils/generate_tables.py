@@ -383,6 +383,13 @@ def construct_output_csv(resolutions: OrderedDict[str, Category], header_cells: 
                     writer.writerow(simulation.get_row(output_file, minimal_content=True))
 
 # Construct table display of simulations ######################################
+def write_overview_include(f, output_file: str):
+    """Include the hand-written overview (description, citations, links) if present."""
+    if os.path.exists(os.path.join(os.path.dirname(output_file), OVERVIEW_INCLUDE)):
+        f.write(f".. include:: {OVERVIEW_INCLUDE}\n\n")
+        f.write(".. rubric:: Simulations\n\n")
+
+
 def generate_table(page_type: str, resolutions: OrderedDict[str, Category], header_cells: List[str], output_file: str):
 
     # Create output directory if it doesn't exist
@@ -390,9 +397,11 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
 
     with open(output_file, "w", encoding="utf-8") as f:
         # Page Title
-        f.write("**********************************\n")
+        banner = "*" * max(34, len(page_type))
+        f.write(f"{banner}\n")
         f.write(f"{page_type}\n")
-        f.write("**********************************\n\n")
+        f.write(f"{banner}\n\n")
+        write_overview_include(f, output_file)
         # list-table directive
         f.write(".. list-table::\n")
         f.write("   :header-rows: 1\n")
@@ -428,14 +437,20 @@ def generate_table(page_type: str, resolutions: OrderedDict[str, Category], head
 # them against `hsi du` when possible, warning on any discrepancy.
 
 HPSS_WWW_PREFIX = "/home/projects/e3sm/www/"
-AI_TRAINING_BANNER = "*" * 44
+# Hand-written description, citations, and links shown above a generated table.
+# Uses a non-.rst suffix so Sphinx does not build it as a standalone page.
+OVERVIEW_INCLUDE = "overview.rst.inc"
+AI_TRAINING_TITLE = "AI Training Datasets"
+AI_TRAINING_BANNER = "*" * len(AI_TRAINING_TITLE)
 AI_TRAINING_NOTE = (
     ".. note::\n"
     "   Data on Disk paths are provided for convenient short-term access on NERSC.\n"
     "   These disk copies are **not guaranteed to persist** -- the HPSS archive is the\n"
     "   authoritative long-term copy. Please use the HPSS path or URL for durable access.\n"
+    "   The Globus URL opens the on-disk copy in the Globus web app; see\n"
+    "   :ref:`globus-sharing`.\n"
 )
-AI_TRAINING_HEADER: List[str] = ["Dataset", "Status", "Data Size", "Data on Disk (NERSC)", "HPSS Path", "HPSS URL"]
+AI_TRAINING_HEADER: List[str] = ["Dataset", "Status", "Data Size", "Data on Disk (NERSC)", "Globus URL", "HPSS Path", "HPSS URL"]
 
 
 def read_ai_training_datasets(csv_file: str) -> "OrderedDict[str, List[Dict[str, str]]]":
@@ -454,6 +469,13 @@ def read_ai_training_datasets(csv_file: str) -> "OrderedDict[str, List[Dict[str,
                 continue  # skip blank lines
             models.setdefault(row["model"], []).append(row)
     return models
+
+
+def get_globus_url_cell(globus_url: str) -> str:
+    """Build the (anonymous-hyperlink) Globus URL cell; non-URLs (e.g. "TBD") pass through."""
+    if globus_url.startswith("https://"):
+        return f"`Link <{globus_url}>`__"
+    return globus_url
 
 
 def get_ai_training_hpss_url(hpss_path: str) -> str:
@@ -513,6 +535,7 @@ def build_ai_training_rows(models: "OrderedDict[str, List[Dict[str, str]]]") -> 
                 d["status"],
                 d["data_size"],
                 d["disk_path"],
+                get_globus_url_cell(d.get("globus_url", "")),
                 hpss,
                 get_ai_training_hpss_url(hpss),
             ])
@@ -535,22 +558,23 @@ def generate_ai_training_table(csv_file: str, output_file: str):
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(f"{AI_TRAINING_BANNER}\n")
-        f.write("AI Training Datasets simulation table\n")
+        f.write(f"{AI_TRAINING_TITLE}\n")
         f.write(f"{AI_TRAINING_BANNER}\n\n")
+        write_overview_include(f, output_file)
         f.write(AI_TRAINING_NOTE)
         f.write("\n")
         f.write(format_list_table(AI_TRAINING_HEADER, rows))
     print(f"AI training datasets table written to {output_file}")
 
 
-def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False):
+def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False, title: str = ""):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
     header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path", "HPSS URL"]
     construct_output_csv(resolutions, header_cells, f"../machine_readable_data/{model_version}_{group_name}_simulations.csv")
     print(f"csv of the simulations will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_simulations.csv")
     generate_table(
-        f"{model_version} {group_name} simulation table",
+        title or f"{model_version} {group_name} simulation table",
         resolutions,
         header_cells,
         f"../docs/source/{model_version}/{group_name}/simulation_data/simulation_table.rst",
@@ -582,7 +606,7 @@ if __name__ == "__main__":
     #construct_pages("simulations_v2_1.csv", "v2.1", "BGC")
 
     # v3 data
-    construct_pages("input/simulations_v3_coupled.csv", "v3", "CoupledSystem")
+    construct_pages("input/simulations_v3_coupled.csv", "v3", "CoupledSystem", title="E3SMv3")
 
     # AI training data
     # generate_ai_training_table(
