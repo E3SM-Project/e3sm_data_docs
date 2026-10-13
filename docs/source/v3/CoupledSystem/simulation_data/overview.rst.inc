@@ -16,6 +16,10 @@ manuscripts.
 
   * TBD
 
+* For v3.LR Large Ensemble simulations:
+
+  * TBD
+
 **Data access:** the simulation data are available on ESGF and NERSC HPSS. See
 :ref:`data-access` for download instructions.
 
