@@ -128,19 +128,17 @@ def get_esgf(model_version: str, resolution: str, simulation_name: str, experime
             esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets={url_active_facets}>`_"
         elif experiment and ensemble_num:
             # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
-            # Note that `[1:]`` removes `v` from `model_version`
-            esgf_native: str = f"`Native <https://esgf-node.{node}.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
-            if experiment == 'hist-all-xGHG-xaer':
-                experiment_id = 'hist-nat'
-            else:
-                experiment_id = experiment
-            esgf_cmip: str = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
-            if link_type == "cmip":
-                esgf = esgf_cmip
+            if link_type in ("cmip", "both"):
+                # "both" is kept as an accepted value for backwards compatibility,
+                # but Native links are no longer generated, so it yields CMIP only.
+                if experiment == 'hist-all-xGHG-xaer':
+                    experiment_id = 'hist-nat'
+                else:
+                    experiment_id = experiment
+                esgf = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
             elif link_type == "native":
-                esgf = esgf_native
-            elif link_type == "both":
-                esgf = esgf_cmip + ', ' + esgf_native
+                # Native links are no longer included, so there is nothing to show.
+                esgf = ""
             else:
                 raise ValueError(f"Invalid link_type={link_type}")
         else:
