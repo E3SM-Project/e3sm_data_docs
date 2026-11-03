@@ -74,6 +74,9 @@ def check_if_symlink(hpss_path: str) -> bool:
                 return True
     return False
 
+def has_cmip_link(esgf: str) -> bool:
+    """True if the ESGF cell contains a CMIP link."""
+    return "`CMIP <" in esgf
 
 def get_variant_label(model_version: str, simulation_name: str, ensemble_num: str) -> str:
     """Return the CMIP6 variant label, of the form r#i#p#f# (empty if no ensemble number)."""
@@ -232,7 +235,11 @@ class Simulation(object):
             self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
         self.esgf = get_esgf(self.model_version, self.resolution, self.simulation_name, self.experiment, self.ensemble_num, self.link_type, self.node)
-        self.variant_label = get_variant_label(self.model_version, self.simulation_name, self.ensemble_num)
+        # Only show the variant label when there is a CMIP link for it to describe.
+        if has_cmip_link(self.esgf):
+            self.variant_label = get_variant_label(self.model_version, self.simulation_name, self.ensemble_num)
+        else:
+            self.variant_label = ""
 
         # Generate web interface URL from HPSS path
         self.web_interface = self.get_web_interface_url()
