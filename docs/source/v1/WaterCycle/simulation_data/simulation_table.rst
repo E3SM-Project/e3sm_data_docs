@@ -32,13 +32,13 @@ v1 WaterCycle simulation table
    * - 20190722.DECKv1b_abrupt4xCO2.ne30_oEC3.compy
      - 14
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190722.DECKv1b_abrupt4xCO2.ne30_oEC3.compy
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190722.DECKv1b_abrupt4xCO2.ne30_oEC3.compy>`_
    * - 20180215.DECKv1b_1pctCO2.ne30_oEC.edison
      - 12
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180215.DECKv1b_1pctCO2.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180215.DECKv1b_1pctCO2.ne30_oEC.edison>`_
    * - **LR > Historical**
@@ -104,37 +104,37 @@ v1 WaterCycle simulation table
    * - 20180508.DECKv1b_A1_1850allF.ne30_oEC.edison
      - 5
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180508.DECKv1b_A1_1850allF.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180508.DECKv1b_A1_1850allF.ne30_oEC.edison>`_
    * - 20180622.DECKv1b_A2_1850allF.ne30_oEC.edison
      - 4
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180622.DECKv1b_A2_1850allF.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180622.DECKv1b_A2_1850allF.ne30_oEC.edison>`_
    * - 20180716.DECKv1b_A3_1850allF.ne30_oEC.edison
      - 5
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180716.DECKv1b_A3_1850allF.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180716.DECKv1b_A3_1850allF.ne30_oEC.edison>`_
    * - 20180508.DECKv1b_A1_1850aeroF.ne30_oEC.edison
      - 5
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180508.DECKv1b_A1_1850aeroF.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180508.DECKv1b_A1_1850aeroF.ne30_oEC.edison>`_
    * - 20180622.DECKv1b_A2_1850aeroF.ne30_oEC.edison
      - 4
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180622.DECKv1b_A2_1850aeroF.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180622.DECKv1b_A2_1850aeroF.ne30_oEC.edison>`_
    * - 20180716.DECKv1b_A3_1850aeroF.ne30_oEC.edison
      - 5
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180716.DECKv1b_A3_1850aeroF.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20180716.DECKv1b_A3_1850aeroF.ne30_oEC.edison>`_
    * - **LR > DAMIP**
@@ -146,19 +146,19 @@ v1 WaterCycle simulation table
    * - 20190404.DECKv1b_H1_hist-GHG.ne30_oEC.edison
      - 13
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190404.DECKv1b_H1_hist-GHG.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190404.DECKv1b_H1_hist-GHG.ne30_oEC.edison>`_
    * - 20190404.DECKv1b_H2_hist-GHG.ne30_oEC.edison
      - 13
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190404.DECKv1b_H2_hist-GHG.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190404.DECKv1b_H2_hist-GHG.ne30_oEC.edison>`_
    * - 20190404.DECKv1b_H3_hist-GHG.ne30_oEC.edison
      - 13
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190404.DECKv1b_H3_hist-GHG.ne30_oEC.edison
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190404.DECKv1b_H3_hist-GHG.ne30_oEC.edison>`_
    * - **LR > LargeEnsemble**
@@ -416,49 +416,49 @@ v1 WaterCycle simulation table
    * - 20190807.DECKv1b_P1_SSP5-8.5.ne30_oEC.cori-knl
      - 8
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190807.DECKv1b_P1_SSP5-8.5.ne30_oEC.cori-knl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190807.DECKv1b_P1_SSP5-8.5.ne30_oEC.cori-knl>`_
    * - 20190821.DECKv1b_P2_SSP5-8.5.ne30_oEC.cori-knl
      - 8
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190821.DECKv1b_P2_SSP5-8.5.ne30_oEC.cori-knl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190821.DECKv1b_P2_SSP5-8.5.ne30_oEC.cori-knl>`_
    * - 20190821.DECKv1b_P3_SSP5-8.5.ne30_oEC.cori-knl
      - 8
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190821.DECKv1b_P3_SSP5-8.5.ne30_oEC.cori-knl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190821.DECKv1b_P3_SSP5-8.5.ne30_oEC.cori-knl>`_
    * - 20190821.DECKv1b_P4_SSP5-8.5.ne30_oEC.cori-knl
      - 8
      -
-     - r4i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190821.DECKv1b_P4_SSP5-8.5.ne30_oEC.cori-knl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190821.DECKv1b_P4_SSP5-8.5.ne30_oEC.cori-knl>`_
    * - 20190821.DECKv1b_P5_SSP5-8.5.ne30_oEC.cori-knl
      - 8
      -
-     - r5i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190821.DECKv1b_P5_SSP5-8.5.ne30_oEC.cori-knl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20190821.DECKv1b_P5_SSP5-8.5.ne30_oEC.cori-knl>`_
    * - 20191019.DECKv1b_P1_SSP5-8.5-GHG.ne30_oEC.cori-knl
      - 8
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20191019.DECKv1b_P1_SSP5-8.5-GHG.ne30_oEC.cori-knl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20191019.DECKv1b_P1_SSP5-8.5-GHG.ne30_oEC.cori-knl>`_
    * - 20191019.DECKv1b_P2_SSP5-8.5-GHG.ne30_oEC.cori-knl
      - 8
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20191019.DECKv1b_P2_SSP5-8.5-GHG.ne30_oEC.cori-knl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20191019.DECKv1b_P2_SSP5-8.5-GHG.ne30_oEC.cori-knl>`_
    * - 20191019.DECKv1b_P3_SSP5-8.5-GHG.ne30_oEC.cori-knl
      - 9
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20191019.DECKv1b_P3_SSP5-8.5-GHG.ne30_oEC.cori-knl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/LR/20191019.DECKv1b_P3_SSP5-8.5-GHG.ne30_oEC.cori-knl>`_
    * - **HR > Control Runs**
@@ -470,25 +470,25 @@ v1 WaterCycle simulation table
    * - theta.20180906.branch_noCNT.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG
      - 159
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/theta.20180906.branch_noCNT.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/theta.20180906.branch_noCNT.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG>`_
    * - theta.20190910.branch_noCNT.n438b.unc03.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG
      - 103
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/theta.20190910.branch_noCNT.n438b.unc03.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/theta.20190910.branch_noCNT.n438b.unc03.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG>`_
    * - theta.20190910.branch_noCNT.n825def.unc06.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG
      - 337
      -
-     - r3i1p1f1
+     -
      - (symlink) /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/theta.20190910.branch_noCNT.n825def.unc06.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/theta.20190910.branch_noCNT.n825def.unc06.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG>`_
    * - 20210112.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG.unc06
      - 56
      -
-     - r4i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20210112.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG.unc06
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20210112.A_WCYCL1950S_CMIP6_HR.ne120_oRRS18v3_ICG.unc06>`_
    * - **HR > Transient Production Runs**
@@ -500,13 +500,13 @@ v1 WaterCycle simulation table
    * - 20200517-maint-1.0-tro.A_WCYCL20TRS_CMIP6_HR.ne120_oRRS18v3_ICG.unc11
      - 103
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20200517-maint-1.0-tro.A_WCYCL20TRS_CMIP6_HR.ne120_oRRS18v3_ICG.unc11
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20200517-maint-1.0-tro.A_WCYCL20TRS_CMIP6_HR.ne120_oRRS18v3_ICG.unc11>`_
    * - 202101027-maint-1.0-tro.A_WCYCL20TRS_CMIP6_HR.ne120_oRRS18v3_ICG.unc12
      - 96
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/202101027-maint-1.0-tro.A_WCYCL20TRS_CMIP6_HR.ne120_oRRS18v3_ICG.unc12
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/202101027-maint-1.0-tro.A_WCYCL20TRS_CMIP6_HR.ne120_oRRS18v3_ICG.unc12>`_
    * - **HR > Additional Simulations > Control Runs LRtunedHR**
@@ -518,7 +518,7 @@ v1 WaterCycle simulation table
    * - 20190509.A_WCYCL1950S_CMIP6_LRtunedHR.ne30_oECv3_ICG.anvil
      - 4
      -
-     - r5i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20190509.A_WCYCL1950S_CMIP6_LRtunedHR.ne30_oECv3_ICG.anvil
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20190509.A_WCYCL1950S_CMIP6_LRtunedHR.ne30_oECv3_ICG.anvil>`_
    * - **HR > Additional Simulations > Transient Production Runs LRtunedHR**
@@ -530,7 +530,7 @@ v1 WaterCycle simulation table
    * - 20210104.maint-1.0-A_WCYCL20TRS_CMIP6_LRtunedHR.ne30_oECv3_ICG.cori-knl.unc11
      - 11
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20210104.maint-1.0-A_WCYCL20TRS_CMIP6_LRtunedHR.ne30_oECv3_ICG.cori-knl.unc11
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20210104.maint-1.0-A_WCYCL20TRS_CMIP6_LRtunedHR.ne30_oECv3_ICG.cori-knl.unc11>`_
    * - **HR > Additional Simulations > F2010**
@@ -542,19 +542,19 @@ v1 WaterCycle simulation table
    * - cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.dailySST.noCNT.ne120_oRRS18v3
      - 3
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.dailySST.noCNT.ne120_oRRS18v3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.dailySST.noCNT.ne120_oRRS18v3>`_
    * - cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.noCNT.ARE.nudgeUV.ne120_oRRS18v3
      - 2
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.noCNT.ARE.nudgeUV.ne120_oRRS18v3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.noCNT.ARE.nudgeUV.ne120_oRRS18v3>`_
    * - cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.dailySSTplus4K.noCNT.ne120_oRRS18v3
      - 3
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.dailySSTplus4K.noCNT.ne120_oRRS18v3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-knl.20190214_maint-1.0.F2010-CMIP6-HR.dailySSTplus4K.noCNT.ne120_oRRS18v3>`_
    * - **HR > Additional Simulations > F2010C5**
@@ -566,31 +566,31 @@ v1 WaterCycle simulation table
    * - cori-knl.20190214_maint-1.0.F2010C5-CMIP6-HR.ARE.nudgeUV.1850aero.ne120_oRRS18v3
      - 2
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-knl.20190214_maint-1.0.F2010C5-CMIP6-HR.ARE.nudgeUV.1850aero.ne120_oRRS18v3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-knl.20190214_maint-1.0.F2010C5-CMIP6-HR.ARE.nudgeUV.1850aero.ne120_oRRS18v3>`_
    * - cori-haswell.20190513.F2010C5-CMIP6-LR.ne30_oECv3
      - 0
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010C5-CMIP6-LR.ne30_oECv3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010C5-CMIP6-LR.ne30_oECv3>`_
    * - edison.20190415_maint-1.0.F2010C5-CMIP6-LR.ARE.nudgeUV.ne30_oECv3
      - 0
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/edison.20190415_maint-1.0.F2010C5-CMIP6-LR.ARE.nudgeUV.ne30_oECv3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/edison.20190415_maint-1.0.F2010C5-CMIP6-LR.ARE.nudgeUV.ne30_oECv3>`_
    * - edison.20190415_maint-1.0.F2010C5-CMIP6-LR.ARE.nudgeUV.1850aero.ne30_oECv3
      - 0
      -
-     - r4i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/edison.20190415_maint-1.0.F2010C5-CMIP6-LR.ARE.nudgeUV.1850aero.ne30_oECv3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/edison.20190415_maint-1.0.F2010C5-CMIP6-LR.ARE.nudgeUV.1850aero.ne30_oECv3>`_
    * - cori-haswell.20190513.F2010C5-CMIP6-LR.plus4K.ne30_oECv3
      - 0
      -
-     - r5i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010C5-CMIP6-LR.plus4K.ne30_oECv3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010C5-CMIP6-LR.plus4K.ne30_oECv3>`_
    * - **HR > Additional Simulations > F2010LRtunedHR**
@@ -602,25 +602,25 @@ v1 WaterCycle simulation table
    * - cori-haswell.20190513.F2010LRtunedHR.noCNT.ne30_oECv3
      - 0
      -
-     - r1i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010LRtunedHR.noCNT.ne30_oECv3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010LRtunedHR.noCNT.ne30_oECv3>`_
    * - cori-haswell.20190513.F2010LRtunedHR.noCNT.ARE.nudgeUV.ne30_oECv3
      - 0
      -
-     - r2i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010LRtunedHR.noCNT.ARE.nudgeUV.ne30_oECv3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010LRtunedHR.noCNT.ARE.nudgeUV.ne30_oECv3>`_
    * - cori-haswell.20190513.F2010LRtunedHR.noCNT.ARE.nudgeUV.1850aero.ne30_oECv3
      - 0
      -
-     - r3i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010LRtunedHR.noCNT.ARE.nudgeUV.1850aero.ne30_oECv3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010LRtunedHR.noCNT.ARE.nudgeUV.1850aero.ne30_oECv3>`_
    * - cori-haswell.20190513.F2010LRtunedHR.plus4K.noCNT.ne30_oECv3
      - 0
      -
-     - r4i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010LRtunedHR.plus4K.noCNT.ne30_oECv3
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/cori-haswell.20190513.F2010LRtunedHR.plus4K.noCNT.ne30_oECv3>`_
    * - **HR > Additional Simulations > SSP5-8.5**
@@ -632,7 +632,7 @@ v1 WaterCycle simulation table
    * - 20211021-maint-1.0-tro.A_WCYCLSSP585_CMIP6_HR.ne120_oRRS18v3_ICG.unc12-3rd-attempt
      - 113
      -
-     - r6i1p1f1
+     -
      - /home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20211021-maint-1.0-tro.A_WCYCLSSP585_CMIP6_HR.ne120_oRRS18v3_ICG.unc12-3rd-attempt
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv1/HR/20211021-maint-1.0-tro.A_WCYCLSSP585_CMIP6_HR.ne120_oRRS18v3_ICG.unc12-3rd-attempt>`_
 

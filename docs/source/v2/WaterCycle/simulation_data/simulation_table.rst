@@ -19,7 +19,7 @@ v2 WaterCycle simulation table
      -
    * - v2.LR.piControl
      - 39
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piControl&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piControl&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piControl&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piControl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piControl>`_
@@ -31,19 +31,19 @@ v2 WaterCycle simulation table
      -
    * - v2.LR.abrupt-4xCO2_0101
      - 12
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=abrupt-4xCO2&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=abrupt-4xCO2&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=abrupt-4xCO2&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.abrupt-4xCO2_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.abrupt-4xCO2_0101>`_
    * - v2.LR.abrupt-4xCO2_0301
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=abrupt-4xCO2&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=abrupt-4xCO2&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=abrupt-4xCO2&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.abrupt-4xCO2_0301
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.abrupt-4xCO2_0301>`_
    * - v2.LR.1pctCO2_0101
      - 12
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=1pctCO2&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=1pctCO2&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=1pctCO2&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.1pctCO2_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.1pctCO2_0101>`_
@@ -55,31 +55,31 @@ v2 WaterCycle simulation table
      -
    * - v2.LR.historical_0101
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0101>`_
    * - v2.LR.historical_0151
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0151>`_
    * - v2.LR.historical_0201
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0201>`_
    * - v2.LR.historical_0251
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r4i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens4>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r4i1p1f1>`_
      - r4i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0251
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0251>`_
    * - v2.LR.historical_0301
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r5i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens5>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=historical&variant_label=r5i1p1f1>`_
      - r5i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0301
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.historical_0301>`_
@@ -331,91 +331,91 @@ v2 WaterCycle simulation table
      -
    * - v2.LR.hist-GHG_0101
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-GHG&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0101>`_
    * - v2.LR.hist-GHG_0151
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-GHG&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0151>`_
    * - v2.LR.hist-GHG_0201
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-GHG&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0201>`_
    * - v2.LR.hist-GHG_0251
      - 14
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r4i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-GHG&ensemble_member=ens4>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r4i1p1f1>`_
      - r4i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0251
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0251>`_
    * - v2.LR.hist-GHG_0301
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r5i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-GHG&ensemble_member=ens5>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-GHG&variant_label=r5i1p1f1>`_
      - r5i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0301
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-GHG_0301>`_
    * - v2.LR.hist-aer_0101
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-aer&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0101>`_
    * - v2.LR.hist-aer_0151
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-aer&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0151>`_
    * - v2.LR.hist-aer_0201
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-aer&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0201>`_
    * - v2.LR.hist-aer_0251
      - 14
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r4i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-aer&ensemble_member=ens4>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r4i1p1f1>`_
      - r4i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0251
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0251>`_
    * - v2.LR.hist-aer_0301
      - 14
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r5i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-aer&ensemble_member=ens5>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-aer&variant_label=r5i1p1f1>`_
      - r5i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0301
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-aer_0301>`_
    * - v2.LR.hist-all-xGHG-xaer_0101
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-all-xGHG-xaer&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0101>`_
    * - v2.LR.hist-all-xGHG-xaer_0151
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-all-xGHG-xaer&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0151>`_
    * - v2.LR.hist-all-xGHG-xaer_0201
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-all-xGHG-xaer&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0201>`_
    * - v2.LR.hist-all-xGHG-xaer_0251
      - 14
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r4i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-all-xGHG-xaer&ensemble_member=ens4>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r4i1p1f1>`_
      - r4i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0251
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0251>`_
    * - v2.LR.hist-all-xGHG-xaer_0301
      - 13
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r5i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=hist-all-xGHG-xaer&ensemble_member=ens5>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=hist-nat&variant_label=r5i1p1f1>`_
      - r5i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0301
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.hist-all-xGHG-xaer_0301>`_
@@ -427,19 +427,19 @@ v2 WaterCycle simulation table
      -
    * - v2.LR.amip_0101
      - 2
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=amip&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=amip&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=amip&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.amip_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.amip_0101>`_
    * - v2.LR.amip_0201
      - 2
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=amip&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=amip&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=amip&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.amip_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.amip_0201>`_
    * - v2.LR.amip_0301
      - 2
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=amip&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=amip&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=amip&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.amip_0301
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.amip_0301>`_
@@ -457,43 +457,43 @@ v2 WaterCycle simulation table
      -
    * - v2.LR.piClim-control
      - 1
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-control&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piClim-control&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-control&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-control
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-control>`_
    * - v2.LR.piClim-histall_0021
      - 3
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histall&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piClim-histall&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histall&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histall_0021
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histall_0021>`_
    * - v2.LR.piClim-histall_0031
      - 3
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histall&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piClim-histall&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histall&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histall_0031
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histall_0031>`_
    * - v2.LR.piClim-histall_0041
      - 3
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histall&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piClim-histall&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histall&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histall_0041
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histall_0041>`_
    * - v2.LR.piClim-histaer_0021
      - 3
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histaer&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piClim-histaer&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histaer&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histaer_0021
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histaer_0021>`_
    * - v2.LR.piClim-histaer_0031
      - 3
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histaer&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piClim-histaer&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histaer&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histaer_0031
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histaer_0031>`_
    * - v2.LR.piClim-histaer_0041
      - 3
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histaer&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piClim-histaer&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0&experiment_id=piClim-histaer&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histaer_0041
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/LR/v2.LR.piClim-histaer_0041>`_
@@ -523,19 +523,19 @@ v2 WaterCycle simulation table
      -
    * - v2.NARRM.piControl
      - 80
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=piControl&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=piControl&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=piControl&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.piControl
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.piControl>`_
    * - v2.NARRM.abrupt-4xCO2_0101
      - 24
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=abrupt-4xCO2&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=abrupt-4xCO2&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=abrupt-4xCO2&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.abrupt-4xCO2_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.abrupt-4xCO2_0101>`_
    * - v2.NARRM.1pctCO2_0101
      - 27
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=1pctCO2&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=1pctCO2&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=1pctCO2&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.1pctCO2_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.1pctCO2_0101>`_
@@ -547,31 +547,31 @@ v2 WaterCycle simulation table
      -
    * - v2.NARRM.historical_0101
      - 29
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0101>`_
    * - v2.NARRM.historical_0151
      - 27
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0151
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0151>`_
    * - v2.NARRM.historical_0201
      - 27
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0201>`_
    * - v2.NARRM.historical_0251
      - 27
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r4i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens4>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r4i1p1f1>`_
      - r4i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0251
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0251>`_
    * - v2.NARRM.historical_0301
      - 29
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r5i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=historical&ensemble_member=ens5>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=historical&variant_label=r5i1p1f1>`_
      - r5i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0301
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.historical_0301>`_
@@ -589,19 +589,19 @@ v2 WaterCycle simulation table
      -
    * - v2.NARRM.amip_0101
      - 7
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=amip&variant_label=r1i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=amip&ensemble_member=ens1>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=amip&variant_label=r1i1p1f1>`_
      - r1i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.amip_0101
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.amip_0101>`_
    * - v2.NARRM.amip_0201
      - 7
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=amip&variant_label=r2i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=amip&ensemble_member=ens2>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=amip&variant_label=r2i1p1f1>`_
      - r2i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.amip_0201
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.amip_0201>`_
    * - v2.NARRM.amip_0301
      - 7
-     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=amip&variant_label=r3i1p1f1>`_, `Native <https://esgf-node.llnl.gov/search/e3sm/?model_version=2_0&experiment=amip&ensemble_member=ens3>`_
+     - `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=E3SM-2-0-NARRM&experiment_id=amip&variant_label=r3i1p1f1>`_
      - r3i1p1f1
      - /home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.amip_0301
      - `HPSS URL <https://portal.nersc.gov/archive/home/projects/e3sm/www/WaterCycle/E3SMv2/NARRM/v2.NARRM.amip_0301>`_
