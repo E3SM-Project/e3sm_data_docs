@@ -24,26 +24,6 @@
 | E3SM-Project | E3SM-1-1-ECA | CMIP | historical | r1i1p1f1 |  |
 | E3SM-Project | E3SM-1-1-ECA | CMIP | piControl | r1i1p1f1 |  |
 | E3SM-Project | E3SM-1-1-ECA | ScenarioMIP | ssp585 | r1i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r6i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r7i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r8i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r9i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r10i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r11i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r12i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r13i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r14i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r15i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r16i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r17i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r18i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r19i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r20i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r21i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r22i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r23i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r24i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | CMIP | historical | r25i1p1f1 |  |
 | E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r1i1p1f1 |  |
 | E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r2i1p1f1 |  |
 | E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r3i1p1f1 |  |
@@ -190,6 +170,26 @@
 | E3SM-Project | E3SM-3-0 | CMIP | historical | r3i1p1f1 | [v3.LR.historical_0151](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
 | E3SM-Project | E3SM-3-0 | CMIP | historical | r4i1p1f1 | [v3.LR.historical_0201](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
 | E3SM-Project | E3SM-3-0 | CMIP | historical | r5i1p1f1 | [v3.LR.historical_0251](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r6i1p1f1 | [v3.LR.historical_0301](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r7i1p1f1 | [v3.LR.historical_0111](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r8i1p1f1 | [v3.LR.historical_0121](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r9i1p1f1 | [v3.LR.historical_0131](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r10i1p1f1 | [v3.LR.historical_0141](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r11i1p1f1 | [v3.LR.historical_0161](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r12i1p1f1 | [v3.LR.historical_0171](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r13i1p1f1 | [v3.LR.historical_0181](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r14i1p1f1 | [v3.LR.historical_0191](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r15i1p1f1 | [v3.LR.historical_0211](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r16i1p1f1 | [v3.LR.historical_0221](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r17i1p1f1 | [v3.LR.historical_0231](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r18i1p1f1 | [v3.LR.historical_0241](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r19i1p1f1 | [v3.LR.historical_0261](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r20i1p1f1 | [v3.LR.historical_0271](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r21i1p1f1 | [v3.LR.historical_0281](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r22i1p1f1 | [v3.LR.historical_0291](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r23i1p1f1 | [v3.LR.historical_0311](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r24i1p1f1 | [v3.LR.historical_0321](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | CMIP | historical | r25i1p1f1 | [v3.LR.historical_0091](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
 | E3SM-Project | E3SM-3-0 | CMIP | piControl | r1i1p1f1 | [v3.LR.piControl](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
 | E3SM-Project | E3SM-3-0 | DAMIP | hist-GHG | r1i1p1f1 | [v3.LR.hist-GHG_0101](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
 | E3SM-Project | E3SM-3-0 | DAMIP | hist-GHG | r2i1p1f1 | [v3.LR.hist-GHG_0151](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
