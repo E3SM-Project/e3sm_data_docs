@@ -24,31 +24,6 @@
 | E3SM-Project | E3SM-1-1-ECA | CMIP | historical | r1i1p1f1 |  |
 | E3SM-Project | E3SM-1-1-ECA | CMIP | piControl | r1i1p1f1 |  |
 | E3SM-Project | E3SM-1-1-ECA | ScenarioMIP | ssp585 | r1i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r1i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r2i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r3i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r4i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r5i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r6i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r7i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r8i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r9i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r10i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r11i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r12i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r13i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r14i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r15i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r16i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r17i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r18i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r19i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r20i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r21i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r22i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r23i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r24i1p1f1 |  |
-| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r25i1p1f1 |  |
 
 ### Variants not on CMIP6 Metadata, but on E3SM Data Docs
 
@@ -210,6 +185,31 @@
 | E3SM-Project | E3SM-3-0 | RFMIP | piClim-histghg | r1i1p1f1 | [v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0101](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
 | E3SM-Project | E3SM-3-0 | RFMIP | piClim-histghg | r2i1p1f1 | [v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0151](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
 | E3SM-Project | E3SM-3-0 | RFMIP | piClim-histghg | r3i1p1f1 | [v3.LR.piClim-histGHG/v3.LR.piClim-histGHG_0201](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r1i1p1f1 | [v3.LR.historical_0051](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r2i1p1f1 | [v3.LR.historical_0101](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r3i1p1f1 | [v3.LR.historical_0151](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r4i1p1f1 | [v3.LR.historical_0201](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r5i1p1f1 | [v3.LR.historical_0251](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r6i1p1f1 | [v3.LR.historical_0301](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r7i1p1f1 | [v3.LR.historical_0111](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r8i1p1f1 | [v3.LR.historical_0121](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r9i1p1f1 | [v3.LR.historical_0131](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r10i1p1f1 | [v3.LR.historical_0141](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r11i1p1f1 | [v3.LR.historical_0161](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r12i1p1f1 | [v3.LR.historical_0171](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r13i1p1f1 | [v3.LR.historical_0181](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r14i1p1f1 | [v3.LR.historical_0191](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r15i1p1f1 | [v3.LR.historical_0211](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r16i1p1f1 | [v3.LR.historical_0221](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r17i1p1f1 | [v3.LR.historical_0231](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r18i1p1f1 | [v3.LR.historical_0241](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r19i1p1f1 | [v3.LR.historical_0261](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r20i1p1f1 | [v3.LR.historical_0271](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r21i1p1f1 | [v3.LR.historical_0281](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r22i1p1f1 | [v3.LR.historical_0291](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r23i1p1f1 | [v3.LR.historical_0311](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r24i1p1f1 | [v3.LR.historical_0321](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
+| E3SM-Project | E3SM-3-0 | ScenarioMIP | ssp245 | r25i1p1f1 | [v3.LR.historical_0091](https://docs.e3sm.org/e3sm_data_docs/_build/html/v3/CoupledSystem/simulation_data/simulation_table.html) |
 | UCSB | E3SM-1-0 | CMIP | historical | r1i2p2f1 | [LE_historical_ens1](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) |
 | UCSB | E3SM-1-0 | CMIP | historical | r2i2p2f1 | [LE_historical_ens2](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) |
 | UCSB | E3SM-1-0 | CMIP | historical | r3i2p2f1 | [LE_historical_ens3](https://docs.e3sm.org/e3sm_data_docs/_build/html/v1/WaterCycle/simulation_data/simulation_table.html) |

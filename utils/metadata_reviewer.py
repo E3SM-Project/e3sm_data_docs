@@ -162,9 +162,12 @@ def find_all_variants_from_cmip6_metadata() -> Set[Variant]:
     return variants_from_cmip6_metadata
 
 
-# Matches an ESGF search link labeled "CMIP" in an RST hyperlink, e.g.:
+# Matches an ESGF search link labeled "CMIP" (optionally with a parenthetical
+# such as "(Historical)" or "(SSP245)") in an RST hyperlink, e.g.:
 #   `CMIP <https://esgf-node.llnl.gov/search/cmip6/?source_id=...>`_
-CMIP_LINK_RE = re.compile(r"`CMIP\s*<([^>]+)>`_")
+#   `CMIP (SSP245) <https://aims2.llnl.gov/search?...>`_
+# A single ESGF cell may contain more than one such link.
+CMIP_LINK_RE = re.compile(r"`CMIP[^`<]*<([^>]+)>`_")
 
 # A new list-table row: "   * - <first column>"
 ROW_START_RE = re.compile(r"^\s*\*\s*-\s?(.*)$")
@@ -247,33 +250,32 @@ def collect_links_from_table(rst_path: str) -> List[Variant]:
             continue
         esgf_cell = row[esgf_col_idx]
 
-        match = CMIP_LINK_RE.search(esgf_cell)
-        if not match:
-            continue
-
-        parsed = _parse_esgf_url(match.group(1))
-        if parsed is None:
-            continue
-
-        source_id, experiment_id, variant_label = parsed
-
         simulation_name = row[0] if row else ""
         url = _data_docs_url(rst_path)
         e3sm_data_docs_link = (
             f"[{simulation_name}]({url})" if simulation_name and url else ""
         )
 
-        variants.append(
-            Variant(
-                institution_id=UNKNOWN,
-                source_id=source_id,
-                activity_id=UNKNOWN,
-                experiment_id=experiment_id,
-                variant_label=variant_label,
-                e3sm_data_docs_page=rst_path,
-                e3sm_data_docs_link=e3sm_data_docs_link,
+        # One cell can hold several links (e.g. Historical + SSP245), so
+        # emit one Variant per link.
+        for match in CMIP_LINK_RE.finditer(esgf_cell):
+            parsed = _parse_esgf_url(match.group(1))
+            if parsed is None:
+                continue
+
+            source_id, experiment_id, variant_label = parsed
+
+            variants.append(
+                Variant(
+                    institution_id=UNKNOWN,
+                    source_id=source_id,
+                    activity_id=UNKNOWN,
+                    experiment_id=experiment_id,
+                    variant_label=variant_label,
+                    e3sm_data_docs_page=rst_path,
+                    e3sm_data_docs_link=e3sm_data_docs_link,
+                )
             )
-        )
 
     return variants
 

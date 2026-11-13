@@ -76,7 +76,7 @@ def check_if_symlink(hpss_path: str) -> bool:
 
 def has_cmip_link(esgf: str) -> bool:
     """True if the ESGF cell contains a CMIP link."""
-    return "`CMIP <" in esgf
+    return "`CMIP" in esgf
 
 def get_variant_label(model_version: str, simulation_name: str, ensemble_num: str) -> str:
     """Return the CMIP6 variant label, of the form r#i#p#f# (empty if no ensemble number)."""
@@ -106,9 +106,14 @@ def get_esgf(model_version: str, resolution: str, simulation_name: str, experime
     elif model_version == "v3":
         # v3 uses aims2.llnl.gov with CMIP6-E3SM-Ext project
         source_id = "E3SM-3-0"
-        human_readable_active_facets: str = f'{{"source_id":"{source_id}","experiment_id":"{experiment}","variant_label":"r{ensemble_num}i1p1f1"}}'
-        url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
-        esgf = f"`CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets={url_active_facets}>`_"
+        def cmip_url(experiment_id: str) -> str:
+            facets = f'{{"source_id":"{source_id}","experiment_id":"{experiment_id}","variant_label":"r{ensemble_num}i1p1f1"}}'
+            return f"https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets={urllib.parse.quote(facets)}"
+        if experiment == "historical":
+            # The historical case continues as SSP245; CMIP publishes 2015-2050 under that experiment.
+            esgf = f"`CMIP (Historical) <{cmip_url('historical')}>`_, `CMIP (SSP245) <{cmip_url('ssp245')}>`_"
+        else:
+            esgf = f"`CMIP <{cmip_url(experiment)}>`_"
     else:
         # v2, v2.1
         # Determine source_id
@@ -273,9 +278,9 @@ class Simulation(object):
         if "simulation" in output_file:
             row = [self.simulation_name, self.data_size, self.esgf, self.variant_label, self.hpss, self.web_interface]
             if minimal_content:
-                match_object: re.Match = re.match("`.*<(.*)>`_", self.esgf)
-                if match_object:
-                    row[2] = match_object.group(1)  # Extract URL from the esgf link
+                urls = re.findall(r"`[^`<]*<([^>]*)>`_", self.esgf)
+                if urls:
+                    row[2] = "; ".join(urls)
                 if self.hpss.startswith("(symlink) "):
                     # Remove symlink prefix for the HPSS path
                     # Since we don't want that in the csv output,
