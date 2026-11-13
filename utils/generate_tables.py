@@ -74,6 +74,20 @@ def check_if_symlink(hpss_path: str) -> bool:
                 return True
     return False
 
+def has_cmip_link(esgf: str) -> bool:
+    """True if the ESGF cell contains a CMIP link."""
+    return "`CMIP" in esgf
+
+def get_variant_label(model_version: str, simulation_name: str, ensemble_num: str) -> str:
+    """Return the CMIP6 variant label, of the form r#i#p#f# (empty if no ensemble number)."""
+    if not ensemble_num:
+        return ""
+    if model_version == "v1" and simulation_name.startswith("LE_"):
+        variant_suffix = "i2p2f1"
+    else:
+        variant_suffix = "i1p1f1"
+    return f"r{ensemble_num}{variant_suffix}"
+
 
 def get_esgf(model_version: str, resolution: str, simulation_name: str, experiment: str, ensemble_num: str, link_type: str, node: str) -> str:
     esgf: str
@@ -81,22 +95,25 @@ def get_esgf(model_version: str, resolution: str, simulation_name: str, experime
         esgf = ""
     elif model_version == "v1":
         v1_institution_id: str
-        variant_suffix: str
         if simulation_name.startswith("LE_"):
             v1_institution_id = "UCSB"
-            variant_suffix = "i2p2f1"
         else:
             v1_institution_id = "E3SM-Project"
-            variant_suffix = "i1p1f1"
-        human_readable_active_facets: str = f'{{"institution_id":"{v1_institution_id}","source_id":"E3SM-1-0","experiment_id":"{experiment}","variant_label":"r{ensemble_num}{variant_suffix}"}}'
+        variant_label: str = get_variant_label(model_version, simulation_name, ensemble_num)
+        human_readable_active_facets: str = f'{{"institution_id":"{v1_institution_id}","source_id":"E3SM-1-0","experiment_id":"{experiment}","variant_label":"{variant_label}"}}'
         url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
         esgf = f"`CMIP <https://esgf-node.{node}.gov/search?project=CMIP6&activeFacets={url_active_facets}>`_"
     elif model_version == "v3":
         # v3 uses aims2.llnl.gov with CMIP6-E3SM-Ext project
         source_id = "E3SM-3-0"
-        human_readable_active_facets: str = f'{{"source_id":"{source_id}","experiment_id":"{experiment}","variant_label":"r{ensemble_num}i1p1f1"}}'
-        url_active_facets: str = urllib.parse.quote(human_readable_active_facets)
-        esgf = f"`CMIP <https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets={url_active_facets}>`_"
+        def cmip_url(experiment_id: str) -> str:
+            facets = f'{{"source_id":"{source_id}","experiment_id":"{experiment_id}","variant_label":"r{ensemble_num}i1p1f1"}}'
+            return f"https://aims2.llnl.gov/search?project=CMIP6-E3SM-Ext&activeFacets={urllib.parse.quote(facets)}"
+        if experiment == "historical":
+            # The historical case continues as SSP245; CMIP publishes 2015-2050 under that experiment.
+            esgf = f"`CMIP (Historical) <{cmip_url('historical')}>`_, `CMIP (SSP245) <{cmip_url('ssp245')}>`_"
+        else:
+            esgf = f"`CMIP <{cmip_url(experiment)}>`_"
     else:
         # v2, v2.1
         # Determine source_id
@@ -116,19 +133,17 @@ def get_esgf(model_version: str, resolution: str, simulation_name: str, experime
             esgf = f"`CMIP <https://esgf-node.{node}.gov/search/?project=CMIP6&activeFacets={url_active_facets}>`_"
         elif experiment and ensemble_num:
             # See https://github.com/E3SM-Project/CMIP6-Metadata/pull/9#issuecomment-1246086256 for the table of ensemble numbers
-            # Note that `[1:]`` removes `v` from `model_version`
-            esgf_native: str = f"`Native <https://esgf-node.{node}.gov/search/e3sm/?model_version={model_version[1:]}_0&experiment={experiment}&ensemble_member=ens{ensemble_num}>`_"
-            if experiment == 'hist-all-xGHG-xaer':
-                experiment_id = 'hist-nat'
-            else:
-                experiment_id = experiment
-            esgf_cmip: str = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
-            if link_type == "cmip":
-                esgf = esgf_cmip
+            if link_type in ("cmip", "both"):
+                # "both" is kept as an accepted value for backwards compatibility,
+                # but Native links are no longer generated, so it yields CMIP only.
+                if experiment == 'hist-all-xGHG-xaer':
+                    experiment_id = 'hist-nat'
+                else:
+                    experiment_id = experiment
+                esgf = f"`CMIP <https://esgf-node.{node}.gov/search/cmip6/?source_id={source_id}&experiment_id={experiment_id}&variant_label=r{ensemble_num}i1p1f1>`_"
             elif link_type == "native":
-                esgf = esgf_native
-            elif link_type == "both":
-                esgf = esgf_cmip + ', ' + esgf_native
+                # Native links are no longer included, so there is nothing to show.
+                esgf = ""
             else:
                 raise ValueError(f"Invalid link_type={link_type}")
         else:
@@ -223,6 +238,11 @@ class Simulation(object):
             self.data_size, self.hpss = get_data_size_and_hpss(hpss_path)
 
         self.esgf = get_esgf(self.model_version, self.resolution, self.simulation_name, self.experiment, self.ensemble_num, self.link_type, self.node)
+        # Only show the variant label when there is a CMIP link for it to describe.
+        if has_cmip_link(self.esgf):
+            self.variant_label = get_variant_label(self.model_version, self.simulation_name, self.ensemble_num)
+        else:
+            self.variant_label = ""
 
         # Generate web interface URL from HPSS path
         self.web_interface = self.get_web_interface_url()
@@ -256,20 +276,20 @@ class Simulation(object):
 
     def get_row(self, output_file, minimal_content: bool = False) -> List[str]:
         if "simulation" in output_file:
-            row = [self.simulation_name, self.data_size, self.esgf, self.hpss, self.web_interface]
+            row = [self.simulation_name, self.data_size, self.esgf, self.variant_label, self.hpss, self.web_interface]
             if minimal_content:
-                match_object: re.Match = re.match("`.*<(.*)>`_", self.esgf)
-                if match_object:
-                    row[2] = match_object.group(1)  # Extract URL from the esgf link
+                urls = re.findall(r"`[^`<]*<([^>]*)>`_", self.esgf)
+                if urls:
+                    row[2] = "; ".join(urls)
                 if self.hpss.startswith("(symlink) "):
                     # Remove symlink prefix for the HPSS path
                     # Since we don't want that in the csv output,
                     # which a computer reads.
-                    row[3] = row[3].replace("(symlink) ", "")
+                    row[4] = row[4].replace("(symlink) ", "")
                 # Extract web interface URL for CSV
                 web_match: re.Match = re.match("`.*<(.*)>`_", self.web_interface)
                 if web_match:
-                    row[4] = web_match.group(1)  # Extract URL from the web interface link
+                    row[5] = web_match.group(1)  # Extract URL from the web interface link
             return row
         elif "reproduction" in output_file:
             return [self.simulation_name, self.machine, self.checksum, self.run_script_reproduction, self.run_script_original]
@@ -570,7 +590,7 @@ def generate_ai_training_table(csv_file: str, output_file: str):
 def construct_pages(csv_file: str, model_version: str, group_name: str, include_reproduction_scripts: bool = False, title: str = ""):
     versions: OrderedDict[str, ModelVersion] = read_simulations(csv_file)
     resolutions: OrderedDict[str, Category] = versions[model_version].groups[group_name].resolutions
-    header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "HPSS Path", "HPSS URL"]
+    header_cells: List[str] = ["Simulation", "Data Size (TB)", "ESGF Links", "Variant Label", "HPSS Path", "HPSS URL"]
     construct_output_csv(resolutions, header_cells, f"../machine_readable_data/{model_version}_{group_name}_simulations.csv")
     print(f"csv of the simulations will be available at https://github.com/E3SM-Project/e3sm_data_docs/blob/main/machine_readable_data/{model_version}_{group_name}_simulations.csv")
     generate_table(
